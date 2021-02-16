@@ -1,0 +1,70 @@
+name: Generate stable API
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: 'master'
+
+    - name: Generate	    
+      uses: docker://openapitools/openapi-generator-cli
+      env:
+        TS_POST_PROCESS_FILE: true
+      with:
+        args: >-
+          generate -i https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-stable.json
+          -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
+          --additional-properties=npmRepository=https://www.npmjs.com/package/@jellyfin/client-axios
+          --additional-properties=supportsES6=true
+          --additional-properties=withInterfaces=true
+          --additional-properties=withSeparateModelsAndApi=true
+          --additional-properties=modelPackage=models
+          --additional-properties=apiPackage=api
+          --enable-post-process-file
+          -o /github/workspace/stable
+
+    - name: Create .npmignore
+      run: sudo chown $USER:$USER -R stable && echo -e ".*\n*.md" > stable/.npmignore
+
+    - name: License package.json to MIT
+      run: echo "$(cat stable/package.json | jq '.license = "MIT"')" > stable/package.json
+
+    - name: Switch from CommonJS to ES6 in tsconfig.json
+      run: echo "$(cat stable/tsconfig.json | jq '.compilerOptions.module = "es6"')" > stable/tsconfig.json
+
+    - name: Setup node environment
+      uses: actions/setup-node@v2.1.5
+      with:
+        node-version: 14
+        check-latest: true
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./stable
+
+    - name: Build
+      run: npm run build
+      working-directory: ./stable
+
+    # "echo" in commit returns true so the build succeeds, even if no changed files
+    - name: Commit new changes to the repo
+      run: |
+        git config --global user.email "packaging@jellyfin.org"
+        git config --global user.name "Jellyfin Packaging Team"
+        git pull
+        git add .
+        git commit -m "Update stable OpenAPI client" || echo
+        git push
+
+    - name: Publish to npm
+      if: ${{ steps.diff.outputs.count }} > 0
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}

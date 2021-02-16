@@ -1,0 +1,78 @@
+name: Generate unstable API
+
+# Slight delay to avoid collisions in the git history while updating
+on:
+  schedule:
+    - cron: "10 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: 'master'
+
+    - name: Generate	    
+      uses: docker://openapitools/openapi-generator-cli
+      env:
+        TS_POST_PROCESS_FILE: true
+      with:
+        args: >-
+          generate -i https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-unstable.json
+          -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
+          --additional-properties=npmRepository=https://www.npmjs.com/package/@jellyfin/client-axios
+          --additional-properties=snapshot=true
+          --additional-properties=supportsES6=true
+          --additional-properties=withInterfaces=true
+          --additional-properties=withSeparateModelsAndApi=true
+          --additional-properties=modelPackage=models
+          --additional-properties=apiPackage=api
+          --enable-post-process-file
+          -o /github/workspace/unstable
+
+    - name: Create .npmignore
+      run: sudo chown $USER:$USER -R unstable && echo -e ".*\n*.md" > unstable/.npmignore
+
+    - name: License package.json to MIT
+      run: echo "$(cat unstable/package.json | jq '.license = "MIT"')" > unstable/package.json
+
+    - name: Switch from CommonJS to ES6 in tsconfig.json
+      run: echo "$(cat unstable/tsconfig.json | jq '.compilerOptions.module = "es6"')" > unstable/tsconfig.json
+
+    - name: Check if .ts files were modified
+      id: diff
+      run: echo "::set-output name=files::$(git status -s | grep ts | wc -l)"
+
+    - name: Setup node environment
+      uses: actions/setup-node@v2.1.5
+      with:
+        node-version: 14
+        check-latest: true
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./unstable
+
+    - name: Build
+      run: npm run build
+      working-directory: ./unstable
+
+    # "echo" in commit returns true so the build succeeds, even if no changed files
+    - name: Commit to the repo
+      if: steps.diff.outputs.files != '0'
+      run: |
+        git config --global user.email "packaging@jellyfin.org"
+        git config --global user.name "Jellyfin Packaging Team"
+        git pull
+        git add .
+        git commit -m "Update unstable OpenAPI client" || echo
+        git push
+
+    - name: Publish to npm
+      if: steps.diff.outputs.files != '0'
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        tag: unstable
