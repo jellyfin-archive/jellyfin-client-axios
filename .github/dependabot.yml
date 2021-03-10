@@ -5,3 +5,17 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+
+  - package-ecosystem: npm
+    directory: '/stable'
+    schedule:
+      interval: daily
+      time: '00:00'
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: npm
+    directory: '/unstable'
+    schedule:
+      interval: daily
+      time: '00:00'
+    open-pull-requests-limit: 10
