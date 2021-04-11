@@ -1,6 +1,6 @@
 {
   "name": "@jellyfin/client-axios",
-  "version": "",
+  "version": "10.7.2",
   "description": "OpenAPI client for @jellyfin/client-axios",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
