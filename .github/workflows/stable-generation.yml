@@ -56,7 +56,7 @@ jobs:
 
     - name: Cache node_modules
       if: ${{ steps.diff.outputs.count }} > 0
-      uses: actions/cache@v2.1.4
+      uses: actions/cache@v2.1.5
       id: npm-cache
       with:
         path: ${{ steps.npm-cache-dir-path.outputs.dir }}
