@@ -36,6 +36,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-npm-
 
+    - name: Get package version
+      id: version
+      run: echo "::set-output name=number::$(cat package.json | jq '.version')"
+      working-directory: ./${{ matrix.version }}
+
     - name: Install dependencies
       run: npm ci --no-audit
       working-directory: ./${{ matrix.version }}
@@ -45,8 +50,14 @@ jobs:
       working-directory: ./${{ matrix.version }}
 
     - name: Publish to npm
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        package: ./${{ matrix.version }}/package.json
-        tag: ${{ matrix.version }}
+      run: npm publish --tag ${{ matrix.version }}
+      working-directory: ./${{ matrix.version }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Set as latest
+      if: ${{ matrix.version == 'stable' }}
+      run: npm dist-tag add @jellyfin/client-axios@${{ steps.version.outputs.number }} latest
+      working-directory: ./${{ matrix.version }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} 
