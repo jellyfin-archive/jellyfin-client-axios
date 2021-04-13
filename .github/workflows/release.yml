@@ -18,10 +18,11 @@ jobs:
       with:
         ref: 'master'
 
-    - name: Setup node environment
+    - name: Setup node environment for NPMJS
       uses: actions/setup-node@v2.1.5
       with:
         node-version: 14
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Get npm cache directory path
       id: npm-cache-dir-path
@@ -36,17 +37,43 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-npm-
 
+    - name: Get package version
+      id: version
+      run: echo "::set-output name=number::$(echo $(cat package.json | jq '.version') | tr -d '"')"
+      working-directory: ./${{ matrix.version }}
+
     - name: Install dependencies
       run: npm ci --no-audit
       working-directory: ./${{ matrix.version }}
 
-    - name: Build
-      run: npm run build
-      working-directory: ./${{ matrix.version }}
-
     - name: Publish to npm
-      uses: JS-DevTools/npm-publish@v1
+      run: npm publish --tag ${{ matrix.version }} --access public
+      working-directory: ./${{ matrix.version }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Set as latest in npm
+      if: ${{ matrix.version == 'stable' }}
+      run: npm dist-tag add @jellyfin/client-axios@${{ steps.version.outputs.number }} latest
+      working-directory: ./${{ matrix.version }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Setup node environment for GitHub Package Registry
+      uses: actions/setup-node@v2.1.5
       with:
-        token: ${{ secrets.NPM_TOKEN }}
-        package: ./${{ matrix.version }}/package.json
-        tag: ${{ matrix.version }}
+        node-version: 14
+        registry-url: 'https://npm.pkg.github.com'
+
+    - name: Publish to GitHub Package registry
+      run: npm publish --tag ${{ matrix.version }} --access public
+      working-directory: ./${{ matrix.version }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+    - name: Set as latest in GitHub Packages
+      if: ${{ matrix.version == 'stable' }}
+      run: npm dist-tag add @jellyfin/client-axios@${{ steps.version.outputs.number }} latest
+      working-directory: ./${{ matrix.version }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}

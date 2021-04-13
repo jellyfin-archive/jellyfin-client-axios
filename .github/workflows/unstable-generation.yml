@@ -32,18 +32,33 @@ jobs:
           --enable-post-process-file
           -o /github/workspace/unstable
 
+    - name: Get server commit hash
+      id: sha
+      run: |
+        SERVER_SHA="$(git ls-remote git://github.com/jellyfin/jellyfin.git | grep refs/heads/master | cut -f 1)"
+        echo "::set-output name=sha::$(echo ${SERVER_SHA::7})"
+
     - name: Check if .ts files were modified
       id: diff
-      run: echo "::set-output name=files::$(git status -s | grep ts | wc -l)"
+      run: echo "::set-output name=count::$(git status -s | grep ts | wc -l)"
 
     - name: Get OpenApi version
       if: ${{ steps.diff.outputs.count }} > 0
+      id: apiversion
+      run: |
+        SERVER_VERSION="$(curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-unstable.json | jq '.info.version')"
+        echo "::set-output name=number::$(echo ${SERVER_VERSION::-3})"
+
+    - name: Create new version string
+      if: ${{ steps.diff.outputs.count }} > 0
       id: version
-      run: echo "::set-output name=number::$(curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-unstable.json | jq '.info.version')"
+      run: echo "::set-output name=number::$(echo ${{ steps.apiversion.outputs.number }}.${{ steps.sha.outputs.sha }}")"
 
     - name: Set version in package.json
       if: ${{ steps.diff.outputs.count }} > 0
-      run: echo "$(cat unstable/package.json | jq '.version = ${{ steps.version.outputs.number }}')" > unstable/package.json
+      run: |
+        echo "$(cat unstable/package.json | jq '.version = "${{ steps.version.outputs.number }}"')" > unstable/package.json
+        echo "$(cat unstable/package-lock.json | jq '.version = "${{ steps.version.outputs.number }}"')" > unstable/package-lock.json
 
     - name: Setup node environment
       if: ${{ steps.diff.outputs.count }} > 0

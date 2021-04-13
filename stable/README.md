@@ -29,4 +29,6 @@ It's generated automatically using [OpenAPITools generator](https://github.com/O
 for TypeScript.
 
 This version is built from the current stable version of the server. Source code of this generated package is available
-[in our repo](https://github.com/jellyfin/jellyfin-client-axios).
+[in our repo](https://github.com/jellyfin/jellyfin-client-axios/tree/master/stable).
+
+You can check the [unstable](https://www.npmjs.com/package/@jellyfin/client-axios/v/unstable) tag if you're looking for the stable version of this package.
