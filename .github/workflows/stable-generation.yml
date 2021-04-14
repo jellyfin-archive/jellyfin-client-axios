@@ -23,7 +23,7 @@ jobs:
           -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
           --additional-properties=npmRepository=https://www.npmjs.com/package/@jellyfin/client-axios
           --additional-properties=supportsES6=true
-          --additional-properties=withInterfaces=true
+          --additional-properties=useSingleRequestParameter=true
           --additional-properties=withSeparateModelsAndApi=true
           --additional-properties=modelPackage=models
           --additional-properties=apiPackage=api

@@ -50,7 +50,7 @@ This API client is built automatically every midnight for the stable and unstabl
 docker run --rm openapitools/openapi-generator-cli generate -i https://api.jellyfin.org/openapi/jellyfin-openapi-stable.json
 -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
 --additional-properties=supportsES6=true
---additional-properties=withInterfaces=true
+--additional-properties=useSingleRequestParameter=true
 --additional-properties=withSeparateModelsAndApi=true
 --additional-properties=modelPackage=models
 --additional-properties=apiPackage=api
@@ -64,7 +64,7 @@ docker run --rm openapitools/openapi-generator-cli generate -i https://api.jelly
 docker run --rm openapitools/openapi-generator-cli generate -i https://api.jellyfin.org/openapi/jellyfin-openapi-unstable.json
 -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
 --additional-properties=supportsES6=true
---additional-properties=withInterfaces=true
+--additional-properties=useSingleRequestParameter=true
 --additional-properties=withSeparateModelsAndApi=true
 --additional-properties=modelPackage=models
 --additional-properties=apiPackage=api
