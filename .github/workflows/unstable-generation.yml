@@ -23,12 +23,8 @@ jobs:
           generate -i https://api.jellyfin.org/openapi/jellyfin-openapi-unstable.json
           -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
           --additional-properties=npmRepository=https://www.npmjs.com/package/@jellyfin/client-axios
-          --additional-properties=snapshot=true
           --additional-properties=supportsES6=true
           --additional-properties=useSingleRequestParameter=true
-          --additional-properties=withSeparateModelsAndApi=true
-          --additional-properties=modelPackage=models
-          --additional-properties=apiPackage=api
           --enable-post-process-file
           -o /github/workspace/unstable
 
@@ -47,12 +43,12 @@ jobs:
       id: apiversion
       run: |
         SERVER_VERSION="$(curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-unstable.json | jq '.info.version')"
-        echo "::set-output name=number::$(echo ${SERVER_VERSION::-3})"
+        echo "::set-output name=number::$(echo ${SERVER_VERSION::-1})"
 
     - name: Create new version string
       if: ${{ steps.diff.outputs.count }} > 0
       id: version
-      run: echo "::set-output name=number::$(echo ${{ steps.apiversion.outputs.number }}.${{ steps.sha.outputs.sha }}")"
+      run: echo "::set-output name=number::$(echo ${{ steps.apiversion.outputs.number }}-unstable+${{ steps.sha.outputs.sha }}")"
 
     - name: Set version in package.json
       if: ${{ steps.diff.outputs.count }} > 0
