@@ -15,7 +15,7 @@ jobs:
         ref: 'master'
 
     - name: Generate	    
-      uses: docker://openapitools/openapi-generator-cli
+      uses: docker://openapitools/openapi-generator-cli:latest-release
       env:
         TS_POST_PROCESS_FILE: true
       with:
