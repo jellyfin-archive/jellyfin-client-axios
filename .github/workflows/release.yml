@@ -69,11 +69,11 @@ jobs:
       run: npm publish --tag ${{ matrix.version }} --access public
       working-directory: ./${{ matrix.version }}
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.ORG_PAT }}
 
     - name: Set as latest in GitHub Packages
       if: ${{ matrix.version == 'stable' }}
       run: npm dist-tag add @jellyfin/client-axios@${{ steps.version.outputs.number }} latest
       working-directory: ./${{ matrix.version }}
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.ORG_PAT }}
