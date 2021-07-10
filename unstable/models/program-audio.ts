@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum ProgramAudio {
     Mono = 'Mono',
     Stereo = 'Stereo',

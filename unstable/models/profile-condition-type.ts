@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum ProfileConditionType {
     Equals = 'Equals',
     NotEquals = 'NotEquals',

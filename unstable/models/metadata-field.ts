@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum MetadataField {
     Cast = 'Cast',
     Genres = 'Genres',

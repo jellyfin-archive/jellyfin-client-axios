@@ -134,24 +134,38 @@ export const ActivityLogApiFactory = function (configuration?: Configuration, ba
 };
 
 /**
- * ActivityLogApi - interface
+ * Request parameters for getLogEntries operation in ActivityLogApi.
  * @export
- * @interface ActivityLogApi
+ * @interface ActivityLogApiGetLogEntriesRequest
  */
-export interface ActivityLogApiInterface {
+export interface ActivityLogApiGetLogEntriesRequest {
     /**
-     * 
-     * @summary Gets activity log entries.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {string} [minDate] Optional. The minimum date. Format &#x3D; ISO.
-     * @param {boolean} [hasUserId] Optional. Filter log entries if it has user id, or not.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ActivityLogApiInterface
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     * @type {number}
+     * @memberof ActivityLogApiGetLogEntries
      */
-    getLogEntries(startIndex?: number, limit?: number, minDate?: string, hasUserId?: boolean, options?: any): AxiosPromise<ActivityLogEntryQueryResult>;
+    readonly startIndex?: number
 
+    /**
+     * Optional. The maximum number of records to return.
+     * @type {number}
+     * @memberof ActivityLogApiGetLogEntries
+     */
+    readonly limit?: number
+
+    /**
+     * Optional. The minimum date. Format &#x3D; ISO.
+     * @type {string}
+     * @memberof ActivityLogApiGetLogEntries
+     */
+    readonly minDate?: string
+
+    /**
+     * Optional. Filter log entries if it has user id, or not.
+     * @type {boolean}
+     * @memberof ActivityLogApiGetLogEntries
+     */
+    readonly hasUserId?: boolean
 }
 
 /**
@@ -160,19 +174,16 @@ export interface ActivityLogApiInterface {
  * @class ActivityLogApi
  * @extends {BaseAPI}
  */
-export class ActivityLogApi extends BaseAPI implements ActivityLogApiInterface {
+export class ActivityLogApi extends BaseAPI {
     /**
      * 
      * @summary Gets activity log entries.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {string} [minDate] Optional. The minimum date. Format &#x3D; ISO.
-     * @param {boolean} [hasUserId] Optional. Filter log entries if it has user id, or not.
+     * @param {ActivityLogApiGetLogEntriesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActivityLogApi
      */
-    public getLogEntries(startIndex?: number, limit?: number, minDate?: string, hasUserId?: boolean, options?: any) {
-        return ActivityLogApiFp(this.configuration).getLogEntries(startIndex, limit, minDate, hasUserId, options).then((request) => request(this.axios, this.basePath));
+    public getLogEntries(requestParameters: ActivityLogApiGetLogEntriesRequest = {}, options?: any) {
+        return ActivityLogApiFp(this.configuration).getLogEntries(requestParameters.startIndex, requestParameters.limit, requestParameters.minDate, requestParameters.hasUserId, options).then((request) => request(this.axios, this.basePath));
     }
 }

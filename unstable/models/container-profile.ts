@@ -39,7 +39,7 @@ export interface ContainerProfile {
      * @type {string}
      * @memberof ContainerProfile
      */
-    Container?: string | null;
+    Container?: string;
 }
 
 

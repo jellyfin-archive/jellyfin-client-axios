@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum PlaystateCommand {
     Stop = 'Stop',
     Pause = 'Pause',

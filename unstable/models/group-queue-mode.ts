@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum GroupQueueMode {
     Queue = 'Queue',
     QueueNext = 'QueueNext'

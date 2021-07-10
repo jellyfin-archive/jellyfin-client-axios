@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum ItemFilter {
     IsFolder = 'IsFolder',
     IsNotFolder = 'IsNotFolder',

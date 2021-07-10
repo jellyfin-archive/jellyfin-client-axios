@@ -36,6 +36,7 @@ export interface AuthenticateUserByName {
      * Gets or sets the sha1-hashed password.
      * @type {string}
      * @memberof AuthenticateUserByName
+     * @deprecated
      */
     Password?: string | null;
 }

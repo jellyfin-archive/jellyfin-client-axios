@@ -22,13 +22,13 @@ import { DynamicDayOfWeek } from './dynamic-day-of-week';
  */
 export interface AccessSchedule {
     /**
-     * Gets or sets the id of this instance.
+     * Gets the id of this instance.
      * @type {number}
      * @memberof AccessSchedule
      */
     Id?: number;
     /**
-     * Gets or sets the id of the associated user.
+     * Gets the id of the associated user.
      * @type {string}
      * @memberof AccessSchedule
      */

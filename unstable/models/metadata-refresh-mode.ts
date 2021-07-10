@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum MetadataRefreshMode {
     None = 'None',
     ValidationOnly = 'ValidationOnly',

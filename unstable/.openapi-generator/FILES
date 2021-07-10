@@ -254,7 +254,6 @@ models/queue-item.ts
 models/queue-request-dto.ts
 models/quick-connect-dto.ts
 models/quick-connect-result.ts
-models/quick-connect-state.ts
 models/rating-type.ts
 models/ready-request-dto.ts
 models/recommendation-dto.ts

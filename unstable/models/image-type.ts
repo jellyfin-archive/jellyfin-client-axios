@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum ImageType {
     Primary = 'Primary',
     Art = 'Art',

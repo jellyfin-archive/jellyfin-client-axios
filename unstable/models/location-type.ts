@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum LocationType {
     FileSystem = 'FileSystem',
     Remote = 'Remote',

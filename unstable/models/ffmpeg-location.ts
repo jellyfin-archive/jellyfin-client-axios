@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum FFmpegLocation {
     NotFound = 'NotFound',
     SetByArgument = 'SetByArgument',

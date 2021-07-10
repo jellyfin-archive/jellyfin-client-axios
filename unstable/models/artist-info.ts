@@ -28,6 +28,12 @@ export interface ArtistInfo {
      */
     Name?: string | null;
     /**
+     * Gets or sets the original title
+     * @type {string}
+     * @memberof ArtistInfo
+     */
+    OriginalTitle?: string | null;
+    /**
      * Gets or sets the path.
      * @type {string}
      * @memberof ArtistInfo
@@ -86,7 +92,7 @@ export interface ArtistInfo {
      * @type {Array<SongInfo>}
      * @memberof ArtistInfo
      */
-    SongInfos?: Array<SongInfo> | null;
+    SongInfos?: Array<SongInfo>;
 }
 
 

@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum PluginStatus {
     Active = 'Active',
     Restart = 'Restart',

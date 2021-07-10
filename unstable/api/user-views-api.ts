@@ -187,34 +187,52 @@ export const UserViewsApiFactory = function (configuration?: Configuration, base
 };
 
 /**
- * UserViewsApi - interface
+ * Request parameters for getGroupingOptions operation in UserViewsApi.
  * @export
- * @interface UserViewsApi
+ * @interface UserViewsApiGetGroupingOptionsRequest
  */
-export interface UserViewsApiInterface {
+export interface UserViewsApiGetGroupingOptionsRequest {
     /**
-     * 
-     * @summary Get user view grouping options.
-     * @param {string} userId User id.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UserViewsApiInterface
+     * User id.
+     * @type {string}
+     * @memberof UserViewsApiGetGroupingOptions
      */
-    getGroupingOptions(userId: string, options?: any): AxiosPromise<Array<SpecialViewOptionDto>>;
+    readonly userId: string
+}
+
+/**
+ * Request parameters for getUserViews operation in UserViewsApi.
+ * @export
+ * @interface UserViewsApiGetUserViewsRequest
+ */
+export interface UserViewsApiGetUserViewsRequest {
+    /**
+     * User id.
+     * @type {string}
+     * @memberof UserViewsApiGetUserViews
+     */
+    readonly userId: string
 
     /**
-     * 
-     * @summary Get user views.
-     * @param {string} userId User id.
-     * @param {boolean} [includeExternalContent] Whether or not to include external views such as channels or live tv.
-     * @param {Array<string>} [presetViews] Preset views.
-     * @param {boolean} [includeHidden] Whether or not to include hidden content.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UserViewsApiInterface
+     * Whether or not to include external views such as channels or live tv.
+     * @type {boolean}
+     * @memberof UserViewsApiGetUserViews
      */
-    getUserViews(userId: string, includeExternalContent?: boolean, presetViews?: Array<string>, includeHidden?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult>;
+    readonly includeExternalContent?: boolean
 
+    /**
+     * Preset views.
+     * @type {Array<string>}
+     * @memberof UserViewsApiGetUserViews
+     */
+    readonly presetViews?: Array<string>
+
+    /**
+     * Whether or not to include hidden content.
+     * @type {boolean}
+     * @memberof UserViewsApiGetUserViews
+     */
+    readonly includeHidden?: boolean
 }
 
 /**
@@ -223,31 +241,28 @@ export interface UserViewsApiInterface {
  * @class UserViewsApi
  * @extends {BaseAPI}
  */
-export class UserViewsApi extends BaseAPI implements UserViewsApiInterface {
+export class UserViewsApi extends BaseAPI {
     /**
      * 
      * @summary Get user view grouping options.
-     * @param {string} userId User id.
+     * @param {UserViewsApiGetGroupingOptionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserViewsApi
      */
-    public getGroupingOptions(userId: string, options?: any) {
-        return UserViewsApiFp(this.configuration).getGroupingOptions(userId, options).then((request) => request(this.axios, this.basePath));
+    public getGroupingOptions(requestParameters: UserViewsApiGetGroupingOptionsRequest, options?: any) {
+        return UserViewsApiFp(this.configuration).getGroupingOptions(requestParameters.userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get user views.
-     * @param {string} userId User id.
-     * @param {boolean} [includeExternalContent] Whether or not to include external views such as channels or live tv.
-     * @param {Array<string>} [presetViews] Preset views.
-     * @param {boolean} [includeHidden] Whether or not to include hidden content.
+     * @param {UserViewsApiGetUserViewsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserViewsApi
      */
-    public getUserViews(userId: string, includeExternalContent?: boolean, presetViews?: Array<string>, includeHidden?: boolean, options?: any) {
-        return UserViewsApiFp(this.configuration).getUserViews(userId, includeExternalContent, presetViews, includeHidden, options).then((request) => request(this.axios, this.basePath));
+    public getUserViews(requestParameters: UserViewsApiGetUserViewsRequest, options?: any) {
+        return UserViewsApiFp(this.configuration).getUserViews(requestParameters.userId, requestParameters.includeExternalContent, requestParameters.presetViews, requestParameters.includeHidden, options).then((request) => request(this.axios, this.basePath));
     }
 }

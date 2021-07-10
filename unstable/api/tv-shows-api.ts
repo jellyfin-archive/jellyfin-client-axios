@@ -154,12 +154,13 @@ export const TvShowsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
          * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
          * @param {boolean} [enableUserData] Optional. Include user data.
+         * @param {string} [nextUpDateCutoff] Optional. Starting date of shows to show in Next Up section.
          * @param {boolean} [enableTotalRecordCount] Whether to enable the total records count. Defaults to true.
          * @param {boolean} [disableFirstEpisode] Whether to disable sending the first episode in a series as next up.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNextUp: async (userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, seriesId?: string, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, enableTotalRecordCount?: boolean, disableFirstEpisode?: boolean, options: any = {}): Promise<RequestArgs> => {
+        getNextUp: async (userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, seriesId?: string, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, nextUpDateCutoff?: string, enableTotalRecordCount?: boolean, disableFirstEpisode?: boolean, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/Shows/NextUp`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -213,6 +214,12 @@ export const TvShowsApiAxiosParamCreator = function (configuration?: Configurati
 
             if (enableUserData !== undefined) {
                 localVarQueryParameter['enableUserData'] = enableUserData;
+            }
+
+            if (nextUpDateCutoff !== undefined) {
+                localVarQueryParameter['nextUpDateCutoff'] = (nextUpDateCutoff as any instanceof Date) ?
+                    (nextUpDateCutoff as any).toISOString() :
+                    nextUpDateCutoff;
             }
 
             if (enableTotalRecordCount !== undefined) {
@@ -442,13 +449,14 @@ export const TvShowsApiFp = function(configuration?: Configuration) {
          * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
          * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
          * @param {boolean} [enableUserData] Optional. Include user data.
+         * @param {string} [nextUpDateCutoff] Optional. Starting date of shows to show in Next Up section.
          * @param {boolean} [enableTotalRecordCount] Whether to enable the total records count. Defaults to true.
          * @param {boolean} [disableFirstEpisode] Whether to disable sending the first episode in a series as next up.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getNextUp(userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, seriesId?: string, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, enableTotalRecordCount?: boolean, disableFirstEpisode?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getNextUp(userId, startIndex, limit, fields, seriesId, parentId, enableImges, imageTypeLimit, enableImageTypes, enableUserData, enableTotalRecordCount, disableFirstEpisode, options);
+        async getNextUp(userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, seriesId?: string, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, nextUpDateCutoff?: string, enableTotalRecordCount?: boolean, disableFirstEpisode?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNextUp(userId, startIndex, limit, fields, seriesId, parentId, enableImges, imageTypeLimit, enableImageTypes, enableUserData, nextUpDateCutoff, enableTotalRecordCount, disableFirstEpisode, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -537,13 +545,14 @@ export const TvShowsApiFactory = function (configuration?: Configuration, basePa
          * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
          * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
          * @param {boolean} [enableUserData] Optional. Include user data.
+         * @param {string} [nextUpDateCutoff] Optional. Starting date of shows to show in Next Up section.
          * @param {boolean} [enableTotalRecordCount] Whether to enable the total records count. Defaults to true.
          * @param {boolean} [disableFirstEpisode] Whether to disable sending the first episode in a series as next up.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNextUp(userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, seriesId?: string, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, enableTotalRecordCount?: boolean, disableFirstEpisode?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult> {
-            return localVarFp.getNextUp(userId, startIndex, limit, fields, seriesId, parentId, enableImges, imageTypeLimit, enableImageTypes, enableUserData, enableTotalRecordCount, disableFirstEpisode, options).then((request) => request(axios, basePath));
+        getNextUp(userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, seriesId?: string, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, nextUpDateCutoff?: string, enableTotalRecordCount?: boolean, disableFirstEpisode?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult> {
+            return localVarFp.getNextUp(userId, startIndex, limit, fields, seriesId, parentId, enableImges, imageTypeLimit, enableImageTypes, enableUserData, nextUpDateCutoff, enableTotalRecordCount, disableFirstEpisode, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -586,93 +595,360 @@ export const TvShowsApiFactory = function (configuration?: Configuration, basePa
 };
 
 /**
- * TvShowsApi - interface
+ * Request parameters for getEpisodes operation in TvShowsApi.
  * @export
- * @interface TvShowsApi
+ * @interface TvShowsApiGetEpisodesRequest
  */
-export interface TvShowsApiInterface {
+export interface TvShowsApiGetEpisodesRequest {
     /**
-     * 
-     * @summary Gets episodes for a tv season.
-     * @param {string} seriesId The series id.
-     * @param {string} [userId] The user id.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
-     * @param {number} [season] Optional filter by season number.
-     * @param {string} [seasonId] Optional. Filter by season id.
-     * @param {boolean} [isMissing] Optional. Filter by items that are missing episodes or not.
-     * @param {string} [adjacentTo] Optional. Return items that are siblings of a supplied item.
-     * @param {string} [startItemId] Optional. Skip through the list until a given item is found.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {boolean} [enableImages] Optional, include image information in output.
-     * @param {number} [imageTypeLimit] Optional, the max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {boolean} [enableUserData] Optional. Include user data.
-     * @param {string} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TvShowsApiInterface
+     * The series id.
+     * @type {string}
+     * @memberof TvShowsApiGetEpisodes
      */
-    getEpisodes(seriesId: string, userId?: string, fields?: Array<ItemFields>, season?: number, seasonId?: string, isMissing?: boolean, adjacentTo?: string, startItemId?: string, startIndex?: number, limit?: number, enableImages?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, sortBy?: string, options?: any): AxiosPromise<BaseItemDtoQueryResult>;
+    readonly seriesId: string
 
     /**
-     * 
-     * @summary Gets a list of next up episodes.
-     * @param {string} [userId] The user id of the user to get the next up episodes for.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output.
-     * @param {string} [seriesId] Optional. Filter by series id.
-     * @param {string} [parentId] Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {boolean} [enableImges] Optional. Include image information in output.
-     * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {boolean} [enableUserData] Optional. Include user data.
-     * @param {boolean} [enableTotalRecordCount] Whether to enable the total records count. Defaults to true.
-     * @param {boolean} [disableFirstEpisode] Whether to disable sending the first episode in a series as next up.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TvShowsApiInterface
+     * The user id.
+     * @type {string}
+     * @memberof TvShowsApiGetEpisodes
      */
-    getNextUp(userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, seriesId?: string, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, enableTotalRecordCount?: boolean, disableFirstEpisode?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult>;
+    readonly userId?: string
 
     /**
-     * 
-     * @summary Gets seasons for a tv series.
-     * @param {string} seriesId The series id.
-     * @param {string} [userId] The user id.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
-     * @param {boolean} [isSpecialSeason] Optional. Filter by special season.
-     * @param {boolean} [isMissing] Optional. Filter by items that are missing episodes or not.
-     * @param {string} [adjacentTo] Optional. Return items that are siblings of a supplied item.
-     * @param {boolean} [enableImages] Optional. Include image information in output.
-     * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {boolean} [enableUserData] Optional. Include user data.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TvShowsApiInterface
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
+     * @type {Array<ItemFields>}
+     * @memberof TvShowsApiGetEpisodes
      */
-    getSeasons(seriesId: string, userId?: string, fields?: Array<ItemFields>, isSpecialSeason?: boolean, isMissing?: boolean, adjacentTo?: string, enableImages?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult>;
+    readonly fields?: Array<ItemFields>
 
     /**
-     * 
-     * @summary Gets a list of upcoming episodes.
-     * @param {string} [userId] The user id of the user to get the upcoming episodes for.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output.
-     * @param {string} [parentId] Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {boolean} [enableImges] Optional. Include image information in output.
-     * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {boolean} [enableUserData] Optional. Include user data.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TvShowsApiInterface
+     * Optional filter by season number.
+     * @type {number}
+     * @memberof TvShowsApiGetEpisodes
      */
-    getUpcomingEpisodes(userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult>;
+    readonly season?: number
 
+    /**
+     * Optional. Filter by season id.
+     * @type {string}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly seasonId?: string
+
+    /**
+     * Optional. Filter by items that are missing episodes or not.
+     * @type {boolean}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly isMissing?: boolean
+
+    /**
+     * Optional. Return items that are siblings of a supplied item.
+     * @type {string}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly adjacentTo?: string
+
+    /**
+     * Optional. Skip through the list until a given item is found.
+     * @type {string}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly startItemId?: string
+
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     * @type {number}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly startIndex?: number
+
+    /**
+     * Optional. The maximum number of records to return.
+     * @type {number}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly limit?: number
+
+    /**
+     * Optional, include image information in output.
+     * @type {boolean}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly enableImages?: boolean
+
+    /**
+     * Optional, the max number of images to return, per image type.
+     * @type {number}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly imageTypeLimit?: number
+
+    /**
+     * Optional. The image types to include in the output.
+     * @type {Array<ImageType>}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly enableImageTypes?: Array<ImageType>
+
+    /**
+     * Optional. Include user data.
+     * @type {boolean}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly enableUserData?: boolean
+
+    /**
+     * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+     * @type {string}
+     * @memberof TvShowsApiGetEpisodes
+     */
+    readonly sortBy?: string
+}
+
+/**
+ * Request parameters for getNextUp operation in TvShowsApi.
+ * @export
+ * @interface TvShowsApiGetNextUpRequest
+ */
+export interface TvShowsApiGetNextUpRequest {
+    /**
+     * The user id of the user to get the next up episodes for.
+     * @type {string}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly userId?: string
+
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     * @type {number}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly startIndex?: number
+
+    /**
+     * Optional. The maximum number of records to return.
+     * @type {number}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly limit?: number
+
+    /**
+     * Optional. Specify additional fields of information to return in the output.
+     * @type {Array<ItemFields>}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly fields?: Array<ItemFields>
+
+    /**
+     * Optional. Filter by series id.
+     * @type {string}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly seriesId?: string
+
+    /**
+     * Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
+     * @type {string}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly parentId?: string
+
+    /**
+     * Optional. Include image information in output.
+     * @type {boolean}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly enableImges?: boolean
+
+    /**
+     * Optional. The max number of images to return, per image type.
+     * @type {number}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly imageTypeLimit?: number
+
+    /**
+     * Optional. The image types to include in the output.
+     * @type {Array<ImageType>}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly enableImageTypes?: Array<ImageType>
+
+    /**
+     * Optional. Include user data.
+     * @type {boolean}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly enableUserData?: boolean
+
+    /**
+     * Optional. Starting date of shows to show in Next Up section.
+     * @type {string}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly nextUpDateCutoff?: string
+
+    /**
+     * Whether to enable the total records count. Defaults to true.
+     * @type {boolean}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly enableTotalRecordCount?: boolean
+
+    /**
+     * Whether to disable sending the first episode in a series as next up.
+     * @type {boolean}
+     * @memberof TvShowsApiGetNextUp
+     */
+    readonly disableFirstEpisode?: boolean
+}
+
+/**
+ * Request parameters for getSeasons operation in TvShowsApi.
+ * @export
+ * @interface TvShowsApiGetSeasonsRequest
+ */
+export interface TvShowsApiGetSeasonsRequest {
+    /**
+     * The series id.
+     * @type {string}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly seriesId: string
+
+    /**
+     * The user id.
+     * @type {string}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly userId?: string
+
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
+     * @type {Array<ItemFields>}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly fields?: Array<ItemFields>
+
+    /**
+     * Optional. Filter by special season.
+     * @type {boolean}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly isSpecialSeason?: boolean
+
+    /**
+     * Optional. Filter by items that are missing episodes or not.
+     * @type {boolean}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly isMissing?: boolean
+
+    /**
+     * Optional. Return items that are siblings of a supplied item.
+     * @type {string}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly adjacentTo?: string
+
+    /**
+     * Optional. Include image information in output.
+     * @type {boolean}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly enableImages?: boolean
+
+    /**
+     * Optional. The max number of images to return, per image type.
+     * @type {number}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly imageTypeLimit?: number
+
+    /**
+     * Optional. The image types to include in the output.
+     * @type {Array<ImageType>}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly enableImageTypes?: Array<ImageType>
+
+    /**
+     * Optional. Include user data.
+     * @type {boolean}
+     * @memberof TvShowsApiGetSeasons
+     */
+    readonly enableUserData?: boolean
+}
+
+/**
+ * Request parameters for getUpcomingEpisodes operation in TvShowsApi.
+ * @export
+ * @interface TvShowsApiGetUpcomingEpisodesRequest
+ */
+export interface TvShowsApiGetUpcomingEpisodesRequest {
+    /**
+     * The user id of the user to get the upcoming episodes for.
+     * @type {string}
+     * @memberof TvShowsApiGetUpcomingEpisodes
+     */
+    readonly userId?: string
+
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     * @type {number}
+     * @memberof TvShowsApiGetUpcomingEpisodes
+     */
+    readonly startIndex?: number
+
+    /**
+     * Optional. The maximum number of records to return.
+     * @type {number}
+     * @memberof TvShowsApiGetUpcomingEpisodes
+     */
+    readonly limit?: number
+
+    /**
+     * Optional. Specify additional fields of information to return in the output.
+     * @type {Array<ItemFields>}
+     * @memberof TvShowsApiGetUpcomingEpisodes
+     */
+    readonly fields?: Array<ItemFields>
+
+    /**
+     * Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
+     * @type {string}
+     * @memberof TvShowsApiGetUpcomingEpisodes
+     */
+    readonly parentId?: string
+
+    /**
+     * Optional. Include image information in output.
+     * @type {boolean}
+     * @memberof TvShowsApiGetUpcomingEpisodes
+     */
+    readonly enableImges?: boolean
+
+    /**
+     * Optional. The max number of images to return, per image type.
+     * @type {number}
+     * @memberof TvShowsApiGetUpcomingEpisodes
+     */
+    readonly imageTypeLimit?: number
+
+    /**
+     * Optional. The image types to include in the output.
+     * @type {Array<ImageType>}
+     * @memberof TvShowsApiGetUpcomingEpisodes
+     */
+    readonly enableImageTypes?: Array<ImageType>
+
+    /**
+     * Optional. Include user data.
+     * @type {boolean}
+     * @memberof TvShowsApiGetUpcomingEpisodes
+     */
+    readonly enableUserData?: boolean
 }
 
 /**
@@ -681,94 +957,52 @@ export interface TvShowsApiInterface {
  * @class TvShowsApi
  * @extends {BaseAPI}
  */
-export class TvShowsApi extends BaseAPI implements TvShowsApiInterface {
+export class TvShowsApi extends BaseAPI {
     /**
      * 
      * @summary Gets episodes for a tv season.
-     * @param {string} seriesId The series id.
-     * @param {string} [userId] The user id.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
-     * @param {number} [season] Optional filter by season number.
-     * @param {string} [seasonId] Optional. Filter by season id.
-     * @param {boolean} [isMissing] Optional. Filter by items that are missing episodes or not.
-     * @param {string} [adjacentTo] Optional. Return items that are siblings of a supplied item.
-     * @param {string} [startItemId] Optional. Skip through the list until a given item is found.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {boolean} [enableImages] Optional, include image information in output.
-     * @param {number} [imageTypeLimit] Optional, the max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {boolean} [enableUserData] Optional. Include user data.
-     * @param {string} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+     * @param {TvShowsApiGetEpisodesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TvShowsApi
      */
-    public getEpisodes(seriesId: string, userId?: string, fields?: Array<ItemFields>, season?: number, seasonId?: string, isMissing?: boolean, adjacentTo?: string, startItemId?: string, startIndex?: number, limit?: number, enableImages?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, sortBy?: string, options?: any) {
-        return TvShowsApiFp(this.configuration).getEpisodes(seriesId, userId, fields, season, seasonId, isMissing, adjacentTo, startItemId, startIndex, limit, enableImages, imageTypeLimit, enableImageTypes, enableUserData, sortBy, options).then((request) => request(this.axios, this.basePath));
+    public getEpisodes(requestParameters: TvShowsApiGetEpisodesRequest, options?: any) {
+        return TvShowsApiFp(this.configuration).getEpisodes(requestParameters.seriesId, requestParameters.userId, requestParameters.fields, requestParameters.season, requestParameters.seasonId, requestParameters.isMissing, requestParameters.adjacentTo, requestParameters.startItemId, requestParameters.startIndex, requestParameters.limit, requestParameters.enableImages, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.enableUserData, requestParameters.sortBy, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets a list of next up episodes.
-     * @param {string} [userId] The user id of the user to get the next up episodes for.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output.
-     * @param {string} [seriesId] Optional. Filter by series id.
-     * @param {string} [parentId] Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {boolean} [enableImges] Optional. Include image information in output.
-     * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {boolean} [enableUserData] Optional. Include user data.
-     * @param {boolean} [enableTotalRecordCount] Whether to enable the total records count. Defaults to true.
-     * @param {boolean} [disableFirstEpisode] Whether to disable sending the first episode in a series as next up.
+     * @param {TvShowsApiGetNextUpRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TvShowsApi
      */
-    public getNextUp(userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, seriesId?: string, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, enableTotalRecordCount?: boolean, disableFirstEpisode?: boolean, options?: any) {
-        return TvShowsApiFp(this.configuration).getNextUp(userId, startIndex, limit, fields, seriesId, parentId, enableImges, imageTypeLimit, enableImageTypes, enableUserData, enableTotalRecordCount, disableFirstEpisode, options).then((request) => request(this.axios, this.basePath));
+    public getNextUp(requestParameters: TvShowsApiGetNextUpRequest = {}, options?: any) {
+        return TvShowsApiFp(this.configuration).getNextUp(requestParameters.userId, requestParameters.startIndex, requestParameters.limit, requestParameters.fields, requestParameters.seriesId, requestParameters.parentId, requestParameters.enableImges, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.enableUserData, requestParameters.nextUpDateCutoff, requestParameters.enableTotalRecordCount, requestParameters.disableFirstEpisode, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets seasons for a tv series.
-     * @param {string} seriesId The series id.
-     * @param {string} [userId] The user id.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
-     * @param {boolean} [isSpecialSeason] Optional. Filter by special season.
-     * @param {boolean} [isMissing] Optional. Filter by items that are missing episodes or not.
-     * @param {string} [adjacentTo] Optional. Return items that are siblings of a supplied item.
-     * @param {boolean} [enableImages] Optional. Include image information in output.
-     * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {boolean} [enableUserData] Optional. Include user data.
+     * @param {TvShowsApiGetSeasonsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TvShowsApi
      */
-    public getSeasons(seriesId: string, userId?: string, fields?: Array<ItemFields>, isSpecialSeason?: boolean, isMissing?: boolean, adjacentTo?: string, enableImages?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, options?: any) {
-        return TvShowsApiFp(this.configuration).getSeasons(seriesId, userId, fields, isSpecialSeason, isMissing, adjacentTo, enableImages, imageTypeLimit, enableImageTypes, enableUserData, options).then((request) => request(this.axios, this.basePath));
+    public getSeasons(requestParameters: TvShowsApiGetSeasonsRequest, options?: any) {
+        return TvShowsApiFp(this.configuration).getSeasons(requestParameters.seriesId, requestParameters.userId, requestParameters.fields, requestParameters.isSpecialSeason, requestParameters.isMissing, requestParameters.adjacentTo, requestParameters.enableImages, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.enableUserData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets a list of upcoming episodes.
-     * @param {string} [userId] The user id of the user to get the upcoming episodes for.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output.
-     * @param {string} [parentId] Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {boolean} [enableImges] Optional. Include image information in output.
-     * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {boolean} [enableUserData] Optional. Include user data.
+     * @param {TvShowsApiGetUpcomingEpisodesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TvShowsApi
      */
-    public getUpcomingEpisodes(userId?: string, startIndex?: number, limit?: number, fields?: Array<ItemFields>, parentId?: string, enableImges?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, options?: any) {
-        return TvShowsApiFp(this.configuration).getUpcomingEpisodes(userId, startIndex, limit, fields, parentId, enableImges, imageTypeLimit, enableImageTypes, enableUserData, options).then((request) => request(this.axios, this.basePath));
+    public getUpcomingEpisodes(requestParameters: TvShowsApiGetUpcomingEpisodesRequest = {}, options?: any) {
+        return TvShowsApiFp(this.configuration).getUpcomingEpisodes(requestParameters.userId, requestParameters.startIndex, requestParameters.limit, requestParameters.fields, requestParameters.parentId, requestParameters.enableImges, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.enableUserData, options).then((request) => request(this.axios, this.basePath));
     }
 }

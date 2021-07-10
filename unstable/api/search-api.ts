@@ -234,38 +234,136 @@ export const SearchApiFactory = function (configuration?: Configuration, basePat
 };
 
 /**
- * SearchApi - interface
+ * Request parameters for get operation in SearchApi.
  * @export
- * @interface SearchApi
+ * @interface SearchApiGetRequest
  */
-export interface SearchApiInterface {
+export interface SearchApiGetRequest {
     /**
-     * 
-     * @summary Gets the search hint result.
-     * @param {string} searchTerm The search term to filter on.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {string} [userId] Optional. Supply a user id to search within a user\&#39;s library or omit to search all.
-     * @param {Array<BaseItemKind>} [includeItemTypes] If specified, only results with the specified item types are returned. This allows multiple, comma delimeted.
-     * @param {Array<BaseItemKind>} [excludeItemTypes] If specified, results with these item types are filtered out. This allows multiple, comma delimeted.
-     * @param {Array<string>} [mediaTypes] If specified, only results with the specified media types are returned. This allows multiple, comma delimeted.
-     * @param {string} [parentId] If specified, only children of the parent are returned.
-     * @param {boolean} [isMovie] Optional filter for movies.
-     * @param {boolean} [isSeries] Optional filter for series.
-     * @param {boolean} [isNews] Optional filter for news.
-     * @param {boolean} [isKids] Optional filter for kids.
-     * @param {boolean} [isSports] Optional filter for sports.
-     * @param {boolean} [includePeople] Optional filter whether to include people.
-     * @param {boolean} [includeMedia] Optional filter whether to include media.
-     * @param {boolean} [includeGenres] Optional filter whether to include genres.
-     * @param {boolean} [includeStudios] Optional filter whether to include studios.
-     * @param {boolean} [includeArtists] Optional filter whether to include artists.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SearchApiInterface
+     * The search term to filter on.
+     * @type {string}
+     * @memberof SearchApiGet
      */
-    get(searchTerm: string, startIndex?: number, limit?: number, userId?: string, includeItemTypes?: Array<BaseItemKind>, excludeItemTypes?: Array<BaseItemKind>, mediaTypes?: Array<string>, parentId?: string, isMovie?: boolean, isSeries?: boolean, isNews?: boolean, isKids?: boolean, isSports?: boolean, includePeople?: boolean, includeMedia?: boolean, includeGenres?: boolean, includeStudios?: boolean, includeArtists?: boolean, options?: any): AxiosPromise<SearchHintResult>;
+    readonly searchTerm: string
 
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     * @type {number}
+     * @memberof SearchApiGet
+     */
+    readonly startIndex?: number
+
+    /**
+     * Optional. The maximum number of records to return.
+     * @type {number}
+     * @memberof SearchApiGet
+     */
+    readonly limit?: number
+
+    /**
+     * Optional. Supply a user id to search within a user\&#39;s library or omit to search all.
+     * @type {string}
+     * @memberof SearchApiGet
+     */
+    readonly userId?: string
+
+    /**
+     * If specified, only results with the specified item types are returned. This allows multiple, comma delimeted.
+     * @type {Array<BaseItemKind>}
+     * @memberof SearchApiGet
+     */
+    readonly includeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * If specified, results with these item types are filtered out. This allows multiple, comma delimeted.
+     * @type {Array<BaseItemKind>}
+     * @memberof SearchApiGet
+     */
+    readonly excludeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * If specified, only results with the specified media types are returned. This allows multiple, comma delimeted.
+     * @type {Array<string>}
+     * @memberof SearchApiGet
+     */
+    readonly mediaTypes?: Array<string>
+
+    /**
+     * If specified, only children of the parent are returned.
+     * @type {string}
+     * @memberof SearchApiGet
+     */
+    readonly parentId?: string
+
+    /**
+     * Optional filter for movies.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly isMovie?: boolean
+
+    /**
+     * Optional filter for series.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly isSeries?: boolean
+
+    /**
+     * Optional filter for news.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly isNews?: boolean
+
+    /**
+     * Optional filter for kids.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly isKids?: boolean
+
+    /**
+     * Optional filter for sports.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly isSports?: boolean
+
+    /**
+     * Optional filter whether to include people.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly includePeople?: boolean
+
+    /**
+     * Optional filter whether to include media.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly includeMedia?: boolean
+
+    /**
+     * Optional filter whether to include genres.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly includeGenres?: boolean
+
+    /**
+     * Optional filter whether to include studios.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly includeStudios?: boolean
+
+    /**
+     * Optional filter whether to include artists.
+     * @type {boolean}
+     * @memberof SearchApiGet
+     */
+    readonly includeArtists?: boolean
 }
 
 /**
@@ -274,33 +372,16 @@ export interface SearchApiInterface {
  * @class SearchApi
  * @extends {BaseAPI}
  */
-export class SearchApi extends BaseAPI implements SearchApiInterface {
+export class SearchApi extends BaseAPI {
     /**
      * 
      * @summary Gets the search hint result.
-     * @param {string} searchTerm The search term to filter on.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {string} [userId] Optional. Supply a user id to search within a user\&#39;s library or omit to search all.
-     * @param {Array<BaseItemKind>} [includeItemTypes] If specified, only results with the specified item types are returned. This allows multiple, comma delimeted.
-     * @param {Array<BaseItemKind>} [excludeItemTypes] If specified, results with these item types are filtered out. This allows multiple, comma delimeted.
-     * @param {Array<string>} [mediaTypes] If specified, only results with the specified media types are returned. This allows multiple, comma delimeted.
-     * @param {string} [parentId] If specified, only children of the parent are returned.
-     * @param {boolean} [isMovie] Optional filter for movies.
-     * @param {boolean} [isSeries] Optional filter for series.
-     * @param {boolean} [isNews] Optional filter for news.
-     * @param {boolean} [isKids] Optional filter for kids.
-     * @param {boolean} [isSports] Optional filter for sports.
-     * @param {boolean} [includePeople] Optional filter whether to include people.
-     * @param {boolean} [includeMedia] Optional filter whether to include media.
-     * @param {boolean} [includeGenres] Optional filter whether to include genres.
-     * @param {boolean} [includeStudios] Optional filter whether to include studios.
-     * @param {boolean} [includeArtists] Optional filter whether to include artists.
+     * @param {SearchApiGetRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SearchApi
      */
-    public get(searchTerm: string, startIndex?: number, limit?: number, userId?: string, includeItemTypes?: Array<BaseItemKind>, excludeItemTypes?: Array<BaseItemKind>, mediaTypes?: Array<string>, parentId?: string, isMovie?: boolean, isSeries?: boolean, isNews?: boolean, isKids?: boolean, isSports?: boolean, includePeople?: boolean, includeMedia?: boolean, includeGenres?: boolean, includeStudios?: boolean, includeArtists?: boolean, options?: any) {
-        return SearchApiFp(this.configuration).get(searchTerm, startIndex, limit, userId, includeItemTypes, excludeItemTypes, mediaTypes, parentId, isMovie, isSeries, isNews, isKids, isSports, includePeople, includeMedia, includeGenres, includeStudios, includeArtists, options).then((request) => request(this.axios, this.basePath));
+    public get(requestParameters: SearchApiGetRequest, options?: any) {
+        return SearchApiFp(this.configuration).get(requestParameters.searchTerm, requestParameters.startIndex, requestParameters.limit, requestParameters.userId, requestParameters.includeItemTypes, requestParameters.excludeItemTypes, requestParameters.mediaTypes, requestParameters.parentId, requestParameters.isMovie, requestParameters.isSeries, requestParameters.isNews, requestParameters.isKids, requestParameters.isSports, requestParameters.includePeople, requestParameters.includeMedia, requestParameters.includeGenres, requestParameters.includeStudios, requestParameters.includeArtists, options).then((request) => request(this.axios, this.basePath));
     }
 }

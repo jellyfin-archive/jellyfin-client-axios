@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum GeneralCommandType {
     MoveUp = 'MoveUp',
     MoveDown = 'MoveDown',

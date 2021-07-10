@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum ChannelMediaType {
     Audio = 'Audio',
     Video = 'Video',

@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum TranscodeReason {
     ContainerNotSupported = 'ContainerNotSupported',
     VideoCodecNotSupported = 'VideoCodecNotSupported',

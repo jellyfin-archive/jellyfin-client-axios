@@ -27,6 +27,12 @@ export interface SeriesInfo {
      */
     Name?: string | null;
     /**
+     * Gets or sets the original title
+     * @type {string}
+     * @memberof SeriesInfo
+     */
+    OriginalTitle?: string | null;
+    /**
      * Gets or sets the path.
      * @type {string}
      * @memberof SeriesInfo

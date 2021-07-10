@@ -199,47 +199,12 @@ export const BrandingApiFactory = function (configuration?: Configuration, baseP
 };
 
 /**
- * BrandingApi - interface
- * @export
- * @interface BrandingApi
- */
-export interface BrandingApiInterface {
-    /**
-     * 
-     * @summary Gets branding css.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BrandingApiInterface
-     */
-    getBrandingCss(options?: any): AxiosPromise<string>;
-
-    /**
-     * 
-     * @summary Gets branding css.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BrandingApiInterface
-     */
-    getBrandingCss2(options?: any): AxiosPromise<string>;
-
-    /**
-     * 
-     * @summary Gets branding configuration.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BrandingApiInterface
-     */
-    getBrandingOptions(options?: any): AxiosPromise<BrandingOptions>;
-
-}
-
-/**
  * BrandingApi - object-oriented interface
  * @export
  * @class BrandingApi
  * @extends {BaseAPI}
  */
-export class BrandingApi extends BaseAPI implements BrandingApiInterface {
+export class BrandingApi extends BaseAPI {
     /**
      * 
      * @summary Gets branding css.

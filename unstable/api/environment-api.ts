@@ -156,6 +156,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
          * 
          * @summary Gets network paths.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getNetworkShares: async (options: any = {}): Promise<RequestArgs> => {
@@ -311,6 +312,7 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
          * 
          * @summary Gets network paths.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async getNetworkShares(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FileSystemEntryInfo>>> {
@@ -383,6 +385,7 @@ export const EnvironmentApiFactory = function (configuration?: Configuration, ba
          * 
          * @summary Gets network paths.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getNetworkShares(options?: any): AxiosPromise<Array<FileSystemEntryInfo>> {
@@ -412,70 +415,59 @@ export const EnvironmentApiFactory = function (configuration?: Configuration, ba
 };
 
 /**
- * EnvironmentApi - interface
+ * Request parameters for getDirectoryContents operation in EnvironmentApi.
  * @export
- * @interface EnvironmentApi
+ * @interface EnvironmentApiGetDirectoryContentsRequest
  */
-export interface EnvironmentApiInterface {
+export interface EnvironmentApiGetDirectoryContentsRequest {
     /**
-     * 
-     * @summary Get Default directory browser.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EnvironmentApiInterface
+     * The path.
+     * @type {string}
+     * @memberof EnvironmentApiGetDirectoryContents
      */
-    getDefaultDirectoryBrowser(options?: any): AxiosPromise<DefaultDirectoryBrowserInfoDto>;
+    readonly path: string
 
     /**
-     * 
-     * @summary Gets the contents of a given directory in the file system.
-     * @param {string} path The path.
-     * @param {boolean} [includeFiles] An optional filter to include or exclude files from the results. true/false.
-     * @param {boolean} [includeDirectories] An optional filter to include or exclude folders from the results. true/false.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EnvironmentApiInterface
+     * An optional filter to include or exclude files from the results. true/false.
+     * @type {boolean}
+     * @memberof EnvironmentApiGetDirectoryContents
      */
-    getDirectoryContents(path: string, includeFiles?: boolean, includeDirectories?: boolean, options?: any): AxiosPromise<Array<FileSystemEntryInfo>>;
+    readonly includeFiles?: boolean
 
     /**
-     * 
-     * @summary Gets available drives from the server\'s file system.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EnvironmentApiInterface
+     * An optional filter to include or exclude folders from the results. true/false.
+     * @type {boolean}
+     * @memberof EnvironmentApiGetDirectoryContents
      */
-    getDrives(options?: any): AxiosPromise<Array<FileSystemEntryInfo>>;
+    readonly includeDirectories?: boolean
+}
 
+/**
+ * Request parameters for getParentPath operation in EnvironmentApi.
+ * @export
+ * @interface EnvironmentApiGetParentPathRequest
+ */
+export interface EnvironmentApiGetParentPathRequest {
     /**
-     * 
-     * @summary Gets network paths.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EnvironmentApiInterface
+     * The path.
+     * @type {string}
+     * @memberof EnvironmentApiGetParentPath
      */
-    getNetworkShares(options?: any): AxiosPromise<Array<FileSystemEntryInfo>>;
+    readonly path: string
+}
 
+/**
+ * Request parameters for validatePath operation in EnvironmentApi.
+ * @export
+ * @interface EnvironmentApiValidatePathRequest
+ */
+export interface EnvironmentApiValidatePathRequest {
     /**
-     * 
-     * @summary Gets the parent path of a given path.
-     * @param {string} path The path.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EnvironmentApiInterface
+     * Validate request object.
+     * @type {UNKNOWN_BASE_TYPE}
+     * @memberof EnvironmentApiValidatePath
      */
-    getParentPath(path: string, options?: any): AxiosPromise<string>;
-
-    /**
-     * 
-     * @summary Validates path.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE Validate request object.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EnvironmentApiInterface
-     */
-    validatePath(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<void>;
-
+    readonly uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE
 }
 
 /**
@@ -484,7 +476,7 @@ export interface EnvironmentApiInterface {
  * @class EnvironmentApi
  * @extends {BaseAPI}
  */
-export class EnvironmentApi extends BaseAPI implements EnvironmentApiInterface {
+export class EnvironmentApi extends BaseAPI {
     /**
      * 
      * @summary Get Default directory browser.
@@ -499,15 +491,13 @@ export class EnvironmentApi extends BaseAPI implements EnvironmentApiInterface {
     /**
      * 
      * @summary Gets the contents of a given directory in the file system.
-     * @param {string} path The path.
-     * @param {boolean} [includeFiles] An optional filter to include or exclude files from the results. true/false.
-     * @param {boolean} [includeDirectories] An optional filter to include or exclude folders from the results. true/false.
+     * @param {EnvironmentApiGetDirectoryContentsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    public getDirectoryContents(path: string, includeFiles?: boolean, includeDirectories?: boolean, options?: any) {
-        return EnvironmentApiFp(this.configuration).getDirectoryContents(path, includeFiles, includeDirectories, options).then((request) => request(this.axios, this.basePath));
+    public getDirectoryContents(requestParameters: EnvironmentApiGetDirectoryContentsRequest, options?: any) {
+        return EnvironmentApiFp(this.configuration).getDirectoryContents(requestParameters.path, requestParameters.includeFiles, requestParameters.includeDirectories, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -525,6 +515,7 @@ export class EnvironmentApi extends BaseAPI implements EnvironmentApiInterface {
      * 
      * @summary Gets network paths.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
@@ -535,24 +526,24 @@ export class EnvironmentApi extends BaseAPI implements EnvironmentApiInterface {
     /**
      * 
      * @summary Gets the parent path of a given path.
-     * @param {string} path The path.
+     * @param {EnvironmentApiGetParentPathRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    public getParentPath(path: string, options?: any) {
-        return EnvironmentApiFp(this.configuration).getParentPath(path, options).then((request) => request(this.axios, this.basePath));
+    public getParentPath(requestParameters: EnvironmentApiGetParentPathRequest, options?: any) {
+        return EnvironmentApiFp(this.configuration).getParentPath(requestParameters.path, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Validates path.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE Validate request object.
+     * @param {EnvironmentApiValidatePathRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    public validatePath(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any) {
-        return EnvironmentApiFp(this.configuration).validatePath(uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+    public validatePath(requestParameters: EnvironmentApiValidatePathRequest, options?: any) {
+        return EnvironmentApiFp(this.configuration).validatePath(requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
     }
 }

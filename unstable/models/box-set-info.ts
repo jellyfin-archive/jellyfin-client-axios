@@ -27,6 +27,12 @@ export interface BoxSetInfo {
      */
     Name?: string | null;
     /**
+     * Gets or sets the original title
+     * @type {string}
+     * @memberof BoxSetInfo
+     */
+    OriginalTitle?: string | null;
+    /**
      * Gets or sets the path.
      * @type {string}
      * @memberof BoxSetInfo

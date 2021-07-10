@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum TaskCompletionStatus {
     Completed = 'Completed',
     Failed = 'Failed',

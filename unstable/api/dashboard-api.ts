@@ -166,31 +166,31 @@ export const DashboardApiFactory = function (configuration?: Configuration, base
 };
 
 /**
- * DashboardApi - interface
+ * Request parameters for getConfigurationPages operation in DashboardApi.
  * @export
- * @interface DashboardApi
+ * @interface DashboardApiGetConfigurationPagesRequest
  */
-export interface DashboardApiInterface {
+export interface DashboardApiGetConfigurationPagesRequest {
     /**
-     * 
-     * @summary Gets the configuration pages.
-     * @param {boolean} [enableInMainMenu] Whether to enable in the main menu.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DashboardApiInterface
+     * Whether to enable in the main menu.
+     * @type {boolean}
+     * @memberof DashboardApiGetConfigurationPages
      */
-    getConfigurationPages(enableInMainMenu?: boolean, options?: any): AxiosPromise<Array<ConfigurationPageInfo>>;
+    readonly enableInMainMenu?: boolean
+}
 
+/**
+ * Request parameters for getDashboardConfigurationPage operation in DashboardApi.
+ * @export
+ * @interface DashboardApiGetDashboardConfigurationPageRequest
+ */
+export interface DashboardApiGetDashboardConfigurationPageRequest {
     /**
-     * 
-     * @summary Gets a dashboard configuration page.
-     * @param {string} [name] The name of the page.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DashboardApiInterface
+     * The name of the page.
+     * @type {string}
+     * @memberof DashboardApiGetDashboardConfigurationPage
      */
-    getDashboardConfigurationPage(name?: string, options?: any): AxiosPromise<any>;
-
+    readonly name?: string
 }
 
 /**
@@ -199,28 +199,28 @@ export interface DashboardApiInterface {
  * @class DashboardApi
  * @extends {BaseAPI}
  */
-export class DashboardApi extends BaseAPI implements DashboardApiInterface {
+export class DashboardApi extends BaseAPI {
     /**
      * 
      * @summary Gets the configuration pages.
-     * @param {boolean} [enableInMainMenu] Whether to enable in the main menu.
+     * @param {DashboardApiGetConfigurationPagesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardApi
      */
-    public getConfigurationPages(enableInMainMenu?: boolean, options?: any) {
-        return DashboardApiFp(this.configuration).getConfigurationPages(enableInMainMenu, options).then((request) => request(this.axios, this.basePath));
+    public getConfigurationPages(requestParameters: DashboardApiGetConfigurationPagesRequest = {}, options?: any) {
+        return DashboardApiFp(this.configuration).getConfigurationPages(requestParameters.enableInMainMenu, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets a dashboard configuration page.
-     * @param {string} [name] The name of the page.
+     * @param {DashboardApiGetDashboardConfigurationPageRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardApi
      */
-    public getDashboardConfigurationPage(name?: string, options?: any) {
-        return DashboardApiFp(this.configuration).getDashboardConfigurationPage(name, options).then((request) => request(this.axios, this.basePath));
+    public getDashboardConfigurationPage(requestParameters: DashboardApiGetDashboardConfigurationPageRequest = {}, options?: any) {
+        return DashboardApiFp(this.configuration).getDashboardConfigurationPage(requestParameters.name, options).then((request) => request(this.axios, this.basePath));
     }
 }

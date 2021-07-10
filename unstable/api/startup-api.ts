@@ -444,77 +444,45 @@ export const StartupApiFactory = function (configuration?: Configuration, basePa
 };
 
 /**
- * StartupApi - interface
+ * Request parameters for setRemoteAccess operation in StartupApi.
  * @export
- * @interface StartupApi
+ * @interface StartupApiSetRemoteAccessRequest
  */
-export interface StartupApiInterface {
+export interface StartupApiSetRemoteAccessRequest {
     /**
-     * 
-     * @summary Completes the startup wizard.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof StartupApiInterface
+     * The startup remote access dto.
+     * @type {UNKNOWN_BASE_TYPE}
+     * @memberof StartupApiSetRemoteAccess
      */
-    completeWizard(options?: any): AxiosPromise<void>;
+    readonly uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE
+}
 
+/**
+ * Request parameters for updateInitialConfiguration operation in StartupApi.
+ * @export
+ * @interface StartupApiUpdateInitialConfigurationRequest
+ */
+export interface StartupApiUpdateInitialConfigurationRequest {
     /**
-     * 
-     * @summary Gets the first user.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof StartupApiInterface
+     * The updated startup configuration.
+     * @type {UNKNOWN_BASE_TYPE}
+     * @memberof StartupApiUpdateInitialConfiguration
      */
-    getFirstUser(options?: any): AxiosPromise<StartupUserDto>;
+    readonly uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE
+}
 
+/**
+ * Request parameters for updateStartupUser operation in StartupApi.
+ * @export
+ * @interface StartupApiUpdateStartupUserRequest
+ */
+export interface StartupApiUpdateStartupUserRequest {
     /**
-     * 
-     * @summary Gets the first user.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof StartupApiInterface
+     * The DTO containing username and password.
+     * @type {UNKNOWN_BASE_TYPE}
+     * @memberof StartupApiUpdateStartupUser
      */
-    getFirstUser2(options?: any): AxiosPromise<StartupUserDto>;
-
-    /**
-     * 
-     * @summary Gets the initial startup wizard configuration.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof StartupApiInterface
-     */
-    getStartupConfiguration(options?: any): AxiosPromise<StartupConfigurationDto>;
-
-    /**
-     * 
-     * @summary Sets remote access and UPnP.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The startup remote access dto.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof StartupApiInterface
-     */
-    setRemoteAccess(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<void>;
-
-    /**
-     * 
-     * @summary Sets the initial startup wizard configuration.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The updated startup configuration.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof StartupApiInterface
-     */
-    updateInitialConfiguration(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<void>;
-
-    /**
-     * 
-     * @summary Sets the user name and password.
-     * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The DTO containing username and password.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof StartupApiInterface
-     */
-    updateStartupUser(uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<void>;
-
+    readonly uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE
 }
 
 /**
@@ -523,7 +491,7 @@ export interface StartupApiInterface {
  * @class StartupApi
  * @extends {BaseAPI}
  */
-export class StartupApi extends BaseAPI implements StartupApiInterface {
+export class StartupApi extends BaseAPI {
     /**
      * 
      * @summary Completes the startup wizard.
@@ -571,36 +539,36 @@ export class StartupApi extends BaseAPI implements StartupApiInterface {
     /**
      * 
      * @summary Sets remote access and UPnP.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The startup remote access dto.
+     * @param {StartupApiSetRemoteAccessRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StartupApi
      */
-    public setRemoteAccess(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any) {
-        return StartupApiFp(this.configuration).setRemoteAccess(uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+    public setRemoteAccess(requestParameters: StartupApiSetRemoteAccessRequest, options?: any) {
+        return StartupApiFp(this.configuration).setRemoteAccess(requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Sets the initial startup wizard configuration.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The updated startup configuration.
+     * @param {StartupApiUpdateInitialConfigurationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StartupApi
      */
-    public updateInitialConfiguration(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any) {
-        return StartupApiFp(this.configuration).updateInitialConfiguration(uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+    public updateInitialConfiguration(requestParameters: StartupApiUpdateInitialConfigurationRequest, options?: any) {
+        return StartupApiFp(this.configuration).updateInitialConfiguration(requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Sets the user name and password.
-     * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The DTO containing username and password.
+     * @param {StartupApiUpdateStartupUserRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StartupApi
      */
-    public updateStartupUser(uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any) {
-        return StartupApiFp(this.configuration).updateStartupUser(uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+    public updateStartupUser(requestParameters: StartupApiUpdateStartupUserRequest = {}, options?: any) {
+        return StartupApiFp(this.configuration).updateStartupUser(requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -28,7 +28,7 @@ export interface SubtitleProfile {
      */
     Format?: string | null;
     /**
-     * 
+     * Delivery method to use during playback of a specific subtitle format.
      * @type {SubtitleDeliveryMethod}
      * @memberof SubtitleProfile
      */

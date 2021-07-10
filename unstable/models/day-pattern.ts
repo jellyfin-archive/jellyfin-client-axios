@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum DayPattern {
     Daily = 'Daily',
     Weekdays = 'Weekdays',

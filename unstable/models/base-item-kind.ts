@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum BaseItemKind {
     AggregateFolder = 'AggregateFolder',
     Audio = 'Audio',

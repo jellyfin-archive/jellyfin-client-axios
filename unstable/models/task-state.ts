@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum TaskState {
     Idle = 'Idle',
     Cancelling = 'Cancelling',

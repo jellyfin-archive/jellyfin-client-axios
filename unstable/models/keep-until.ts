@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum KeepUntil {
     UntilDeleted = 'UntilDeleted',
     UntilSpaceNeeded = 'UntilSpaceNeeded',

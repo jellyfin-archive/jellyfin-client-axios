@@ -188,7 +188,6 @@ export * from './queue-item';
 export * from './queue-request-dto';
 export * from './quick-connect-dto';
 export * from './quick-connect-result';
-export * from './quick-connect-state';
 export * from './rating-type';
 export * from './ready-request-dto';
 export * from './recommendation-dto';

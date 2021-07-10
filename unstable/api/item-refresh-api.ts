@@ -140,25 +140,45 @@ export const ItemRefreshApiFactory = function (configuration?: Configuration, ba
 };
 
 /**
- * ItemRefreshApi - interface
+ * Request parameters for post operation in ItemRefreshApi.
  * @export
- * @interface ItemRefreshApi
+ * @interface ItemRefreshApiPostRequest
  */
-export interface ItemRefreshApiInterface {
+export interface ItemRefreshApiPostRequest {
     /**
-     * 
-     * @summary Refreshes metadata for an item.
-     * @param {string} itemId Item id.
-     * @param {MetadataRefreshMode} [metadataRefreshMode] (Optional) Specifies the metadata refresh mode.
-     * @param {MetadataRefreshMode} [imageRefreshMode] (Optional) Specifies the image refresh mode.
-     * @param {boolean} [replaceAllMetadata] (Optional) Determines if metadata should be replaced. Only applicable if mode is FullRefresh.
-     * @param {boolean} [replaceAllImages] (Optional) Determines if images should be replaced. Only applicable if mode is FullRefresh.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ItemRefreshApiInterface
+     * Item id.
+     * @type {string}
+     * @memberof ItemRefreshApiPost
      */
-    post(itemId: string, metadataRefreshMode?: MetadataRefreshMode, imageRefreshMode?: MetadataRefreshMode, replaceAllMetadata?: boolean, replaceAllImages?: boolean, options?: any): AxiosPromise<void>;
+    readonly itemId: string
 
+    /**
+     * (Optional) Specifies the metadata refresh mode.
+     * @type {MetadataRefreshMode}
+     * @memberof ItemRefreshApiPost
+     */
+    readonly metadataRefreshMode?: MetadataRefreshMode
+
+    /**
+     * (Optional) Specifies the image refresh mode.
+     * @type {MetadataRefreshMode}
+     * @memberof ItemRefreshApiPost
+     */
+    readonly imageRefreshMode?: MetadataRefreshMode
+
+    /**
+     * (Optional) Determines if metadata should be replaced. Only applicable if mode is FullRefresh.
+     * @type {boolean}
+     * @memberof ItemRefreshApiPost
+     */
+    readonly replaceAllMetadata?: boolean
+
+    /**
+     * (Optional) Determines if images should be replaced. Only applicable if mode is FullRefresh.
+     * @type {boolean}
+     * @memberof ItemRefreshApiPost
+     */
+    readonly replaceAllImages?: boolean
 }
 
 /**
@@ -167,20 +187,16 @@ export interface ItemRefreshApiInterface {
  * @class ItemRefreshApi
  * @extends {BaseAPI}
  */
-export class ItemRefreshApi extends BaseAPI implements ItemRefreshApiInterface {
+export class ItemRefreshApi extends BaseAPI {
     /**
      * 
      * @summary Refreshes metadata for an item.
-     * @param {string} itemId Item id.
-     * @param {MetadataRefreshMode} [metadataRefreshMode] (Optional) Specifies the metadata refresh mode.
-     * @param {MetadataRefreshMode} [imageRefreshMode] (Optional) Specifies the image refresh mode.
-     * @param {boolean} [replaceAllMetadata] (Optional) Determines if metadata should be replaced. Only applicable if mode is FullRefresh.
-     * @param {boolean} [replaceAllImages] (Optional) Determines if images should be replaced. Only applicable if mode is FullRefresh.
+     * @param {ItemRefreshApiPostRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemRefreshApi
      */
-    public post(itemId: string, metadataRefreshMode?: MetadataRefreshMode, imageRefreshMode?: MetadataRefreshMode, replaceAllMetadata?: boolean, replaceAllImages?: boolean, options?: any) {
-        return ItemRefreshApiFp(this.configuration).post(itemId, metadataRefreshMode, imageRefreshMode, replaceAllMetadata, replaceAllImages, options).then((request) => request(this.axios, this.basePath));
+    public post(requestParameters: ItemRefreshApiPostRequest, options?: any) {
+        return ItemRefreshApiFp(this.configuration).post(requestParameters.itemId, requestParameters.metadataRefreshMode, requestParameters.imageRefreshMode, requestParameters.replaceAllMetadata, requestParameters.replaceAllImages, options).then((request) => request(this.axios, this.basePath));
     }
 }

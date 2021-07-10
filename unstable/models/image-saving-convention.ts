@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum ImageSavingConvention {
     Legacy = 'Legacy',
     Compatible = 'Compatible'

@@ -601,100 +601,171 @@ export const LibraryStructureApiFactory = function (configuration?: Configuratio
 };
 
 /**
- * LibraryStructureApi - interface
+ * Request parameters for addMediaPath operation in LibraryStructureApi.
  * @export
- * @interface LibraryStructureApi
+ * @interface LibraryStructureApiAddMediaPathRequest
  */
-export interface LibraryStructureApiInterface {
+export interface LibraryStructureApiAddMediaPathRequest {
     /**
-     * 
-     * @summary Add a media path to a library.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The media path dto.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LibraryStructureApiInterface
+     * The media path dto.
+     * @type {UNKNOWN_BASE_TYPE}
+     * @memberof LibraryStructureApiAddMediaPath
      */
-    addMediaPath(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, refreshLibrary?: boolean, options?: any): AxiosPromise<void>;
+    readonly uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE
 
     /**
-     * 
-     * @summary Adds a virtual folder.
-     * @param {string} [name] The name of the virtual folder.
-     * @param {CollectionTypeOptions} [collectionType] The type of the collection.
-     * @param {Array<string>} [paths] The paths of the virtual folder.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
-     * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The library options.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LibraryStructureApiInterface
+     * Whether to refresh the library.
+     * @type {boolean}
+     * @memberof LibraryStructureApiAddMediaPath
      */
-    addVirtualFolder(name?: string, collectionType?: CollectionTypeOptions, paths?: Array<string>, refreshLibrary?: boolean, uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<void>;
+    readonly refreshLibrary?: boolean
+}
+
+/**
+ * Request parameters for addVirtualFolder operation in LibraryStructureApi.
+ * @export
+ * @interface LibraryStructureApiAddVirtualFolderRequest
+ */
+export interface LibraryStructureApiAddVirtualFolderRequest {
+    /**
+     * The name of the virtual folder.
+     * @type {string}
+     * @memberof LibraryStructureApiAddVirtualFolder
+     */
+    readonly name?: string
 
     /**
-     * 
-     * @summary Gets all virtual folders.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LibraryStructureApiInterface
+     * The type of the collection.
+     * @type {CollectionTypeOptions}
+     * @memberof LibraryStructureApiAddVirtualFolder
      */
-    getVirtualFolders(options?: any): AxiosPromise<Array<VirtualFolderInfo>>;
+    readonly collectionType?: CollectionTypeOptions
 
     /**
-     * 
-     * @summary Remove a media path.
-     * @param {string} [name] The name of the library.
-     * @param {string} [path] The path to remove.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LibraryStructureApiInterface
+     * The paths of the virtual folder.
+     * @type {Array<string>}
+     * @memberof LibraryStructureApiAddVirtualFolder
      */
-    removeMediaPath(name?: string, path?: string, refreshLibrary?: boolean, options?: any): AxiosPromise<void>;
+    readonly paths?: Array<string>
 
     /**
-     * 
-     * @summary Removes a virtual folder.
-     * @param {string} [name] The name of the folder.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LibraryStructureApiInterface
+     * Whether to refresh the library.
+     * @type {boolean}
+     * @memberof LibraryStructureApiAddVirtualFolder
      */
-    removeVirtualFolder(name?: string, refreshLibrary?: boolean, options?: any): AxiosPromise<void>;
+    readonly refreshLibrary?: boolean
 
     /**
-     * 
-     * @summary Renames a virtual folder.
-     * @param {string} [name] The name of the virtual folder.
-     * @param {string} [newName] The new name.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LibraryStructureApiInterface
+     * The library options.
+     * @type {UNKNOWN_BASE_TYPE}
+     * @memberof LibraryStructureApiAddVirtualFolder
      */
-    renameVirtualFolder(name?: string, newName?: string, refreshLibrary?: boolean, options?: any): AxiosPromise<void>;
+    readonly uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE
+}
+
+/**
+ * Request parameters for removeMediaPath operation in LibraryStructureApi.
+ * @export
+ * @interface LibraryStructureApiRemoveMediaPathRequest
+ */
+export interface LibraryStructureApiRemoveMediaPathRequest {
+    /**
+     * The name of the library.
+     * @type {string}
+     * @memberof LibraryStructureApiRemoveMediaPath
+     */
+    readonly name?: string
 
     /**
-     * 
-     * @summary Update library options.
-     * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The library name and options.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LibraryStructureApiInterface
+     * The path to remove.
+     * @type {string}
+     * @memberof LibraryStructureApiRemoveMediaPath
      */
-    updateLibraryOptions(uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<void>;
+    readonly path?: string
 
     /**
-     * 
-     * @summary Updates a media path.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The name of the library and path infos.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LibraryStructureApiInterface
+     * Whether to refresh the library.
+     * @type {boolean}
+     * @memberof LibraryStructureApiRemoveMediaPath
      */
-    updateMediaPath(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<void>;
+    readonly refreshLibrary?: boolean
+}
 
+/**
+ * Request parameters for removeVirtualFolder operation in LibraryStructureApi.
+ * @export
+ * @interface LibraryStructureApiRemoveVirtualFolderRequest
+ */
+export interface LibraryStructureApiRemoveVirtualFolderRequest {
+    /**
+     * The name of the folder.
+     * @type {string}
+     * @memberof LibraryStructureApiRemoveVirtualFolder
+     */
+    readonly name?: string
+
+    /**
+     * Whether to refresh the library.
+     * @type {boolean}
+     * @memberof LibraryStructureApiRemoveVirtualFolder
+     */
+    readonly refreshLibrary?: boolean
+}
+
+/**
+ * Request parameters for renameVirtualFolder operation in LibraryStructureApi.
+ * @export
+ * @interface LibraryStructureApiRenameVirtualFolderRequest
+ */
+export interface LibraryStructureApiRenameVirtualFolderRequest {
+    /**
+     * The name of the virtual folder.
+     * @type {string}
+     * @memberof LibraryStructureApiRenameVirtualFolder
+     */
+    readonly name?: string
+
+    /**
+     * The new name.
+     * @type {string}
+     * @memberof LibraryStructureApiRenameVirtualFolder
+     */
+    readonly newName?: string
+
+    /**
+     * Whether to refresh the library.
+     * @type {boolean}
+     * @memberof LibraryStructureApiRenameVirtualFolder
+     */
+    readonly refreshLibrary?: boolean
+}
+
+/**
+ * Request parameters for updateLibraryOptions operation in LibraryStructureApi.
+ * @export
+ * @interface LibraryStructureApiUpdateLibraryOptionsRequest
+ */
+export interface LibraryStructureApiUpdateLibraryOptionsRequest {
+    /**
+     * The library name and options.
+     * @type {UNKNOWN_BASE_TYPE}
+     * @memberof LibraryStructureApiUpdateLibraryOptions
+     */
+    readonly uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE
+}
+
+/**
+ * Request parameters for updateMediaPath operation in LibraryStructureApi.
+ * @export
+ * @interface LibraryStructureApiUpdateMediaPathRequest
+ */
+export interface LibraryStructureApiUpdateMediaPathRequest {
+    /**
+     * The name of the library and path infos.
+     * @type {UNKNOWN_BASE_TYPE}
+     * @memberof LibraryStructureApiUpdateMediaPath
+     */
+    readonly uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE
 }
 
 /**
@@ -703,34 +774,29 @@ export interface LibraryStructureApiInterface {
  * @class LibraryStructureApi
  * @extends {BaseAPI}
  */
-export class LibraryStructureApi extends BaseAPI implements LibraryStructureApiInterface {
+export class LibraryStructureApi extends BaseAPI {
     /**
      * 
      * @summary Add a media path to a library.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The media path dto.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
+     * @param {LibraryStructureApiAddMediaPathRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LibraryStructureApi
      */
-    public addMediaPath(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, refreshLibrary?: boolean, options?: any) {
-        return LibraryStructureApiFp(this.configuration).addMediaPath(uNKNOWNBASETYPE, refreshLibrary, options).then((request) => request(this.axios, this.basePath));
+    public addMediaPath(requestParameters: LibraryStructureApiAddMediaPathRequest, options?: any) {
+        return LibraryStructureApiFp(this.configuration).addMediaPath(requestParameters.uNKNOWNBASETYPE, requestParameters.refreshLibrary, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Adds a virtual folder.
-     * @param {string} [name] The name of the virtual folder.
-     * @param {CollectionTypeOptions} [collectionType] The type of the collection.
-     * @param {Array<string>} [paths] The paths of the virtual folder.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
-     * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The library options.
+     * @param {LibraryStructureApiAddVirtualFolderRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LibraryStructureApi
      */
-    public addVirtualFolder(name?: string, collectionType?: CollectionTypeOptions, paths?: Array<string>, refreshLibrary?: boolean, uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any) {
-        return LibraryStructureApiFp(this.configuration).addVirtualFolder(name, collectionType, paths, refreshLibrary, uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+    public addVirtualFolder(requestParameters: LibraryStructureApiAddVirtualFolderRequest = {}, options?: any) {
+        return LibraryStructureApiFp(this.configuration).addVirtualFolder(requestParameters.name, requestParameters.collectionType, requestParameters.paths, requestParameters.refreshLibrary, requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -747,65 +813,60 @@ export class LibraryStructureApi extends BaseAPI implements LibraryStructureApiI
     /**
      * 
      * @summary Remove a media path.
-     * @param {string} [name] The name of the library.
-     * @param {string} [path] The path to remove.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
+     * @param {LibraryStructureApiRemoveMediaPathRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LibraryStructureApi
      */
-    public removeMediaPath(name?: string, path?: string, refreshLibrary?: boolean, options?: any) {
-        return LibraryStructureApiFp(this.configuration).removeMediaPath(name, path, refreshLibrary, options).then((request) => request(this.axios, this.basePath));
+    public removeMediaPath(requestParameters: LibraryStructureApiRemoveMediaPathRequest = {}, options?: any) {
+        return LibraryStructureApiFp(this.configuration).removeMediaPath(requestParameters.name, requestParameters.path, requestParameters.refreshLibrary, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Removes a virtual folder.
-     * @param {string} [name] The name of the folder.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
+     * @param {LibraryStructureApiRemoveVirtualFolderRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LibraryStructureApi
      */
-    public removeVirtualFolder(name?: string, refreshLibrary?: boolean, options?: any) {
-        return LibraryStructureApiFp(this.configuration).removeVirtualFolder(name, refreshLibrary, options).then((request) => request(this.axios, this.basePath));
+    public removeVirtualFolder(requestParameters: LibraryStructureApiRemoveVirtualFolderRequest = {}, options?: any) {
+        return LibraryStructureApiFp(this.configuration).removeVirtualFolder(requestParameters.name, requestParameters.refreshLibrary, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Renames a virtual folder.
-     * @param {string} [name] The name of the virtual folder.
-     * @param {string} [newName] The new name.
-     * @param {boolean} [refreshLibrary] Whether to refresh the library.
+     * @param {LibraryStructureApiRenameVirtualFolderRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LibraryStructureApi
      */
-    public renameVirtualFolder(name?: string, newName?: string, refreshLibrary?: boolean, options?: any) {
-        return LibraryStructureApiFp(this.configuration).renameVirtualFolder(name, newName, refreshLibrary, options).then((request) => request(this.axios, this.basePath));
+    public renameVirtualFolder(requestParameters: LibraryStructureApiRenameVirtualFolderRequest = {}, options?: any) {
+        return LibraryStructureApiFp(this.configuration).renameVirtualFolder(requestParameters.name, requestParameters.newName, requestParameters.refreshLibrary, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Update library options.
-     * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The library name and options.
+     * @param {LibraryStructureApiUpdateLibraryOptionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LibraryStructureApi
      */
-    public updateLibraryOptions(uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any) {
-        return LibraryStructureApiFp(this.configuration).updateLibraryOptions(uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+    public updateLibraryOptions(requestParameters: LibraryStructureApiUpdateLibraryOptionsRequest = {}, options?: any) {
+        return LibraryStructureApiFp(this.configuration).updateLibraryOptions(requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Updates a media path.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The name of the library and path infos.
+     * @param {LibraryStructureApiUpdateMediaPathRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LibraryStructureApi
      */
-    public updateMediaPath(uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any) {
-        return LibraryStructureApiFp(this.configuration).updateMediaPath(uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+    public updateMediaPath(requestParameters: LibraryStructureApiUpdateMediaPathRequest, options?: any) {
+        return LibraryStructureApiFp(this.configuration).updateMediaPath(requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
     }
 }

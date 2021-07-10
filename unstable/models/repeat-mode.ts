@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum RepeatMode {
     RepeatNone = 'RepeatNone',
     RepeatAll = 'RepeatAll',

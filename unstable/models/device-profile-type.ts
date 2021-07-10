@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum DeviceProfileType {
     System = 'System',
     User = 'User'

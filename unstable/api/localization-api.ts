@@ -266,56 +266,12 @@ export const LocalizationApiFactory = function (configuration?: Configuration, b
 };
 
 /**
- * LocalizationApi - interface
- * @export
- * @interface LocalizationApi
- */
-export interface LocalizationApiInterface {
-    /**
-     * 
-     * @summary Gets known countries.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocalizationApiInterface
-     */
-    getCountries(options?: any): AxiosPromise<Array<CountryInfo>>;
-
-    /**
-     * 
-     * @summary Gets known cultures.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocalizationApiInterface
-     */
-    getCultures(options?: any): AxiosPromise<Array<CultureDto>>;
-
-    /**
-     * 
-     * @summary Gets localization options.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocalizationApiInterface
-     */
-    getLocalizationOptions(options?: any): AxiosPromise<Array<LocalizationOption>>;
-
-    /**
-     * 
-     * @summary Gets known parental ratings.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocalizationApiInterface
-     */
-    getParentalRatings(options?: any): AxiosPromise<Array<ParentalRating>>;
-
-}
-
-/**
  * LocalizationApi - object-oriented interface
  * @export
  * @class LocalizationApi
  * @extends {BaseAPI}
  */
-export class LocalizationApi extends BaseAPI implements LocalizationApiInterface {
+export class LocalizationApi extends BaseAPI {
     /**
      * 
      * @summary Gets known countries.

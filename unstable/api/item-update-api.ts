@@ -247,43 +247,59 @@ export const ItemUpdateApiFactory = function (configuration?: Configuration, bas
 };
 
 /**
- * ItemUpdateApi - interface
+ * Request parameters for getMetadataEditorInfo operation in ItemUpdateApi.
  * @export
- * @interface ItemUpdateApi
+ * @interface ItemUpdateApiGetMetadataEditorInfoRequest
  */
-export interface ItemUpdateApiInterface {
+export interface ItemUpdateApiGetMetadataEditorInfoRequest {
     /**
-     * 
-     * @summary Gets metadata editor info for an item.
-     * @param {string} itemId The item id.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ItemUpdateApiInterface
+     * The item id.
+     * @type {string}
+     * @memberof ItemUpdateApiGetMetadataEditorInfo
      */
-    getMetadataEditorInfo(itemId: string, options?: any): AxiosPromise<MetadataEditorInfo>;
+    readonly itemId: string
+}
+
+/**
+ * Request parameters for updateItem operation in ItemUpdateApi.
+ * @export
+ * @interface ItemUpdateApiUpdateItemRequest
+ */
+export interface ItemUpdateApiUpdateItemRequest {
+    /**
+     * The item id.
+     * @type {string}
+     * @memberof ItemUpdateApiUpdateItem
+     */
+    readonly itemId: string
 
     /**
-     * 
-     * @summary Updates an item.
-     * @param {string} itemId The item id.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The new item properties.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ItemUpdateApiInterface
+     * The new item properties.
+     * @type {UNKNOWN_BASE_TYPE}
+     * @memberof ItemUpdateApiUpdateItem
      */
-    updateItem(itemId: string, uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<void>;
+    readonly uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE
+}
+
+/**
+ * Request parameters for updateItemContentType operation in ItemUpdateApi.
+ * @export
+ * @interface ItemUpdateApiUpdateItemContentTypeRequest
+ */
+export interface ItemUpdateApiUpdateItemContentTypeRequest {
+    /**
+     * The item id.
+     * @type {string}
+     * @memberof ItemUpdateApiUpdateItemContentType
+     */
+    readonly itemId: string
 
     /**
-     * 
-     * @summary Updates an item\'s content type.
-     * @param {string} itemId The item id.
-     * @param {string} [contentType] The content type of the item.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ItemUpdateApiInterface
+     * The content type of the item.
+     * @type {string}
+     * @memberof ItemUpdateApiUpdateItemContentType
      */
-    updateItemContentType(itemId: string, contentType?: string, options?: any): AxiosPromise<void>;
-
+    readonly contentType?: string
 }
 
 /**
@@ -292,42 +308,40 @@ export interface ItemUpdateApiInterface {
  * @class ItemUpdateApi
  * @extends {BaseAPI}
  */
-export class ItemUpdateApi extends BaseAPI implements ItemUpdateApiInterface {
+export class ItemUpdateApi extends BaseAPI {
     /**
      * 
      * @summary Gets metadata editor info for an item.
-     * @param {string} itemId The item id.
+     * @param {ItemUpdateApiGetMetadataEditorInfoRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemUpdateApi
      */
-    public getMetadataEditorInfo(itemId: string, options?: any) {
-        return ItemUpdateApiFp(this.configuration).getMetadataEditorInfo(itemId, options).then((request) => request(this.axios, this.basePath));
+    public getMetadataEditorInfo(requestParameters: ItemUpdateApiGetMetadataEditorInfoRequest, options?: any) {
+        return ItemUpdateApiFp(this.configuration).getMetadataEditorInfo(requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Updates an item.
-     * @param {string} itemId The item id.
-     * @param {UNKNOWN_BASE_TYPE} uNKNOWNBASETYPE The new item properties.
+     * @param {ItemUpdateApiUpdateItemRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemUpdateApi
      */
-    public updateItem(itemId: string, uNKNOWNBASETYPE: UNKNOWN_BASE_TYPE, options?: any) {
-        return ItemUpdateApiFp(this.configuration).updateItem(itemId, uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+    public updateItem(requestParameters: ItemUpdateApiUpdateItemRequest, options?: any) {
+        return ItemUpdateApiFp(this.configuration).updateItem(requestParameters.itemId, requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Updates an item\'s content type.
-     * @param {string} itemId The item id.
-     * @param {string} [contentType] The content type of the item.
+     * @param {ItemUpdateApiUpdateItemContentTypeRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemUpdateApi
      */
-    public updateItemContentType(itemId: string, contentType?: string, options?: any) {
-        return ItemUpdateApiFp(this.configuration).updateItemContentType(itemId, contentType, options).then((request) => request(this.axios, this.basePath));
+    public updateItemContentType(requestParameters: ItemUpdateApiUpdateItemContentTypeRequest, options?: any) {
+        return ItemUpdateApiFp(this.configuration).updateItemContentType(requestParameters.itemId, requestParameters.contentType, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum SeriesStatus {
     Continuing = 'Continuing',
     Ended = 'Ended'

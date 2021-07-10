@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum GroupRepeatMode {
     RepeatOne = 'RepeatOne',
     RepeatAll = 'RepeatAll',

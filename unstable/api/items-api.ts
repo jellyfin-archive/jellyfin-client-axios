@@ -1456,212 +1456,1242 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
 };
 
 /**
- * ItemsApi - interface
+ * Request parameters for getItems operation in ItemsApi.
  * @export
- * @interface ItemsApi
+ * @interface ItemsApiGetItemsRequest
  */
-export interface ItemsApiInterface {
+export interface ItemsApiGetItemsRequest {
     /**
-     * 
-     * @summary Gets items based on a query.
-     * @param {string} [userId] The user id supplied as query parameter.
-     * @param {string} [maxOfficialRating] Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
-     * @param {boolean} [hasThemeSong] Optional filter by items with theme songs.
-     * @param {boolean} [hasThemeVideo] Optional filter by items with theme videos.
-     * @param {boolean} [hasSubtitles] Optional filter by items with subtitles.
-     * @param {boolean} [hasSpecialFeature] Optional filter by items with special features.
-     * @param {boolean} [hasTrailer] Optional filter by items with trailers.
-     * @param {string} [adjacentTo] Optional. Return items that are siblings of a supplied item.
-     * @param {number} [parentIndexNumber] Optional filter by parent index number.
-     * @param {boolean} [hasParentalRating] Optional filter by items that have or do not have a parental rating.
-     * @param {boolean} [isHd] Optional filter by items that are HD or not.
-     * @param {boolean} [is4K] Optional filter by items that are 4K or not.
-     * @param {Array<LocationType>} [locationTypes] Optional. If specified, results will be filtered based on LocationType. This allows multiple, comma delimited.
-     * @param {Array<LocationType>} [excludeLocationTypes] Optional. If specified, results will be filtered based on the LocationType. This allows multiple, comma delimited.
-     * @param {boolean} [isMissing] Optional filter by items that are missing episodes or not.
-     * @param {boolean} [isUnaired] Optional filter by items that are unaired episodes or not.
-     * @param {number} [minCommunityRating] Optional filter by minimum community rating.
-     * @param {number} [minCriticRating] Optional filter by minimum critic rating.
-     * @param {string} [minPremiereDate] Optional. The minimum premiere date. Format &#x3D; ISO.
-     * @param {string} [minDateLastSaved] Optional. The minimum last saved date. Format &#x3D; ISO.
-     * @param {string} [minDateLastSavedForUser] Optional. The minimum last saved date for the current user. Format &#x3D; ISO.
-     * @param {string} [maxPremiereDate] Optional. The maximum premiere date. Format &#x3D; ISO.
-     * @param {boolean} [hasOverview] Optional filter by items that have an overview or not.
-     * @param {boolean} [hasImdbId] Optional filter by items that have an imdb id or not.
-     * @param {boolean} [hasTmdbId] Optional filter by items that have a tmdb id or not.
-     * @param {boolean} [hasTvdbId] Optional filter by items that have a tvdb id or not.
-     * @param {Array<string>} [excludeItemIds] Optional. If specified, results will be filtered by excluding item ids. This allows multiple, comma delimited.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {boolean} [recursive] When searching within folders, this determines whether or not the search will be recursive. true/false.
-     * @param {string} [searchTerm] Optional. Filter based on a search term.
-     * @param {Array<SortOrder>} [sortOrder] Sort Order - Ascending,Descending.
-     * @param {string} [parentId] Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
-     * @param {Array<BaseItemKind>} [excludeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
-     * @param {Array<ItemFilter>} [filters] Optional. Specify additional filters to apply. This allows multiple, comma delimited. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes.
-     * @param {boolean} [isFavorite] Optional filter by items that are marked as favorite, or not.
-     * @param {Array<string>} [mediaTypes] Optional filter by MediaType. Allows multiple, comma delimited.
-     * @param {Array<ImageType>} [imageTypes] Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
-     * @param {Array<string>} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
-     * @param {boolean} [isPlayed] Optional filter by items that are played, or not.
-     * @param {Array<string>} [genres] Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimited.
-     * @param {Array<string>} [officialRatings] Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimited.
-     * @param {Array<string>} [tags] Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimited.
-     * @param {Array<number>} [years] Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimited.
-     * @param {boolean} [enableUserData] Optional, include user data.
-     * @param {number} [imageTypeLimit] Optional, the max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {string} [person] Optional. If specified, results will be filtered to include only those containing the specified person.
-     * @param {Array<string>} [personIds] Optional. If specified, results will be filtered to include only those containing the specified person id.
-     * @param {Array<string>} [personTypes] Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited.
-     * @param {Array<string>} [studios] Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimited.
-     * @param {Array<string>} [artists] Optional. If specified, results will be filtered based on artists. This allows multiple, pipe delimited.
-     * @param {Array<string>} [excludeArtistIds] Optional. If specified, results will be filtered based on artist id. This allows multiple, pipe delimited.
-     * @param {Array<string>} [artistIds] Optional. If specified, results will be filtered to include only those containing the specified artist id.
-     * @param {Array<string>} [albumArtistIds] Optional. If specified, results will be filtered to include only those containing the specified album artist id.
-     * @param {Array<string>} [contributingArtistIds] Optional. If specified, results will be filtered to include only those containing the specified contributing artist id.
-     * @param {Array<string>} [albums] Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimited.
-     * @param {Array<string>} [albumIds] Optional. If specified, results will be filtered based on album id. This allows multiple, pipe delimited.
-     * @param {Array<string>} [ids] Optional. If specific items are needed, specify a list of item id\&#39;s to retrieve. This allows multiple, comma delimited.
-     * @param {Array<VideoType>} [videoTypes] Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimited.
-     * @param {string} [minOfficialRating] Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
-     * @param {boolean} [isLocked] Optional filter by items that are locked.
-     * @param {boolean} [isPlaceHolder] Optional filter by items that are placeholders.
-     * @param {boolean} [hasOfficialRating] Optional filter by items that have official ratings.
-     * @param {boolean} [collapseBoxSetItems] Whether or not to hide items behind their boxsets.
-     * @param {number} [minWidth] Optional. Filter by the minimum width of the item.
-     * @param {number} [minHeight] Optional. Filter by the minimum height of the item.
-     * @param {number} [maxWidth] Optional. Filter by the maximum width of the item.
-     * @param {number} [maxHeight] Optional. Filter by the maximum height of the item.
-     * @param {boolean} [is3D] Optional filter by items that are 3D, or not.
-     * @param {Array<SeriesStatus>} [seriesStatus] Optional filter by Series Status. Allows multiple, comma delimited.
-     * @param {string} [nameStartsWithOrGreater] Optional filter by items whose name is sorted equally or greater than a given input string.
-     * @param {string} [nameStartsWith] Optional filter by items whose name is sorted equally than a given input string.
-     * @param {string} [nameLessThan] Optional filter by items whose name is equally or lesser than a given input string.
-     * @param {Array<string>} [studioIds] Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimited.
-     * @param {Array<string>} [genreIds] Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimited.
-     * @param {boolean} [enableTotalRecordCount] Optional. Enable the total record count.
-     * @param {boolean} [enableImages] Optional, include image information in output.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ItemsApiInterface
+     * The user id supplied as query parameter.
+     * @type {string}
+     * @memberof ItemsApiGetItems
      */
-    getItems(userId?: string, maxOfficialRating?: string, hasThemeSong?: boolean, hasThemeVideo?: boolean, hasSubtitles?: boolean, hasSpecialFeature?: boolean, hasTrailer?: boolean, adjacentTo?: string, parentIndexNumber?: number, hasParentalRating?: boolean, isHd?: boolean, is4K?: boolean, locationTypes?: Array<LocationType>, excludeLocationTypes?: Array<LocationType>, isMissing?: boolean, isUnaired?: boolean, minCommunityRating?: number, minCriticRating?: number, minPremiereDate?: string, minDateLastSaved?: string, minDateLastSavedForUser?: string, maxPremiereDate?: string, hasOverview?: boolean, hasImdbId?: boolean, hasTmdbId?: boolean, hasTvdbId?: boolean, excludeItemIds?: Array<string>, startIndex?: number, limit?: number, recursive?: boolean, searchTerm?: string, sortOrder?: Array<SortOrder>, parentId?: string, fields?: Array<ItemFields>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, filters?: Array<ItemFilter>, isFavorite?: boolean, mediaTypes?: Array<string>, imageTypes?: Array<ImageType>, sortBy?: Array<string>, isPlayed?: boolean, genres?: Array<string>, officialRatings?: Array<string>, tags?: Array<string>, years?: Array<number>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, person?: string, personIds?: Array<string>, personTypes?: Array<string>, studios?: Array<string>, artists?: Array<string>, excludeArtistIds?: Array<string>, artistIds?: Array<string>, albumArtistIds?: Array<string>, contributingArtistIds?: Array<string>, albums?: Array<string>, albumIds?: Array<string>, ids?: Array<string>, videoTypes?: Array<VideoType>, minOfficialRating?: string, isLocked?: boolean, isPlaceHolder?: boolean, hasOfficialRating?: boolean, collapseBoxSetItems?: boolean, minWidth?: number, minHeight?: number, maxWidth?: number, maxHeight?: number, is3D?: boolean, seriesStatus?: Array<SeriesStatus>, nameStartsWithOrGreater?: string, nameStartsWith?: string, nameLessThan?: string, studioIds?: Array<string>, genreIds?: Array<string>, enableTotalRecordCount?: boolean, enableImages?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult>;
+    readonly userId?: string
 
     /**
-     * 
-     * @summary Gets items based on a query.
-     * @param {string} userId The user id supplied as query parameter.
-     * @param {string} [maxOfficialRating] Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
-     * @param {boolean} [hasThemeSong] Optional filter by items with theme songs.
-     * @param {boolean} [hasThemeVideo] Optional filter by items with theme videos.
-     * @param {boolean} [hasSubtitles] Optional filter by items with subtitles.
-     * @param {boolean} [hasSpecialFeature] Optional filter by items with special features.
-     * @param {boolean} [hasTrailer] Optional filter by items with trailers.
-     * @param {string} [adjacentTo] Optional. Return items that are siblings of a supplied item.
-     * @param {number} [parentIndexNumber] Optional filter by parent index number.
-     * @param {boolean} [hasParentalRating] Optional filter by items that have or do not have a parental rating.
-     * @param {boolean} [isHd] Optional filter by items that are HD or not.
-     * @param {boolean} [is4K] Optional filter by items that are 4K or not.
-     * @param {Array<LocationType>} [locationTypes] Optional. If specified, results will be filtered based on LocationType. This allows multiple, comma delimeted.
-     * @param {Array<LocationType>} [excludeLocationTypes] Optional. If specified, results will be filtered based on the LocationType. This allows multiple, comma delimeted.
-     * @param {boolean} [isMissing] Optional filter by items that are missing episodes or not.
-     * @param {boolean} [isUnaired] Optional filter by items that are unaired episodes or not.
-     * @param {number} [minCommunityRating] Optional filter by minimum community rating.
-     * @param {number} [minCriticRating] Optional filter by minimum critic rating.
-     * @param {string} [minPremiereDate] Optional. The minimum premiere date. Format &#x3D; ISO.
-     * @param {string} [minDateLastSaved] Optional. The minimum last saved date. Format &#x3D; ISO.
-     * @param {string} [minDateLastSavedForUser] Optional. The minimum last saved date for the current user. Format &#x3D; ISO.
-     * @param {string} [maxPremiereDate] Optional. The maximum premiere date. Format &#x3D; ISO.
-     * @param {boolean} [hasOverview] Optional filter by items that have an overview or not.
-     * @param {boolean} [hasImdbId] Optional filter by items that have an imdb id or not.
-     * @param {boolean} [hasTmdbId] Optional filter by items that have a tmdb id or not.
-     * @param {boolean} [hasTvdbId] Optional filter by items that have a tvdb id or not.
-     * @param {Array<string>} [excludeItemIds] Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {boolean} [recursive] When searching within folders, this determines whether or not the search will be recursive. true/false.
-     * @param {string} [searchTerm] Optional. Filter based on a search term.
-     * @param {Array<SortOrder>} [sortOrder] Sort Order - Ascending,Descending.
-     * @param {string} [parentId] Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
-     * @param {Array<BaseItemKind>} [excludeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimeted.
-     * @param {Array<ItemFilter>} [filters] Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes.
-     * @param {boolean} [isFavorite] Optional filter by items that are marked as favorite, or not.
-     * @param {Array<string>} [mediaTypes] Optional filter by MediaType. Allows multiple, comma delimited.
-     * @param {Array<ImageType>} [imageTypes] Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
-     * @param {Array<string>} [sortBy] Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
-     * @param {boolean} [isPlayed] Optional filter by items that are played, or not.
-     * @param {Array<string>} [genres] Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [officialRatings] Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [tags] Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
-     * @param {Array<number>} [years] Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
-     * @param {boolean} [enableUserData] Optional, include user data.
-     * @param {number} [imageTypeLimit] Optional, the max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {string} [person] Optional. If specified, results will be filtered to include only those containing the specified person.
-     * @param {Array<string>} [personIds] Optional. If specified, results will be filtered to include only those containing the specified person id.
-     * @param {Array<string>} [personTypes] Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited.
-     * @param {Array<string>} [studios] Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [artists] Optional. If specified, results will be filtered based on artists. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [excludeArtistIds] Optional. If specified, results will be filtered based on artist id. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [artistIds] Optional. If specified, results will be filtered to include only those containing the specified artist id.
-     * @param {Array<string>} [albumArtistIds] Optional. If specified, results will be filtered to include only those containing the specified album artist id.
-     * @param {Array<string>} [contributingArtistIds] Optional. If specified, results will be filtered to include only those containing the specified contributing artist id.
-     * @param {Array<string>} [albums] Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [albumIds] Optional. If specified, results will be filtered based on album id. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [ids] Optional. If specific items are needed, specify a list of item id\&#39;s to retrieve. This allows multiple, comma delimited.
-     * @param {Array<VideoType>} [videoTypes] Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
-     * @param {string} [minOfficialRating] Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
-     * @param {boolean} [isLocked] Optional filter by items that are locked.
-     * @param {boolean} [isPlaceHolder] Optional filter by items that are placeholders.
-     * @param {boolean} [hasOfficialRating] Optional filter by items that have official ratings.
-     * @param {boolean} [collapseBoxSetItems] Whether or not to hide items behind their boxsets.
-     * @param {number} [minWidth] Optional. Filter by the minimum width of the item.
-     * @param {number} [minHeight] Optional. Filter by the minimum height of the item.
-     * @param {number} [maxWidth] Optional. Filter by the maximum width of the item.
-     * @param {number} [maxHeight] Optional. Filter by the maximum height of the item.
-     * @param {boolean} [is3D] Optional filter by items that are 3D, or not.
-     * @param {Array<SeriesStatus>} [seriesStatus] Optional filter by Series Status. Allows multiple, comma delimeted.
-     * @param {string} [nameStartsWithOrGreater] Optional filter by items whose name is sorted equally or greater than a given input string.
-     * @param {string} [nameStartsWith] Optional filter by items whose name is sorted equally than a given input string.
-     * @param {string} [nameLessThan] Optional filter by items whose name is equally or lesser than a given input string.
-     * @param {Array<string>} [studioIds] Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [genreIds] Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimeted.
-     * @param {boolean} [enableTotalRecordCount] Optional. Enable the total record count.
-     * @param {boolean} [enableImages] Optional, include image information in output.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ItemsApiInterface
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     * @type {string}
+     * @memberof ItemsApiGetItems
      */
-    getItemsByUserId(userId: string, maxOfficialRating?: string, hasThemeSong?: boolean, hasThemeVideo?: boolean, hasSubtitles?: boolean, hasSpecialFeature?: boolean, hasTrailer?: boolean, adjacentTo?: string, parentIndexNumber?: number, hasParentalRating?: boolean, isHd?: boolean, is4K?: boolean, locationTypes?: Array<LocationType>, excludeLocationTypes?: Array<LocationType>, isMissing?: boolean, isUnaired?: boolean, minCommunityRating?: number, minCriticRating?: number, minPremiereDate?: string, minDateLastSaved?: string, minDateLastSavedForUser?: string, maxPremiereDate?: string, hasOverview?: boolean, hasImdbId?: boolean, hasTmdbId?: boolean, hasTvdbId?: boolean, excludeItemIds?: Array<string>, startIndex?: number, limit?: number, recursive?: boolean, searchTerm?: string, sortOrder?: Array<SortOrder>, parentId?: string, fields?: Array<ItemFields>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, filters?: Array<ItemFilter>, isFavorite?: boolean, mediaTypes?: Array<string>, imageTypes?: Array<ImageType>, sortBy?: Array<string>, isPlayed?: boolean, genres?: Array<string>, officialRatings?: Array<string>, tags?: Array<string>, years?: Array<number>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, person?: string, personIds?: Array<string>, personTypes?: Array<string>, studios?: Array<string>, artists?: Array<string>, excludeArtistIds?: Array<string>, artistIds?: Array<string>, albumArtistIds?: Array<string>, contributingArtistIds?: Array<string>, albums?: Array<string>, albumIds?: Array<string>, ids?: Array<string>, videoTypes?: Array<VideoType>, minOfficialRating?: string, isLocked?: boolean, isPlaceHolder?: boolean, hasOfficialRating?: boolean, collapseBoxSetItems?: boolean, minWidth?: number, minHeight?: number, maxWidth?: number, maxHeight?: number, is3D?: boolean, seriesStatus?: Array<SeriesStatus>, nameStartsWithOrGreater?: string, nameStartsWith?: string, nameLessThan?: string, studioIds?: Array<string>, genreIds?: Array<string>, enableTotalRecordCount?: boolean, enableImages?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult>;
+    readonly maxOfficialRating?: string
 
     /**
-     * 
-     * @summary Gets items based on a query.
-     * @param {string} userId The user id.
-     * @param {number} [startIndex] The start index.
-     * @param {number} [limit] The item limit.
-     * @param {string} [searchTerm] The search term.
-     * @param {string} [parentId] Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
-     * @param {Array<string>} [mediaTypes] Optional. Filter by MediaType. Allows multiple, comma delimited.
-     * @param {boolean} [enableUserData] Optional. Include user data.
-     * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {Array<BaseItemKind>} [excludeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
-     * @param {boolean} [enableTotalRecordCount] Optional. Enable the total record count.
-     * @param {boolean} [enableImages] Optional. Include image information in output.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ItemsApiInterface
+     * Optional filter by items with theme songs.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
      */
-    getResumeItems(userId: string, startIndex?: number, limit?: number, searchTerm?: string, parentId?: string, fields?: Array<ItemFields>, mediaTypes?: Array<string>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, enableTotalRecordCount?: boolean, enableImages?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult>;
+    readonly hasThemeSong?: boolean
 
+    /**
+     * Optional filter by items with theme videos.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasThemeVideo?: boolean
+
+    /**
+     * Optional filter by items with subtitles.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasSubtitles?: boolean
+
+    /**
+     * Optional filter by items with special features.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasSpecialFeature?: boolean
+
+    /**
+     * Optional filter by items with trailers.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasTrailer?: boolean
+
+    /**
+     * Optional. Return items that are siblings of a supplied item.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly adjacentTo?: string
+
+    /**
+     * Optional filter by parent index number.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly parentIndexNumber?: number
+
+    /**
+     * Optional filter by items that have or do not have a parental rating.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasParentalRating?: boolean
+
+    /**
+     * Optional filter by items that are HD or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly isHd?: boolean
+
+    /**
+     * Optional filter by items that are 4K or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly is4K?: boolean
+
+    /**
+     * Optional. If specified, results will be filtered based on LocationType. This allows multiple, comma delimited.
+     * @type {Array<LocationType>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly locationTypes?: Array<LocationType>
+
+    /**
+     * Optional. If specified, results will be filtered based on the LocationType. This allows multiple, comma delimited.
+     * @type {Array<LocationType>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly excludeLocationTypes?: Array<LocationType>
+
+    /**
+     * Optional filter by items that are missing episodes or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly isMissing?: boolean
+
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly isUnaired?: boolean
+
+    /**
+     * Optional filter by minimum community rating.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly minCommunityRating?: number
+
+    /**
+     * Optional filter by minimum critic rating.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly minCriticRating?: number
+
+    /**
+     * Optional. The minimum premiere date. Format &#x3D; ISO.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly minPremiereDate?: string
+
+    /**
+     * Optional. The minimum last saved date. Format &#x3D; ISO.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly minDateLastSaved?: string
+
+    /**
+     * Optional. The minimum last saved date for the current user. Format &#x3D; ISO.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly minDateLastSavedForUser?: string
+
+    /**
+     * Optional. The maximum premiere date. Format &#x3D; ISO.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly maxPremiereDate?: string
+
+    /**
+     * Optional filter by items that have an overview or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasOverview?: boolean
+
+    /**
+     * Optional filter by items that have an imdb id or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasImdbId?: boolean
+
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasTmdbId?: boolean
+
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasTvdbId?: boolean
+
+    /**
+     * Optional. If specified, results will be filtered by excluding item ids. This allows multiple, comma delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly excludeItemIds?: Array<string>
+
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly startIndex?: number
+
+    /**
+     * Optional. The maximum number of records to return.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly limit?: number
+
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly recursive?: boolean
+
+    /**
+     * Optional. Filter based on a search term.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly searchTerm?: string
+
+    /**
+     * Sort Order - Ascending,Descending.
+     * @type {Array<SortOrder>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly sortOrder?: Array<SortOrder>
+
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly parentId?: string
+
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
+     * @type {Array<ItemFields>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly fields?: Array<ItemFields>
+
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
+     * @type {Array<BaseItemKind>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly excludeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
+     * @type {Array<BaseItemKind>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly includeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimited. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes.
+     * @type {Array<ItemFilter>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly filters?: Array<ItemFilter>
+
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly isFavorite?: boolean
+
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly mediaTypes?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     * @type {Array<ImageType>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly imageTypes?: Array<ImageType>
+
+    /**
+     * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly sortBy?: Array<string>
+
+    /**
+     * Optional filter by items that are played, or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly isPlayed?: boolean
+
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly genres?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly officialRatings?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly tags?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimited.
+     * @type {Array<number>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly years?: Array<number>
+
+    /**
+     * Optional, include user data.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly enableUserData?: boolean
+
+    /**
+     * Optional, the max number of images to return, per image type.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly imageTypeLimit?: number
+
+    /**
+     * Optional. The image types to include in the output.
+     * @type {Array<ImageType>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly enableImageTypes?: Array<ImageType>
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly person?: string
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person id.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly personIds?: Array<string>
+
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly personTypes?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly studios?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on artists. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly artists?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on artist id. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly excludeArtistIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified artist id.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly artistIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified album artist id.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly albumArtistIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified contributing artist id.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly contributingArtistIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly albums?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on album id. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly albumIds?: Array<string>
+
+    /**
+     * Optional. If specific items are needed, specify a list of item id\&#39;s to retrieve. This allows multiple, comma delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly ids?: Array<string>
+
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimited.
+     * @type {Array<VideoType>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly videoTypes?: Array<VideoType>
+
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly minOfficialRating?: string
+
+    /**
+     * Optional filter by items that are locked.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly isLocked?: boolean
+
+    /**
+     * Optional filter by items that are placeholders.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly isPlaceHolder?: boolean
+
+    /**
+     * Optional filter by items that have official ratings.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly hasOfficialRating?: boolean
+
+    /**
+     * Whether or not to hide items behind their boxsets.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly collapseBoxSetItems?: boolean
+
+    /**
+     * Optional. Filter by the minimum width of the item.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly minWidth?: number
+
+    /**
+     * Optional. Filter by the minimum height of the item.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly minHeight?: number
+
+    /**
+     * Optional. Filter by the maximum width of the item.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly maxWidth?: number
+
+    /**
+     * Optional. Filter by the maximum height of the item.
+     * @type {number}
+     * @memberof ItemsApiGetItems
+     */
+    readonly maxHeight?: number
+
+    /**
+     * Optional filter by items that are 3D, or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly is3D?: boolean
+
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimited.
+     * @type {Array<SeriesStatus>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly seriesStatus?: Array<SeriesStatus>
+
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly nameStartsWithOrGreater?: string
+
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly nameStartsWith?: string
+
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     * @type {string}
+     * @memberof ItemsApiGetItems
+     */
+    readonly nameLessThan?: string
+
+    /**
+     * Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly studioIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItems
+     */
+    readonly genreIds?: Array<string>
+
+    /**
+     * Optional. Enable the total record count.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly enableTotalRecordCount?: boolean
+
+    /**
+     * Optional, include image information in output.
+     * @type {boolean}
+     * @memberof ItemsApiGetItems
+     */
+    readonly enableImages?: boolean
+}
+
+/**
+ * Request parameters for getItemsByUserId operation in ItemsApi.
+ * @export
+ * @interface ItemsApiGetItemsByUserIdRequest
+ */
+export interface ItemsApiGetItemsByUserIdRequest {
+    /**
+     * The user id supplied as query parameter.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly userId: string
+
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly maxOfficialRating?: string
+
+    /**
+     * Optional filter by items with theme songs.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasThemeSong?: boolean
+
+    /**
+     * Optional filter by items with theme videos.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasThemeVideo?: boolean
+
+    /**
+     * Optional filter by items with subtitles.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasSubtitles?: boolean
+
+    /**
+     * Optional filter by items with special features.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasSpecialFeature?: boolean
+
+    /**
+     * Optional filter by items with trailers.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasTrailer?: boolean
+
+    /**
+     * Optional. Return items that are siblings of a supplied item.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly adjacentTo?: string
+
+    /**
+     * Optional filter by parent index number.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly parentIndexNumber?: number
+
+    /**
+     * Optional filter by items that have or do not have a parental rating.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasParentalRating?: boolean
+
+    /**
+     * Optional filter by items that are HD or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly isHd?: boolean
+
+    /**
+     * Optional filter by items that are 4K or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly is4K?: boolean
+
+    /**
+     * Optional. If specified, results will be filtered based on LocationType. This allows multiple, comma delimeted.
+     * @type {Array<LocationType>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly locationTypes?: Array<LocationType>
+
+    /**
+     * Optional. If specified, results will be filtered based on the LocationType. This allows multiple, comma delimeted.
+     * @type {Array<LocationType>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly excludeLocationTypes?: Array<LocationType>
+
+    /**
+     * Optional filter by items that are missing episodes or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly isMissing?: boolean
+
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly isUnaired?: boolean
+
+    /**
+     * Optional filter by minimum community rating.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly minCommunityRating?: number
+
+    /**
+     * Optional filter by minimum critic rating.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly minCriticRating?: number
+
+    /**
+     * Optional. The minimum premiere date. Format &#x3D; ISO.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly minPremiereDate?: string
+
+    /**
+     * Optional. The minimum last saved date. Format &#x3D; ISO.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly minDateLastSaved?: string
+
+    /**
+     * Optional. The minimum last saved date for the current user. Format &#x3D; ISO.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly minDateLastSavedForUser?: string
+
+    /**
+     * Optional. The maximum premiere date. Format &#x3D; ISO.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly maxPremiereDate?: string
+
+    /**
+     * Optional filter by items that have an overview or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasOverview?: boolean
+
+    /**
+     * Optional filter by items that have an imdb id or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasImdbId?: boolean
+
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasTmdbId?: boolean
+
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasTvdbId?: boolean
+
+    /**
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly excludeItemIds?: Array<string>
+
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly startIndex?: number
+
+    /**
+     * Optional. The maximum number of records to return.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly limit?: number
+
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly recursive?: boolean
+
+    /**
+     * Optional. Filter based on a search term.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly searchTerm?: string
+
+    /**
+     * Sort Order - Ascending,Descending.
+     * @type {Array<SortOrder>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly sortOrder?: Array<SortOrder>
+
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly parentId?: string
+
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
+     * @type {Array<ItemFields>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly fields?: Array<ItemFields>
+
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     * @type {Array<BaseItemKind>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly excludeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimeted.
+     * @type {Array<BaseItemKind>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly includeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes.
+     * @type {Array<ItemFilter>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly filters?: Array<ItemFilter>
+
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly isFavorite?: boolean
+
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly mediaTypes?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     * @type {Array<ImageType>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly imageTypes?: Array<ImageType>
+
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly sortBy?: Array<string>
+
+    /**
+     * Optional filter by items that are played, or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly isPlayed?: boolean
+
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly genres?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly officialRatings?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly tags?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     * @type {Array<number>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly years?: Array<number>
+
+    /**
+     * Optional, include user data.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly enableUserData?: boolean
+
+    /**
+     * Optional, the max number of images to return, per image type.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly imageTypeLimit?: number
+
+    /**
+     * Optional. The image types to include in the output.
+     * @type {Array<ImageType>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly enableImageTypes?: Array<ImageType>
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly person?: string
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person id.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly personIds?: Array<string>
+
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly personTypes?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly studios?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on artists. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly artists?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on artist id. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly excludeArtistIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified artist id.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly artistIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified album artist id.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly albumArtistIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified contributing artist id.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly contributingArtistIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly albums?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on album id. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly albumIds?: Array<string>
+
+    /**
+     * Optional. If specific items are needed, specify a list of item id\&#39;s to retrieve. This allows multiple, comma delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly ids?: Array<string>
+
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     * @type {Array<VideoType>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly videoTypes?: Array<VideoType>
+
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly minOfficialRating?: string
+
+    /**
+     * Optional filter by items that are locked.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly isLocked?: boolean
+
+    /**
+     * Optional filter by items that are placeholders.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly isPlaceHolder?: boolean
+
+    /**
+     * Optional filter by items that have official ratings.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly hasOfficialRating?: boolean
+
+    /**
+     * Whether or not to hide items behind their boxsets.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly collapseBoxSetItems?: boolean
+
+    /**
+     * Optional. Filter by the minimum width of the item.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly minWidth?: number
+
+    /**
+     * Optional. Filter by the minimum height of the item.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly minHeight?: number
+
+    /**
+     * Optional. Filter by the maximum width of the item.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly maxWidth?: number
+
+    /**
+     * Optional. Filter by the maximum height of the item.
+     * @type {number}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly maxHeight?: number
+
+    /**
+     * Optional filter by items that are 3D, or not.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly is3D?: boolean
+
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     * @type {Array<SeriesStatus>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly seriesStatus?: Array<SeriesStatus>
+
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly nameStartsWithOrGreater?: string
+
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly nameStartsWith?: string
+
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     * @type {string}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly nameLessThan?: string
+
+    /**
+     * Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly studioIds?: Array<string>
+
+    /**
+     * Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimeted.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly genreIds?: Array<string>
+
+    /**
+     * Optional. Enable the total record count.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly enableTotalRecordCount?: boolean
+
+    /**
+     * Optional, include image information in output.
+     * @type {boolean}
+     * @memberof ItemsApiGetItemsByUserId
+     */
+    readonly enableImages?: boolean
+}
+
+/**
+ * Request parameters for getResumeItems operation in ItemsApi.
+ * @export
+ * @interface ItemsApiGetResumeItemsRequest
+ */
+export interface ItemsApiGetResumeItemsRequest {
+    /**
+     * The user id.
+     * @type {string}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly userId: string
+
+    /**
+     * The start index.
+     * @type {number}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly startIndex?: number
+
+    /**
+     * The item limit.
+     * @type {number}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly limit?: number
+
+    /**
+     * The search term.
+     * @type {string}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly searchTerm?: string
+
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root.
+     * @type {string}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly parentId?: string
+
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
+     * @type {Array<ItemFields>}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly fields?: Array<ItemFields>
+
+    /**
+     * Optional. Filter by MediaType. Allows multiple, comma delimited.
+     * @type {Array<string>}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly mediaTypes?: Array<string>
+
+    /**
+     * Optional. Include user data.
+     * @type {boolean}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly enableUserData?: boolean
+
+    /**
+     * Optional. The max number of images to return, per image type.
+     * @type {number}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly imageTypeLimit?: number
+
+    /**
+     * Optional. The image types to include in the output.
+     * @type {Array<ImageType>}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly enableImageTypes?: Array<ImageType>
+
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
+     * @type {Array<BaseItemKind>}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly excludeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
+     * @type {Array<BaseItemKind>}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly includeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * Optional. Enable the total record count.
+     * @type {boolean}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly enableTotalRecordCount?: boolean
+
+    /**
+     * Optional. Include image information in output.
+     * @type {boolean}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly enableImages?: boolean
 }
 
 /**
@@ -1670,211 +2700,40 @@ export interface ItemsApiInterface {
  * @class ItemsApi
  * @extends {BaseAPI}
  */
-export class ItemsApi extends BaseAPI implements ItemsApiInterface {
+export class ItemsApi extends BaseAPI {
     /**
      * 
      * @summary Gets items based on a query.
-     * @param {string} [userId] The user id supplied as query parameter.
-     * @param {string} [maxOfficialRating] Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
-     * @param {boolean} [hasThemeSong] Optional filter by items with theme songs.
-     * @param {boolean} [hasThemeVideo] Optional filter by items with theme videos.
-     * @param {boolean} [hasSubtitles] Optional filter by items with subtitles.
-     * @param {boolean} [hasSpecialFeature] Optional filter by items with special features.
-     * @param {boolean} [hasTrailer] Optional filter by items with trailers.
-     * @param {string} [adjacentTo] Optional. Return items that are siblings of a supplied item.
-     * @param {number} [parentIndexNumber] Optional filter by parent index number.
-     * @param {boolean} [hasParentalRating] Optional filter by items that have or do not have a parental rating.
-     * @param {boolean} [isHd] Optional filter by items that are HD or not.
-     * @param {boolean} [is4K] Optional filter by items that are 4K or not.
-     * @param {Array<LocationType>} [locationTypes] Optional. If specified, results will be filtered based on LocationType. This allows multiple, comma delimited.
-     * @param {Array<LocationType>} [excludeLocationTypes] Optional. If specified, results will be filtered based on the LocationType. This allows multiple, comma delimited.
-     * @param {boolean} [isMissing] Optional filter by items that are missing episodes or not.
-     * @param {boolean} [isUnaired] Optional filter by items that are unaired episodes or not.
-     * @param {number} [minCommunityRating] Optional filter by minimum community rating.
-     * @param {number} [minCriticRating] Optional filter by minimum critic rating.
-     * @param {string} [minPremiereDate] Optional. The minimum premiere date. Format &#x3D; ISO.
-     * @param {string} [minDateLastSaved] Optional. The minimum last saved date. Format &#x3D; ISO.
-     * @param {string} [minDateLastSavedForUser] Optional. The minimum last saved date for the current user. Format &#x3D; ISO.
-     * @param {string} [maxPremiereDate] Optional. The maximum premiere date. Format &#x3D; ISO.
-     * @param {boolean} [hasOverview] Optional filter by items that have an overview or not.
-     * @param {boolean} [hasImdbId] Optional filter by items that have an imdb id or not.
-     * @param {boolean} [hasTmdbId] Optional filter by items that have a tmdb id or not.
-     * @param {boolean} [hasTvdbId] Optional filter by items that have a tvdb id or not.
-     * @param {Array<string>} [excludeItemIds] Optional. If specified, results will be filtered by excluding item ids. This allows multiple, comma delimited.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {boolean} [recursive] When searching within folders, this determines whether or not the search will be recursive. true/false.
-     * @param {string} [searchTerm] Optional. Filter based on a search term.
-     * @param {Array<SortOrder>} [sortOrder] Sort Order - Ascending,Descending.
-     * @param {string} [parentId] Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
-     * @param {Array<BaseItemKind>} [excludeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
-     * @param {Array<ItemFilter>} [filters] Optional. Specify additional filters to apply. This allows multiple, comma delimited. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes.
-     * @param {boolean} [isFavorite] Optional filter by items that are marked as favorite, or not.
-     * @param {Array<string>} [mediaTypes] Optional filter by MediaType. Allows multiple, comma delimited.
-     * @param {Array<ImageType>} [imageTypes] Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
-     * @param {Array<string>} [sortBy] Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
-     * @param {boolean} [isPlayed] Optional filter by items that are played, or not.
-     * @param {Array<string>} [genres] Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimited.
-     * @param {Array<string>} [officialRatings] Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimited.
-     * @param {Array<string>} [tags] Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimited.
-     * @param {Array<number>} [years] Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimited.
-     * @param {boolean} [enableUserData] Optional, include user data.
-     * @param {number} [imageTypeLimit] Optional, the max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {string} [person] Optional. If specified, results will be filtered to include only those containing the specified person.
-     * @param {Array<string>} [personIds] Optional. If specified, results will be filtered to include only those containing the specified person id.
-     * @param {Array<string>} [personTypes] Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited.
-     * @param {Array<string>} [studios] Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimited.
-     * @param {Array<string>} [artists] Optional. If specified, results will be filtered based on artists. This allows multiple, pipe delimited.
-     * @param {Array<string>} [excludeArtistIds] Optional. If specified, results will be filtered based on artist id. This allows multiple, pipe delimited.
-     * @param {Array<string>} [artistIds] Optional. If specified, results will be filtered to include only those containing the specified artist id.
-     * @param {Array<string>} [albumArtistIds] Optional. If specified, results will be filtered to include only those containing the specified album artist id.
-     * @param {Array<string>} [contributingArtistIds] Optional. If specified, results will be filtered to include only those containing the specified contributing artist id.
-     * @param {Array<string>} [albums] Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimited.
-     * @param {Array<string>} [albumIds] Optional. If specified, results will be filtered based on album id. This allows multiple, pipe delimited.
-     * @param {Array<string>} [ids] Optional. If specific items are needed, specify a list of item id\&#39;s to retrieve. This allows multiple, comma delimited.
-     * @param {Array<VideoType>} [videoTypes] Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimited.
-     * @param {string} [minOfficialRating] Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
-     * @param {boolean} [isLocked] Optional filter by items that are locked.
-     * @param {boolean} [isPlaceHolder] Optional filter by items that are placeholders.
-     * @param {boolean} [hasOfficialRating] Optional filter by items that have official ratings.
-     * @param {boolean} [collapseBoxSetItems] Whether or not to hide items behind their boxsets.
-     * @param {number} [minWidth] Optional. Filter by the minimum width of the item.
-     * @param {number} [minHeight] Optional. Filter by the minimum height of the item.
-     * @param {number} [maxWidth] Optional. Filter by the maximum width of the item.
-     * @param {number} [maxHeight] Optional. Filter by the maximum height of the item.
-     * @param {boolean} [is3D] Optional filter by items that are 3D, or not.
-     * @param {Array<SeriesStatus>} [seriesStatus] Optional filter by Series Status. Allows multiple, comma delimited.
-     * @param {string} [nameStartsWithOrGreater] Optional filter by items whose name is sorted equally or greater than a given input string.
-     * @param {string} [nameStartsWith] Optional filter by items whose name is sorted equally than a given input string.
-     * @param {string} [nameLessThan] Optional filter by items whose name is equally or lesser than a given input string.
-     * @param {Array<string>} [studioIds] Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimited.
-     * @param {Array<string>} [genreIds] Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimited.
-     * @param {boolean} [enableTotalRecordCount] Optional. Enable the total record count.
-     * @param {boolean} [enableImages] Optional, include image information in output.
+     * @param {ItemsApiGetItemsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public getItems(userId?: string, maxOfficialRating?: string, hasThemeSong?: boolean, hasThemeVideo?: boolean, hasSubtitles?: boolean, hasSpecialFeature?: boolean, hasTrailer?: boolean, adjacentTo?: string, parentIndexNumber?: number, hasParentalRating?: boolean, isHd?: boolean, is4K?: boolean, locationTypes?: Array<LocationType>, excludeLocationTypes?: Array<LocationType>, isMissing?: boolean, isUnaired?: boolean, minCommunityRating?: number, minCriticRating?: number, minPremiereDate?: string, minDateLastSaved?: string, minDateLastSavedForUser?: string, maxPremiereDate?: string, hasOverview?: boolean, hasImdbId?: boolean, hasTmdbId?: boolean, hasTvdbId?: boolean, excludeItemIds?: Array<string>, startIndex?: number, limit?: number, recursive?: boolean, searchTerm?: string, sortOrder?: Array<SortOrder>, parentId?: string, fields?: Array<ItemFields>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, filters?: Array<ItemFilter>, isFavorite?: boolean, mediaTypes?: Array<string>, imageTypes?: Array<ImageType>, sortBy?: Array<string>, isPlayed?: boolean, genres?: Array<string>, officialRatings?: Array<string>, tags?: Array<string>, years?: Array<number>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, person?: string, personIds?: Array<string>, personTypes?: Array<string>, studios?: Array<string>, artists?: Array<string>, excludeArtistIds?: Array<string>, artistIds?: Array<string>, albumArtistIds?: Array<string>, contributingArtistIds?: Array<string>, albums?: Array<string>, albumIds?: Array<string>, ids?: Array<string>, videoTypes?: Array<VideoType>, minOfficialRating?: string, isLocked?: boolean, isPlaceHolder?: boolean, hasOfficialRating?: boolean, collapseBoxSetItems?: boolean, minWidth?: number, minHeight?: number, maxWidth?: number, maxHeight?: number, is3D?: boolean, seriesStatus?: Array<SeriesStatus>, nameStartsWithOrGreater?: string, nameStartsWith?: string, nameLessThan?: string, studioIds?: Array<string>, genreIds?: Array<string>, enableTotalRecordCount?: boolean, enableImages?: boolean, options?: any) {
-        return ItemsApiFp(this.configuration).getItems(userId, maxOfficialRating, hasThemeSong, hasThemeVideo, hasSubtitles, hasSpecialFeature, hasTrailer, adjacentTo, parentIndexNumber, hasParentalRating, isHd, is4K, locationTypes, excludeLocationTypes, isMissing, isUnaired, minCommunityRating, minCriticRating, minPremiereDate, minDateLastSaved, minDateLastSavedForUser, maxPremiereDate, hasOverview, hasImdbId, hasTmdbId, hasTvdbId, excludeItemIds, startIndex, limit, recursive, searchTerm, sortOrder, parentId, fields, excludeItemTypes, includeItemTypes, filters, isFavorite, mediaTypes, imageTypes, sortBy, isPlayed, genres, officialRatings, tags, years, enableUserData, imageTypeLimit, enableImageTypes, person, personIds, personTypes, studios, artists, excludeArtistIds, artistIds, albumArtistIds, contributingArtistIds, albums, albumIds, ids, videoTypes, minOfficialRating, isLocked, isPlaceHolder, hasOfficialRating, collapseBoxSetItems, minWidth, minHeight, maxWidth, maxHeight, is3D, seriesStatus, nameStartsWithOrGreater, nameStartsWith, nameLessThan, studioIds, genreIds, enableTotalRecordCount, enableImages, options).then((request) => request(this.axios, this.basePath));
+    public getItems(requestParameters: ItemsApiGetItemsRequest = {}, options?: any) {
+        return ItemsApiFp(this.configuration).getItems(requestParameters.userId, requestParameters.maxOfficialRating, requestParameters.hasThemeSong, requestParameters.hasThemeVideo, requestParameters.hasSubtitles, requestParameters.hasSpecialFeature, requestParameters.hasTrailer, requestParameters.adjacentTo, requestParameters.parentIndexNumber, requestParameters.hasParentalRating, requestParameters.isHd, requestParameters.is4K, requestParameters.locationTypes, requestParameters.excludeLocationTypes, requestParameters.isMissing, requestParameters.isUnaired, requestParameters.minCommunityRating, requestParameters.minCriticRating, requestParameters.minPremiereDate, requestParameters.minDateLastSaved, requestParameters.minDateLastSavedForUser, requestParameters.maxPremiereDate, requestParameters.hasOverview, requestParameters.hasImdbId, requestParameters.hasTmdbId, requestParameters.hasTvdbId, requestParameters.excludeItemIds, requestParameters.startIndex, requestParameters.limit, requestParameters.recursive, requestParameters.searchTerm, requestParameters.sortOrder, requestParameters.parentId, requestParameters.fields, requestParameters.excludeItemTypes, requestParameters.includeItemTypes, requestParameters.filters, requestParameters.isFavorite, requestParameters.mediaTypes, requestParameters.imageTypes, requestParameters.sortBy, requestParameters.isPlayed, requestParameters.genres, requestParameters.officialRatings, requestParameters.tags, requestParameters.years, requestParameters.enableUserData, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.person, requestParameters.personIds, requestParameters.personTypes, requestParameters.studios, requestParameters.artists, requestParameters.excludeArtistIds, requestParameters.artistIds, requestParameters.albumArtistIds, requestParameters.contributingArtistIds, requestParameters.albums, requestParameters.albumIds, requestParameters.ids, requestParameters.videoTypes, requestParameters.minOfficialRating, requestParameters.isLocked, requestParameters.isPlaceHolder, requestParameters.hasOfficialRating, requestParameters.collapseBoxSetItems, requestParameters.minWidth, requestParameters.minHeight, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.is3D, requestParameters.seriesStatus, requestParameters.nameStartsWithOrGreater, requestParameters.nameStartsWith, requestParameters.nameLessThan, requestParameters.studioIds, requestParameters.genreIds, requestParameters.enableTotalRecordCount, requestParameters.enableImages, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets items based on a query.
-     * @param {string} userId The user id supplied as query parameter.
-     * @param {string} [maxOfficialRating] Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
-     * @param {boolean} [hasThemeSong] Optional filter by items with theme songs.
-     * @param {boolean} [hasThemeVideo] Optional filter by items with theme videos.
-     * @param {boolean} [hasSubtitles] Optional filter by items with subtitles.
-     * @param {boolean} [hasSpecialFeature] Optional filter by items with special features.
-     * @param {boolean} [hasTrailer] Optional filter by items with trailers.
-     * @param {string} [adjacentTo] Optional. Return items that are siblings of a supplied item.
-     * @param {number} [parentIndexNumber] Optional filter by parent index number.
-     * @param {boolean} [hasParentalRating] Optional filter by items that have or do not have a parental rating.
-     * @param {boolean} [isHd] Optional filter by items that are HD or not.
-     * @param {boolean} [is4K] Optional filter by items that are 4K or not.
-     * @param {Array<LocationType>} [locationTypes] Optional. If specified, results will be filtered based on LocationType. This allows multiple, comma delimeted.
-     * @param {Array<LocationType>} [excludeLocationTypes] Optional. If specified, results will be filtered based on the LocationType. This allows multiple, comma delimeted.
-     * @param {boolean} [isMissing] Optional filter by items that are missing episodes or not.
-     * @param {boolean} [isUnaired] Optional filter by items that are unaired episodes or not.
-     * @param {number} [minCommunityRating] Optional filter by minimum community rating.
-     * @param {number} [minCriticRating] Optional filter by minimum critic rating.
-     * @param {string} [minPremiereDate] Optional. The minimum premiere date. Format &#x3D; ISO.
-     * @param {string} [minDateLastSaved] Optional. The minimum last saved date. Format &#x3D; ISO.
-     * @param {string} [minDateLastSavedForUser] Optional. The minimum last saved date for the current user. Format &#x3D; ISO.
-     * @param {string} [maxPremiereDate] Optional. The maximum premiere date. Format &#x3D; ISO.
-     * @param {boolean} [hasOverview] Optional filter by items that have an overview or not.
-     * @param {boolean} [hasImdbId] Optional filter by items that have an imdb id or not.
-     * @param {boolean} [hasTmdbId] Optional filter by items that have a tmdb id or not.
-     * @param {boolean} [hasTvdbId] Optional filter by items that have a tvdb id or not.
-     * @param {Array<string>} [excludeItemIds] Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
-     * @param {number} [startIndex] Optional. The record index to start at. All items with a lower index will be dropped from the results.
-     * @param {number} [limit] Optional. The maximum number of records to return.
-     * @param {boolean} [recursive] When searching within folders, this determines whether or not the search will be recursive. true/false.
-     * @param {string} [searchTerm] Optional. Filter based on a search term.
-     * @param {Array<SortOrder>} [sortOrder] Sort Order - Ascending,Descending.
-     * @param {string} [parentId] Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
-     * @param {Array<BaseItemKind>} [excludeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimeted.
-     * @param {Array<ItemFilter>} [filters] Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes.
-     * @param {boolean} [isFavorite] Optional filter by items that are marked as favorite, or not.
-     * @param {Array<string>} [mediaTypes] Optional filter by MediaType. Allows multiple, comma delimited.
-     * @param {Array<ImageType>} [imageTypes] Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
-     * @param {Array<string>} [sortBy] Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
-     * @param {boolean} [isPlayed] Optional filter by items that are played, or not.
-     * @param {Array<string>} [genres] Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [officialRatings] Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [tags] Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
-     * @param {Array<number>} [years] Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
-     * @param {boolean} [enableUserData] Optional, include user data.
-     * @param {number} [imageTypeLimit] Optional, the max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {string} [person] Optional. If specified, results will be filtered to include only those containing the specified person.
-     * @param {Array<string>} [personIds] Optional. If specified, results will be filtered to include only those containing the specified person id.
-     * @param {Array<string>} [personTypes] Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited.
-     * @param {Array<string>} [studios] Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [artists] Optional. If specified, results will be filtered based on artists. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [excludeArtistIds] Optional. If specified, results will be filtered based on artist id. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [artistIds] Optional. If specified, results will be filtered to include only those containing the specified artist id.
-     * @param {Array<string>} [albumArtistIds] Optional. If specified, results will be filtered to include only those containing the specified album artist id.
-     * @param {Array<string>} [contributingArtistIds] Optional. If specified, results will be filtered to include only those containing the specified contributing artist id.
-     * @param {Array<string>} [albums] Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [albumIds] Optional. If specified, results will be filtered based on album id. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [ids] Optional. If specific items are needed, specify a list of item id\&#39;s to retrieve. This allows multiple, comma delimited.
-     * @param {Array<VideoType>} [videoTypes] Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
-     * @param {string} [minOfficialRating] Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
-     * @param {boolean} [isLocked] Optional filter by items that are locked.
-     * @param {boolean} [isPlaceHolder] Optional filter by items that are placeholders.
-     * @param {boolean} [hasOfficialRating] Optional filter by items that have official ratings.
-     * @param {boolean} [collapseBoxSetItems] Whether or not to hide items behind their boxsets.
-     * @param {number} [minWidth] Optional. Filter by the minimum width of the item.
-     * @param {number} [minHeight] Optional. Filter by the minimum height of the item.
-     * @param {number} [maxWidth] Optional. Filter by the maximum width of the item.
-     * @param {number} [maxHeight] Optional. Filter by the maximum height of the item.
-     * @param {boolean} [is3D] Optional filter by items that are 3D, or not.
-     * @param {Array<SeriesStatus>} [seriesStatus] Optional filter by Series Status. Allows multiple, comma delimeted.
-     * @param {string} [nameStartsWithOrGreater] Optional filter by items whose name is sorted equally or greater than a given input string.
-     * @param {string} [nameStartsWith] Optional filter by items whose name is sorted equally than a given input string.
-     * @param {string} [nameLessThan] Optional filter by items whose name is equally or lesser than a given input string.
-     * @param {Array<string>} [studioIds] Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimeted.
-     * @param {Array<string>} [genreIds] Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimeted.
-     * @param {boolean} [enableTotalRecordCount] Optional. Enable the total record count.
-     * @param {boolean} [enableImages] Optional, include image information in output.
+     * @param {ItemsApiGetItemsByUserIdRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public getItemsByUserId(userId: string, maxOfficialRating?: string, hasThemeSong?: boolean, hasThemeVideo?: boolean, hasSubtitles?: boolean, hasSpecialFeature?: boolean, hasTrailer?: boolean, adjacentTo?: string, parentIndexNumber?: number, hasParentalRating?: boolean, isHd?: boolean, is4K?: boolean, locationTypes?: Array<LocationType>, excludeLocationTypes?: Array<LocationType>, isMissing?: boolean, isUnaired?: boolean, minCommunityRating?: number, minCriticRating?: number, minPremiereDate?: string, minDateLastSaved?: string, minDateLastSavedForUser?: string, maxPremiereDate?: string, hasOverview?: boolean, hasImdbId?: boolean, hasTmdbId?: boolean, hasTvdbId?: boolean, excludeItemIds?: Array<string>, startIndex?: number, limit?: number, recursive?: boolean, searchTerm?: string, sortOrder?: Array<SortOrder>, parentId?: string, fields?: Array<ItemFields>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, filters?: Array<ItemFilter>, isFavorite?: boolean, mediaTypes?: Array<string>, imageTypes?: Array<ImageType>, sortBy?: Array<string>, isPlayed?: boolean, genres?: Array<string>, officialRatings?: Array<string>, tags?: Array<string>, years?: Array<number>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, person?: string, personIds?: Array<string>, personTypes?: Array<string>, studios?: Array<string>, artists?: Array<string>, excludeArtistIds?: Array<string>, artistIds?: Array<string>, albumArtistIds?: Array<string>, contributingArtistIds?: Array<string>, albums?: Array<string>, albumIds?: Array<string>, ids?: Array<string>, videoTypes?: Array<VideoType>, minOfficialRating?: string, isLocked?: boolean, isPlaceHolder?: boolean, hasOfficialRating?: boolean, collapseBoxSetItems?: boolean, minWidth?: number, minHeight?: number, maxWidth?: number, maxHeight?: number, is3D?: boolean, seriesStatus?: Array<SeriesStatus>, nameStartsWithOrGreater?: string, nameStartsWith?: string, nameLessThan?: string, studioIds?: Array<string>, genreIds?: Array<string>, enableTotalRecordCount?: boolean, enableImages?: boolean, options?: any) {
-        return ItemsApiFp(this.configuration).getItemsByUserId(userId, maxOfficialRating, hasThemeSong, hasThemeVideo, hasSubtitles, hasSpecialFeature, hasTrailer, adjacentTo, parentIndexNumber, hasParentalRating, isHd, is4K, locationTypes, excludeLocationTypes, isMissing, isUnaired, minCommunityRating, minCriticRating, minPremiereDate, minDateLastSaved, minDateLastSavedForUser, maxPremiereDate, hasOverview, hasImdbId, hasTmdbId, hasTvdbId, excludeItemIds, startIndex, limit, recursive, searchTerm, sortOrder, parentId, fields, excludeItemTypes, includeItemTypes, filters, isFavorite, mediaTypes, imageTypes, sortBy, isPlayed, genres, officialRatings, tags, years, enableUserData, imageTypeLimit, enableImageTypes, person, personIds, personTypes, studios, artists, excludeArtistIds, artistIds, albumArtistIds, contributingArtistIds, albums, albumIds, ids, videoTypes, minOfficialRating, isLocked, isPlaceHolder, hasOfficialRating, collapseBoxSetItems, minWidth, minHeight, maxWidth, maxHeight, is3D, seriesStatus, nameStartsWithOrGreater, nameStartsWith, nameLessThan, studioIds, genreIds, enableTotalRecordCount, enableImages, options).then((request) => request(this.axios, this.basePath));
+    public getItemsByUserId(requestParameters: ItemsApiGetItemsByUserIdRequest, options?: any) {
+        return ItemsApiFp(this.configuration).getItemsByUserId(requestParameters.userId, requestParameters.maxOfficialRating, requestParameters.hasThemeSong, requestParameters.hasThemeVideo, requestParameters.hasSubtitles, requestParameters.hasSpecialFeature, requestParameters.hasTrailer, requestParameters.adjacentTo, requestParameters.parentIndexNumber, requestParameters.hasParentalRating, requestParameters.isHd, requestParameters.is4K, requestParameters.locationTypes, requestParameters.excludeLocationTypes, requestParameters.isMissing, requestParameters.isUnaired, requestParameters.minCommunityRating, requestParameters.minCriticRating, requestParameters.minPremiereDate, requestParameters.minDateLastSaved, requestParameters.minDateLastSavedForUser, requestParameters.maxPremiereDate, requestParameters.hasOverview, requestParameters.hasImdbId, requestParameters.hasTmdbId, requestParameters.hasTvdbId, requestParameters.excludeItemIds, requestParameters.startIndex, requestParameters.limit, requestParameters.recursive, requestParameters.searchTerm, requestParameters.sortOrder, requestParameters.parentId, requestParameters.fields, requestParameters.excludeItemTypes, requestParameters.includeItemTypes, requestParameters.filters, requestParameters.isFavorite, requestParameters.mediaTypes, requestParameters.imageTypes, requestParameters.sortBy, requestParameters.isPlayed, requestParameters.genres, requestParameters.officialRatings, requestParameters.tags, requestParameters.years, requestParameters.enableUserData, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.person, requestParameters.personIds, requestParameters.personTypes, requestParameters.studios, requestParameters.artists, requestParameters.excludeArtistIds, requestParameters.artistIds, requestParameters.albumArtistIds, requestParameters.contributingArtistIds, requestParameters.albums, requestParameters.albumIds, requestParameters.ids, requestParameters.videoTypes, requestParameters.minOfficialRating, requestParameters.isLocked, requestParameters.isPlaceHolder, requestParameters.hasOfficialRating, requestParameters.collapseBoxSetItems, requestParameters.minWidth, requestParameters.minHeight, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.is3D, requestParameters.seriesStatus, requestParameters.nameStartsWithOrGreater, requestParameters.nameStartsWith, requestParameters.nameLessThan, requestParameters.studioIds, requestParameters.genreIds, requestParameters.enableTotalRecordCount, requestParameters.enableImages, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets items based on a query.
-     * @param {string} userId The user id.
-     * @param {number} [startIndex] The start index.
-     * @param {number} [limit] The item limit.
-     * @param {string} [searchTerm] The search term.
-     * @param {string} [parentId] Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<ItemFields>} [fields] Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
-     * @param {Array<string>} [mediaTypes] Optional. Filter by MediaType. Allows multiple, comma delimited.
-     * @param {boolean} [enableUserData] Optional. Include user data.
-     * @param {number} [imageTypeLimit] Optional. The max number of images to return, per image type.
-     * @param {Array<ImageType>} [enableImageTypes] Optional. The image types to include in the output.
-     * @param {Array<BaseItemKind>} [excludeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
-     * @param {boolean} [enableTotalRecordCount] Optional. Enable the total record count.
-     * @param {boolean} [enableImages] Optional. Include image information in output.
+     * @param {ItemsApiGetResumeItemsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public getResumeItems(userId: string, startIndex?: number, limit?: number, searchTerm?: string, parentId?: string, fields?: Array<ItemFields>, mediaTypes?: Array<string>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, enableTotalRecordCount?: boolean, enableImages?: boolean, options?: any) {
-        return ItemsApiFp(this.configuration).getResumeItems(userId, startIndex, limit, searchTerm, parentId, fields, mediaTypes, enableUserData, imageTypeLimit, enableImageTypes, excludeItemTypes, includeItemTypes, enableTotalRecordCount, enableImages, options).then((request) => request(this.axios, this.basePath));
+    public getResumeItems(requestParameters: ItemsApiGetResumeItemsRequest, options?: any) {
+        return ItemsApiFp(this.configuration).getResumeItems(requestParameters.userId, requestParameters.startIndex, requestParameters.limit, requestParameters.searchTerm, requestParameters.parentId, requestParameters.fields, requestParameters.mediaTypes, requestParameters.enableUserData, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.excludeItemTypes, requestParameters.includeItemTypes, requestParameters.enableTotalRecordCount, requestParameters.enableImages, options).then((request) => request(this.axios, this.basePath));
     }
 }

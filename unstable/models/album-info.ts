@@ -28,6 +28,12 @@ export interface AlbumInfo {
      */
     Name?: string | null;
     /**
+     * Gets or sets the original title
+     * @type {string}
+     * @memberof AlbumInfo
+     */
+    OriginalTitle?: string | null;
+    /**
      * Gets or sets the path.
      * @type {string}
      * @memberof AlbumInfo
@@ -86,19 +92,19 @@ export interface AlbumInfo {
      * @type {Array<string>}
      * @memberof AlbumInfo
      */
-    AlbumArtists?: Array<string> | null;
+    AlbumArtists?: Array<string>;
     /**
      * Gets or sets the artist provider ids.
      * @type {{ [key: string]: string; }}
      * @memberof AlbumInfo
      */
-    ArtistProviderIds?: { [key: string]: string; } | null;
+    ArtistProviderIds?: { [key: string]: string; };
     /**
      * 
      * @type {Array<SongInfo>}
      * @memberof AlbumInfo
      */
-    SongInfos?: Array<SongInfo> | null;
+    SongInfos?: Array<SongInfo>;
 }
 
 

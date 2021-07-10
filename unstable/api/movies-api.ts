@@ -141,25 +141,45 @@ export const MoviesApiFactory = function (configuration?: Configuration, basePat
 };
 
 /**
- * MoviesApi - interface
+ * Request parameters for getMovieRecommendations operation in MoviesApi.
  * @export
- * @interface MoviesApi
+ * @interface MoviesApiGetMovieRecommendationsRequest
  */
-export interface MoviesApiInterface {
+export interface MoviesApiGetMovieRecommendationsRequest {
     /**
-     * 
-     * @summary Gets movie recommendations.
-     * @param {string} [userId] Optional. Filter by user id, and attach user data.
-     * @param {string} [parentId] Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<ItemFields>} [fields] Optional. The fields to return.
-     * @param {number} [categoryLimit] The max number of categories to return.
-     * @param {number} [itemLimit] The max number of items to return per category.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MoviesApiInterface
+     * Optional. Filter by user id, and attach user data.
+     * @type {string}
+     * @memberof MoviesApiGetMovieRecommendations
      */
-    getMovieRecommendations(userId?: string, parentId?: string, fields?: Array<ItemFields>, categoryLimit?: number, itemLimit?: number, options?: any): AxiosPromise<Array<RecommendationDto>>;
+    readonly userId?: string
 
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root.
+     * @type {string}
+     * @memberof MoviesApiGetMovieRecommendations
+     */
+    readonly parentId?: string
+
+    /**
+     * Optional. The fields to return.
+     * @type {Array<ItemFields>}
+     * @memberof MoviesApiGetMovieRecommendations
+     */
+    readonly fields?: Array<ItemFields>
+
+    /**
+     * The max number of categories to return.
+     * @type {number}
+     * @memberof MoviesApiGetMovieRecommendations
+     */
+    readonly categoryLimit?: number
+
+    /**
+     * The max number of items to return per category.
+     * @type {number}
+     * @memberof MoviesApiGetMovieRecommendations
+     */
+    readonly itemLimit?: number
 }
 
 /**
@@ -168,20 +188,16 @@ export interface MoviesApiInterface {
  * @class MoviesApi
  * @extends {BaseAPI}
  */
-export class MoviesApi extends BaseAPI implements MoviesApiInterface {
+export class MoviesApi extends BaseAPI {
     /**
      * 
      * @summary Gets movie recommendations.
-     * @param {string} [userId] Optional. Filter by user id, and attach user data.
-     * @param {string} [parentId] Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<ItemFields>} [fields] Optional. The fields to return.
-     * @param {number} [categoryLimit] The max number of categories to return.
-     * @param {number} [itemLimit] The max number of items to return per category.
+     * @param {MoviesApiGetMovieRecommendationsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MoviesApi
      */
-    public getMovieRecommendations(userId?: string, parentId?: string, fields?: Array<ItemFields>, categoryLimit?: number, itemLimit?: number, options?: any) {
-        return MoviesApiFp(this.configuration).getMovieRecommendations(userId, parentId, fields, categoryLimit, itemLimit, options).then((request) => request(this.axios, this.basePath));
+    public getMovieRecommendations(requestParameters: MoviesApiGetMovieRecommendationsRequest = {}, options?: any) {
+        return MoviesApiFp(this.configuration).getMovieRecommendations(requestParameters.userId, requestParameters.parentId, requestParameters.fields, requestParameters.categoryLimit, requestParameters.itemLimit, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum SendCommandType {
     Unpause = 'Unpause',
     Pause = 'Pause',

@@ -223,40 +223,31 @@ export const ApiKeyApiFactory = function (configuration?: Configuration, basePat
 };
 
 /**
- * ApiKeyApi - interface
+ * Request parameters for createKey operation in ApiKeyApi.
  * @export
- * @interface ApiKeyApi
+ * @interface ApiKeyApiCreateKeyRequest
  */
-export interface ApiKeyApiInterface {
+export interface ApiKeyApiCreateKeyRequest {
     /**
-     * 
-     * @summary Create a new api key.
-     * @param {string} app Name of the app using the authentication key.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ApiKeyApiInterface
+     * Name of the app using the authentication key.
+     * @type {string}
+     * @memberof ApiKeyApiCreateKey
      */
-    createKey(app: string, options?: any): AxiosPromise<void>;
+    readonly app: string
+}
 
+/**
+ * Request parameters for revokeKey operation in ApiKeyApi.
+ * @export
+ * @interface ApiKeyApiRevokeKeyRequest
+ */
+export interface ApiKeyApiRevokeKeyRequest {
     /**
-     * 
-     * @summary Get all keys.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ApiKeyApiInterface
+     * The access token to delete.
+     * @type {string}
+     * @memberof ApiKeyApiRevokeKey
      */
-    getKeys(options?: any): AxiosPromise<AuthenticationInfoQueryResult>;
-
-    /**
-     * 
-     * @summary Remove an api key.
-     * @param {string} key The access token to delete.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ApiKeyApiInterface
-     */
-    revokeKey(key: string, options?: any): AxiosPromise<void>;
-
+    readonly key: string
 }
 
 /**
@@ -265,17 +256,17 @@ export interface ApiKeyApiInterface {
  * @class ApiKeyApi
  * @extends {BaseAPI}
  */
-export class ApiKeyApi extends BaseAPI implements ApiKeyApiInterface {
+export class ApiKeyApi extends BaseAPI {
     /**
      * 
      * @summary Create a new api key.
-     * @param {string} app Name of the app using the authentication key.
+     * @param {ApiKeyApiCreateKeyRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    public createKey(app: string, options?: any) {
-        return ApiKeyApiFp(this.configuration).createKey(app, options).then((request) => request(this.axios, this.basePath));
+    public createKey(requestParameters: ApiKeyApiCreateKeyRequest, options?: any) {
+        return ApiKeyApiFp(this.configuration).createKey(requestParameters.app, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -292,12 +283,12 @@ export class ApiKeyApi extends BaseAPI implements ApiKeyApiInterface {
     /**
      * 
      * @summary Remove an api key.
-     * @param {string} key The access token to delete.
+     * @param {ApiKeyApiRevokeKeyRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    public revokeKey(key: string, options?: any) {
-        return ApiKeyApiFp(this.configuration).revokeKey(key, options).then((request) => request(this.axios, this.basePath));
+    public revokeKey(requestParameters: ApiKeyApiRevokeKeyRequest, options?: any) {
+        return ApiKeyApiFp(this.configuration).revokeKey(requestParameters.key, options).then((request) => request(this.axios, this.basePath));
     }
 }

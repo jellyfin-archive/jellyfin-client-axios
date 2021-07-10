@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum RecommendationType {
     SimilarToRecentlyPlayed = 'SimilarToRecentlyPlayed',
     SimilarToLikedItem = 'SimilarToLikedItem',

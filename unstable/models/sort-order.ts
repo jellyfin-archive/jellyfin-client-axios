@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum SortOrder {
     Ascending = 'Ascending',
     Descending = 'Descending'

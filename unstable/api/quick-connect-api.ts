@@ -24,47 +24,12 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 import { ProblemDetails } from '../models';
 // @ts-ignore
 import { QuickConnectResult } from '../models';
-// @ts-ignore
-import { QuickConnectState } from '../models';
 /**
  * QuickConnectApi - axios parameter creator
  * @export
  */
 export const QuickConnectApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
-        /**
-         * 
-         * @summary Temporarily activates quick connect for five minutes.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        activate: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/QuickConnect/Activate`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
         /**
          * 
          * @summary Authorizes a pending quick connect request.
@@ -92,44 +57,6 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
 
             if (code !== undefined) {
                 localVarQueryParameter['code'] = code;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Enables or disables quick connect.
-         * @param {QuickConnectState} [status] New MediaBrowser.Model.QuickConnect.QuickConnectState.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        available: async (status?: QuickConnectState, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/QuickConnect/Available`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
-
-            if (status !== undefined) {
-                localVarQueryParameter['status'] = status;
             }
 
 
@@ -182,45 +109,12 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @summary Deauthorize all quick connect devices for the current user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deauthorize: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/QuickConnect/Deauthorize`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary Gets the current quick connect state.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatus: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/QuickConnect/Status`;
+        getEnabled: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/QuickConnect/Enabled`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -285,16 +179,6 @@ export const QuickConnectApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Temporarily activates quick connect for five minutes.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async activate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.activate(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @summary Authorizes a pending quick connect request.
          * @param {string} code Quick connect code to authorize.
          * @param {*} [options] Override http request option.
@@ -302,17 +186,6 @@ export const QuickConnectApiFp = function(configuration?: Configuration) {
          */
         async authorize(code: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authorize(code, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Enables or disables quick connect.
-         * @param {QuickConnectState} [status] New MediaBrowser.Model.QuickConnect.QuickConnectState.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async available(status?: QuickConnectState, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.available(status, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -328,22 +201,12 @@ export const QuickConnectApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Deauthorize all quick connect devices for the current user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deauthorize(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deauthorize(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @summary Gets the current quick connect state.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStatus(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuickConnectState>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStatus(options);
+        async getEnabled(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEnabled(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -368,15 +231,6 @@ export const QuickConnectApiFactory = function (configuration?: Configuration, b
     return {
         /**
          * 
-         * @summary Temporarily activates quick connect for five minutes.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        activate(options?: any): AxiosPromise<void> {
-            return localVarFp.activate(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Authorizes a pending quick connect request.
          * @param {string} code Quick connect code to authorize.
          * @param {*} [options] Override http request option.
@@ -384,16 +238,6 @@ export const QuickConnectApiFactory = function (configuration?: Configuration, b
          */
         authorize(code: string, options?: any): AxiosPromise<boolean> {
             return localVarFp.authorize(code, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Enables or disables quick connect.
-         * @param {QuickConnectState} [status] New MediaBrowser.Model.QuickConnect.QuickConnectState.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        available(status?: QuickConnectState, options?: any): AxiosPromise<void> {
-            return localVarFp.available(status, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -407,21 +251,12 @@ export const QuickConnectApiFactory = function (configuration?: Configuration, b
         },
         /**
          * 
-         * @summary Deauthorize all quick connect devices for the current user.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deauthorize(options?: any): AxiosPromise<number> {
-            return localVarFp.deauthorize(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Gets the current quick connect state.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStatus(options?: any): AxiosPromise<QuickConnectState> {
-            return localVarFp.getStatus(options).then((request) => request(axios, basePath));
+        getEnabled(options?: any): AxiosPromise<boolean> {
+            return localVarFp.getEnabled(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -436,77 +271,31 @@ export const QuickConnectApiFactory = function (configuration?: Configuration, b
 };
 
 /**
- * QuickConnectApi - interface
+ * Request parameters for authorize operation in QuickConnectApi.
  * @export
- * @interface QuickConnectApi
+ * @interface QuickConnectApiAuthorizeRequest
  */
-export interface QuickConnectApiInterface {
+export interface QuickConnectApiAuthorizeRequest {
     /**
-     * 
-     * @summary Temporarily activates quick connect for five minutes.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApiInterface
+     * Quick connect code to authorize.
+     * @type {string}
+     * @memberof QuickConnectApiAuthorize
      */
-    activate(options?: any): AxiosPromise<void>;
+    readonly code: string
+}
 
+/**
+ * Request parameters for connect operation in QuickConnectApi.
+ * @export
+ * @interface QuickConnectApiConnectRequest
+ */
+export interface QuickConnectApiConnectRequest {
     /**
-     * 
-     * @summary Authorizes a pending quick connect request.
-     * @param {string} code Quick connect code to authorize.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApiInterface
+     * Secret previously returned from the Initiate endpoint.
+     * @type {string}
+     * @memberof QuickConnectApiConnect
      */
-    authorize(code: string, options?: any): AxiosPromise<boolean>;
-
-    /**
-     * 
-     * @summary Enables or disables quick connect.
-     * @param {QuickConnectState} [status] New MediaBrowser.Model.QuickConnect.QuickConnectState.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApiInterface
-     */
-    available(status?: QuickConnectState, options?: any): AxiosPromise<void>;
-
-    /**
-     * 
-     * @summary Attempts to retrieve authentication information.
-     * @param {string} secret Secret previously returned from the Initiate endpoint.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApiInterface
-     */
-    connect(secret: string, options?: any): AxiosPromise<QuickConnectResult>;
-
-    /**
-     * 
-     * @summary Deauthorize all quick connect devices for the current user.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApiInterface
-     */
-    deauthorize(options?: any): AxiosPromise<number>;
-
-    /**
-     * 
-     * @summary Gets the current quick connect state.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApiInterface
-     */
-    getStatus(options?: any): AxiosPromise<QuickConnectState>;
-
-    /**
-     * 
-     * @summary Initiate a new quick connect request.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApiInterface
-     */
-    initiate(options?: any): AxiosPromise<QuickConnectResult>;
-
+    readonly secret: string
 }
 
 /**
@@ -515,63 +304,29 @@ export interface QuickConnectApiInterface {
  * @class QuickConnectApi
  * @extends {BaseAPI}
  */
-export class QuickConnectApi extends BaseAPI implements QuickConnectApiInterface {
-    /**
-     * 
-     * @summary Temporarily activates quick connect for five minutes.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApi
-     */
-    public activate(options?: any) {
-        return QuickConnectApiFp(this.configuration).activate(options).then((request) => request(this.axios, this.basePath));
-    }
-
+export class QuickConnectApi extends BaseAPI {
     /**
      * 
      * @summary Authorizes a pending quick connect request.
-     * @param {string} code Quick connect code to authorize.
+     * @param {QuickConnectApiAuthorizeRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QuickConnectApi
      */
-    public authorize(code: string, options?: any) {
-        return QuickConnectApiFp(this.configuration).authorize(code, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Enables or disables quick connect.
-     * @param {QuickConnectState} [status] New MediaBrowser.Model.QuickConnect.QuickConnectState.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApi
-     */
-    public available(status?: QuickConnectState, options?: any) {
-        return QuickConnectApiFp(this.configuration).available(status, options).then((request) => request(this.axios, this.basePath));
+    public authorize(requestParameters: QuickConnectApiAuthorizeRequest, options?: any) {
+        return QuickConnectApiFp(this.configuration).authorize(requestParameters.code, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Attempts to retrieve authentication information.
-     * @param {string} secret Secret previously returned from the Initiate endpoint.
+     * @param {QuickConnectApiConnectRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QuickConnectApi
      */
-    public connect(secret: string, options?: any) {
-        return QuickConnectApiFp(this.configuration).connect(secret, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Deauthorize all quick connect devices for the current user.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QuickConnectApi
-     */
-    public deauthorize(options?: any) {
-        return QuickConnectApiFp(this.configuration).deauthorize(options).then((request) => request(this.axios, this.basePath));
+    public connect(requestParameters: QuickConnectApiConnectRequest, options?: any) {
+        return QuickConnectApiFp(this.configuration).connect(requestParameters.secret, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -581,8 +336,8 @@ export class QuickConnectApi extends BaseAPI implements QuickConnectApiInterface
      * @throws {RequiredError}
      * @memberof QuickConnectApi
      */
-    public getStatus(options?: any) {
-        return QuickConnectApiFp(this.configuration).getStatus(options).then((request) => request(this.axios, this.basePath));
+    public getEnabled(options?: any) {
+        return QuickConnectApiFp(this.configuration).getEnabled(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -27,6 +27,12 @@ export interface MusicVideoInfo {
      */
     Name?: string | null;
     /**
+     * Gets or sets the original title
+     * @type {string}
+     * @memberof MusicVideoInfo
+     */
+    OriginalTitle?: string | null;
+    /**
      * Gets or sets the path.
      * @type {string}
      * @memberof MusicVideoInfo

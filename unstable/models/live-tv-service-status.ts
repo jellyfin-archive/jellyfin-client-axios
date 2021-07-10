@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum LiveTvServiceStatus {
     Ok = 'Ok',
     Unavailable = 'Unavailable'

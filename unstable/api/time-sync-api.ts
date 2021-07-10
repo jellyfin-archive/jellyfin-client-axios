@@ -101,29 +101,12 @@ export const TimeSyncApiFactory = function (configuration?: Configuration, baseP
 };
 
 /**
- * TimeSyncApi - interface
- * @export
- * @interface TimeSyncApi
- */
-export interface TimeSyncApiInterface {
-    /**
-     * 
-     * @summary Gets the current UTC time.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TimeSyncApiInterface
-     */
-    getUtcTime(options?: any): AxiosPromise<UtcTimeResponse>;
-
-}
-
-/**
  * TimeSyncApi - object-oriented interface
  * @export
  * @class TimeSyncApi
  * @extends {BaseAPI}
  */
-export class TimeSyncApi extends BaseAPI implements TimeSyncApiInterface {
+export class TimeSyncApi extends BaseAPI {
     /**
      * 
      * @summary Gets the current UTC time.

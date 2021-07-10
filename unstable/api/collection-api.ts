@@ -266,46 +266,80 @@ export const CollectionApiFactory = function (configuration?: Configuration, bas
 };
 
 /**
- * CollectionApi - interface
+ * Request parameters for addToCollection operation in CollectionApi.
  * @export
- * @interface CollectionApi
+ * @interface CollectionApiAddToCollectionRequest
  */
-export interface CollectionApiInterface {
+export interface CollectionApiAddToCollectionRequest {
     /**
-     * 
-     * @summary Adds items to a collection.
-     * @param {string} collectionId The collection id.
-     * @param {Array<string>} ids Item ids, comma delimited.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CollectionApiInterface
+     * The collection id.
+     * @type {string}
+     * @memberof CollectionApiAddToCollection
      */
-    addToCollection(collectionId: string, ids: Array<string>, options?: any): AxiosPromise<void>;
+    readonly collectionId: string
 
     /**
-     * 
-     * @summary Creates a new collection.
-     * @param {string} [name] The name of the collection.
-     * @param {Array<string>} [ids] Item Ids to add to the collection.
-     * @param {string} [parentId] Optional. Create the collection within a specific folder.
-     * @param {boolean} [isLocked] Whether or not to lock the new collection.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CollectionApiInterface
+     * Item ids, comma delimited.
+     * @type {Array<string>}
+     * @memberof CollectionApiAddToCollection
      */
-    createCollection(name?: string, ids?: Array<string>, parentId?: string, isLocked?: boolean, options?: any): AxiosPromise<CollectionCreationResult>;
+    readonly ids: Array<string>
+}
+
+/**
+ * Request parameters for createCollection operation in CollectionApi.
+ * @export
+ * @interface CollectionApiCreateCollectionRequest
+ */
+export interface CollectionApiCreateCollectionRequest {
+    /**
+     * The name of the collection.
+     * @type {string}
+     * @memberof CollectionApiCreateCollection
+     */
+    readonly name?: string
 
     /**
-     * 
-     * @summary Removes items from a collection.
-     * @param {string} collectionId The collection id.
-     * @param {Array<string>} ids Item ids, comma delimited.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CollectionApiInterface
+     * Item Ids to add to the collection.
+     * @type {Array<string>}
+     * @memberof CollectionApiCreateCollection
      */
-    removeFromCollection(collectionId: string, ids: Array<string>, options?: any): AxiosPromise<void>;
+    readonly ids?: Array<string>
 
+    /**
+     * Optional. Create the collection within a specific folder.
+     * @type {string}
+     * @memberof CollectionApiCreateCollection
+     */
+    readonly parentId?: string
+
+    /**
+     * Whether or not to lock the new collection.
+     * @type {boolean}
+     * @memberof CollectionApiCreateCollection
+     */
+    readonly isLocked?: boolean
+}
+
+/**
+ * Request parameters for removeFromCollection operation in CollectionApi.
+ * @export
+ * @interface CollectionApiRemoveFromCollectionRequest
+ */
+export interface CollectionApiRemoveFromCollectionRequest {
+    /**
+     * The collection id.
+     * @type {string}
+     * @memberof CollectionApiRemoveFromCollection
+     */
+    readonly collectionId: string
+
+    /**
+     * Item ids, comma delimited.
+     * @type {Array<string>}
+     * @memberof CollectionApiRemoveFromCollection
+     */
+    readonly ids: Array<string>
 }
 
 /**
@@ -314,45 +348,40 @@ export interface CollectionApiInterface {
  * @class CollectionApi
  * @extends {BaseAPI}
  */
-export class CollectionApi extends BaseAPI implements CollectionApiInterface {
+export class CollectionApi extends BaseAPI {
     /**
      * 
      * @summary Adds items to a collection.
-     * @param {string} collectionId The collection id.
-     * @param {Array<string>} ids Item ids, comma delimited.
+     * @param {CollectionApiAddToCollectionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionApi
      */
-    public addToCollection(collectionId: string, ids: Array<string>, options?: any) {
-        return CollectionApiFp(this.configuration).addToCollection(collectionId, ids, options).then((request) => request(this.axios, this.basePath));
+    public addToCollection(requestParameters: CollectionApiAddToCollectionRequest, options?: any) {
+        return CollectionApiFp(this.configuration).addToCollection(requestParameters.collectionId, requestParameters.ids, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Creates a new collection.
-     * @param {string} [name] The name of the collection.
-     * @param {Array<string>} [ids] Item Ids to add to the collection.
-     * @param {string} [parentId] Optional. Create the collection within a specific folder.
-     * @param {boolean} [isLocked] Whether or not to lock the new collection.
+     * @param {CollectionApiCreateCollectionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionApi
      */
-    public createCollection(name?: string, ids?: Array<string>, parentId?: string, isLocked?: boolean, options?: any) {
-        return CollectionApiFp(this.configuration).createCollection(name, ids, parentId, isLocked, options).then((request) => request(this.axios, this.basePath));
+    public createCollection(requestParameters: CollectionApiCreateCollectionRequest = {}, options?: any) {
+        return CollectionApiFp(this.configuration).createCollection(requestParameters.name, requestParameters.ids, requestParameters.parentId, requestParameters.isLocked, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Removes items from a collection.
-     * @param {string} collectionId The collection id.
-     * @param {Array<string>} ids Item ids, comma delimited.
+     * @param {CollectionApiRemoveFromCollectionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionApi
      */
-    public removeFromCollection(collectionId: string, ids: Array<string>, options?: any) {
-        return CollectionApiFp(this.configuration).removeFromCollection(collectionId, ids, options).then((request) => request(this.axios, this.basePath));
+    public removeFromCollection(requestParameters: CollectionApiRemoveFromCollectionRequest, options?: any) {
+        return CollectionApiFp(this.configuration).removeFromCollection(requestParameters.collectionId, requestParameters.ids, options).then((request) => request(this.axios, this.basePath));
     }
 }

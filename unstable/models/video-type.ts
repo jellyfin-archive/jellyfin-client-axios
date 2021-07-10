@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum VideoType {
     VideoFile = 'VideoFile',
     Iso = 'Iso',

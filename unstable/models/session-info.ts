@@ -53,7 +53,7 @@ export interface SessionInfo {
      */
     RemoteEndPoint?: string | null;
     /**
-     * Gets or sets the playable media types.
+     * Gets the playable media types.
      * @type {Array<string>}
      * @memberof SessionInfo
      */
@@ -107,7 +107,7 @@ export interface SessionInfo {
      */
     DeviceType?: string | null;
     /**
-     * Gets or sets the now playing item.
+     * This is strictly used as a data transfer object from the api layer.  This holds information about a BaseItem in a format that is convenient for the client.
      * @type {BaseItemDto}
      * @memberof SessionInfo
      */
@@ -191,7 +191,7 @@ export interface SessionInfo {
      */
     UserPrimaryImageTag?: string | null;
     /**
-     * Gets or sets the supported commands.
+     * Gets the supported commands.
      * @type {Array<GeneralCommandType>}
      * @memberof SessionInfo
      */

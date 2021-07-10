@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum NotificationLevel {
     Normal = 'Normal',
     Warning = 'Warning',

@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum GroupShuffleMode {
     Sorted = 'Sorted',
     Shuffle = 'Shuffle'

@@ -15,31 +15,31 @@
 
 
 /**
- * 
+ * The server discovery info model.
  * @export
  * @interface ServerDiscoveryInfo
  */
 export interface ServerDiscoveryInfo {
     /**
-     * Gets or sets the address.
+     * Gets the address.
      * @type {string}
      * @memberof ServerDiscoveryInfo
      */
-    Address?: string | null;
+    Address?: string;
     /**
-     * Gets or sets the server identifier.
+     * Gets the server identifier.
      * @type {string}
      * @memberof ServerDiscoveryInfo
      */
-    Id?: string | null;
+    Id?: string;
     /**
-     * Gets or sets the name.
+     * Gets the name.
      * @type {string}
      * @memberof ServerDiscoveryInfo
      */
-    Name?: string | null;
+    Name?: string;
     /**
-     * Gets or sets the endpoint address.
+     * Gets the endpoint address.
      * @type {string}
      * @memberof ServerDiscoveryInfo
      */

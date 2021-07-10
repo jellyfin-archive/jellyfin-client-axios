@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum Video3DFormat {
     HalfSideBySide = 'HalfSideBySide',
     FullSideBySide = 'FullSideBySide',

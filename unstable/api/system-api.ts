@@ -580,102 +580,17 @@ export const SystemApiFactory = function (configuration?: Configuration, basePat
 };
 
 /**
- * SystemApi - interface
+ * Request parameters for getLogFile operation in SystemApi.
  * @export
- * @interface SystemApi
+ * @interface SystemApiGetLogFileRequest
  */
-export interface SystemApiInterface {
+export interface SystemApiGetLogFileRequest {
     /**
-     * 
-     * @summary Gets information about the request endpoint.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
+     * The name of the log file to get.
+     * @type {string}
+     * @memberof SystemApiGetLogFile
      */
-    getEndpointInfo(options?: any): AxiosPromise<EndPointInfo>;
-
-    /**
-     * 
-     * @summary Gets a log file.
-     * @param {string} name The name of the log file to get.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
-     */
-    getLogFile(name: string, options?: any): AxiosPromise<any>;
-
-    /**
-     * 
-     * @summary Pings the system.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
-     */
-    getPingSystem(options?: any): AxiosPromise<string>;
-
-    /**
-     * 
-     * @summary Gets public information about the server.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
-     */
-    getPublicSystemInfo(options?: any): AxiosPromise<PublicSystemInfo>;
-
-    /**
-     * 
-     * @summary Gets a list of available server log files.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
-     */
-    getServerLogs(options?: any): AxiosPromise<Array<LogFile>>;
-
-    /**
-     * 
-     * @summary Gets information about the server.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
-     */
-    getSystemInfo(options?: any): AxiosPromise<SystemInfo>;
-
-    /**
-     * 
-     * @summary Gets wake on lan information.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
-     */
-    getWakeOnLanInfo(options?: any): AxiosPromise<Array<WakeOnLanInfo>>;
-
-    /**
-     * 
-     * @summary Pings the system.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
-     */
-    postPingSystem(options?: any): AxiosPromise<string>;
-
-    /**
-     * 
-     * @summary Restarts the application.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
-     */
-    restartApplication(options?: any): AxiosPromise<void>;
-
-    /**
-     * 
-     * @summary Shuts down the application.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SystemApiInterface
-     */
-    shutdownApplication(options?: any): AxiosPromise<void>;
-
+    readonly name: string
 }
 
 /**
@@ -684,7 +599,7 @@ export interface SystemApiInterface {
  * @class SystemApi
  * @extends {BaseAPI}
  */
-export class SystemApi extends BaseAPI implements SystemApiInterface {
+export class SystemApi extends BaseAPI {
     /**
      * 
      * @summary Gets information about the request endpoint.
@@ -699,13 +614,13 @@ export class SystemApi extends BaseAPI implements SystemApiInterface {
     /**
      * 
      * @summary Gets a log file.
-     * @param {string} name The name of the log file to get.
+     * @param {SystemApiGetLogFileRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SystemApi
      */
-    public getLogFile(name: string, options?: any) {
-        return SystemApiFp(this.configuration).getLogFile(name, options).then((request) => request(this.axios, this.basePath));
+    public getLogFile(requestParameters: SystemApiGetLogFileRequest, options?: any) {
+        return SystemApiFp(this.configuration).getLogFile(requestParameters.name, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

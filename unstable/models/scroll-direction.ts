@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum ScrollDirection {
     Horizontal = 'Horizontal',
     Vertical = 'Vertical'

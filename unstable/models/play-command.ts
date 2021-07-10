@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum PlayCommand {
     PlayNow = 'PlayNow',
     PlayNext = 'PlayNext',

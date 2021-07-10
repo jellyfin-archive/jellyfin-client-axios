@@ -15,7 +15,7 @@
 
 
 /**
- * Stores the result of an incoming quick connect request.
+ * Stores the state of an quick connect request.
  * @export
  * @interface QuickConnectResult
  */
@@ -27,17 +27,17 @@ export interface QuickConnectResult {
      */
     Authenticated?: boolean;
     /**
-     * Gets or sets the secret value used to uniquely identify this request. Can be used to retrieve authentication information.
+     * Gets the secret value used to uniquely identify this request. Can be used to retrieve authentication information.
      * @type {string}
      * @memberof QuickConnectResult
      */
-    Secret?: string | null;
+    Secret?: string;
     /**
-     * Gets or sets the user facing code used so the user can quickly differentiate this request from others.
+     * Gets the user facing code used so the user can quickly differentiate this request from others.
      * @type {string}
      * @memberof QuickConnectResult
      */
-    Code?: string | null;
+    Code?: string;
     /**
      * Gets or sets the private access token.
      * @type {string}
@@ -45,17 +45,11 @@ export interface QuickConnectResult {
      */
     Authentication?: string | null;
     /**
-     * Gets or sets an error message.
-     * @type {string}
-     * @memberof QuickConnectResult
-     */
-    Error?: string | null;
-    /**
      * Gets or sets the DateTime that this request was created.
      * @type {string}
      * @memberof QuickConnectResult
      */
-    DateAdded?: string | null;
+    DateAdded?: string;
 }
 
 

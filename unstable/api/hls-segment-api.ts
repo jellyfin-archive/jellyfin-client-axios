@@ -381,68 +381,122 @@ export const HlsSegmentApiFactory = function (configuration?: Configuration, bas
 };
 
 /**
- * HlsSegmentApi - interface
+ * Request parameters for getHlsAudioSegmentLegacyAac operation in HlsSegmentApi.
  * @export
- * @interface HlsSegmentApi
+ * @interface HlsSegmentApiGetHlsAudioSegmentLegacyAacRequest
  */
-export interface HlsSegmentApiInterface {
+export interface HlsSegmentApiGetHlsAudioSegmentLegacyAacRequest {
     /**
-     * 
-     * @summary Gets the specified audio segment for an audio item.
-     * @param {string} itemId The item id.
-     * @param {string} segmentId The segment id.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof HlsSegmentApiInterface
+     * The item id.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsAudioSegmentLegacyAac
      */
-    getHlsAudioSegmentLegacyAac(itemId: string, segmentId: string, options?: any): AxiosPromise<any>;
+    readonly itemId: string
 
     /**
-     * 
-     * @summary Gets the specified audio segment for an audio item.
-     * @param {string} itemId The item id.
-     * @param {string} segmentId The segment id.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof HlsSegmentApiInterface
+     * The segment id.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsAudioSegmentLegacyAac
      */
-    getHlsAudioSegmentLegacyMp3(itemId: string, segmentId: string, options?: any): AxiosPromise<any>;
+    readonly segmentId: string
+}
+
+/**
+ * Request parameters for getHlsAudioSegmentLegacyMp3 operation in HlsSegmentApi.
+ * @export
+ * @interface HlsSegmentApiGetHlsAudioSegmentLegacyMp3Request
+ */
+export interface HlsSegmentApiGetHlsAudioSegmentLegacyMp3Request {
+    /**
+     * The item id.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsAudioSegmentLegacyMp3
+     */
+    readonly itemId: string
 
     /**
-     * 
-     * @summary Gets a hls video playlist.
-     * @param {string} itemId The video id.
-     * @param {string} playlistId The playlist id.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof HlsSegmentApiInterface
+     * The segment id.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsAudioSegmentLegacyMp3
      */
-    getHlsPlaylistLegacy(itemId: string, playlistId: string, options?: any): AxiosPromise<any>;
+    readonly segmentId: string
+}
+
+/**
+ * Request parameters for getHlsPlaylistLegacy operation in HlsSegmentApi.
+ * @export
+ * @interface HlsSegmentApiGetHlsPlaylistLegacyRequest
+ */
+export interface HlsSegmentApiGetHlsPlaylistLegacyRequest {
+    /**
+     * The video id.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsPlaylistLegacy
+     */
+    readonly itemId: string
 
     /**
-     * 
-     * @summary Gets a hls video segment.
-     * @param {string} itemId The item id.
-     * @param {string} playlistId The playlist id.
-     * @param {string} segmentId The segment id.
-     * @param {string} segmentContainer The segment container.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof HlsSegmentApiInterface
+     * The playlist id.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsPlaylistLegacy
      */
-    getHlsVideoSegmentLegacy(itemId: string, playlistId: string, segmentId: string, segmentContainer: string, options?: any): AxiosPromise<any>;
+    readonly playlistId: string
+}
+
+/**
+ * Request parameters for getHlsVideoSegmentLegacy operation in HlsSegmentApi.
+ * @export
+ * @interface HlsSegmentApiGetHlsVideoSegmentLegacyRequest
+ */
+export interface HlsSegmentApiGetHlsVideoSegmentLegacyRequest {
+    /**
+     * The item id.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsVideoSegmentLegacy
+     */
+    readonly itemId: string
 
     /**
-     * 
-     * @summary Stops an active encoding.
-     * @param {string} deviceId The device id of the client requesting. Used to stop encoding processes when needed.
-     * @param {string} playSessionId The play session id.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof HlsSegmentApiInterface
+     * The playlist id.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsVideoSegmentLegacy
      */
-    stopEncodingProcess(deviceId: string, playSessionId: string, options?: any): AxiosPromise<void>;
+    readonly playlistId: string
 
+    /**
+     * The segment id.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsVideoSegmentLegacy
+     */
+    readonly segmentId: string
+
+    /**
+     * The segment container.
+     * @type {string}
+     * @memberof HlsSegmentApiGetHlsVideoSegmentLegacy
+     */
+    readonly segmentContainer: string
+}
+
+/**
+ * Request parameters for stopEncodingProcess operation in HlsSegmentApi.
+ * @export
+ * @interface HlsSegmentApiStopEncodingProcessRequest
+ */
+export interface HlsSegmentApiStopEncodingProcessRequest {
+    /**
+     * The device id of the client requesting. Used to stop encoding processes when needed.
+     * @type {string}
+     * @memberof HlsSegmentApiStopEncodingProcess
+     */
+    readonly deviceId: string
+
+    /**
+     * The play session id.
+     * @type {string}
+     * @memberof HlsSegmentApiStopEncodingProcess
+     */
+    readonly playSessionId: string
 }
 
 /**
@@ -451,71 +505,64 @@ export interface HlsSegmentApiInterface {
  * @class HlsSegmentApi
  * @extends {BaseAPI}
  */
-export class HlsSegmentApi extends BaseAPI implements HlsSegmentApiInterface {
+export class HlsSegmentApi extends BaseAPI {
     /**
      * 
      * @summary Gets the specified audio segment for an audio item.
-     * @param {string} itemId The item id.
-     * @param {string} segmentId The segment id.
+     * @param {HlsSegmentApiGetHlsAudioSegmentLegacyAacRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HlsSegmentApi
      */
-    public getHlsAudioSegmentLegacyAac(itemId: string, segmentId: string, options?: any) {
-        return HlsSegmentApiFp(this.configuration).getHlsAudioSegmentLegacyAac(itemId, segmentId, options).then((request) => request(this.axios, this.basePath));
+    public getHlsAudioSegmentLegacyAac(requestParameters: HlsSegmentApiGetHlsAudioSegmentLegacyAacRequest, options?: any) {
+        return HlsSegmentApiFp(this.configuration).getHlsAudioSegmentLegacyAac(requestParameters.itemId, requestParameters.segmentId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets the specified audio segment for an audio item.
-     * @param {string} itemId The item id.
-     * @param {string} segmentId The segment id.
+     * @param {HlsSegmentApiGetHlsAudioSegmentLegacyMp3Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HlsSegmentApi
      */
-    public getHlsAudioSegmentLegacyMp3(itemId: string, segmentId: string, options?: any) {
-        return HlsSegmentApiFp(this.configuration).getHlsAudioSegmentLegacyMp3(itemId, segmentId, options).then((request) => request(this.axios, this.basePath));
+    public getHlsAudioSegmentLegacyMp3(requestParameters: HlsSegmentApiGetHlsAudioSegmentLegacyMp3Request, options?: any) {
+        return HlsSegmentApiFp(this.configuration).getHlsAudioSegmentLegacyMp3(requestParameters.itemId, requestParameters.segmentId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets a hls video playlist.
-     * @param {string} itemId The video id.
-     * @param {string} playlistId The playlist id.
+     * @param {HlsSegmentApiGetHlsPlaylistLegacyRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HlsSegmentApi
      */
-    public getHlsPlaylistLegacy(itemId: string, playlistId: string, options?: any) {
-        return HlsSegmentApiFp(this.configuration).getHlsPlaylistLegacy(itemId, playlistId, options).then((request) => request(this.axios, this.basePath));
+    public getHlsPlaylistLegacy(requestParameters: HlsSegmentApiGetHlsPlaylistLegacyRequest, options?: any) {
+        return HlsSegmentApiFp(this.configuration).getHlsPlaylistLegacy(requestParameters.itemId, requestParameters.playlistId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets a hls video segment.
-     * @param {string} itemId The item id.
-     * @param {string} playlistId The playlist id.
-     * @param {string} segmentId The segment id.
-     * @param {string} segmentContainer The segment container.
+     * @param {HlsSegmentApiGetHlsVideoSegmentLegacyRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HlsSegmentApi
      */
-    public getHlsVideoSegmentLegacy(itemId: string, playlistId: string, segmentId: string, segmentContainer: string, options?: any) {
-        return HlsSegmentApiFp(this.configuration).getHlsVideoSegmentLegacy(itemId, playlistId, segmentId, segmentContainer, options).then((request) => request(this.axios, this.basePath));
+    public getHlsVideoSegmentLegacy(requestParameters: HlsSegmentApiGetHlsVideoSegmentLegacyRequest, options?: any) {
+        return HlsSegmentApiFp(this.configuration).getHlsVideoSegmentLegacy(requestParameters.itemId, requestParameters.playlistId, requestParameters.segmentId, requestParameters.segmentContainer, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Stops an active encoding.
-     * @param {string} deviceId The device id of the client requesting. Used to stop encoding processes when needed.
-     * @param {string} playSessionId The play session id.
+     * @param {HlsSegmentApiStopEncodingProcessRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HlsSegmentApi
      */
-    public stopEncodingProcess(deviceId: string, playSessionId: string, options?: any) {
-        return HlsSegmentApiFp(this.configuration).stopEncodingProcess(deviceId, playSessionId, options).then((request) => request(this.axios, this.basePath));
+    public stopEncodingProcess(requestParameters: HlsSegmentApiStopEncodingProcessRequest, options?: any) {
+        return HlsSegmentApiFp(this.configuration).stopEncodingProcess(requestParameters.deviceId, requestParameters.playSessionId, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -34,7 +34,7 @@ export interface BoxSetInfoRemoteSearchQuery {
      */
     ItemId?: string;
     /**
-     * Will only search within the given provider when set.
+     * Gets or sets the provider name to search within if set.
      * @type {string}
      * @memberof BoxSetInfoRemoteSearchQuery
      */

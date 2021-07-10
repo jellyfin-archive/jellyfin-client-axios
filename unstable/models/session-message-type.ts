@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum SessionMessageType {
     ForceKeepAlive = 'ForceKeepAlive',
     GeneralCommand = 'GeneralCommand',

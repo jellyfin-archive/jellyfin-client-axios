@@ -145,26 +145,52 @@ export const SuggestionsApiFactory = function (configuration?: Configuration, ba
 };
 
 /**
- * SuggestionsApi - interface
+ * Request parameters for getSuggestions operation in SuggestionsApi.
  * @export
- * @interface SuggestionsApi
+ * @interface SuggestionsApiGetSuggestionsRequest
  */
-export interface SuggestionsApiInterface {
+export interface SuggestionsApiGetSuggestionsRequest {
     /**
-     * 
-     * @summary Gets suggestions.
-     * @param {string} userId The user id.
-     * @param {Array<string>} [mediaType] The media types.
-     * @param {Array<string>} [type] The type.
-     * @param {number} [startIndex] Optional. The start index.
-     * @param {number} [limit] Optional. The limit.
-     * @param {boolean} [enableTotalRecordCount] Whether to enable the total record count.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SuggestionsApiInterface
+     * The user id.
+     * @type {string}
+     * @memberof SuggestionsApiGetSuggestions
      */
-    getSuggestions(userId: string, mediaType?: Array<string>, type?: Array<string>, startIndex?: number, limit?: number, enableTotalRecordCount?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult>;
+    readonly userId: string
 
+    /**
+     * The media types.
+     * @type {Array<string>}
+     * @memberof SuggestionsApiGetSuggestions
+     */
+    readonly mediaType?: Array<string>
+
+    /**
+     * The type.
+     * @type {Array<string>}
+     * @memberof SuggestionsApiGetSuggestions
+     */
+    readonly type?: Array<string>
+
+    /**
+     * Optional. The start index.
+     * @type {number}
+     * @memberof SuggestionsApiGetSuggestions
+     */
+    readonly startIndex?: number
+
+    /**
+     * Optional. The limit.
+     * @type {number}
+     * @memberof SuggestionsApiGetSuggestions
+     */
+    readonly limit?: number
+
+    /**
+     * Whether to enable the total record count.
+     * @type {boolean}
+     * @memberof SuggestionsApiGetSuggestions
+     */
+    readonly enableTotalRecordCount?: boolean
 }
 
 /**
@@ -173,21 +199,16 @@ export interface SuggestionsApiInterface {
  * @class SuggestionsApi
  * @extends {BaseAPI}
  */
-export class SuggestionsApi extends BaseAPI implements SuggestionsApiInterface {
+export class SuggestionsApi extends BaseAPI {
     /**
      * 
      * @summary Gets suggestions.
-     * @param {string} userId The user id.
-     * @param {Array<string>} [mediaType] The media types.
-     * @param {Array<string>} [type] The type.
-     * @param {number} [startIndex] Optional. The start index.
-     * @param {number} [limit] Optional. The limit.
-     * @param {boolean} [enableTotalRecordCount] Whether to enable the total record count.
+     * @param {SuggestionsApiGetSuggestionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SuggestionsApi
      */
-    public getSuggestions(userId: string, mediaType?: Array<string>, type?: Array<string>, startIndex?: number, limit?: number, enableTotalRecordCount?: boolean, options?: any) {
-        return SuggestionsApiFp(this.configuration).getSuggestions(userId, mediaType, type, startIndex, limit, enableTotalRecordCount, options).then((request) => request(this.axios, this.basePath));
+    public getSuggestions(requestParameters: SuggestionsApiGetSuggestionsRequest, options?: any) {
+        return SuggestionsApiFp(this.configuration).getSuggestions(requestParameters.userId, requestParameters.mediaType, requestParameters.type, requestParameters.startIndex, requestParameters.limit, requestParameters.enableTotalRecordCount, options).then((request) => request(this.axios, this.basePath));
     }
 }

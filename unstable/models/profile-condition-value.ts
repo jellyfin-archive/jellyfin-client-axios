@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum ProfileConditionValue {
     AudioChannels = 'AudioChannels',
     AudioBitrate = 'AudioBitrate',

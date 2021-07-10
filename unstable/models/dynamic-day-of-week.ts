@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum DynamicDayOfWeek {
     Sunday = 'Sunday',
     Monday = 'Monday',

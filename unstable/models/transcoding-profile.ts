@@ -28,7 +28,7 @@ export interface TranscodingProfile {
      * @type {string}
      * @memberof TranscodingProfile
      */
-    Container?: string | null;
+    Container?: string;
     /**
      * 
      * @type {DlnaProfileType}
@@ -40,19 +40,19 @@ export interface TranscodingProfile {
      * @type {string}
      * @memberof TranscodingProfile
      */
-    VideoCodec?: string | null;
+    VideoCodec?: string;
     /**
      * 
      * @type {string}
      * @memberof TranscodingProfile
      */
-    AudioCodec?: string | null;
+    AudioCodec?: string;
     /**
      * 
      * @type {string}
      * @memberof TranscodingProfile
      */
-    Protocol?: string | null;
+    Protocol?: string;
     /**
      * 
      * @type {boolean}

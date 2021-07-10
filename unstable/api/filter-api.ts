@@ -258,43 +258,115 @@ export const FilterApiFactory = function (configuration?: Configuration, basePat
 };
 
 /**
- * FilterApi - interface
+ * Request parameters for getQueryFilters operation in FilterApi.
  * @export
- * @interface FilterApi
+ * @interface FilterApiGetQueryFiltersRequest
  */
-export interface FilterApiInterface {
+export interface FilterApiGetQueryFiltersRequest {
     /**
-     * 
-     * @summary Gets query filters.
-     * @param {string} [userId] Optional. User id.
-     * @param {string} [parentId] Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
-     * @param {boolean} [isAiring] Optional. Is item airing.
-     * @param {boolean} [isMovie] Optional. Is item movie.
-     * @param {boolean} [isSports] Optional. Is item sports.
-     * @param {boolean} [isKids] Optional. Is item kids.
-     * @param {boolean} [isNews] Optional. Is item news.
-     * @param {boolean} [isSeries] Optional. Is item series.
-     * @param {boolean} [recursive] Optional. Search recursive.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FilterApiInterface
+     * Optional. User id.
+     * @type {string}
+     * @memberof FilterApiGetQueryFilters
      */
-    getQueryFilters(userId?: string, parentId?: string, includeItemTypes?: Array<BaseItemKind>, isAiring?: boolean, isMovie?: boolean, isSports?: boolean, isKids?: boolean, isNews?: boolean, isSeries?: boolean, recursive?: boolean, options?: any): AxiosPromise<QueryFilters>;
+    readonly userId?: string
 
     /**
-     * 
-     * @summary Gets legacy query filters.
-     * @param {string} [userId] Optional. User id.
-     * @param {string} [parentId] Optional. Parent id.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
-     * @param {Array<string>} [mediaTypes] Optional. Filter by MediaType. Allows multiple, comma delimited.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FilterApiInterface
+     * Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
+     * @type {string}
+     * @memberof FilterApiGetQueryFilters
      */
-    getQueryFiltersLegacy(userId?: string, parentId?: string, includeItemTypes?: Array<BaseItemKind>, mediaTypes?: Array<string>, options?: any): AxiosPromise<QueryFiltersLegacy>;
+    readonly parentId?: string
 
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
+     * @type {Array<BaseItemKind>}
+     * @memberof FilterApiGetQueryFilters
+     */
+    readonly includeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * Optional. Is item airing.
+     * @type {boolean}
+     * @memberof FilterApiGetQueryFilters
+     */
+    readonly isAiring?: boolean
+
+    /**
+     * Optional. Is item movie.
+     * @type {boolean}
+     * @memberof FilterApiGetQueryFilters
+     */
+    readonly isMovie?: boolean
+
+    /**
+     * Optional. Is item sports.
+     * @type {boolean}
+     * @memberof FilterApiGetQueryFilters
+     */
+    readonly isSports?: boolean
+
+    /**
+     * Optional. Is item kids.
+     * @type {boolean}
+     * @memberof FilterApiGetQueryFilters
+     */
+    readonly isKids?: boolean
+
+    /**
+     * Optional. Is item news.
+     * @type {boolean}
+     * @memberof FilterApiGetQueryFilters
+     */
+    readonly isNews?: boolean
+
+    /**
+     * Optional. Is item series.
+     * @type {boolean}
+     * @memberof FilterApiGetQueryFilters
+     */
+    readonly isSeries?: boolean
+
+    /**
+     * Optional. Search recursive.
+     * @type {boolean}
+     * @memberof FilterApiGetQueryFilters
+     */
+    readonly recursive?: boolean
+}
+
+/**
+ * Request parameters for getQueryFiltersLegacy operation in FilterApi.
+ * @export
+ * @interface FilterApiGetQueryFiltersLegacyRequest
+ */
+export interface FilterApiGetQueryFiltersLegacyRequest {
+    /**
+     * Optional. User id.
+     * @type {string}
+     * @memberof FilterApiGetQueryFiltersLegacy
+     */
+    readonly userId?: string
+
+    /**
+     * Optional. Parent id.
+     * @type {string}
+     * @memberof FilterApiGetQueryFiltersLegacy
+     */
+    readonly parentId?: string
+
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
+     * @type {Array<BaseItemKind>}
+     * @memberof FilterApiGetQueryFiltersLegacy
+     */
+    readonly includeItemTypes?: Array<BaseItemKind>
+
+    /**
+     * Optional. Filter by MediaType. Allows multiple, comma delimited.
+     * @type {Array<string>}
+     * @memberof FilterApiGetQueryFiltersLegacy
+     */
+    readonly mediaTypes?: Array<string>
 }
 
 /**
@@ -303,40 +375,28 @@ export interface FilterApiInterface {
  * @class FilterApi
  * @extends {BaseAPI}
  */
-export class FilterApi extends BaseAPI implements FilterApiInterface {
+export class FilterApi extends BaseAPI {
     /**
      * 
      * @summary Gets query filters.
-     * @param {string} [userId] Optional. User id.
-     * @param {string} [parentId] Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
-     * @param {boolean} [isAiring] Optional. Is item airing.
-     * @param {boolean} [isMovie] Optional. Is item movie.
-     * @param {boolean} [isSports] Optional. Is item sports.
-     * @param {boolean} [isKids] Optional. Is item kids.
-     * @param {boolean} [isNews] Optional. Is item news.
-     * @param {boolean} [isSeries] Optional. Is item series.
-     * @param {boolean} [recursive] Optional. Search recursive.
+     * @param {FilterApiGetQueryFiltersRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FilterApi
      */
-    public getQueryFilters(userId?: string, parentId?: string, includeItemTypes?: Array<BaseItemKind>, isAiring?: boolean, isMovie?: boolean, isSports?: boolean, isKids?: boolean, isNews?: boolean, isSeries?: boolean, recursive?: boolean, options?: any) {
-        return FilterApiFp(this.configuration).getQueryFilters(userId, parentId, includeItemTypes, isAiring, isMovie, isSports, isKids, isNews, isSeries, recursive, options).then((request) => request(this.axios, this.basePath));
+    public getQueryFilters(requestParameters: FilterApiGetQueryFiltersRequest = {}, options?: any) {
+        return FilterApiFp(this.configuration).getQueryFilters(requestParameters.userId, requestParameters.parentId, requestParameters.includeItemTypes, requestParameters.isAiring, requestParameters.isMovie, requestParameters.isSports, requestParameters.isKids, requestParameters.isNews, requestParameters.isSeries, requestParameters.recursive, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Gets legacy query filters.
-     * @param {string} [userId] Optional. User id.
-     * @param {string} [parentId] Optional. Parent id.
-     * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
-     * @param {Array<string>} [mediaTypes] Optional. Filter by MediaType. Allows multiple, comma delimited.
+     * @param {FilterApiGetQueryFiltersLegacyRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FilterApi
      */
-    public getQueryFiltersLegacy(userId?: string, parentId?: string, includeItemTypes?: Array<BaseItemKind>, mediaTypes?: Array<string>, options?: any) {
-        return FilterApiFp(this.configuration).getQueryFiltersLegacy(userId, parentId, includeItemTypes, mediaTypes, options).then((request) => request(this.axios, this.basePath));
+    public getQueryFiltersLegacy(requestParameters: FilterApiGetQueryFiltersLegacyRequest = {}, options?: any) {
+        return FilterApiFp(this.configuration).getQueryFiltersLegacy(requestParameters.userId, requestParameters.parentId, requestParameters.includeItemTypes, requestParameters.mediaTypes, options).then((request) => request(this.axios, this.basePath));
     }
 }

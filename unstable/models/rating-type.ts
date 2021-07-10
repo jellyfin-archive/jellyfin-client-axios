@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum RatingType {
     Score = 'Score',
     Likes = 'Likes'

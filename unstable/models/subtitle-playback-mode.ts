@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum SubtitlePlaybackMode {
     Default = 'Default',
     Always = 'Always',
