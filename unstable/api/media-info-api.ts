@@ -29,8 +29,6 @@ import { PlaybackInfoDto } from '../models';
 // @ts-ignore
 import { PlaybackInfoResponse } from '../models';
 // @ts-ignore
-import { ProblemDetails } from '../models';
-// @ts-ignore
 import { UNKNOWN_BASE_TYPE } from '../models';
 /**
  * MediaInfoApi - axios parameter creator
