@@ -165,6 +165,7 @@ export interface SystemInfo {
      * Gets or sets a value indicating whether this instance has update available.
      * @type {boolean}
      * @memberof SystemInfo
+     * @deprecated
      */
     HasUpdateAvailable?: boolean;
     /**
