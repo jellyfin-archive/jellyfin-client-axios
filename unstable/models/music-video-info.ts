@@ -27,7 +27,7 @@ export interface MusicVideoInfo {
      */
     Name?: string | null;
     /**
-     * Gets or sets the original title
+     * Gets or sets the original title.
      * @type {string}
      * @memberof MusicVideoInfo
      */
