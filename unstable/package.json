@@ -1,6 +1,6 @@
 {
   "name": "@jellyfin/client-axios",
-  "version": "10.8.0-unstable+0e2a6f8",
+  "version": "10.8.0-unstable+5a9bd71",
   "description": "Jellyfin API client using axios",
   "author": "Jellyfin Contributors",
   "keywords": [
