@@ -16,7 +16,7 @@
 import { LogLevel } from './log-level';
 
 /**
- * 
+ * An activity log entry.
  * @export
  * @interface ActivityLogEntry
  */
@@ -32,7 +32,7 @@ export interface ActivityLogEntry {
      * @type {string}
      * @memberof ActivityLogEntry
      */
-    Name?: string | null;
+    Name?: string;
     /**
      * Gets or sets the overview.
      * @type {string}
@@ -50,7 +50,7 @@ export interface ActivityLogEntry {
      * @type {string}
      * @memberof ActivityLogEntry
      */
-    Type?: string | null;
+    Type?: string;
     /**
      * Gets or sets the item identifier.
      * @type {string}

@@ -365,7 +365,7 @@ export interface BaseItemDto {
      */
     ParentId?: string | null;
     /**
-     * The base item kind.
+     * Gets or sets the type.
      * @type {BaseItemKind}
      * @memberof BaseItemDto
      */

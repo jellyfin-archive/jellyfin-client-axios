@@ -22,7 +22,7 @@ import { GroupShuffleMode } from './group-shuffle-mode';
  */
 export interface SetShuffleModeRequestDto {
     /**
-     * Gets or sets the shuffle mode.
+     * Enum GroupShuffleMode.
      * @type {GroupShuffleMode}
      * @memberof SetShuffleModeRequestDto
      */

@@ -25,13 +25,13 @@ export interface ControlResponse {
      * @type {{ [key: string]: string; }}
      * @memberof ControlResponse
      */
-    Headers?: { [key: string]: string; } | null;
+    Headers?: { [key: string]: string; };
     /**
      * 
      * @type {string}
      * @memberof ControlResponse
      */
-    Xml?: string | null;
+    Xml?: string;
     /**
      * 
      * @type {boolean}

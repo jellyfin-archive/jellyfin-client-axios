@@ -28,7 +28,7 @@ export interface QueueRequestDto {
      */
     ItemIds?: Array<string>;
     /**
-     * Gets or sets the mode in which to add the new items.
+     * Enum GroupQueueMode.
      * @type {GroupQueueMode}
      * @memberof QueueRequestDto
      */

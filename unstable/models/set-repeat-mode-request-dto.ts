@@ -22,7 +22,7 @@ import { GroupRepeatMode } from './group-repeat-mode';
  */
 export interface SetRepeatModeRequestDto {
     /**
-     * Gets or sets the repeat mode.
+     * Enum GroupRepeatMode.
      * @type {GroupRepeatMode}
      * @memberof SetRepeatModeRequestDto
      */
