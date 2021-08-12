@@ -83,6 +83,7 @@ export * from './group-shuffle-mode';
 export * from './group-state-type';
 export * from './group-update-type';
 export * from './guide-info';
+export * from './hardware-encoding-type';
 export * from './header-match-type';
 export * from './http-header-info';
 export * from './iplugin';

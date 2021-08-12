@@ -148,6 +148,7 @@ models/group-shuffle-mode.ts
 models/group-state-type.ts
 models/group-update-type.ts
 models/guide-info.ts
+models/hardware-encoding-type.ts
 models/header-match-type.ts
 models/http-header-info.ts
 models/ignore-wait-request-dto.ts

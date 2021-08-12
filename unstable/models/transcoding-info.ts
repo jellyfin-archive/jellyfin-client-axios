@@ -13,6 +13,7 @@
  */
 
 
+import { HardwareEncodingType } from './hardware-encoding-type';
 import { TranscodeReason } from './transcode-reason';
 
 /**
@@ -87,6 +88,12 @@ export interface TranscodingInfo {
      * @memberof TranscodingInfo
      */
     AudioChannels?: number | null;
+    /**
+     * 
+     * @type {HardwareEncodingType}
+     * @memberof TranscodingInfo
+     */
+    HardwareAccelerationType?: HardwareEncodingType | null;
     /**
      * 
      * @type {Array<TranscodeReason>}
