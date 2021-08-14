@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        version: 
+        version:
           - stable
           - unstable
 
@@ -19,23 +20,11 @@ jobs:
         ref: 'master'
 
     - name: Setup node environment for NPMJS
-      uses: actions/setup-node@v2.2.0
+      uses: actions/setup-node@v2.4.0
       with:
         node-version: 14
+        cache: 'npm'
         registry-url: 'https://registry.npmjs.org'
-
-    - name: Get npm cache directory path
-      id: npm-cache-dir-path
-      run: echo "::set-output name=dir::$(npm config get cache)"
-
-    - name: Cache node_modules
-      uses: actions/cache@v2.1.6
-      id: npm-cache
-      with:
-        path: ${{ steps.npm-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-npm-${{ hashFiles('**/${{ matrix.version }}/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-npm-
 
     - name: Get package version
       id: version
@@ -60,9 +49,10 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Setup node environment for GitHub Package Registry
-      uses: actions/setup-node@v2.2.0
+      uses: actions/setup-node@v2.4.0
       with:
         node-version: 14
+        cache: 'npm'
         registry-url: 'https://npm.pkg.github.com'
 
     - name: Publish to GitHub Package registry

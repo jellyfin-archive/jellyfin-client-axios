@@ -13,7 +13,7 @@ jobs:
       with:
         ref: 'master'
 
-    - name: Generate	    
+    - name: Generate
       uses: docker://openapitools/openapi-generator-cli:latest-release
       env:
         TS_POST_PROCESS_FILE: true
@@ -47,24 +47,10 @@ jobs:
 
     - name: Setup node environment
       if: ${{ steps.diff.outputs.count }} > 0
-      uses: actions/setup-node@v2.2.0
+      uses: actions/setup-node@v2.4.0
       with:
         node-version: 14
-
-    - name: Get npm cache directory path
-      if: ${{ steps.diff.outputs.count }} > 0
-      id: npm-cache-dir-path
-      run: echo "::set-output name=dir::$(npm config get cache)"
-
-    - name: Cache node_modules
-      if: ${{ steps.diff.outputs.count }} > 0
-      uses: actions/cache@v2.1.6
-      id: npm-cache
-      with:
-        path: ${{ steps.npm-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-npm-${{ hashFiles('**/stable/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-npm-
+        cache: 'npm'
 
     - name: Install dependencies
       if: ${{ steps.diff.outputs.count }} > 0
