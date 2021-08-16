@@ -35,18 +35,6 @@ export interface BaseItem {
     Container?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof BaseItem
-     */
-    DateLastSaved?: string;
-    /**
-     * Gets or sets the remote trailers.
-     * @type {Array<MediaUrl>}
-     * @memberof BaseItem
-     */
-    RemoteTrailers?: Array<MediaUrl> | null;
-    /**
-     * 
      * @type {boolean}
      * @memberof BaseItem
      */
@@ -81,6 +69,18 @@ export interface BaseItem {
      * @memberof BaseItem
      */
     ExtraIds?: Array<string> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof BaseItem
+     */
+    DateLastSaved?: string;
+    /**
+     * Gets or sets the remote trailers.
+     * @type {Array<MediaUrl>}
+     * @memberof BaseItem
+     */
+    RemoteTrailers?: Array<MediaUrl> | null;
     /**
      * 
      * @type {boolean}
