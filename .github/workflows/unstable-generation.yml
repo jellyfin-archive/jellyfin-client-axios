@@ -13,6 +13,12 @@ jobs:
     - uses: actions/checkout@v2.3.4
       with:
         ref: 'master'
+    
+    - name: Download OpenAPI file
+      run: curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-unstable.json > openapi.json
+    
+    - name: Modify the schema
+      run: node scripts/modifySchema.mjs openapi.json
 
     - name: Generate	    
       uses: docker://openapitools/openapi-generator-cli:latest-release
@@ -20,7 +26,7 @@ jobs:
         TS_POST_PROCESS_FILE: true
       with:
         args: >-
-          generate -i https://api.jellyfin.org/openapi/jellyfin-openapi-unstable.json
+          generate -i /github/workspace/openapi.json
           -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
           --additional-properties=npmRepository=https://www.npmjs.com/package/@jellyfin/client-axios
           --additional-properties=supportsES6=true
@@ -45,7 +51,7 @@ jobs:
       if: ${{ steps.diff.outputs.count }} > 0
       id: apiversion
       run: |
-        SERVER_VERSION="$(curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-unstable.json | jq '.info.version')"
+        SERVER_VERSION="$(curl -s openapi.json | jq '.info.version')"
         echo "::set-output name=number::$(echo ${SERVER_VERSION::-1})"
 
     - name: Create new version string
