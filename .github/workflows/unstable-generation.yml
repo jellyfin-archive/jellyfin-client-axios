@@ -20,7 +20,7 @@ jobs:
     - name: Modify the schema
       run: node scripts/modifySchema.mjs openapi.json
 
-    - name: Generate	    
+    - name: Generate
       uses: docker://openapitools/openapi-generator-cli:latest-release
       env:
         TS_POST_PROCESS_FILE: true
@@ -51,7 +51,7 @@ jobs:
       if: ${{ steps.diff.outputs.count }} > 0
       id: apiversion
       run: |
-        SERVER_VERSION="$(curl -s openapi.json | jq '.info.version')"
+        SERVER_VERSION="$(cat openapi.json | jq '.info.version')"
         echo "::set-output name=number::$(echo ${SERVER_VERSION::-1})"
 
     - name: Create new version string

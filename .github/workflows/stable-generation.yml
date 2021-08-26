@@ -43,7 +43,7 @@ jobs:
     - name: Get OpenApi version
       if: ${{ steps.diff.outputs.count }} > 0
       id: version
-      run: echo "::set-output name=number::$(curl -s openapi.json | jq '.info.version')"
+      run: echo "::set-output name=number::$(cat openapi.json | jq '.info.version')"
 
     - name: Set version in package.json
       if: ${{ steps.diff.outputs.count }} > 0
