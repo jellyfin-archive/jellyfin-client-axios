@@ -25,6 +25,9 @@ jobs:
         node-version: 14
         cache: 'npm'
         registry-url: 'https://registry.npmjs.org'
+        cache-dependency-path: |
+          stable/package-lock.json
+          unstable/package-lock.json
 
     - name: Get package version
       id: version
@@ -54,6 +57,9 @@ jobs:
         node-version: 14
         cache: 'npm'
         registry-url: 'https://npm.pkg.github.com'
+        cache-dependency-path: |
+          stable/package-lock.json
+          unstable/package-lock.json
 
     - name: Publish to GitHub Package registry
       run: npm publish --tag ${{ matrix.version }} --access public
