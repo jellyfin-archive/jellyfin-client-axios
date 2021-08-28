@@ -93,7 +93,7 @@ export interface TranscodingInfo {
      * @type {HardwareEncodingType}
      * @memberof TranscodingInfo
      */
-    HardwareAccelerationType?: HardwareEncodingType | null;
+    HardwareAccelerationType?: HardwareEncodingType;
     /**
      * 
      * @type {Array<TranscodeReason>}

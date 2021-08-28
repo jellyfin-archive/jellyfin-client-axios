@@ -28,7 +28,7 @@ export interface VersionInfo {
      */
     version?: string;
     /**
-     * Gets the version as a System.Version.
+     * 
      * @type {Version}
      * @memberof VersionInfo
      */

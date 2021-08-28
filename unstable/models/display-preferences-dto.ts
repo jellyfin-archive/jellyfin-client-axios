@@ -71,7 +71,7 @@ export interface DisplayPreferencesDto {
      */
     CustomPrefs?: { [key: string]: string; } | null;
     /**
-     * Gets or sets the scroll direction.
+     * 
      * @type {ScrollDirection}
      * @memberof DisplayPreferencesDto
      */
@@ -89,7 +89,7 @@ export interface DisplayPreferencesDto {
      */
     RememberSorting?: boolean;
     /**
-     * Gets or sets the sort order.
+     * 
      * @type {SortOrder}
      * @memberof DisplayPreferencesDto
      */

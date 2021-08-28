@@ -28,7 +28,7 @@ export interface QueueRequestDto {
      */
     ItemIds?: Array<string>;
     /**
-     * Enum GroupQueueMode.
+     * 
      * @type {GroupQueueMode}
      * @memberof QueueRequestDto
      */

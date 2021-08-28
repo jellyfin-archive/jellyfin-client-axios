@@ -41,11 +41,11 @@ export interface DeviceProfile {
      */
     Id?: string | null;
     /**
-     * Gets or sets the Identification.
+     * 
      * @type {DeviceIdentification}
      * @memberof DeviceProfile
      */
-    Identification?: DeviceIdentification | null;
+    Identification?: DeviceIdentification;
     /**
      * Gets or sets the friendly name of the device profile, which can be shown to users.
      * @type {string}

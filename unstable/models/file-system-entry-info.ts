@@ -34,7 +34,7 @@ export interface FileSystemEntryInfo {
      */
     Path?: string;
     /**
-     * Gets the type.
+     * 
      * @type {FileSystemEntryType}
      * @memberof FileSystemEntryInfo
      */

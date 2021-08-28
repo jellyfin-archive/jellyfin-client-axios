@@ -252,7 +252,7 @@ export interface UserPolicy {
      */
     PasswordResetProviderId?: string | null;
     /**
-     * Gets or sets a value indicating what SyncPlay features the user can access.
+     * 
      * @type {SyncPlayUserAccessType}
      * @memberof UserPolicy
      */

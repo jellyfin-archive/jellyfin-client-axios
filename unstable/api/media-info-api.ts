@@ -28,8 +28,6 @@ import { OpenLiveStreamDto } from '../models';
 import { PlaybackInfoDto } from '../models';
 // @ts-ignore
 import { PlaybackInfoResponse } from '../models';
-// @ts-ignore
-import { UNKNOWN_BASE_TYPE } from '../models';
 /**
  * MediaInfoApi - axios parameter creator
  * @export
@@ -176,11 +174,11 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
          * @param {boolean} [enableTranscoding] Whether to enable transcoding. Default: true.
          * @param {boolean} [allowVideoStreamCopy] Whether to allow to copy the video stream. Default: true.
          * @param {boolean} [allowAudioStreamCopy] Whether to allow to copy the audio stream. Default: true.
-         * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The playback info.
+         * @param {PlaybackInfoDto} [playbackInfoDto] The playback info.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPostedPlaybackInfo: async (itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options: any = {}): Promise<RequestArgs> => {
+        getPostedPlaybackInfo: async (itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, playbackInfoDto?: PlaybackInfoDto, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getPostedPlaybackInfo', 'itemId', itemId)
             const localVarPath = `/Items/{itemId}/PlaybackInfo`
@@ -262,7 +260,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(uNKNOWNBASETYPE, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(playbackInfoDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -283,11 +281,11 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} [itemId] The item id.
          * @param {boolean} [enableDirectPlay] Whether to enable direct play. Default: true.
          * @param {boolean} [enableDirectStream] Whether to enable direct stream. Default: true.
-         * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The open live stream dto.
+         * @param {OpenLiveStreamDto} [openLiveStreamDto] The open live stream dto.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        openLiveStream: async (openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options: any = {}): Promise<RequestArgs> => {
+        openLiveStream: async (openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, openLiveStreamDto?: OpenLiveStreamDto, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/LiveStreams/Open`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -354,7 +352,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(uNKNOWNBASETYPE, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(openLiveStreamDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -423,12 +421,12 @@ export const MediaInfoApiFp = function(configuration?: Configuration) {
          * @param {boolean} [enableTranscoding] Whether to enable transcoding. Default: true.
          * @param {boolean} [allowVideoStreamCopy] Whether to allow to copy the video stream. Default: true.
          * @param {boolean} [allowAudioStreamCopy] Whether to allow to copy the audio stream. Default: true.
-         * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The playback info.
+         * @param {PlaybackInfoDto} [playbackInfoDto] The playback info.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPostedPlaybackInfo(itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaybackInfoResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPostedPlaybackInfo(itemId, userId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, mediaSourceId, liveStreamId, autoOpenLiveStream, enableDirectPlay, enableDirectStream, enableTranscoding, allowVideoStreamCopy, allowAudioStreamCopy, uNKNOWNBASETYPE, options);
+        async getPostedPlaybackInfo(itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, playbackInfoDto?: PlaybackInfoDto, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaybackInfoResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPostedPlaybackInfo(itemId, userId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, mediaSourceId, liveStreamId, autoOpenLiveStream, enableDirectPlay, enableDirectStream, enableTranscoding, allowVideoStreamCopy, allowAudioStreamCopy, playbackInfoDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -445,12 +443,12 @@ export const MediaInfoApiFp = function(configuration?: Configuration) {
          * @param {string} [itemId] The item id.
          * @param {boolean} [enableDirectPlay] Whether to enable direct play. Default: true.
          * @param {boolean} [enableDirectStream] Whether to enable direct stream. Default: true.
-         * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The open live stream dto.
+         * @param {OpenLiveStreamDto} [openLiveStreamDto] The open live stream dto.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async openLiveStream(openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LiveStreamResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.openLiveStream(openToken, userId, playSessionId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, itemId, enableDirectPlay, enableDirectStream, uNKNOWNBASETYPE, options);
+        async openLiveStream(openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, openLiveStreamDto?: OpenLiveStreamDto, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LiveStreamResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.openLiveStream(openToken, userId, playSessionId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, itemId, enableDirectPlay, enableDirectStream, openLiveStreamDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -512,12 +510,12 @@ export const MediaInfoApiFactory = function (configuration?: Configuration, base
          * @param {boolean} [enableTranscoding] Whether to enable transcoding. Default: true.
          * @param {boolean} [allowVideoStreamCopy] Whether to allow to copy the video stream. Default: true.
          * @param {boolean} [allowAudioStreamCopy] Whether to allow to copy the audio stream. Default: true.
-         * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The playback info.
+         * @param {PlaybackInfoDto} [playbackInfoDto] The playback info.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPostedPlaybackInfo(itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<PlaybackInfoResponse> {
-            return localVarFp.getPostedPlaybackInfo(itemId, userId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, mediaSourceId, liveStreamId, autoOpenLiveStream, enableDirectPlay, enableDirectStream, enableTranscoding, allowVideoStreamCopy, allowAudioStreamCopy, uNKNOWNBASETYPE, options).then((request) => request(axios, basePath));
+        getPostedPlaybackInfo(itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, playbackInfoDto?: PlaybackInfoDto, options?: any): AxiosPromise<PlaybackInfoResponse> {
+            return localVarFp.getPostedPlaybackInfo(itemId, userId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, mediaSourceId, liveStreamId, autoOpenLiveStream, enableDirectPlay, enableDirectStream, enableTranscoding, allowVideoStreamCopy, allowAudioStreamCopy, playbackInfoDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -533,12 +531,12 @@ export const MediaInfoApiFactory = function (configuration?: Configuration, base
          * @param {string} [itemId] The item id.
          * @param {boolean} [enableDirectPlay] Whether to enable direct play. Default: true.
          * @param {boolean} [enableDirectStream] Whether to enable direct stream. Default: true.
-         * @param {UNKNOWN_BASE_TYPE} [uNKNOWNBASETYPE] The open live stream dto.
+         * @param {OpenLiveStreamDto} [openLiveStreamDto] The open live stream dto.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        openLiveStream(openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE, options?: any): AxiosPromise<LiveStreamResponse> {
-            return localVarFp.openLiveStream(openToken, userId, playSessionId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, itemId, enableDirectPlay, enableDirectStream, uNKNOWNBASETYPE, options).then((request) => request(axios, basePath));
+        openLiveStream(openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, openLiveStreamDto?: OpenLiveStreamDto, options?: any): AxiosPromise<LiveStreamResponse> {
+            return localVarFp.openLiveStream(openToken, userId, playSessionId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, itemId, enableDirectPlay, enableDirectStream, openLiveStreamDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -705,10 +703,10 @@ export interface MediaInfoApiGetPostedPlaybackInfoRequest {
 
     /**
      * The playback info.
-     * @type {UNKNOWN_BASE_TYPE}
+     * @type {PlaybackInfoDto}
      * @memberof MediaInfoApiGetPostedPlaybackInfo
      */
-    readonly uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE
+    readonly playbackInfoDto?: PlaybackInfoDto
 }
 
 /**
@@ -796,10 +794,10 @@ export interface MediaInfoApiOpenLiveStreamRequest {
 
     /**
      * The open live stream dto.
-     * @type {UNKNOWN_BASE_TYPE}
+     * @type {OpenLiveStreamDto}
      * @memberof MediaInfoApiOpenLiveStream
      */
-    readonly uNKNOWNBASETYPE?: UNKNOWN_BASE_TYPE
+    readonly openLiveStreamDto?: OpenLiveStreamDto
 }
 
 /**
@@ -854,7 +852,7 @@ export class MediaInfoApi extends BaseAPI {
      * @memberof MediaInfoApi
      */
     public getPostedPlaybackInfo(requestParameters: MediaInfoApiGetPostedPlaybackInfoRequest, options?: any) {
-        return MediaInfoApiFp(this.configuration).getPostedPlaybackInfo(requestParameters.itemId, requestParameters.userId, requestParameters.maxStreamingBitrate, requestParameters.startTimeTicks, requestParameters.audioStreamIndex, requestParameters.subtitleStreamIndex, requestParameters.maxAudioChannels, requestParameters.mediaSourceId, requestParameters.liveStreamId, requestParameters.autoOpenLiveStream, requestParameters.enableDirectPlay, requestParameters.enableDirectStream, requestParameters.enableTranscoding, requestParameters.allowVideoStreamCopy, requestParameters.allowAudioStreamCopy, requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+        return MediaInfoApiFp(this.configuration).getPostedPlaybackInfo(requestParameters.itemId, requestParameters.userId, requestParameters.maxStreamingBitrate, requestParameters.startTimeTicks, requestParameters.audioStreamIndex, requestParameters.subtitleStreamIndex, requestParameters.maxAudioChannels, requestParameters.mediaSourceId, requestParameters.liveStreamId, requestParameters.autoOpenLiveStream, requestParameters.enableDirectPlay, requestParameters.enableDirectStream, requestParameters.enableTranscoding, requestParameters.allowVideoStreamCopy, requestParameters.allowAudioStreamCopy, requestParameters.playbackInfoDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -866,6 +864,6 @@ export class MediaInfoApi extends BaseAPI {
      * @memberof MediaInfoApi
      */
     public openLiveStream(requestParameters: MediaInfoApiOpenLiveStreamRequest = {}, options?: any) {
-        return MediaInfoApiFp(this.configuration).openLiveStream(requestParameters.openToken, requestParameters.userId, requestParameters.playSessionId, requestParameters.maxStreamingBitrate, requestParameters.startTimeTicks, requestParameters.audioStreamIndex, requestParameters.subtitleStreamIndex, requestParameters.maxAudioChannels, requestParameters.itemId, requestParameters.enableDirectPlay, requestParameters.enableDirectStream, requestParameters.uNKNOWNBASETYPE, options).then((request) => request(this.axios, this.basePath));
+        return MediaInfoApiFp(this.configuration).openLiveStream(requestParameters.openToken, requestParameters.userId, requestParameters.playSessionId, requestParameters.maxStreamingBitrate, requestParameters.startTimeTicks, requestParameters.audioStreamIndex, requestParameters.subtitleStreamIndex, requestParameters.maxAudioChannels, requestParameters.itemId, requestParameters.enableDirectPlay, requestParameters.enableDirectStream, requestParameters.openLiveStreamDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
