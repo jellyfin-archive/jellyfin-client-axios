@@ -7,6 +7,12 @@
 <img alt="Logo Banner" src="https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/banner-logo-solid.svg?sanitize=true"/>
 <br/>
 <br/>
+<a href="https://www.npmjs.com/package/@jellyfin/client-axios">
+<img alt="stable npm" src="https://img.shields.io/npm/v/@jellyfin/client-axios/stable"/>
+</a>
+<a href="https://www.npmjs.com/package/@jellyfin/client-axios">
+<img alt="unstable npm" src="https://img.shields.io/npm/v/@jellyfin/client-axios/unstable"/>
+</a>
 <a href="https://github.com/jellyfin/jellyfin-client-axios">
 <img alt="MIT License" src="https://img.shields.io/github/license/jellyfin/jellyfin-client-axios.svg"/>
 </a>
@@ -35,11 +41,12 @@ for TypeScript
 This library depends on [Axios](https://github.com/axios/axios).
 
 ### TypeScript typings
+
 You can also use this library as a development dependency just for the
-TypeScript typings. Types are located under the ``models`` subfolder:
+TypeScript typings. Types are located under the `models` subfolder:
 
 ```js
-import type TYPE_NAME from '@jellyfin/client-axios/models';
+import type TYPE_NAME from "@jellyfin/client-axios/models";
 ```
 
 ## Build Process
@@ -74,7 +81,7 @@ docker run --rm openapitools/openapi-generator-cli generate -i https://api.jelly
 -o /output/dir
 ```
 
-If you want to compile the TypeScript sources to JavaScript, check the ``README`` of the generated
+If you want to compile the TypeScript sources to JavaScript, check the `README` of the generated
 output, as it will contain up to date instructions of how to do it yourself.
 
 ## Examples
