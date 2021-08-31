@@ -9,75 +9,75 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.3.4
-      with:
-        ref: 'master'
-    
-    - name: Download OpenAPI file
-      run: curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-stable.json > openapi.json
-    
-    - name: Modify the schema
-      run: node scripts/modifySchema.mjs openapi.json
+      - uses: actions/checkout@v2.3.4
+        with:
+          ref: "master"
 
-    - name: Generate
-      uses: docker://openapitools/openapi-generator-cli:latest-release
-      env:
-        TS_POST_PROCESS_FILE: true
-      with:
-        args: >-
-          generate -i /github/workspace/openapi.json
-          -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
-          --additional-properties=npmRepository=https://www.npmjs.com/package/@jellyfin/client-axios
-          --additional-properties=supportsES6=true
-          --additional-properties=useSingleRequestParameter=true
-          --additional-properties=withSeparateModelsAndApi=true
-          --additional-properties=modelPackage=models
-          --additional-properties=apiPackage=api
-          --enable-post-process-file
-          -o /github/workspace/stable
+      - name: Download OpenAPI file
+        run: curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-stable.json > openapi.json
 
-    - name: Check if .ts files were modified
-      id: diff
-      run: echo "::set-output name=count::$(git status -s | grep ts | wc -l)"
+      - name: Modify the schema
+        run: node scripts/modifySchema.mjs openapi.json
 
-    - name: Get OpenApi version
-      if: ${{ steps.diff.outputs.count }} > 0
-      id: version
-      run: echo "::set-output name=number::$(cat openapi.json | jq '.info.version')"
+      - name: Generate
+        uses: docker://openapitools/openapi-generator-cli:latest-release
+        env:
+          TS_POST_PROCESS_FILE: true
+        with:
+          args: >-
+            generate -i /github/workspace/openapi.json
+            -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
+            --additional-properties=npmRepository=https://www.npmjs.com/package/@jellyfin/client-axios
+            --additional-properties=supportsES6=true
+            --additional-properties=useSingleRequestParameter=true
+            --additional-properties=withSeparateModelsAndApi=true
+            --additional-properties=modelPackage=models
+            --additional-properties=apiPackage=api
+            --enable-post-process-file
+            -o /github/workspace/stable
 
-    - name: Set version in package.json
-      if: ${{ steps.diff.outputs.count }} > 0
-      run: |
-        echo "$(cat stable/package.json | jq '.version = ${{ steps.version.outputs.number }}')" > stable/package.json
-        echo "$(cat stable/package-lock.json | jq '.version = ${{ steps.version.outputs.number }}')" > stable/package-lock.json
+      - name: Check if .ts files were modified
+        id: diff
+        run: echo "::set-output name=count::$(git status -s | grep ts | wc -l)"
 
-    - name: Setup node environment
-      if: ${{ steps.diff.outputs.count }} > 0
-      uses: actions/setup-node@v2.4.0
-      with:
-        node-version: 14
-        cache: 'npm'
-        cache-dependency-path: |
-          stable/package-lock.json
-          unstable/package-lock.json
+      - name: Get OpenApi version
+        if: ${{ steps.diff.outputs.count }} > 0
+        id: version
+        run: echo "::set-output name=number::$(cat openapi.json | jq '.info.version')"
 
-    - name: Install dependencies
-      if: ${{ steps.diff.outputs.count }} > 0
-      run: npm ci --no-audit
-      working-directory: ./stable
+      - name: Set version in package.json
+        if: ${{ steps.diff.outputs.count }} > 0
+        run: |
+          echo "$(cat stable/package.json | jq '.version = ${{ steps.version.outputs.number }}')" > stable/package.json
+          echo "$(cat stable/package-lock.json | jq '.version = ${{ steps.version.outputs.number }}')" > stable/package-lock.json
 
-    - name: Build
-      if: ${{ steps.diff.outputs.count }} > 0
-      run: npm run build
-      working-directory: ./stable
+      - name: Setup node environment
+        if: ${{ steps.diff.outputs.count }} > 0
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 14
+          cache: "npm"
+          cache-dependency-path: |
+            stable/package-lock.json
+            unstable/package-lock.json
 
-    # "echo" in commit returns true so the build succeeds, even if no changed files
-    - name: Commit new changes to the repo
-      if: ${{ steps.diff.outputs.count }} > 0
-      run: |
-        git config --global user.email "packaging@jellyfin.org"
-        git config --global user.name "Jellyfin Packaging Team"
-        git pull
-        git add .
-        git commit -m "Update stable OpenAPI client" || echo
-        git push
+      - name: Install dependencies
+        if: ${{ steps.diff.outputs.count }} > 0
+        run: npm ci --no-audit
+        working-directory: ./stable
+
+      - name: Build
+        if: ${{ steps.diff.outputs.count }} > 0
+        run: npm run build
+        working-directory: ./stable
+
+      # "echo" in commit returns true so the build succeeds, even if no changed files
+      - name: Commit new changes to the repo
+        if: ${{ steps.diff.outputs.count }} > 0
+        run: |
+          git config --global user.email "packaging@jellyfin.org"
+          git config --global user.name "Jellyfin Packaging Team"
+          git pull
+          git add .
+          git commit -m "Update stable OpenAPI client" || echo
+          git push

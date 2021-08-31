@@ -15,61 +15,61 @@ jobs:
           - unstable
 
     steps:
-    - uses: actions/checkout@v2.3.4
-      with:
-        ref: 'master'
+      - uses: actions/checkout@v2.3.4
+        with:
+          ref: "master"
 
-    - name: Setup node environment for NPMJS
-      uses: actions/setup-node@v2.4.0
-      with:
-        node-version: 14
-        cache: 'npm'
-        registry-url: 'https://registry.npmjs.org'
-        cache-dependency-path: |
-          stable/package-lock.json
-          unstable/package-lock.json
+      - name: Setup node environment for NPMJS
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 14
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+          cache-dependency-path: |
+            stable/package-lock.json
+            unstable/package-lock.json
 
-    - name: Get package version
-      id: version
-      run: echo "::set-output name=number::$(echo $(cat package.json | jq '.version') | tr -d '"')"
-      working-directory: ./${{ matrix.version }}
+      - name: Get package version
+        id: version
+        run: echo "::set-output name=number::$(echo $(cat package.json | jq '.version') | tr -d '"')"
+        working-directory: ./${{ matrix.version }}
 
-    - name: Install dependencies
-      run: npm ci --no-audit
-      working-directory: ./${{ matrix.version }}
+      - name: Install dependencies
+        run: npm ci --no-audit
+        working-directory: ./${{ matrix.version }}
 
-    - name: Publish to npm
-      run: npm publish --tag ${{ matrix.version }} --access public
-      working-directory: ./${{ matrix.version }}
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm
+        run: npm publish --tag ${{ matrix.version }} --access public
+        working-directory: ./${{ matrix.version }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    - name: Set as latest in npm
-      if: ${{ matrix.version == 'stable' }}
-      run: npm dist-tag add @jellyfin/client-axios@${{ steps.version.outputs.number }} latest
-      working-directory: ./${{ matrix.version }}
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Set as latest in npm
+        if: ${{ matrix.version == 'stable' }}
+        run: npm dist-tag add @jellyfin/client-axios@${{ steps.version.outputs.number }} latest
+        working-directory: ./${{ matrix.version }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    - name: Setup node environment for GitHub Package Registry
-      uses: actions/setup-node@v2.4.0
-      with:
-        node-version: 14
-        cache: 'npm'
-        registry-url: 'https://npm.pkg.github.com'
-        cache-dependency-path: |
-          stable/package-lock.json
-          unstable/package-lock.json
+      - name: Setup node environment for GitHub Package Registry
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 14
+          cache: "npm"
+          registry-url: "https://npm.pkg.github.com"
+          cache-dependency-path: |
+            stable/package-lock.json
+            unstable/package-lock.json
 
-    - name: Publish to GitHub Package registry
-      run: npm publish --tag ${{ matrix.version }} --access public
-      working-directory: ./${{ matrix.version }}
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.ORG_PAT }}
+      - name: Publish to GitHub Package registry
+        run: npm publish --tag ${{ matrix.version }} --access public
+        working-directory: ./${{ matrix.version }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ORG_PAT }}
 
-    - name: Set as latest in GitHub Packages
-      if: ${{ matrix.version == 'stable' }}
-      run: npm dist-tag add @jellyfin/client-axios@${{ steps.version.outputs.number }} latest
-      working-directory: ./${{ matrix.version }}
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.ORG_PAT }}
+      - name: Set as latest in GitHub Packages
+        if: ${{ matrix.version == 'stable' }}
+        run: npm dist-tag add @jellyfin/client-axios@${{ steps.version.outputs.number }} latest
+        working-directory: ./${{ matrix.version }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ORG_PAT }}
