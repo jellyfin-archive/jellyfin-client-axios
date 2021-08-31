@@ -40,18 +40,18 @@ jobs:
         run: echo "::set-output name=count::$(git status -s | grep ts | wc -l)"
 
       - name: Get OpenApi version
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         id: version
         run: echo "::set-output name=number::$(cat openapi.json | jq '.info.version')"
 
       - name: Set version in package.json
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         run: |
           echo "$(cat stable/package.json | jq '.version = ${{ steps.version.outputs.number }}')" > stable/package.json
           echo "$(cat stable/package-lock.json | jq '.version = ${{ steps.version.outputs.number }}')" > stable/package-lock.json
 
       - name: Setup node environment
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         uses: actions/setup-node@v2.4.0
         with:
           node-version: 14
@@ -59,12 +59,12 @@ jobs:
           cache-dependency-path: stable/package-lock.json
 
       - name: Install dependencies
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         run: npm ci --no-audit
         working-directory: ./stable
 
       - name: Build
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         run: npm run build
         working-directory: ./stable
 
