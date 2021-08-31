@@ -70,7 +70,7 @@ jobs:
 
       # "echo" in commit returns true so the build succeeds, even if no changed files
       - name: Commit new changes to the repo
-        if: ${{ steps.diff.outputs.count }} > 0 && github.event_name != 'pull_request'
+        if: ${{ steps.diff.outputs.count > 0 && github.event_name != 'pull_request' }}
         run: |
           git config --global user.email "packaging@jellyfin.org"
           git config --global user.name "Jellyfin Packaging Team"
