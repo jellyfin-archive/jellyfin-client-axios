@@ -1,4 +1,4 @@
-name: Generate stable API
+name: Generate stable and unstable API
 
 on:
   schedule:
@@ -9,11 +9,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        version:
+          - stable
+          - unstable
+
     steps:
       - uses: actions/checkout@v2.3.4
 
       - name: Download OpenAPI file
-        run: curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-stable.json > openapi.json
+        run: curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-${{ matrix.version }}.json > openapi.json
 
       - name: Modify the schema
         run: node scripts/modifySchema.mjs openapi.json
@@ -33,22 +41,28 @@ jobs:
             --additional-properties=modelPackage=models
             --additional-properties=apiPackage=api
             --enable-post-process-file
-            -o /github/workspace/stable
+            -o /github/workspace/${{ matrix.version }}
 
       - name: Check if .ts files were modified
         id: diff
         run: echo "::set-output name=count::$(git status -s | grep ts | wc -l)"
 
-      - name: Get OpenApi version
-        if: ${{ steps.diff.outputs.count > 0 }}
-        id: version
-        run: echo "::set-output name=number::$(cat openapi.json | jq '.info.version')"
-
-      - name: Set version in package.json
-        if: ${{ steps.diff.outputs.count > 0 }}
+      - name: (stable) Set version in package.json
+        if: ${{ steps.diff.outputs.count > 0 && matrix.version == 'stable' }}
         run: |
-          echo "$(cat stable/package.json | jq '.version = ${{ steps.version.outputs.number }}')" > stable/package.json
-          echo "$(cat stable/package-lock.json | jq '.version = ${{ steps.version.outputs.number }}')" > stable/package-lock.json
+          VERSION=$(cat openapi.json | jq '.info.version')
+          echo "$(cat stable/package.json | jq ".version = $VERSION")" > stable/package.json
+          echo "$(cat stable/package-lock.json | jq ".version = $VERSION")" > stable/package-lock.json
+
+      - name: (unstable) Set version in package.json
+        if: ${{ steps.diff.outputs.count > 0 && matrix.version == 'unstable' }}
+        run: |
+          SERVER_SHA="$(git ls-remote git://github.com/jellyfin/jellyfin.git | grep refs/heads/master | cut -f 1  | cut -c1-7)"
+          SERVER_VERSION="$(cat openapi.json | jq '.info.version')"
+          SERVER_VERSION=${SERVER_VERSION:1:-1}
+          VERSION=$(echo "$SERVER_VERSION-unstable+$SERVER_SHA")
+          echo "$(cat unstable/package.json | jq ".version = \"${VERSION}\"")" > unstable/package.json
+          echo "$(cat unstable/package-lock.json | jq ".version = \"${VERSION}\"")" > unstable/package-lock.json
 
       - name: Setup node environment
         if: ${{ steps.diff.outputs.count > 0 }}
@@ -56,17 +70,17 @@ jobs:
         with:
           node-version: 14
           cache: "npm"
-          cache-dependency-path: stable/package-lock.json
+          cache-dependency-path: ${{ matrix.version }}/package-lock.json
 
       - name: Install dependencies
         if: ${{ steps.diff.outputs.count > 0 }}
         run: npm ci --no-audit
-        working-directory: ./stable
+        working-directory: ./${{ matrix.version }}
 
       - name: Build
         if: ${{ steps.diff.outputs.count > 0 }}
         run: npm run build
-        working-directory: ./stable
+        working-directory: ./${{ matrix.version }}
 
       # "echo" in commit returns true so the build succeeds, even if no changed files
       - name: Commit new changes to the repo
@@ -76,5 +90,5 @@ jobs:
           git config --global user.name "Jellyfin Packaging Team"
           git pull
           git add .
-          git commit -m "Update stable OpenAPI client" || echo
+          git commit -m "Update ${{ matrix.version }} OpenAPI client" || echo
           git push
