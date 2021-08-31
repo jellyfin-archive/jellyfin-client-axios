@@ -47,25 +47,25 @@ jobs:
         run: echo "::set-output name=count::$(git status -s | grep ts | wc -l)"
 
       - name: Get OpenApi version
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         id: apiversion
         run: |
           SERVER_VERSION="$(cat openapi.json | jq '.info.version')"
           echo "::set-output name=number::$(echo ${SERVER_VERSION::-1})"
 
       - name: Create new version string
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         id: version
         run: echo "::set-output name=number::$(echo ${{ steps.apiversion.outputs.number }}-unstable+${{ steps.sha.outputs.sha }}")"
 
       - name: Set version in package.json
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         run: |
           echo "$(cat unstable/package.json | jq '.version = "${{ steps.version.outputs.number }}"')" > unstable/package.json
           echo "$(cat unstable/package-lock.json | jq '.version = "${{ steps.version.outputs.number }}"')" > unstable/package-lock.json
 
       - name: Setup node environment
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         uses: actions/setup-node@v2.4.0
         with:
           node-version: 14
@@ -73,12 +73,12 @@ jobs:
           cache-dependency-path: unstable/package-lock.json
 
       - name: Install dependencies
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         run: npm ci --no-audit
         working-directory: ./unstable
 
       - name: Build
-        if: ${{ steps.diff.outputs.count }} > 0
+        if: ${{ steps.diff.outputs.count > 0 }}
         run: npm run build
         working-directory: ./unstable
 
