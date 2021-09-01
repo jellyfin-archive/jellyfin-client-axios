@@ -47,6 +47,10 @@ jobs:
         id: diff
         run: echo "::set-output name=count::$(git status -su | grep ts | wc -l)"
 
+      - name: Set docker files ownership to runner
+        if: ${{ steps.diff.outputs.count > 0 }}
+        run: sudo chown -R runner:docker .
+
       - name: (stable) Set version in package.json
         if: ${{ steps.diff.outputs.count > 0 && matrix.version == 'stable' }}
         run: |
