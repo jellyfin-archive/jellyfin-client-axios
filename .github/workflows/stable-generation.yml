@@ -45,7 +45,7 @@ jobs:
 
       - name: Check if .ts files were modified
         id: diff
-        run: echo "::set-output name=count::$(git status -s | grep ts | wc -l)"
+        run: echo "::set-output name=count::$(git status -su | grep ts | wc -l)"
 
       - name: (stable) Set version in package.json
         if: ${{ steps.diff.outputs.count > 0 && matrix.version == 'stable' }}
