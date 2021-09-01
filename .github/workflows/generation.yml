@@ -1,4 +1,4 @@
-name: Generate stable and unstable API
+name: Generate API client
 
 on:
   schedule:
@@ -46,10 +46,6 @@ jobs:
       - name: Check if .ts files were modified
         id: diff
         run: echo "::set-output name=count::$(git status -su | grep ts | wc -l)"
-
-      - name: Set docker files ownership to runner
-        if: ${{ steps.diff.outputs.count > 0 }}
-        run: sudo chown -R runner:docker .
 
       - name: (stable) Set version in package.json
         if: ${{ steps.diff.outputs.count > 0 && matrix.version == 'stable' }}
