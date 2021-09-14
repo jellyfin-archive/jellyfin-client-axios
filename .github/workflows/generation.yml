@@ -19,6 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2.3.4
+        with:
+          token: ${{ secrets.JF_BOT_TOKEN }}
 
       - name: Download OpenAPI file
         run: curl -s https://api.jellyfin.org/openapi/jellyfin-openapi-${{ matrix.version }}.json > openapi.json
@@ -86,8 +88,8 @@ jobs:
       - name: Commit new changes to the repo
         if: ${{ steps.diff.outputs.count > 0 && github.event_name != 'pull_request' }}
         run: |
-          git config --global user.email "packaging@jellyfin.org"
-          git config --global user.name "Jellyfin Packaging Team"
+          git config user.name jellyfin-bot
+          git config user.email team@jellyfin.org
           git pull
           git add .
           git commit -m "Update ${{ matrix.version }} OpenAPI client" || echo
