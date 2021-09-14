@@ -30,7 +30,7 @@
 </a>
 </p>
 
-> ## WARNING: The current 10.7.7 package for this project is the one matching the 10.7.6 server API due to a bug in our deployment. New versions should be fixed and follow the server versioning.
+> ## WARNING: The current 10.7.8 package for this project is the one matching the 10.7.7 server API due to a bug in our deployment. New versions should be fixed and follow the server versioning.
 
 This library is meant to help clients written in JavaScript or TypeScript interact with Jellyfin's REST API. It's generated
 automatically using [OpenAPITools generator](https://github.com/OpenAPITools/openapi-generator) and it's fully typed
