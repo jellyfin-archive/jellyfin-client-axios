@@ -21,7 +21,7 @@
  */
 export interface QuickConnectResult {
     /**
-     * Gets a value indicating whether this request is authorized.
+     * Gets or sets a value indicating whether this request is authorized.
      * @type {boolean}
      * @memberof QuickConnectResult
      */
@@ -39,11 +39,29 @@ export interface QuickConnectResult {
      */
     Code?: string;
     /**
-     * Gets or sets the private access token.
+     * Gets the requesting device id.
      * @type {string}
      * @memberof QuickConnectResult
      */
-    Authentication?: string | null;
+    DeviceId?: string;
+    /**
+     * Gets the requesting device name.
+     * @type {string}
+     * @memberof QuickConnectResult
+     */
+    DeviceName?: string;
+    /**
+     * Gets the requesting app name.
+     * @type {string}
+     * @memberof QuickConnectResult
+     */
+    AppName?: string;
+    /**
+     * Gets the requesting app version.
+     * @type {string}
+     * @memberof QuickConnectResult
+     */
+    AppVersion?: string;
     /**
      * Gets or sets the DateTime that this request was created.
      * @type {string}

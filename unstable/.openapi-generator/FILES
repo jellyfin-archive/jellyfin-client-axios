@@ -117,6 +117,7 @@ models/default-directory-browser-info-dto.ts
 models/device-identification.ts
 models/device-info-query-result.ts
 models/device-info.ts
+models/device-options-dto.ts
 models/device-options.ts
 models/device-profile-info.ts
 models/device-profile-type.ts

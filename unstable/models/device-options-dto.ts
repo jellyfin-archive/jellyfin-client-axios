@@ -15,23 +15,29 @@
 
 
 /**
- * 
+ * A dto representing custom options for a device.
  * @export
- * @interface MediaPathInfo
+ * @interface DeviceOptionsDto
  */
-export interface MediaPathInfo {
+export interface DeviceOptionsDto {
     /**
-     * 
-     * @type {string}
-     * @memberof MediaPathInfo
+     * Gets or sets the id.
+     * @type {number}
+     * @memberof DeviceOptionsDto
      */
-    Path?: string;
+    Id?: number;
     /**
-     * 
+     * Gets or sets the device id.
      * @type {string}
-     * @memberof MediaPathInfo
+     * @memberof DeviceOptionsDto
      */
-    NetworkPath?: string | null;
+    DeviceId?: string | null;
+    /**
+     * Gets or sets the custom name.
+     * @type {string}
+     * @memberof DeviceOptionsDto
+     */
+    CustomName?: string | null;
 }
 
 

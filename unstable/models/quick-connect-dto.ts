@@ -21,11 +21,11 @@
  */
 export interface QuickConnectDto {
     /**
-     * Gets or sets the quick connect token.
+     * Gets or sets the quick connect secret.
      * @type {string}
      * @memberof QuickConnectDto
      */
-    Token: string;
+    Secret: string;
 }
 
 

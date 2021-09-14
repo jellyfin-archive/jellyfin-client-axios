@@ -53,6 +53,7 @@ export * from './device-identification';
 export * from './device-info';
 export * from './device-info-query-result';
 export * from './device-options';
+export * from './device-options-dto';
 export * from './device-profile';
 export * from './device-profile-info';
 export * from './device-profile-type';
