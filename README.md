@@ -49,6 +49,89 @@ TypeScript typings. Types are located under the `models` subfolder:
 import type TYPE_NAME from "@jellyfin/client-axios/models";
 ```
 
+## Usage
+
+Install it in your project:
+
+```bash
+npm i @jellyfin/client-axios
+```
+
+This library follows the API pattern you can get on https://api.jellyfin.org/ or on your own server at `/api-docs/swagger/index.html` or `/api-docs/redoc/index.html`.
+
+### Basic example
+
+```typescript
+// Get server infos
+import { SystemApi } from "@jellyfin/client-axios";
+
+const systemApi = new SystemApi(
+  undefined, // OpenAPI configuration object, found in `configuration.ts`
+  "https://demo.jellyfin.org/stable", // Base URL
+  undefined // Axios base object to use for queries, can be used to set base URL or headers
+);
+const infos = (await systemApi.getPublicSystemInfo()).data;
+console.log(infos);
+```
+
+### Authentication
+
+```typescript
+import { v4 } from "uuid"; // Used to generate random string
+import { UserApi } from "@jellyfin/client-axios";
+
+const base_token = `MediaBrowser Client="My New Client", Device="${
+  window.navigator.userAgent
+}", DeviceId="${v4()}", Version="1.0.0"`;
+
+const vanilla_token = `${base_token}, Token=""`; // We need a vanilla token to authenticate
+
+const ax = axios.create({
+  headers: {
+    "X-Emby-Authorization": vanilla_token
+  },
+  baseURL: "https://demo.jellyfin.org/stable"
+}); // Prepare the authentification header
+
+const userApi = new UserApi(undefined, "", ax); // If using the baseURL from Axios, you need to set the baseURL to an empty string in the API object
+const res = (
+  await userApi.authenticateUserByName({
+    authenticateUserByName: {
+      Username: "demo",
+      Pw: ""
+    }
+  })
+).data;
+
+const logged_token = `${base_token}, Token="${res.AccessToken}"`; // Re-use our base token to append the newly fetched one
+const userId = res.User?.Id;
+console.log(logged_token);
+console.log(userId);
+```
+
+### API calls
+
+```typescript
+const ax = axios.create({
+  baseURL: url,
+  headers: {
+    "X-Emby-Authorization": token
+  }
+});
+
+const libraryApi = new LibraryApi(undefined, "", ax);
+const libs = (await libraryApi.getMediaFolders()).data;
+console.log(libs);
+
+const artistsApi = new ArtistsApi(undefined, "", ax);
+const artist = (
+  await artistsApi.getArtistByName({
+    name: "Flume"
+  })
+).data; // Each API parameter is typed and available as method's parameters
+console.log(artist);
+```
+
 ## Build Process
 
 This API client is built automatically every midnight for the stable and unstable API releases. You can build it yourself using Docker:
