@@ -76,24 +76,25 @@ console.log(infos);
 
 ### Authentication
 
+For authentication, Jellyfin needs an `Authorization` header with a a few informations filled in, and that isn't part of the SDK spec. So the authentication method doesn't pass the `Configuration` API key field that we will use later, and we need to specify it manually. It'll be then used to append the fetched authentication token and use it as the classic authorization header.
+
 ```typescript
 import { v4 } from "uuid"; // Used to generate random string
 import { UserApi } from "@jellyfin/client-axios";
 
 const base_token = `MediaBrowser Client="My New Client", Device="${
   window.navigator.userAgent
-}", DeviceId="${v4()}", Version="1.0.0"`;
+}", DeviceId="${v4()}", Version="1.0.0"`; // Base string for the full header
 
 const vanilla_token = `${base_token}, Token=""`; // We need a vanilla token to authenticate
 
 const ax = axios.create({
   headers: {
-    "X-Emby-Authorization": vanilla_token
-  },
-  baseURL: "https://demo.jellyfin.org/stable"
+    Authorization: vanilla_token
+  }
 }); // Prepare the authentification header
 
-const userApi = new UserApi(undefined, "", ax); // If using the baseURL from Axios, you need to set the baseURL to an empty string in the API object
+const userApi = new UserApi(undefined, "https://demo.jellyfin.org/stable", ax);
 const res = (
   await userApi.authenticateUserByName({
     authenticateUserByName: {
@@ -111,19 +112,19 @@ console.log(userId);
 
 ### API calls
 
-```typescript
-const ax = axios.create({
-  baseURL: url,
-  headers: {
-    "X-Emby-Authorization": token
-  }
-});
+For other calls, we don't need to use a specific Axios object and just a `Configuration` one with our server URL and the full size token.
 
-const libraryApi = new LibraryApi(undefined, "", ax);
+```typescript
+const conf = new Configuration({
+  basePath: url,
+  apiKey: token
+}); // Use the OpenAPI configuration object to pass the JF header and server URL
+
+const libraryApi = new LibraryApi(conf);
 const libs = (await libraryApi.getMediaFolders()).data;
 console.log(libs);
 
-const artistsApi = new ArtistsApi(undefined, "", ax);
+const artistsApi = new ArtistsApi(conf);
 const artist = (
   await artistsApi.getArtistByName({
     name: "Flume"
