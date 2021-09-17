@@ -59,10 +59,17 @@ jobs:
       - name: (unstable) Set version in package.json
         if: ${{ steps.diff.outputs.count > 0 && matrix.version == 'unstable' }}
         run: |
-          SERVER_SHA="$(git ls-remote git://github.com/jellyfin/jellyfin.git | grep refs/heads/master | cut -f 1  | cut -c1-7)"
-          SERVER_VERSION="$(cat openapi.json | jq '.info.version')"
-          SERVER_VERSION=${SERVER_VERSION:1:-1}
-          VERSION=$(echo "$SERVER_VERSION-unstable+$SERVER_SHA")
+          BUILD_VERSION=$(cat openapi.json | jq '.info.version')
+          BUILD_VERSION=${BUILD_VERSION:1:-1} # Current build version
+          NPM_UNSTABLE=$(npm show @jellyfin/client-axios@unstable version) # Current unstable version on npm
+          UNSTABLE_NPM_VERSION=$(echo $NPM_UNSTABLE | sed -n 's/^\(.\+\)-unstable\.\([0-9]\+\)$/\1/p' )
+          UNSTABLE_NPM_SUFFIX=$(echo $NPM_UNSTABLE | sed -n 's/^\(.\+\)-unstable\.\([0-9]\+\)$/\2/p' )
+          if [[ "$BUILD_VERSION" == "$UNSTABLE_NPM_VERSION" ]]; then
+            FINAL_NPM_SUFFIX=$((UNSTABLE_NPM_SUFFIX + 1))
+          else
+            FINAL_NPM_SUFFIX=0
+          fi
+          VERSION=$BUILD_VERSION-unstable.$FINAL_NPM_SUFFIX
           echo "$(cat unstable/package.json | jq ".version = \"${VERSION}\"")" > unstable/package.json
           echo "$(cat unstable/package-lock.json | jq ".version = \"${VERSION}\"")" > unstable/package-lock.json
 
