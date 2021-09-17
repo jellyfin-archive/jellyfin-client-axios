@@ -59,8 +59,7 @@ jobs:
       - name: (unstable) Set version in package.json
         if: ${{ steps.diff.outputs.count > 0 && matrix.version == 'unstable' }}
         run: |
-          BUILD_VERSION=$(cat openapi.json | jq '.info.version')
-          BUILD_VERSION=${BUILD_VERSION:1:-1} # Current build version
+          BUILD_VERSION=$(cat openapi.json | jq -r '.info.version')
           NPM_UNSTABLE=$(npm show @jellyfin/client-axios@unstable version) # Current unstable version on npm
           UNSTABLE_NPM_VERSION=$(echo $NPM_UNSTABLE | sed -n 's/^\(.\+\)-unstable\.\([0-9]\+\)$/\1/p' )
           UNSTABLE_NPM_SUFFIX=$(echo $NPM_UNSTABLE | sed -n 's/^\(.\+\)-unstable\.\([0-9]\+\)$/\2/p' )
