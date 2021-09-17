@@ -49,6 +49,10 @@ TypeScript typings. Types are located under the `models` subfolder:
 import type TYPE_NAME from "@jellyfin/client-axios/models";
 ```
 
+## Usage
+
+Usage examples can be found [here](EXAMPLES.md).
+
 ## Build Process
 
 This API client is built automatically every midnight for the stable and unstable API releases. You can build it yourself using Docker:
