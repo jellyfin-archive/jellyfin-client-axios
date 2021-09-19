@@ -57,7 +57,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (liveStreamId !== undefined) {
                 localVarQueryParameter['liveStreamId'] = liveStreamId;
@@ -95,7 +95,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
@@ -139,7 +139,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (userId !== undefined) {
                 localVarQueryParameter['userId'] = userId;
@@ -195,7 +195,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (userId !== undefined) {
                 localVarQueryParameter['userId'] = userId;
@@ -299,7 +299,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (openToken !== undefined) {
                 localVarQueryParameter['openToken'] = openToken;

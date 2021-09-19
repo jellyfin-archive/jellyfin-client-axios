@@ -63,7 +63,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (imageIndex !== undefined) {
                 localVarQueryParameter['imageIndex'] = imageIndex;
@@ -112,7 +112,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -154,7 +154,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (index !== undefined) {
                 localVarQueryParameter['index'] = index;
@@ -203,7 +203,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -968,7 +968,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -3699,7 +3699,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (index !== undefined) {
                 localVarQueryParameter['index'] = index;
@@ -3752,7 +3752,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -3797,7 +3797,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -3846,7 +3846,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -3897,7 +3897,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (newIndex !== undefined) {
                 localVarQueryParameter['newIndex'] = newIndex;

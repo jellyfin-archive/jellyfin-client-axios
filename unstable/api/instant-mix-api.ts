@@ -63,7 +63,7 @@ export const InstantMixApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (userId !== undefined) {
                 localVarQueryParameter['userId'] = userId;
@@ -135,7 +135,7 @@ export const InstantMixApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (userId !== undefined) {
                 localVarQueryParameter['userId'] = userId;
@@ -207,7 +207,7 @@ export const InstantMixApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
@@ -283,7 +283,7 @@ export const InstantMixApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (userId !== undefined) {
                 localVarQueryParameter['userId'] = userId;
@@ -354,7 +354,7 @@ export const InstantMixApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
@@ -430,7 +430,7 @@ export const InstantMixApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (userId !== undefined) {
                 localVarQueryParameter['userId'] = userId;
@@ -502,7 +502,7 @@ export const InstantMixApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (userId !== undefined) {
                 localVarQueryParameter['userId'] = userId;
@@ -574,7 +574,7 @@ export const InstantMixApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (userId !== undefined) {
                 localVarQueryParameter['userId'] = userId;

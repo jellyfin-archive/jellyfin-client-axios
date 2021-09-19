@@ -59,7 +59,7 @@ export const DevicesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
@@ -99,7 +99,7 @@ export const DevicesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
@@ -139,7 +139,7 @@ export const DevicesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
@@ -178,7 +178,7 @@ export const DevicesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (supportsSync !== undefined) {
                 localVarQueryParameter['supportsSync'] = supportsSync;
@@ -225,7 +225,7 @@ export const DevicesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;

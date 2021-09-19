@@ -58,7 +58,7 @@ export const ItemRefreshApiAxiosParamCreator = function (configuration?: Configu
             const localVarQueryParameter = {} as any;
 
             // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "X-Emby-Authorization", configuration)
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
             if (metadataRefreshMode !== undefined) {
                 localVarQueryParameter['metadataRefreshMode'] = metadataRefreshMode;
