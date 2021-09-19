@@ -1,0 +1,126 @@
+name: '🔄 Update Client'
+
+on:
+  repository_dispatch:
+    types:
+      - trigger-update
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        description: The Client Version
+        required: true
+      BRANCH:
+        description: The branch to update
+        required: true
+        default: master
+
+concurrency:
+  group: locking
+
+jobs:
+  update:
+    name: Generate and Commit Client Update
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.JF_BOT_TOKEN }}
+
+      - name: Setup Stable Environment
+        if: ${{ github.event_name == 'repository_dispatch' && !github.event.client_payload.unstable }}
+        run: |-
+          SERVER_VERSION=${{ github.event.client_payload.version }}
+          echo "VERSION=${SERVER_VERSION}" >> $GITHUB_ENV
+          echo "BRANCH=release-${SERVER_VERSION%.*}.x" >> $GITHUB_ENV
+          echo "APISPEC=jellyfin-openapi-stable.json" >> $GITHUB_ENV
+
+      - name: Setup Unstable Environment
+        if: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.unstable }}
+        run: |-
+          echo "VERSION=${{ github.event.client_payload.version }}-unstable.${{ github.event.client_payload.server-sha }}" >> $GITHUB_ENV
+          echo "BRANCH=master" >> $GITHUB_ENV
+          echo "APISPEC=jellyfin-openapi-unstable.json" >> $GITHUB_ENV
+
+      - name: Setup Manual Environment
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |-
+          echo "VERSION=${{ github.event.inputs.VERSION }}" >> $GITHUB_ENV
+          echo "BRANCH=${{ github.event.inputs.BRANCH }}" >> $GITHUB_ENV
+          if [[ "${{ github.event.inputs.VERSION }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "APISPEC=jellyfin-openapi-stable.json" >> $GITHUB_ENV
+          else
+            echo "APISPEC=jellyfin-openapi-unstable.json" >> $GITHUB_ENV
+          fi
+
+      - name: Validate Version
+        run: |-
+          SPEC_VERSION=$(curl -s https://api.jellyfin.org/openapi/${{ env.APISPEC }} | jq -r '.info.version')
+          if [[ ! "${VERSION}" =~ ^${SPEC_VERSION}.*$ ]]; then
+            echo "[ERR] Expected '${VERSION}', but public spec is '${SPEC_VERSION}'"
+            exit 1
+          fi
+
+      - name: Prepare 'FIXED' Schema
+        run: |-
+          curl -s https://api.jellyfin.org/openapi/${{ env.APISPEC }} > openapi.json
+          node scripts/modifySchema.mjs openapi.json
+
+      - name: Generate
+        uses: docker://openapitools/openapi-generator-cli:latest-release
+        env:
+          TS_POST_PROCESS_FILE: true
+        with:
+          args: >-
+            generate -i /github/workspace/openapi.json
+              -g typescript-axios --additional-properties=npmName=@jellyfin/client-axios
+              --additional-properties=npmRepository=https://www.npmjs.com/package/@jellyfin/client-axios
+              --additional-properties=supportsES6=true
+              --additional-properties=useSingleRequestParameter=true
+              --additional-properties=withSeparateModelsAndApi=true
+              --additional-properties=modelPackage=models
+              --additional-properties=apiPackage=api
+              --enable-post-process-file
+              -o /github/workspace/client
+
+      - name: Check for .ts Modifications
+        id: diff
+        run: echo "::set-output name=count::$(git status -s | grep ts | wc -l)"
+
+      - name: Set Version
+        if: ${{ steps.diff.outputs.count > 0 }}
+        working-directory: ./src
+        run: |
+          jq '.version = env.VERSION' package.json)" > tmp.json && mv -f tmp.json package.json
+          jq '.version = env.VERSION' package-lock.json)" > tmp-lock.json && mv -f tmp-lock.json package-lock.json
+
+      - name: Setup NodeJs Environment
+        if: ${{ steps.diff.outputs.count > 0 }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: npm
+          cache-dependency-path: src/package-lock.json
+
+      - name: Install Dependencies
+        if: ${{ steps.diff.outputs.count > 0 }}
+        working-directory: ./src
+        run: npm ci --no-audit
+
+      - name: Build
+        if: ${{ steps.diff.outputs.count > 0 }}
+        working-directory: ./src
+        run: npm run build
+
+      - name: Commit Changes
+        if: ${{ steps.diff.outputs.count > 0 }}
+        run: |-
+          git config user.name "jellyfin-bot"
+          git config user.email "team@jellyfin.org"
+          if [[ -z "$(git ls-remote --heads origin ${{ env.BRANCH }})" ]]; then
+            git checkout -b ${{ env.BRANCH }}
+          else
+            git checkout ${{ env.BRANCH }}
+          fi
+          git commit -am "Update OpenAPI client to ${{ env.VERSION }}"
+          git push origin ${{ env.BRANCH }}

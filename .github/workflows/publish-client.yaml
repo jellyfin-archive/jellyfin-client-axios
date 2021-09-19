@@ -1,0 +1,107 @@
+name: '🚀 Publish NPM Package'
+
+on:
+  push:
+    branches:
+      - master
+      - release-*
+
+defaults:
+  run:
+    working-directory: ./src
+
+jobs:
+  setup-vars:
+    runs-on: ubuntu-latest
+
+    outputs:
+      stage: ${{ steps.variables.outputs.stage }}
+      version: ${{ steps.variables.outputs.version }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup variables
+        id: variables
+        run: |-
+          PACKAGE_VERSION=`jq -r '.version' package.json`
+
+          if [[ "${GITHUB_REF}" =~ ^.*release-[0-9]+\.[0-9]+\.x$
+                && "${PACKAGE_VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::set-output name=stage::stable"
+          elif [[ "${GITHUB_REF}" =~ ^.*release-[0-9]+\.[0-9]+\.x$ ]]; then
+            echo "::set-output name=stage::rc"
+          else
+            echo "::set-output name=stage::unstable"
+          fi
+
+          echo "::set-output name=version::${PACKAGE_VERSION}"
+
+  publish-npm:
+    runs-on: ubuntu-latest
+    needs:
+      - setup-vars
+
+    env:
+      STAGE: ${{ needs.setup-vars.outputs.stage }}
+      VERSION: ${{ needs.setup-vars.outputs.version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup NodeJs environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: npm
+          registry-url: "https://registry.npmjs.org"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --no-audit
+
+      - name: Publish to NPM.org
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |-
+          npm publish --tag ${STAGE} --access public
+
+          if [[ "${STAGE}" == "stable" ]]; then
+            npm dist-tag add @jellyfin/client-axios@${VERSION} latest
+          fi
+
+  publish-github:
+    runs-on: ubuntu-latest
+    needs:
+      - setup-vars
+
+    env:
+      STAGE: ${{ needs.setup-vars.outputs.stage }}
+      VERSION: ${{ needs.setup-vars.outputs.version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup NodeJs environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: npm
+          registry-url: "https://npm.pkg.github.com"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --no-audit
+
+      - name: Publish to GitHub Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.JF_BOT_TOKEN }}
+        run: |-
+          npm publish --tag ${STAGE} --access public
+
+          if [[ "${STAGE}" == "stable" ]]; then
+            npm dist-tag add @jellyfin/client-axios@${VERSION} latest
+          fi

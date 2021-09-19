@@ -1,0 +1,62 @@
+name: '🚀 Promote Release'
+
+on:
+  repository_dispatch:
+    types:
+      - promote-release
+  workflow_dispatch:
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src
+
+    steps:
+      - name: Validate
+        run: |-
+          BRANCH=''
+          if [[ "${GITHUB_EVENT_NAME}" == 'workflow_dispatch' ]]; then
+            BRANCH="${GITHUB_REF}"
+          else
+            BRANCH="${{ github.event.client_payload.ref }}"
+          fi
+
+          if [[ ! ${BRANCH} =~ ^.*release-[0-9]+\.[0-9]+\.x$ ]]; then
+            echo "[ERR] Only release branches can be promoted!"
+            exit 1
+          fi
+
+          echo "BRANCH=${BRANCH:?[ERR] branch is unset}"
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.JF_BOT_TOKEN }}
+          ref: ${{ env.BRANCH }}
+
+      - name: Promote version in JSON
+        working-directory: ./src
+        run: |-
+          PRE_RELEASE_VERSION=`jq -r '.version' package.json`
+          RELESE_VERSION=${PRE_RELEASE_VERSION%*-rc*}
+
+          if [[ ! "${PRE_RELEASE_VERSION}" =~ ^.*-rc\.[0-9]+$ ]]; then
+            echo "[ERR] cannot promote non -rc release"
+            exit 1
+          fi
+
+          # since jq is lacking the -i flag :( (see: https://github.com/stedolan/jq/wiki/FAQ#general-questions)
+          jq '.version = env.RELESE_VERSION' package.json > tmp.json && mv -f tmp.json package.json
+          jq '.version = env.RELESE_VERSION' package-lock.json > tmp-lock.json && mv -f tmp-lock.json package-lock.json
+
+      - name: Tag and commit
+        run: |-
+          git config user.name "jellyfin-bot"
+          git config user.email "team@jellyfin.org"
+
+          git checkout ${{ env.BRANCH }}
+          git commit -am "Promote OpenAPI client to ${{ env.VERSION }}"
+          git tag v${{ env.VERSION }} -am "${{ env.VERSION }} release"
+          git push --follow-tags origin ${{ env.BRANCH }}
