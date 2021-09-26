@@ -25,7 +25,8 @@ export enum Architecture {
     X64 = 'X64',
     Arm = 'Arm',
     Arm64 = 'Arm64',
-    Wasm = 'Wasm'
+    Wasm = 'Wasm',
+    S390x = 'S390x'
 }
 
 
