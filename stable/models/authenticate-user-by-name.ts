@@ -25,19 +25,18 @@ export interface AuthenticateUserByName {
      * @type {string}
      * @memberof AuthenticateUserByName
      */
-    Username?: string | null;
+    'Username'?: string | null;
     /**
      * Gets or sets the plain text password.
      * @type {string}
      * @memberof AuthenticateUserByName
      */
-    Pw?: string | null;
+    'Pw'?: string | null;
     /**
      * Gets or sets the sha1-hashed password.
      * @type {string}
      * @memberof AuthenticateUserByName
      */
-    Password?: string | null;
+    'Password'?: string | null;
 }
-
 

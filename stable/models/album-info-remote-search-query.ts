@@ -26,25 +26,24 @@ export interface AlbumInfoRemoteSearchQuery {
      * @type {AlbumInfo}
      * @memberof AlbumInfoRemoteSearchQuery
      */
-    SearchInfo?: AlbumInfo;
+    'SearchInfo'?: AlbumInfo;
     /**
      * 
      * @type {string}
      * @memberof AlbumInfoRemoteSearchQuery
      */
-    ItemId?: string;
+    'ItemId'?: string;
     /**
      * Will only search within the given provider when set.
      * @type {string}
      * @memberof AlbumInfoRemoteSearchQuery
      */
-    SearchProviderName?: string | null;
+    'SearchProviderName'?: string | null;
     /**
      * Gets or sets a value indicating whether disabled providers should be included.
      * @type {boolean}
      * @memberof AlbumInfoRemoteSearchQuery
      */
-    IncludeDisabledProviders?: boolean;
+    'IncludeDisabledProviders'?: boolean;
 }
-
 

@@ -26,19 +26,18 @@ export interface ActivityLogEntryQueryResult {
      * @type {Array<ActivityLogEntry>}
      * @memberof ActivityLogEntryQueryResult
      */
-    Items?: Array<ActivityLogEntry> | null;
+    'Items'?: Array<ActivityLogEntry> | null;
     /**
      * The total number of records available.
      * @type {number}
      * @memberof ActivityLogEntryQueryResult
      */
-    TotalRecordCount?: number;
+    'TotalRecordCount'?: number;
     /**
      * The index of the first record in Items.
      * @type {number}
      * @memberof ActivityLogEntryQueryResult
      */
-    StartIndex?: number;
+    'StartIndex'?: number;
 }
-
 

@@ -25,13 +25,12 @@ export interface SpecialViewOptionDto {
      * @type {string}
      * @memberof SpecialViewOptionDto
      */
-    Name?: string | null;
+    'Name'?: string | null;
     /**
      * Gets or sets view option id.
      * @type {string}
      * @memberof SpecialViewOptionDto
      */
-    Id?: string | null;
+    'Id'?: string | null;
 }
-
 

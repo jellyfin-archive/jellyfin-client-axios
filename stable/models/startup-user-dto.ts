@@ -25,13 +25,12 @@ export interface StartupUserDto {
      * @type {string}
      * @memberof StartupUserDto
      */
-    Name?: string | null;
+    'Name'?: string | null;
     /**
      * Gets or sets the user\'s password.
      * @type {string}
      * @memberof StartupUserDto
      */
-    Password?: string | null;
+    'Password'?: string | null;
 }
-
 

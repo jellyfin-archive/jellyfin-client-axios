@@ -26,19 +26,18 @@ export interface HttpHeaderInfo {
      * @type {string}
      * @memberof HttpHeaderInfo
      */
-    Name?: string | null;
+    'Name'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof HttpHeaderInfo
      */
-    Value?: string | null;
+    'Value'?: string | null;
     /**
      * 
      * @type {HeaderMatchType}
      * @memberof HttpHeaderInfo
      */
-    Match?: HeaderMatchType;
+    'Match'?: HeaderMatchType;
 }
-
 

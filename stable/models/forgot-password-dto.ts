@@ -25,7 +25,6 @@ export interface ForgotPasswordDto {
      * @type {string}
      * @memberof ForgotPasswordDto
      */
-    EnteredUsername: string;
+    'EnteredUsername': string;
 }
-
 

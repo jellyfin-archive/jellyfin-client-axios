@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -39,7 +39,7 @@ export const UserViewsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGroupingOptions: async (userId: string, options: any = {}): Promise<RequestArgs> => {
+        getGroupingOptions: async (userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getGroupingOptions', 'userId', userId)
             const localVarPath = `/Users/{userId}/GroupingOptions`
@@ -57,7 +57,7 @@ export const UserViewsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -76,7 +76,7 @@ export const UserViewsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserViews: async (userId: string, includeExternalContent?: boolean, presetViews?: Array<string>, includeHidden?: boolean, options: any = {}): Promise<RequestArgs> => {
+        getUserViews: async (userId: string, includeExternalContent?: boolean, presetViews?: Array<string>, includeHidden?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getUserViews', 'userId', userId)
             const localVarPath = `/Users/{userId}/Views`
@@ -106,7 +106,7 @@ export const UserViewsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -132,7 +132,7 @@ export const UserViewsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGroupingOptions(userId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<SpecialViewOptionDto>>> {
+        async getGroupingOptions(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<SpecialViewOptionDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGroupingOptions(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -146,7 +146,7 @@ export const UserViewsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserViews(userId: string, includeExternalContent?: boolean, presetViews?: Array<string>, includeHidden?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
+        async getUserViews(userId: string, includeExternalContent?: boolean, presetViews?: Array<string>, includeHidden?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserViews(userId, includeExternalContent, presetViews, includeHidden, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -250,7 +250,7 @@ export class UserViewsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserViewsApi
      */
-    public getGroupingOptions(requestParameters: UserViewsApiGetGroupingOptionsRequest, options?: any) {
+    public getGroupingOptions(requestParameters: UserViewsApiGetGroupingOptionsRequest, options?: AxiosRequestConfig) {
         return UserViewsApiFp(this.configuration).getGroupingOptions(requestParameters.userId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -262,7 +262,7 @@ export class UserViewsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserViewsApi
      */
-    public getUserViews(requestParameters: UserViewsApiGetUserViewsRequest, options?: any) {
+    public getUserViews(requestParameters: UserViewsApiGetUserViewsRequest, options?: AxiosRequestConfig) {
         return UserViewsApiFp(this.configuration).getUserViews(requestParameters.userId, requestParameters.includeExternalContent, requestParameters.presetViews, requestParameters.includeHidden, options).then((request) => request(this.axios, this.basePath));
     }
 }

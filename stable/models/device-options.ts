@@ -25,7 +25,6 @@ export interface DeviceOptions {
      * @type {string}
      * @memberof DeviceOptions
      */
-    CustomName?: string | null;
+    'CustomName'?: string | null;
 }
-
 

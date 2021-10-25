@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -43,7 +43,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        closeLiveStream: async (liveStreamId: string, options: any = {}): Promise<RequestArgs> => {
+        closeLiveStream: async (liveStreamId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'liveStreamId' is not null or undefined
             assertParamExists('closeLiveStream', 'liveStreamId', liveStreamId)
             const localVarPath = `/LiveStreams/Close`;
@@ -67,7 +67,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -83,7 +83,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBitrateTestBytes: async (size?: number, options: any = {}): Promise<RequestArgs> => {
+        getBitrateTestBytes: async (size?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Playback/BitrateTest`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -105,7 +105,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -122,7 +122,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlaybackInfo: async (itemId: string, userId: string, options: any = {}): Promise<RequestArgs> => {
+        getPlaybackInfo: async (itemId: string, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getPlaybackInfo', 'itemId', itemId)
             // verify required parameter 'userId' is not null or undefined
@@ -149,7 +149,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -180,7 +180,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPostedPlaybackInfo: async (itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, playbackInfoDto?: PlaybackInfoDto, options: any = {}): Promise<RequestArgs> => {
+        getPostedPlaybackInfo: async (itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, playbackInfoDto?: PlaybackInfoDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getPostedPlaybackInfo', 'itemId', itemId)
             const localVarPath = `/Items/{itemId}/PlaybackInfo`
@@ -259,7 +259,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(playbackInfoDto, localVarRequestOptions, configuration)
@@ -287,7 +287,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        openLiveStream: async (openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, openLiveStreamDto?: OpenLiveStreamDto, options: any = {}): Promise<RequestArgs> => {
+        openLiveStream: async (openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, openLiveStreamDto?: OpenLiveStreamDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/LiveStreams/Open`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -351,7 +351,7 @@ export const MediaInfoApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(openLiveStreamDto, localVarRequestOptions, configuration)
@@ -378,7 +378,7 @@ export const MediaInfoApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async closeLiveStream(liveStreamId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async closeLiveStream(liveStreamId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.closeLiveStream(liveStreamId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -389,7 +389,7 @@ export const MediaInfoApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBitrateTestBytes(size?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getBitrateTestBytes(size?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getBitrateTestBytes(size, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -401,7 +401,7 @@ export const MediaInfoApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPlaybackInfo(itemId: string, userId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaybackInfoResponse>> {
+        async getPlaybackInfo(itemId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaybackInfoResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPlaybackInfo(itemId, userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -427,7 +427,7 @@ export const MediaInfoApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPostedPlaybackInfo(itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, playbackInfoDto?: PlaybackInfoDto, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaybackInfoResponse>> {
+        async getPostedPlaybackInfo(itemId: string, userId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, mediaSourceId?: string, liveStreamId?: string, autoOpenLiveStream?: boolean, enableDirectPlay?: boolean, enableDirectStream?: boolean, enableTranscoding?: boolean, allowVideoStreamCopy?: boolean, allowAudioStreamCopy?: boolean, playbackInfoDto?: PlaybackInfoDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlaybackInfoResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPostedPlaybackInfo(itemId, userId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, mediaSourceId, liveStreamId, autoOpenLiveStream, enableDirectPlay, enableDirectStream, enableTranscoding, allowVideoStreamCopy, allowAudioStreamCopy, playbackInfoDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -449,7 +449,7 @@ export const MediaInfoApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async openLiveStream(openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, openLiveStreamDto?: OpenLiveStreamDto, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LiveStreamResponse>> {
+        async openLiveStream(openToken?: string, userId?: string, playSessionId?: string, maxStreamingBitrate?: number, startTimeTicks?: number, audioStreamIndex?: number, subtitleStreamIndex?: number, maxAudioChannels?: number, itemId?: string, enableDirectPlay?: boolean, enableDirectStream?: boolean, openLiveStreamDto?: OpenLiveStreamDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LiveStreamResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.openLiveStream(openToken, userId, playSessionId, maxStreamingBitrate, startTimeTicks, audioStreamIndex, subtitleStreamIndex, maxAudioChannels, itemId, enableDirectPlay, enableDirectStream, openLiveStreamDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -817,7 +817,7 @@ export class MediaInfoApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MediaInfoApi
      */
-    public closeLiveStream(requestParameters: MediaInfoApiCloseLiveStreamRequest, options?: any) {
+    public closeLiveStream(requestParameters: MediaInfoApiCloseLiveStreamRequest, options?: AxiosRequestConfig) {
         return MediaInfoApiFp(this.configuration).closeLiveStream(requestParameters.liveStreamId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -829,7 +829,7 @@ export class MediaInfoApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MediaInfoApi
      */
-    public getBitrateTestBytes(requestParameters: MediaInfoApiGetBitrateTestBytesRequest = {}, options?: any) {
+    public getBitrateTestBytes(requestParameters: MediaInfoApiGetBitrateTestBytesRequest = {}, options?: AxiosRequestConfig) {
         return MediaInfoApiFp(this.configuration).getBitrateTestBytes(requestParameters.size, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -841,7 +841,7 @@ export class MediaInfoApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MediaInfoApi
      */
-    public getPlaybackInfo(requestParameters: MediaInfoApiGetPlaybackInfoRequest, options?: any) {
+    public getPlaybackInfo(requestParameters: MediaInfoApiGetPlaybackInfoRequest, options?: AxiosRequestConfig) {
         return MediaInfoApiFp(this.configuration).getPlaybackInfo(requestParameters.itemId, requestParameters.userId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -853,7 +853,7 @@ export class MediaInfoApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MediaInfoApi
      */
-    public getPostedPlaybackInfo(requestParameters: MediaInfoApiGetPostedPlaybackInfoRequest, options?: any) {
+    public getPostedPlaybackInfo(requestParameters: MediaInfoApiGetPostedPlaybackInfoRequest, options?: AxiosRequestConfig) {
         return MediaInfoApiFp(this.configuration).getPostedPlaybackInfo(requestParameters.itemId, requestParameters.userId, requestParameters.maxStreamingBitrate, requestParameters.startTimeTicks, requestParameters.audioStreamIndex, requestParameters.subtitleStreamIndex, requestParameters.maxAudioChannels, requestParameters.mediaSourceId, requestParameters.liveStreamId, requestParameters.autoOpenLiveStream, requestParameters.enableDirectPlay, requestParameters.enableDirectStream, requestParameters.enableTranscoding, requestParameters.allowVideoStreamCopy, requestParameters.allowAudioStreamCopy, requestParameters.playbackInfoDto, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -865,7 +865,7 @@ export class MediaInfoApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MediaInfoApi
      */
-    public openLiveStream(requestParameters: MediaInfoApiOpenLiveStreamRequest = {}, options?: any) {
+    public openLiveStream(requestParameters: MediaInfoApiOpenLiveStreamRequest = {}, options?: AxiosRequestConfig) {
         return MediaInfoApiFp(this.configuration).openLiveStream(requestParameters.openToken, requestParameters.userId, requestParameters.playSessionId, requestParameters.maxStreamingBitrate, requestParameters.startTimeTicks, requestParameters.audioStreamIndex, requestParameters.subtitleStreamIndex, requestParameters.maxAudioChannels, requestParameters.itemId, requestParameters.enableDirectPlay, requestParameters.enableDirectStream, requestParameters.openLiveStreamDto, options).then((request) => request(this.axios, this.basePath));
     }
 }

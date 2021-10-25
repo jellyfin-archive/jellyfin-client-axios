@@ -25,7 +25,6 @@ export interface NewGroupRequestDto {
      * @type {string}
      * @memberof NewGroupRequestDto
      */
-    GroupName?: string | null;
+    'GroupName'?: string | null;
 }
-
 

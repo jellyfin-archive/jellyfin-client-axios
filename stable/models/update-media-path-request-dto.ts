@@ -26,13 +26,12 @@ export interface UpdateMediaPathRequestDto {
      * @type {string}
      * @memberof UpdateMediaPathRequestDto
      */
-    Name: string;
+    'Name': string;
     /**
      * 
      * @type {MediaPathInfo}
      * @memberof UpdateMediaPathRequestDto
      */
-    PathInfo: MediaPathInfo;
+    'PathInfo': MediaPathInfo;
 }
-
 

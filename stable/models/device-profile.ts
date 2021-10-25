@@ -33,235 +33,234 @@ export interface DeviceProfile {
      * @type {string}
      * @memberof DeviceProfile
      */
-    Name?: string | null;
+    'Name'?: string | null;
     /**
      * Gets or sets the Id.
      * @type {string}
      * @memberof DeviceProfile
      */
-    Id?: string | null;
+    'Id'?: string | null;
     /**
      * 
      * @type {DeviceIdentification}
      * @memberof DeviceProfile
      */
-    Identification?: DeviceIdentification;
+    'Identification'?: DeviceIdentification;
     /**
      * Gets or sets the FriendlyName.
      * @type {string}
      * @memberof DeviceProfile
      */
-    FriendlyName?: string | null;
+    'FriendlyName'?: string | null;
     /**
      * Gets or sets the Manufacturer.
      * @type {string}
      * @memberof DeviceProfile
      */
-    Manufacturer?: string | null;
+    'Manufacturer'?: string | null;
     /**
      * Gets or sets the ManufacturerUrl.
      * @type {string}
      * @memberof DeviceProfile
      */
-    ManufacturerUrl?: string | null;
+    'ManufacturerUrl'?: string | null;
     /**
      * Gets or sets the ModelName.
      * @type {string}
      * @memberof DeviceProfile
      */
-    ModelName?: string | null;
+    'ModelName'?: string | null;
     /**
      * Gets or sets the ModelDescription.
      * @type {string}
      * @memberof DeviceProfile
      */
-    ModelDescription?: string | null;
+    'ModelDescription'?: string | null;
     /**
      * Gets or sets the ModelNumber.
      * @type {string}
      * @memberof DeviceProfile
      */
-    ModelNumber?: string | null;
+    'ModelNumber'?: string | null;
     /**
      * Gets or sets the ModelUrl.
      * @type {string}
      * @memberof DeviceProfile
      */
-    ModelUrl?: string | null;
+    'ModelUrl'?: string | null;
     /**
      * Gets or sets the SerialNumber.
      * @type {string}
      * @memberof DeviceProfile
      */
-    SerialNumber?: string | null;
+    'SerialNumber'?: string | null;
     /**
      * Gets or sets a value indicating whether EnableAlbumArtInDidl.
      * @type {boolean}
      * @memberof DeviceProfile
      */
-    EnableAlbumArtInDidl?: boolean;
+    'EnableAlbumArtInDidl'?: boolean;
     /**
      * Gets or sets a value indicating whether EnableSingleAlbumArtLimit.
      * @type {boolean}
      * @memberof DeviceProfile
      */
-    EnableSingleAlbumArtLimit?: boolean;
+    'EnableSingleAlbumArtLimit'?: boolean;
     /**
      * Gets or sets a value indicating whether EnableSingleSubtitleLimit.
      * @type {boolean}
      * @memberof DeviceProfile
      */
-    EnableSingleSubtitleLimit?: boolean;
+    'EnableSingleSubtitleLimit'?: boolean;
     /**
      * Gets or sets the SupportedMediaTypes.
      * @type {string}
      * @memberof DeviceProfile
      */
-    SupportedMediaTypes?: string | null;
+    'SupportedMediaTypes'?: string | null;
     /**
      * Gets or sets the UserId.
      * @type {string}
      * @memberof DeviceProfile
      */
-    UserId?: string | null;
+    'UserId'?: string | null;
     /**
      * Gets or sets the AlbumArtPn.
      * @type {string}
      * @memberof DeviceProfile
      */
-    AlbumArtPn?: string | null;
+    'AlbumArtPn'?: string | null;
     /**
      * Gets or sets the MaxAlbumArtWidth.
      * @type {number}
      * @memberof DeviceProfile
      */
-    MaxAlbumArtWidth?: number;
+    'MaxAlbumArtWidth'?: number;
     /**
      * Gets or sets the MaxAlbumArtHeight.
      * @type {number}
      * @memberof DeviceProfile
      */
-    MaxAlbumArtHeight?: number;
+    'MaxAlbumArtHeight'?: number;
     /**
      * Gets or sets the MaxIconWidth.
      * @type {number}
      * @memberof DeviceProfile
      */
-    MaxIconWidth?: number | null;
+    'MaxIconWidth'?: number | null;
     /**
      * Gets or sets the MaxIconHeight.
      * @type {number}
      * @memberof DeviceProfile
      */
-    MaxIconHeight?: number | null;
+    'MaxIconHeight'?: number | null;
     /**
      * Gets or sets the MaxStreamingBitrate.
      * @type {number}
      * @memberof DeviceProfile
      */
-    MaxStreamingBitrate?: number | null;
+    'MaxStreamingBitrate'?: number | null;
     /**
      * Gets or sets the MaxStaticBitrate.
      * @type {number}
      * @memberof DeviceProfile
      */
-    MaxStaticBitrate?: number | null;
+    'MaxStaticBitrate'?: number | null;
     /**
      * Gets or sets the MusicStreamingTranscodingBitrate.
      * @type {number}
      * @memberof DeviceProfile
      */
-    MusicStreamingTranscodingBitrate?: number | null;
+    'MusicStreamingTranscodingBitrate'?: number | null;
     /**
      * Gets or sets the MaxStaticMusicBitrate.
      * @type {number}
      * @memberof DeviceProfile
      */
-    MaxStaticMusicBitrate?: number | null;
+    'MaxStaticMusicBitrate'?: number | null;
     /**
      * Gets or sets the content of the aggregationFlags element in the urn:schemas-sonycom:av namespace.
      * @type {string}
      * @memberof DeviceProfile
      */
-    SonyAggregationFlags?: string | null;
+    'SonyAggregationFlags'?: string | null;
     /**
      * Gets or sets the ProtocolInfo.
      * @type {string}
      * @memberof DeviceProfile
      */
-    ProtocolInfo?: string | null;
+    'ProtocolInfo'?: string | null;
     /**
      * Gets or sets the TimelineOffsetSeconds.
      * @type {number}
      * @memberof DeviceProfile
      */
-    TimelineOffsetSeconds?: number;
+    'TimelineOffsetSeconds'?: number;
     /**
      * Gets or sets a value indicating whether RequiresPlainVideoItems.
      * @type {boolean}
      * @memberof DeviceProfile
      */
-    RequiresPlainVideoItems?: boolean;
+    'RequiresPlainVideoItems'?: boolean;
     /**
      * Gets or sets a value indicating whether RequiresPlainFolders.
      * @type {boolean}
      * @memberof DeviceProfile
      */
-    RequiresPlainFolders?: boolean;
+    'RequiresPlainFolders'?: boolean;
     /**
      * Gets or sets a value indicating whether EnableMSMediaReceiverRegistrar.
      * @type {boolean}
      * @memberof DeviceProfile
      */
-    EnableMSMediaReceiverRegistrar?: boolean;
+    'EnableMSMediaReceiverRegistrar'?: boolean;
     /**
      * Gets or sets a value indicating whether IgnoreTranscodeByteRangeRequests.
      * @type {boolean}
      * @memberof DeviceProfile
      */
-    IgnoreTranscodeByteRangeRequests?: boolean;
+    'IgnoreTranscodeByteRangeRequests'?: boolean;
     /**
      * Gets or sets the XmlRootAttributes.
      * @type {Array<XmlAttribute>}
      * @memberof DeviceProfile
      */
-    XmlRootAttributes?: Array<XmlAttribute> | null;
+    'XmlRootAttributes'?: Array<XmlAttribute> | null;
     /**
      * Gets or sets the direct play profiles.
      * @type {Array<DirectPlayProfile>}
      * @memberof DeviceProfile
      */
-    DirectPlayProfiles?: Array<DirectPlayProfile> | null;
+    'DirectPlayProfiles'?: Array<DirectPlayProfile> | null;
     /**
      * Gets or sets the transcoding profiles.
      * @type {Array<TranscodingProfile>}
      * @memberof DeviceProfile
      */
-    TranscodingProfiles?: Array<TranscodingProfile> | null;
+    'TranscodingProfiles'?: Array<TranscodingProfile> | null;
     /**
      * Gets or sets the ContainerProfiles.
      * @type {Array<ContainerProfile>}
      * @memberof DeviceProfile
      */
-    ContainerProfiles?: Array<ContainerProfile> | null;
+    'ContainerProfiles'?: Array<ContainerProfile> | null;
     /**
      * Gets or sets the CodecProfiles.
      * @type {Array<CodecProfile>}
      * @memberof DeviceProfile
      */
-    CodecProfiles?: Array<CodecProfile> | null;
+    'CodecProfiles'?: Array<CodecProfile> | null;
     /**
      * Gets or sets the ResponseProfiles.
      * @type {Array<ResponseProfile>}
      * @memberof DeviceProfile
      */
-    ResponseProfiles?: Array<ResponseProfile> | null;
+    'ResponseProfiles'?: Array<ResponseProfile> | null;
     /**
      * Gets or sets the SubtitleProfiles.
      * @type {Array<SubtitleProfile>}
      * @memberof DeviceProfile
      */
-    SubtitleProfiles?: Array<SubtitleProfile> | null;
+    'SubtitleProfiles'?: Array<SubtitleProfile> | null;
 }
-
 

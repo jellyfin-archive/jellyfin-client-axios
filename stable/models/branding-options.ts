@@ -25,13 +25,12 @@ export interface BrandingOptions {
      * @type {string}
      * @memberof BrandingOptions
      */
-    LoginDisclaimer?: string | null;
+    'LoginDisclaimer'?: string | null;
     /**
      * Gets or sets the custom CSS.
      * @type {string}
      * @memberof BrandingOptions
      */
-    CustomCss?: string | null;
+    'CustomCss'?: string | null;
 }
-
 

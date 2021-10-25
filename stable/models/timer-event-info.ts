@@ -25,13 +25,12 @@ export interface TimerEventInfo {
      * @type {string}
      * @memberof TimerEventInfo
      */
-    Id?: string | null;
+    'Id'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof TimerEventInfo
      */
-    ProgramId?: string | null;
+    'ProgramId'?: string | null;
 }
-
 

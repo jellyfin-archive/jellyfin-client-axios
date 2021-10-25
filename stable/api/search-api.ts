@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -52,7 +52,7 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        get: async (searchTerm: string, startIndex?: number, limit?: number, userId?: string, includeItemTypes?: Array<string>, excludeItemTypes?: Array<string>, mediaTypes?: Array<string>, parentId?: string, isMovie?: boolean, isSeries?: boolean, isNews?: boolean, isKids?: boolean, isSports?: boolean, includePeople?: boolean, includeMedia?: boolean, includeGenres?: boolean, includeStudios?: boolean, includeArtists?: boolean, options: any = {}): Promise<RequestArgs> => {
+        get: async (searchTerm: string, startIndex?: number, limit?: number, userId?: string, includeItemTypes?: Array<string>, excludeItemTypes?: Array<string>, mediaTypes?: Array<string>, parentId?: string, isMovie?: boolean, isSeries?: boolean, isNews?: boolean, isKids?: boolean, isSports?: boolean, includePeople?: boolean, includeMedia?: boolean, includeGenres?: boolean, includeStudios?: boolean, includeArtists?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'searchTerm' is not null or undefined
             assertParamExists('get', 'searchTerm', searchTerm)
             const localVarPath = `/Search/Hints`;
@@ -144,7 +144,7 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -187,7 +187,7 @@ export const SearchApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async get(searchTerm: string, startIndex?: number, limit?: number, userId?: string, includeItemTypes?: Array<string>, excludeItemTypes?: Array<string>, mediaTypes?: Array<string>, parentId?: string, isMovie?: boolean, isSeries?: boolean, isNews?: boolean, isKids?: boolean, isSports?: boolean, includePeople?: boolean, includeMedia?: boolean, includeGenres?: boolean, includeStudios?: boolean, includeArtists?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchHintResult>> {
+        async get(searchTerm: string, startIndex?: number, limit?: number, userId?: string, includeItemTypes?: Array<string>, excludeItemTypes?: Array<string>, mediaTypes?: Array<string>, parentId?: string, isMovie?: boolean, isSeries?: boolean, isNews?: boolean, isKids?: boolean, isSports?: boolean, includePeople?: boolean, includeMedia?: boolean, includeGenres?: boolean, includeStudios?: boolean, includeArtists?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchHintResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.get(searchTerm, startIndex, limit, userId, includeItemTypes, excludeItemTypes, mediaTypes, parentId, isMovie, isSeries, isNews, isKids, isSports, includePeople, includeMedia, includeGenres, includeStudios, includeArtists, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -379,7 +379,7 @@ export class SearchApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SearchApi
      */
-    public get(requestParameters: SearchApiGetRequest, options?: any) {
+    public get(requestParameters: SearchApiGetRequest, options?: AxiosRequestConfig) {
         return SearchApiFp(this.configuration).get(requestParameters.searchTerm, requestParameters.startIndex, requestParameters.limit, requestParameters.userId, requestParameters.includeItemTypes, requestParameters.excludeItemTypes, requestParameters.mediaTypes, requestParameters.parentId, requestParameters.isMovie, requestParameters.isSeries, requestParameters.isNews, requestParameters.isKids, requestParameters.isSports, requestParameters.includePeople, requestParameters.includeMedia, requestParameters.includeGenres, requestParameters.includeStudios, requestParameters.includeArtists, options).then((request) => request(this.axios, this.basePath));
     }
 }

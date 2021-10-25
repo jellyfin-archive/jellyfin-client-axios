@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -39,7 +39,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProfile: async (deviceProfile?: DeviceProfile, options: any = {}): Promise<RequestArgs> => {
+        createProfile: async (deviceProfile?: DeviceProfile, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Dlna/Profiles`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -59,7 +59,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(deviceProfile, localVarRequestOptions, configuration)
@@ -76,7 +76,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteProfile: async (profileId: string, options: any = {}): Promise<RequestArgs> => {
+        deleteProfile: async (profileId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'profileId' is not null or undefined
             assertParamExists('deleteProfile', 'profileId', profileId)
             const localVarPath = `/Dlna/Profiles/{profileId}`
@@ -97,7 +97,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -112,7 +112,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDefaultProfile: async (options: any = {}): Promise<RequestArgs> => {
+        getDefaultProfile: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Dlna/Profiles/Default`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -130,7 +130,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -146,7 +146,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProfile: async (profileId: string, options: any = {}): Promise<RequestArgs> => {
+        getProfile: async (profileId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'profileId' is not null or undefined
             assertParamExists('getProfile', 'profileId', profileId)
             const localVarPath = `/Dlna/Profiles/{profileId}`
@@ -167,7 +167,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -182,7 +182,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProfileInfos: async (options: any = {}): Promise<RequestArgs> => {
+        getProfileInfos: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Dlna/ProfileInfos`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -200,7 +200,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -217,7 +217,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProfile: async (profileId: string, deviceProfile?: DeviceProfile, options: any = {}): Promise<RequestArgs> => {
+        updateProfile: async (profileId: string, deviceProfile?: DeviceProfile, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'profileId' is not null or undefined
             assertParamExists('updateProfile', 'profileId', profileId)
             const localVarPath = `/Dlna/Profiles/{profileId}`
@@ -240,7 +240,7 @@ export const DlnaApiAxiosParamCreator = function (configuration?: Configuration)
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(deviceProfile, localVarRequestOptions, configuration)
@@ -267,7 +267,7 @@ export const DlnaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProfile(deviceProfile?: DeviceProfile, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createProfile(deviceProfile?: DeviceProfile, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createProfile(deviceProfile, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -278,7 +278,7 @@ export const DlnaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteProfile(profileId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteProfile(profileId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteProfile(profileId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -288,7 +288,7 @@ export const DlnaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDefaultProfile(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeviceProfile>> {
+        async getDefaultProfile(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeviceProfile>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getDefaultProfile(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -299,7 +299,7 @@ export const DlnaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getProfile(profileId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeviceProfile>> {
+        async getProfile(profileId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeviceProfile>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getProfile(profileId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -309,7 +309,7 @@ export const DlnaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getProfileInfos(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<DeviceProfileInfo>>> {
+        async getProfileInfos(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<DeviceProfileInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getProfileInfos(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -321,7 +321,7 @@ export const DlnaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProfile(profileId: string, deviceProfile?: DeviceProfile, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateProfile(profileId: string, deviceProfile?: DeviceProfile, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateProfile(profileId, deviceProfile, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -475,7 +475,7 @@ export class DlnaApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DlnaApi
      */
-    public createProfile(requestParameters: DlnaApiCreateProfileRequest = {}, options?: any) {
+    public createProfile(requestParameters: DlnaApiCreateProfileRequest = {}, options?: AxiosRequestConfig) {
         return DlnaApiFp(this.configuration).createProfile(requestParameters.deviceProfile, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -487,7 +487,7 @@ export class DlnaApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DlnaApi
      */
-    public deleteProfile(requestParameters: DlnaApiDeleteProfileRequest, options?: any) {
+    public deleteProfile(requestParameters: DlnaApiDeleteProfileRequest, options?: AxiosRequestConfig) {
         return DlnaApiFp(this.configuration).deleteProfile(requestParameters.profileId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -498,7 +498,7 @@ export class DlnaApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DlnaApi
      */
-    public getDefaultProfile(options?: any) {
+    public getDefaultProfile(options?: AxiosRequestConfig) {
         return DlnaApiFp(this.configuration).getDefaultProfile(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -510,7 +510,7 @@ export class DlnaApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DlnaApi
      */
-    public getProfile(requestParameters: DlnaApiGetProfileRequest, options?: any) {
+    public getProfile(requestParameters: DlnaApiGetProfileRequest, options?: AxiosRequestConfig) {
         return DlnaApiFp(this.configuration).getProfile(requestParameters.profileId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -521,7 +521,7 @@ export class DlnaApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DlnaApi
      */
-    public getProfileInfos(options?: any) {
+    public getProfileInfos(options?: AxiosRequestConfig) {
         return DlnaApiFp(this.configuration).getProfileInfos(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -533,7 +533,7 @@ export class DlnaApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DlnaApi
      */
-    public updateProfile(requestParameters: DlnaApiUpdateProfileRequest, options?: any) {
+    public updateProfile(requestParameters: DlnaApiUpdateProfileRequest, options?: AxiosRequestConfig) {
         return DlnaApiFp(this.configuration).updateProfile(requestParameters.profileId, requestParameters.deviceProfile, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -26,13 +26,12 @@ export interface QueueRequestDto {
      * @type {Array<string>}
      * @memberof QueueRequestDto
      */
-    ItemIds?: Array<string> | null;
+    'ItemIds'?: Array<string> | null;
     /**
      * 
      * @type {GroupQueueMode}
      * @memberof QueueRequestDto
      */
-    Mode?: GroupQueueMode;
+    'Mode'?: GroupQueueMode;
 }
-
 

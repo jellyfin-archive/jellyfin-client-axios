@@ -25,7 +25,6 @@ export interface RemoveFromPlaylistRequestDto {
      * @type {Array<string>}
      * @memberof RemoveFromPlaylistRequestDto
      */
-    PlaylistItemIds?: Array<string> | null;
+    'PlaylistItemIds'?: Array<string> | null;
 }
-
 

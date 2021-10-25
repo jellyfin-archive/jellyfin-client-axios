@@ -31,499 +31,498 @@ export interface ServerConfiguration {
      * @type {number}
      * @memberof ServerConfiguration
      */
-    LogFileRetentionDays?: number;
+    'LogFileRetentionDays'?: number;
     /**
      * Gets or sets a value indicating whether this instance is first run.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    IsStartupWizardCompleted?: boolean;
+    'IsStartupWizardCompleted'?: boolean;
     /**
      * Gets or sets the cache path.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    CachePath?: string | null;
+    'CachePath'?: string | null;
     /**
      * 
      * @type {Version}
      * @memberof ServerConfiguration
      */
-    PreviousVersion?: Version;
+    'PreviousVersion'?: Version;
     /**
      * Gets or sets the stringified PreviousVersion to be stored/loaded,  because System.Version itself isn\'t xml-serializable.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    PreviousVersionStr?: string | null;
+    'PreviousVersionStr'?: string | null;
     /**
      * Gets or sets a value indicating whether to enable automatic port forwarding.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableUPnP?: boolean;
+    'EnableUPnP'?: boolean;
     /**
      * Gets or sets a value indicating whether to enable prometheus metrics exporting.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableMetrics?: boolean;
+    'EnableMetrics'?: boolean;
     /**
      * Gets or sets the public mapped port.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    PublicPort?: number;
+    'PublicPort'?: number;
     /**
      * Gets or sets a value indicating whether the http port should be mapped as part of UPnP automatic port forwarding.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    UPnPCreateHttpPortMap?: boolean;
+    'UPnPCreateHttpPortMap'?: boolean;
     /**
      * Gets or sets client udp port range.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    UDPPortRange?: string | null;
+    'UDPPortRange'?: string | null;
     /**
      * Gets or sets a value indicating whether IPV6 capability is enabled.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableIPV6?: boolean;
+    'EnableIPV6'?: boolean;
     /**
      * Gets or sets a value indicating whether IPV4 capability is enabled.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableIPV4?: boolean;
+    'EnableIPV4'?: boolean;
     /**
      * Gets or sets a value indicating whether detailed ssdp logs are sent to the console/log.  \"Emby.Dlna\": \"Debug\" must be set in logging.default.json for this property to work.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableSSDPTracing?: boolean;
+    'EnableSSDPTracing'?: boolean;
     /**
      * Gets or sets a value indicating whether an IP address is to be used to filter the detailed ssdp logs that are being sent to the console/log.  If the setting \"Emby.Dlna\": \"Debug\" msut be set in logging.default.json for this property to work.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    SSDPTracingFilter?: string | null;
+    'SSDPTracingFilter'?: string | null;
     /**
      * Gets or sets the number of times SSDP UDP messages are sent.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    UDPSendCount?: number;
+    'UDPSendCount'?: number;
     /**
      * Gets or sets the delay between each groups of SSDP messages (in ms).
      * @type {number}
      * @memberof ServerConfiguration
      */
-    UDPSendDelay?: number;
+    'UDPSendDelay'?: number;
     /**
      * Gets or sets a value indicating whether address names that match MediaBrowser.Model.Configuration.ServerConfiguration.VirtualInterfaceNames should be Ignore for the purposes of binding.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    IgnoreVirtualInterfaces?: boolean;
+    'IgnoreVirtualInterfaces'?: boolean;
     /**
      * Gets or sets a value indicating the interfaces that should be ignored. The list can be comma separated. <seealso cref=\"P:MediaBrowser.Model.Configuration.ServerConfiguration.IgnoreVirtualInterfaces\" />.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    VirtualInterfaceNames?: string | null;
+    'VirtualInterfaceNames'?: string | null;
     /**
      * Gets or sets the time (in seconds) between the pings of SSDP gateway monitor.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    GatewayMonitorPeriod?: number;
+    'GatewayMonitorPeriod'?: number;
     /**
      * Gets a value indicating whether multi-socket binding is available.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableMultiSocketBinding?: boolean;
+    'EnableMultiSocketBinding'?: boolean;
     /**
      * Gets or sets a value indicating whether all IPv6 interfaces should be treated as on the internal network.  Depending on the address range implemented ULA ranges might not be used.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    TrustAllIP6Interfaces?: boolean;
+    'TrustAllIP6Interfaces'?: boolean;
     /**
      * Gets or sets the ports that HDHomerun uses.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    HDHomerunPortRange?: string | null;
+    'HDHomerunPortRange'?: string | null;
     /**
      * Gets or sets PublishedServerUri to advertise for specific subnets.
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    PublishedServerUriBySubnet?: Array<string> | null;
+    'PublishedServerUriBySubnet'?: Array<string> | null;
     /**
      * Gets or sets a value indicating whether Autodiscovery tracing is enabled.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    AutoDiscoveryTracing?: boolean;
+    'AutoDiscoveryTracing'?: boolean;
     /**
      * Gets or sets a value indicating whether Autodiscovery is enabled.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    AutoDiscovery?: boolean;
+    'AutoDiscovery'?: boolean;
     /**
      * Gets or sets the public HTTPS port.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    PublicHttpsPort?: number;
+    'PublicHttpsPort'?: number;
     /**
      * Gets or sets the HTTP server port number.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    HttpServerPortNumber?: number;
+    'HttpServerPortNumber'?: number;
     /**
      * Gets or sets the HTTPS server port number.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    HttpsPortNumber?: number;
+    'HttpsPortNumber'?: number;
     /**
      * Gets or sets a value indicating whether to use HTTPS.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableHttps?: boolean;
+    'EnableHttps'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableNormalizedItemByNameIds?: boolean;
+    'EnableNormalizedItemByNameIds'?: boolean;
     /**
      * Gets or sets the filesystem path of an X.509 certificate to use for SSL.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    CertificatePath?: string | null;
+    'CertificatePath'?: string | null;
     /**
      * Gets or sets the password required to access the X.509 certificate data in the file specified by MediaBrowser.Model.Configuration.ServerConfiguration.CertificatePath.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    CertificatePassword?: string | null;
+    'CertificatePassword'?: string | null;
     /**
      * Gets or sets a value indicating whether this instance is port authorized.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    IsPortAuthorized?: boolean;
+    'IsPortAuthorized'?: boolean;
     /**
      * Gets or sets a value indicating whether quick connect is available for use on this server.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    QuickConnectAvailable?: boolean;
+    'QuickConnectAvailable'?: boolean;
     /**
      * Gets or sets a value indicating whether access outside of the LAN is permitted.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableRemoteAccess?: boolean;
+    'EnableRemoteAccess'?: boolean;
     /**
      * Gets or sets a value indicating whether [enable case sensitive item ids].
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableCaseSensitiveItemIds?: boolean;
+    'EnableCaseSensitiveItemIds'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    DisableLiveTvChannelUserDataName?: boolean;
+    'DisableLiveTvChannelUserDataName'?: boolean;
     /**
      * Gets or sets the metadata path.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    MetadataPath?: string | null;
+    'MetadataPath'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ServerConfiguration
      */
-    MetadataNetworkPath?: string | null;
+    'MetadataNetworkPath'?: string | null;
     /**
      * Gets or sets the preferred metadata language.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    PreferredMetadataLanguage?: string | null;
+    'PreferredMetadataLanguage'?: string | null;
     /**
      * Gets or sets the metadata country code.
      * @type {string}
      * @memberof ServerConfiguration
      */
-    MetadataCountryCode?: string | null;
+    'MetadataCountryCode'?: string | null;
     /**
      * Gets or sets characters to be replaced with a \' \' in strings to create a sort name.
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    SortReplaceCharacters?: Array<string> | null;
+    'SortReplaceCharacters'?: Array<string> | null;
     /**
      * Gets or sets characters to be removed from strings to create a sort name.
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    SortRemoveCharacters?: Array<string> | null;
+    'SortRemoveCharacters'?: Array<string> | null;
     /**
      * Gets or sets words to be removed from strings to create a sort name.
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    SortRemoveWords?: Array<string> | null;
+    'SortRemoveWords'?: Array<string> | null;
     /**
      * Gets or sets the minimum percentage of an item that must be played in order for playstate to be updated.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    MinResumePct?: number;
+    'MinResumePct'?: number;
     /**
      * Gets or sets the maximum percentage of an item that can be played while still saving playstate. If this percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    MaxResumePct?: number;
+    'MaxResumePct'?: number;
     /**
      * Gets or sets the minimum duration that an item must have in order to be eligible for playstate updates..
      * @type {number}
      * @memberof ServerConfiguration
      */
-    MinResumeDurationSeconds?: number;
+    'MinResumeDurationSeconds'?: number;
     /**
      * Gets or sets the minimum minutes of a book that must be played in order for playstate to be updated.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    MinAudiobookResume?: number;
+    'MinAudiobookResume'?: number;
     /**
      * Gets or sets the remaining minutes of a book that can be played while still saving playstate. If this percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    MaxAudiobookResume?: number;
+    'MaxAudiobookResume'?: number;
     /**
      * Gets or sets the delay in seconds that we will wait after a file system change to try and discover what has been added/removed  Some delay is necessary with some items because their creation is not atomic.  It involves the creation of several  different directories and files.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    LibraryMonitorDelay?: number;
+    'LibraryMonitorDelay'?: number;
     /**
      * Gets or sets a value indicating whether [enable dashboard response caching].  Allows potential contributors without visual studio to modify production dashboard code and test changes.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableDashboardResponseCaching?: boolean;
+    'EnableDashboardResponseCaching'?: boolean;
     /**
      * 
      * @type {ImageSavingConvention}
      * @memberof ServerConfiguration
      */
-    ImageSavingConvention?: ImageSavingConvention;
+    'ImageSavingConvention'?: ImageSavingConvention;
     /**
      * 
      * @type {Array<MetadataOptions>}
      * @memberof ServerConfiguration
      */
-    MetadataOptions?: Array<MetadataOptions> | null;
+    'MetadataOptions'?: Array<MetadataOptions> | null;
     /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    SkipDeserializationForBasicTypes?: boolean;
+    'SkipDeserializationForBasicTypes'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof ServerConfiguration
      */
-    ServerName?: string | null;
+    'ServerName'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ServerConfiguration
      */
-    BaseUrl?: string | null;
+    'BaseUrl'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ServerConfiguration
      */
-    UICulture?: string | null;
+    'UICulture'?: string | null;
     /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    SaveMetadataHidden?: boolean;
+    'SaveMetadataHidden'?: boolean;
     /**
      * 
      * @type {Array<NameValuePair>}
      * @memberof ServerConfiguration
      */
-    ContentTypes?: Array<NameValuePair> | null;
+    'ContentTypes'?: Array<NameValuePair> | null;
     /**
      * 
      * @type {number}
      * @memberof ServerConfiguration
      */
-    RemoteClientBitrateLimit?: number;
+    'RemoteClientBitrateLimit'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableFolderView?: boolean;
+    'EnableFolderView'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableGroupingIntoCollections?: boolean;
+    'EnableGroupingIntoCollections'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    DisplaySpecialsWithinSeasons?: boolean;
+    'DisplaySpecialsWithinSeasons'?: boolean;
     /**
      * Gets or sets the subnets that are deemed to make up the LAN.
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    LocalNetworkSubnets?: Array<string> | null;
+    'LocalNetworkSubnets'?: Array<string> | null;
     /**
      * Gets or sets the interface addresses which Jellyfin will bind to. If empty, all interfaces will be used.
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    LocalNetworkAddresses?: Array<string> | null;
+    'LocalNetworkAddresses'?: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    CodecsUsed?: Array<string> | null;
+    'CodecsUsed'?: Array<string> | null;
     /**
      * 
      * @type {Array<RepositoryInfo>}
      * @memberof ServerConfiguration
      */
-    PluginRepositories?: Array<RepositoryInfo> | null;
+    'PluginRepositories'?: Array<RepositoryInfo> | null;
     /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableExternalContentInSuggestions?: boolean;
+    'EnableExternalContentInSuggestions'?: boolean;
     /**
      * Gets or sets a value indicating whether the server should force connections over HTTPS.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    RequireHttps?: boolean;
+    'RequireHttps'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableNewOmdbSupport?: boolean;
+    'EnableNewOmdbSupport'?: boolean;
     /**
      * Gets or sets the filter for remote IP connectivity. Used in conjuntion with <seealso cref=\"P:MediaBrowser.Model.Configuration.ServerConfiguration.IsRemoteIPFilterBlacklist\" />.
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    RemoteIPFilter?: Array<string> | null;
+    'RemoteIPFilter'?: Array<string> | null;
     /**
      * Gets or sets a value indicating whether <seealso cref=\"P:MediaBrowser.Model.Configuration.ServerConfiguration.RemoteIPFilter\" /> contains a blacklist or a whitelist. Default is a whitelist.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    IsRemoteIPFilterBlacklist?: boolean;
+    'IsRemoteIPFilterBlacklist'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof ServerConfiguration
      */
-    ImageExtractionTimeoutMs?: number;
+    'ImageExtractionTimeoutMs'?: number;
     /**
      * 
      * @type {Array<PathSubstitution>}
      * @memberof ServerConfiguration
      */
-    PathSubstitutions?: Array<PathSubstitution> | null;
+    'PathSubstitutions'?: Array<PathSubstitution> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    UninstalledPlugins?: Array<string> | null;
+    'UninstalledPlugins'?: Array<string> | null;
     /**
      * Gets or sets a value indicating whether slow server responses should be logged as a warning.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    EnableSlowResponseWarning?: boolean;
+    'EnableSlowResponseWarning'?: boolean;
     /**
      * Gets or sets the threshold for the slow response time warning in ms.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    SlowResponseThresholdMs?: number;
+    'SlowResponseThresholdMs'?: number;
     /**
      * Gets or sets the cors hosts.
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    CorsHosts?: Array<string> | null;
+    'CorsHosts'?: Array<string> | null;
     /**
      * Gets or sets the known proxies.
      * @type {Array<string>}
      * @memberof ServerConfiguration
      */
-    KnownProxies?: Array<string> | null;
+    'KnownProxies'?: Array<string> | null;
     /**
      * Gets or sets the number of days we should retain activity logs.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    ActivityLogRetentionDays?: number | null;
+    'ActivityLogRetentionDays'?: number | null;
     /**
      * Gets or sets the how the library scan fans out.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    LibraryScanFanoutConcurrency?: number;
+    'LibraryScanFanoutConcurrency'?: number;
     /**
      * Gets or sets the how many metadata refreshes can run concurrently.
      * @type {number}
      * @memberof ServerConfiguration
      */
-    LibraryMetadataRefreshConcurrency?: number;
+    'LibraryMetadataRefreshConcurrency'?: number;
     /**
      * Gets or sets a value indicating whether older plugins should automatically be deleted from the plugin folder.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
-    RemoveOldPlugins?: boolean;
+    'RemoveOldPlugins'?: boolean;
 }
-
 

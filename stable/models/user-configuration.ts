@@ -26,91 +26,90 @@ export interface UserConfiguration {
      * @type {string}
      * @memberof UserConfiguration
      */
-    AudioLanguagePreference?: string | null;
+    'AudioLanguagePreference'?: string | null;
     /**
      * Gets or sets a value indicating whether [play default audio track].
      * @type {boolean}
      * @memberof UserConfiguration
      */
-    PlayDefaultAudioTrack?: boolean;
+    'PlayDefaultAudioTrack'?: boolean;
     /**
      * Gets or sets the subtitle language preference.
      * @type {string}
      * @memberof UserConfiguration
      */
-    SubtitleLanguagePreference?: string | null;
+    'SubtitleLanguagePreference'?: string | null;
     /**
      * 
      * @type {boolean}
      * @memberof UserConfiguration
      */
-    DisplayMissingEpisodes?: boolean;
+    'DisplayMissingEpisodes'?: boolean;
     /**
      * 
      * @type {Array<string>}
      * @memberof UserConfiguration
      */
-    GroupedFolders?: Array<string> | null;
+    'GroupedFolders'?: Array<string> | null;
     /**
      * 
      * @type {SubtitlePlaybackMode}
      * @memberof UserConfiguration
      */
-    SubtitleMode?: SubtitlePlaybackMode;
+    'SubtitleMode'?: SubtitlePlaybackMode;
     /**
      * 
      * @type {boolean}
      * @memberof UserConfiguration
      */
-    DisplayCollectionsView?: boolean;
+    'DisplayCollectionsView'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserConfiguration
      */
-    EnableLocalPassword?: boolean;
+    'EnableLocalPassword'?: boolean;
     /**
      * 
      * @type {Array<string>}
      * @memberof UserConfiguration
      */
-    OrderedViews?: Array<string> | null;
+    'OrderedViews'?: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof UserConfiguration
      */
-    LatestItemsExcludes?: Array<string> | null;
+    'LatestItemsExcludes'?: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof UserConfiguration
      */
-    MyMediaExcludes?: Array<string> | null;
+    'MyMediaExcludes'?: Array<string> | null;
     /**
      * 
      * @type {boolean}
      * @memberof UserConfiguration
      */
-    HidePlayedInLatest?: boolean;
+    'HidePlayedInLatest'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserConfiguration
      */
-    RememberAudioSelections?: boolean;
+    'RememberAudioSelections'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserConfiguration
      */
-    RememberSubtitleSelections?: boolean;
+    'RememberSubtitleSelections'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserConfiguration
      */
-    EnableNextEpisodeAutoPlay?: boolean;
+    'EnableNextEpisodeAutoPlay'?: boolean;
 }
-
 

@@ -26,19 +26,18 @@ export interface TimerInfoDtoQueryResult {
      * @type {Array<TimerInfoDto>}
      * @memberof TimerInfoDtoQueryResult
      */
-    Items?: Array<TimerInfoDto> | null;
+    'Items'?: Array<TimerInfoDto> | null;
     /**
      * The total number of records available.
      * @type {number}
      * @memberof TimerInfoDtoQueryResult
      */
-    TotalRecordCount?: number;
+    'TotalRecordCount'?: number;
     /**
      * The index of the first record in Items.
      * @type {number}
      * @memberof TimerInfoDtoQueryResult
      */
-    StartIndex?: number;
+    'StartIndex'?: number;
 }
-
 

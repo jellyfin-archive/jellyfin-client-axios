@@ -26,49 +26,48 @@ export interface PackageInfo {
      * @type {string}
      * @memberof PackageInfo
      */
-    name?: string | null;
+    'name'?: string | null;
     /**
      * Gets or sets a long description of the plugin containing features or helpful explanations.
      * @type {string}
      * @memberof PackageInfo
      */
-    description?: string | null;
+    'description'?: string | null;
     /**
      * Gets or sets a short overview of what the plugin does.
      * @type {string}
      * @memberof PackageInfo
      */
-    overview?: string | null;
+    'overview'?: string | null;
     /**
      * Gets or sets the owner.
      * @type {string}
      * @memberof PackageInfo
      */
-    owner?: string | null;
+    'owner'?: string | null;
     /**
      * Gets or sets the category.
      * @type {string}
      * @memberof PackageInfo
      */
-    category?: string | null;
+    'category'?: string | null;
     /**
      * Gets or sets the guid of the assembly associated with this plugin.  This is used to identify the proper item for automatic updates.
      * @type {string}
      * @memberof PackageInfo
      */
-    guid?: string | null;
+    'guid'?: string | null;
     /**
      * Gets or sets the versions.
      * @type {Array<VersionInfo>}
      * @memberof PackageInfo
      */
-    versions?: Array<VersionInfo> | null;
+    'versions'?: Array<VersionInfo> | null;
     /**
      * Gets or sets the image url for the package.
      * @type {string}
      * @memberof PackageInfo
      */
-    imageUrl?: string | null;
+    'imageUrl'?: string | null;
 }
-
 

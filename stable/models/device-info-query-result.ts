@@ -26,19 +26,18 @@ export interface DeviceInfoQueryResult {
      * @type {Array<DeviceInfo>}
      * @memberof DeviceInfoQueryResult
      */
-    Items?: Array<DeviceInfo> | null;
+    'Items'?: Array<DeviceInfo> | null;
     /**
      * The total number of records available.
      * @type {number}
      * @memberof DeviceInfoQueryResult
      */
-    TotalRecordCount?: number;
+    'TotalRecordCount'?: number;
     /**
      * The index of the first record in Items.
      * @type {number}
      * @memberof DeviceInfoQueryResult
      */
-    StartIndex?: number;
+    'StartIndex'?: number;
 }
-
 

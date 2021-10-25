@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -38,7 +38,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGeneralImage: async (name: string, type: string, options: any = {}): Promise<RequestArgs> => {
+        getGeneralImage: async (name: string, type: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getGeneralImage', 'name', name)
             // verify required parameter 'type' is not null or undefined
@@ -59,7 +59,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -74,7 +74,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGeneralImages: async (options: any = {}): Promise<RequestArgs> => {
+        getGeneralImages: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Images/General`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -92,7 +92,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -109,7 +109,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMediaInfoImage: async (theme: string, name: string, options: any = {}): Promise<RequestArgs> => {
+        getMediaInfoImage: async (theme: string, name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'theme' is not null or undefined
             assertParamExists('getMediaInfoImage', 'theme', theme)
             // verify required parameter 'name' is not null or undefined
@@ -130,7 +130,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -145,7 +145,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMediaInfoImages: async (options: any = {}): Promise<RequestArgs> => {
+        getMediaInfoImages: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Images/MediaInfo`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -163,7 +163,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -180,7 +180,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRatingImage: async (theme: string, name: string, options: any = {}): Promise<RequestArgs> => {
+        getRatingImage: async (theme: string, name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'theme' is not null or undefined
             assertParamExists('getRatingImage', 'theme', theme)
             // verify required parameter 'name' is not null or undefined
@@ -201,7 +201,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -216,7 +216,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRatingImages: async (options: any = {}): Promise<RequestArgs> => {
+        getRatingImages: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Images/Ratings`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -234,7 +234,7 @@ export const ImageByNameApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -261,7 +261,7 @@ export const ImageByNameApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGeneralImage(name: string, type: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getGeneralImage(name: string, type: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGeneralImage(name, type, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -271,7 +271,7 @@ export const ImageByNameApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGeneralImages(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ImageByNameInfo>>> {
+        async getGeneralImages(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ImageByNameInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGeneralImages(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -283,7 +283,7 @@ export const ImageByNameApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMediaInfoImage(theme: string, name: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getMediaInfoImage(theme: string, name: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMediaInfoImage(theme, name, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -293,7 +293,7 @@ export const ImageByNameApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMediaInfoImages(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ImageByNameInfo>>> {
+        async getMediaInfoImages(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ImageByNameInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMediaInfoImages(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -305,7 +305,7 @@ export const ImageByNameApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRatingImage(theme: string, name: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getRatingImage(theme: string, name: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRatingImage(theme, name, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -315,7 +315,7 @@ export const ImageByNameApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRatingImages(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ImageByNameInfo>>> {
+        async getRatingImages(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ImageByNameInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRatingImages(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -470,7 +470,7 @@ export class ImageByNameApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageByNameApi
      */
-    public getGeneralImage(requestParameters: ImageByNameApiGetGeneralImageRequest, options?: any) {
+    public getGeneralImage(requestParameters: ImageByNameApiGetGeneralImageRequest, options?: AxiosRequestConfig) {
         return ImageByNameApiFp(this.configuration).getGeneralImage(requestParameters.name, requestParameters.type, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -481,7 +481,7 @@ export class ImageByNameApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageByNameApi
      */
-    public getGeneralImages(options?: any) {
+    public getGeneralImages(options?: AxiosRequestConfig) {
         return ImageByNameApiFp(this.configuration).getGeneralImages(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -493,7 +493,7 @@ export class ImageByNameApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageByNameApi
      */
-    public getMediaInfoImage(requestParameters: ImageByNameApiGetMediaInfoImageRequest, options?: any) {
+    public getMediaInfoImage(requestParameters: ImageByNameApiGetMediaInfoImageRequest, options?: AxiosRequestConfig) {
         return ImageByNameApiFp(this.configuration).getMediaInfoImage(requestParameters.theme, requestParameters.name, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -504,7 +504,7 @@ export class ImageByNameApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageByNameApi
      */
-    public getMediaInfoImages(options?: any) {
+    public getMediaInfoImages(options?: AxiosRequestConfig) {
         return ImageByNameApiFp(this.configuration).getMediaInfoImages(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -516,7 +516,7 @@ export class ImageByNameApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageByNameApi
      */
-    public getRatingImage(requestParameters: ImageByNameApiGetRatingImageRequest, options?: any) {
+    public getRatingImage(requestParameters: ImageByNameApiGetRatingImageRequest, options?: AxiosRequestConfig) {
         return ImageByNameApiFp(this.configuration).getRatingImage(requestParameters.theme, requestParameters.name, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -527,7 +527,7 @@ export class ImageByNameApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageByNameApi
      */
-    public getRatingImages(options?: any) {
+    public getRatingImages(options?: AxiosRequestConfig) {
         return ImageByNameApiFp(this.configuration).getRatingImages(options).then((request) => request(this.axios, this.basePath));
     }
 }

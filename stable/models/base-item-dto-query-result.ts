@@ -26,19 +26,18 @@ export interface BaseItemDtoQueryResult {
      * @type {Array<BaseItemDto>}
      * @memberof BaseItemDtoQueryResult
      */
-    Items?: Array<BaseItemDto> | null;
+    'Items'?: Array<BaseItemDto> | null;
     /**
      * The total number of records available.
      * @type {number}
      * @memberof BaseItemDtoQueryResult
      */
-    TotalRecordCount?: number;
+    'TotalRecordCount'?: number;
     /**
      * The index of the first record in Items.
      * @type {number}
      * @memberof BaseItemDtoQueryResult
      */
-    StartIndex?: number;
+    'StartIndex'?: number;
 }
-
 

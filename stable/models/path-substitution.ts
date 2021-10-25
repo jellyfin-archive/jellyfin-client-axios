@@ -25,13 +25,12 @@ export interface PathSubstitution {
      * @type {string}
      * @memberof PathSubstitution
      */
-    From?: string | null;
+    'From'?: string | null;
     /**
      * Gets or sets the value to substitution with.
      * @type {string}
      * @memberof PathSubstitution
      */
-    To?: string | null;
+    'To'?: string | null;
 }
-
 

@@ -26,19 +26,18 @@ export interface AuthenticationInfoQueryResult {
      * @type {Array<AuthenticationInfo>}
      * @memberof AuthenticationInfoQueryResult
      */
-    Items?: Array<AuthenticationInfo> | null;
+    'Items'?: Array<AuthenticationInfo> | null;
     /**
      * The total number of records available.
      * @type {number}
      * @memberof AuthenticationInfoQueryResult
      */
-    TotalRecordCount?: number;
+    'TotalRecordCount'?: number;
     /**
      * The index of the first record in Items.
      * @type {number}
      * @memberof AuthenticationInfoQueryResult
      */
-    StartIndex?: number;
+    'StartIndex'?: number;
 }
-
 

@@ -25,7 +25,6 @@ export interface ForgotPasswordPinDto {
      * @type {string}
      * @memberof ForgotPasswordPinDto
      */
-    Pin: string;
+    'Pin': string;
 }
-
 

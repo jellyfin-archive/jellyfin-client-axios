@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -41,7 +41,7 @@ export const ItemRefreshApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        post: async (itemId: string, metadataRefreshMode?: MetadataRefreshMode, imageRefreshMode?: MetadataRefreshMode, replaceAllMetadata?: boolean, replaceAllImages?: boolean, options: any = {}): Promise<RequestArgs> => {
+        post: async (itemId: string, metadataRefreshMode?: MetadataRefreshMode, imageRefreshMode?: MetadataRefreshMode, replaceAllMetadata?: boolean, replaceAllImages?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('post', 'itemId', itemId)
             const localVarPath = `/Items/{itemId}/Refresh`
@@ -78,7 +78,7 @@ export const ItemRefreshApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -108,7 +108,7 @@ export const ItemRefreshApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async post(itemId: string, metadataRefreshMode?: MetadataRefreshMode, imageRefreshMode?: MetadataRefreshMode, replaceAllMetadata?: boolean, replaceAllImages?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async post(itemId: string, metadataRefreshMode?: MetadataRefreshMode, imageRefreshMode?: MetadataRefreshMode, replaceAllMetadata?: boolean, replaceAllImages?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.post(itemId, metadataRefreshMode, imageRefreshMode, replaceAllMetadata, replaceAllImages, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -196,7 +196,7 @@ export class ItemRefreshApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemRefreshApi
      */
-    public post(requestParameters: ItemRefreshApiPostRequest, options?: any) {
+    public post(requestParameters: ItemRefreshApiPostRequest, options?: AxiosRequestConfig) {
         return ItemRefreshApiFp(this.configuration).post(requestParameters.itemId, requestParameters.metadataRefreshMode, requestParameters.imageRefreshMode, requestParameters.replaceAllMetadata, requestParameters.replaceAllImages, options).then((request) => request(this.axios, this.basePath));
     }
 }

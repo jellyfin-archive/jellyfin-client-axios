@@ -28,91 +28,90 @@ export interface TranscodingProfile {
      * @type {string}
      * @memberof TranscodingProfile
      */
-    Container?: string | null;
+    'Container'?: string | null;
     /**
      * 
      * @type {DlnaProfileType}
      * @memberof TranscodingProfile
      */
-    Type?: DlnaProfileType;
+    'Type'?: DlnaProfileType;
     /**
      * 
      * @type {string}
      * @memberof TranscodingProfile
      */
-    VideoCodec?: string | null;
+    'VideoCodec'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof TranscodingProfile
      */
-    AudioCodec?: string | null;
+    'AudioCodec'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof TranscodingProfile
      */
-    Protocol?: string | null;
+    'Protocol'?: string | null;
     /**
      * 
      * @type {boolean}
      * @memberof TranscodingProfile
      */
-    EstimateContentLength?: boolean;
+    'EstimateContentLength'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof TranscodingProfile
      */
-    EnableMpegtsM2TsMode?: boolean;
+    'EnableMpegtsM2TsMode'?: boolean;
     /**
      * 
      * @type {TranscodeSeekInfo}
      * @memberof TranscodingProfile
      */
-    TranscodeSeekInfo?: TranscodeSeekInfo;
+    'TranscodeSeekInfo'?: TranscodeSeekInfo;
     /**
      * 
      * @type {boolean}
      * @memberof TranscodingProfile
      */
-    CopyTimestamps?: boolean;
+    'CopyTimestamps'?: boolean;
     /**
      * 
      * @type {EncodingContext}
      * @memberof TranscodingProfile
      */
-    Context?: EncodingContext;
+    'Context'?: EncodingContext;
     /**
      * 
      * @type {boolean}
      * @memberof TranscodingProfile
      */
-    EnableSubtitlesInManifest?: boolean;
+    'EnableSubtitlesInManifest'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof TranscodingProfile
      */
-    MaxAudioChannels?: string | null;
+    'MaxAudioChannels'?: string | null;
     /**
      * 
      * @type {number}
      * @memberof TranscodingProfile
      */
-    MinSegments?: number;
+    'MinSegments'?: number;
     /**
      * 
      * @type {number}
      * @memberof TranscodingProfile
      */
-    SegmentLength?: number;
+    'SegmentLength'?: number;
     /**
      * 
      * @type {boolean}
      * @memberof TranscodingProfile
      */
-    BreakOnNonKeyFrames?: boolean;
+    'BreakOnNonKeyFrames'?: boolean;
 }
-
 

@@ -26,49 +26,48 @@ export interface NotificationDto {
      * @type {string}
      * @memberof NotificationDto
      */
-    Id?: string | null;
+    'Id'?: string | null;
     /**
      * Gets or sets the notification\'s user ID. Defaults to an empty string.
      * @type {string}
      * @memberof NotificationDto
      */
-    UserId?: string | null;
+    'UserId'?: string | null;
     /**
      * Gets or sets the notification date.
      * @type {string}
      * @memberof NotificationDto
      */
-    Date?: string;
+    'Date'?: string;
     /**
      * Gets or sets a value indicating whether the notification has been read. Defaults to false.
      * @type {boolean}
      * @memberof NotificationDto
      */
-    IsRead?: boolean;
+    'IsRead'?: boolean;
     /**
      * Gets or sets the notification\'s name. Defaults to an empty string.
      * @type {string}
      * @memberof NotificationDto
      */
-    Name?: string | null;
+    'Name'?: string | null;
     /**
      * Gets or sets the notification\'s description. Defaults to an empty string.
      * @type {string}
      * @memberof NotificationDto
      */
-    Description?: string | null;
+    'Description'?: string | null;
     /**
      * Gets or sets the notification\'s URL. Defaults to an empty string.
      * @type {string}
      * @memberof NotificationDto
      */
-    Url?: string | null;
+    'Url'?: string | null;
     /**
      * 
      * @type {NotificationLevel}
      * @memberof NotificationDto
      */
-    Level?: NotificationLevel;
+    'Level'?: NotificationLevel;
 }
-
 

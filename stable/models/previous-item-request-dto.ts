@@ -25,7 +25,6 @@ export interface PreviousItemRequestDto {
      * @type {string}
      * @memberof PreviousItemRequestDto
      */
-    PlaylistItemId?: string;
+    'PlaylistItemId'?: string;
 }
-
 

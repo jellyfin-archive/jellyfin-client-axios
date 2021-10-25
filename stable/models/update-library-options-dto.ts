@@ -26,13 +26,12 @@ export interface UpdateLibraryOptionsDto {
      * @type {string}
      * @memberof UpdateLibraryOptionsDto
      */
-    Id?: string;
+    'Id'?: string;
     /**
      * 
      * @type {LibraryOptions}
      * @memberof UpdateLibraryOptionsDto
      */
-    LibraryOptions?: LibraryOptions;
+    'LibraryOptions'?: LibraryOptions;
 }
-
 

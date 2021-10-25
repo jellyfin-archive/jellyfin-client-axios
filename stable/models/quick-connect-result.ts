@@ -25,37 +25,36 @@ export interface QuickConnectResult {
      * @type {boolean}
      * @memberof QuickConnectResult
      */
-    Authenticated?: boolean;
+    'Authenticated'?: boolean;
     /**
      * Gets or sets the secret value used to uniquely identify this request. Can be used to retrieve authentication information.
      * @type {string}
      * @memberof QuickConnectResult
      */
-    Secret?: string | null;
+    'Secret'?: string | null;
     /**
      * Gets or sets the user facing code used so the user can quickly differentiate this request from others.
      * @type {string}
      * @memberof QuickConnectResult
      */
-    Code?: string | null;
+    'Code'?: string | null;
     /**
      * Gets or sets the private access token.
      * @type {string}
      * @memberof QuickConnectResult
      */
-    Authentication?: string | null;
+    'Authentication'?: string | null;
     /**
      * Gets or sets an error message.
      * @type {string}
      * @memberof QuickConnectResult
      */
-    Error?: string | null;
+    'Error'?: string | null;
     /**
      * Gets or sets the DateTime that this request was created.
      * @type {string}
      * @memberof QuickConnectResult
      */
-    DateAdded?: string | null;
+    'DateAdded'?: string | null;
 }
-
 

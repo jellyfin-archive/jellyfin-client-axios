@@ -26,43 +26,42 @@ export interface IPlugin {
      * @type {string}
      * @memberof IPlugin
      */
-    Name?: string | null;
+    'Name'?: string | null;
     /**
      * Gets the Description.
      * @type {string}
      * @memberof IPlugin
      */
-    Description?: string | null;
+    'Description'?: string | null;
     /**
      * Gets the unique id.
      * @type {string}
      * @memberof IPlugin
      */
-    Id?: string;
+    'Id'?: string;
     /**
      * 
      * @type {Version}
      * @memberof IPlugin
      */
-    Version?: Version;
+    'Version'?: Version;
     /**
      * Gets the path to the assembly file.
      * @type {string}
      * @memberof IPlugin
      */
-    AssemblyFilePath?: string | null;
+    'AssemblyFilePath'?: string | null;
     /**
      * Gets a value indicating whether the plugin can be uninstalled.
      * @type {boolean}
      * @memberof IPlugin
      */
-    CanUninstall?: boolean;
+    'CanUninstall'?: boolean;
     /**
      * Gets the full path to the data folder, where the plugin can store any miscellaneous files needed.
      * @type {string}
      * @memberof IPlugin
      */
-    DataFolderPath?: string | null;
+    'DataFolderPath'?: string | null;
 }
-
 

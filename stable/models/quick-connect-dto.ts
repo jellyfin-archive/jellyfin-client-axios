@@ -25,7 +25,6 @@ export interface QuickConnectDto {
      * @type {string}
      * @memberof QuickConnectDto
      */
-    Token: string;
+    'Token': string;
 }
-
 

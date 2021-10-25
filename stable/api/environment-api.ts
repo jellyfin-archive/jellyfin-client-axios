@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -40,7 +40,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDefaultDirectoryBrowser: async (options: any = {}): Promise<RequestArgs> => {
+        getDefaultDirectoryBrowser: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Environment/DefaultDirectoryBrowser`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -58,7 +58,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -76,7 +76,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDirectoryContents: async (path: string, includeFiles?: boolean, includeDirectories?: boolean, options: any = {}): Promise<RequestArgs> => {
+        getDirectoryContents: async (path: string, includeFiles?: boolean, includeDirectories?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'path' is not null or undefined
             assertParamExists('getDirectoryContents', 'path', path)
             const localVarPath = `/Environment/DirectoryContents`;
@@ -108,7 +108,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -123,7 +123,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDrives: async (options: any = {}): Promise<RequestArgs> => {
+        getDrives: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Environment/Drives`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -141,7 +141,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -157,7 +157,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
          * @deprecated
          * @throws {RequiredError}
          */
-        getNetworkShares: async (options: any = {}): Promise<RequestArgs> => {
+        getNetworkShares: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Environment/NetworkShares`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -175,7 +175,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -191,7 +191,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getParentPath: async (path: string, options: any = {}): Promise<RequestArgs> => {
+        getParentPath: async (path: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'path' is not null or undefined
             assertParamExists('getParentPath', 'path', path)
             const localVarPath = `/Environment/ParentPath`;
@@ -215,7 +215,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -231,7 +231,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validatePath: async (validatePathDto: ValidatePathDto, options: any = {}): Promise<RequestArgs> => {
+        validatePath: async (validatePathDto: ValidatePathDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'validatePathDto' is not null or undefined
             assertParamExists('validatePath', 'validatePathDto', validatePathDto)
             const localVarPath = `/Environment/ValidatePath`;
@@ -253,7 +253,7 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(validatePathDto, localVarRequestOptions, configuration)
@@ -279,7 +279,7 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDefaultDirectoryBrowser(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DefaultDirectoryBrowserInfoDto>> {
+        async getDefaultDirectoryBrowser(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DefaultDirectoryBrowserInfoDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getDefaultDirectoryBrowser(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -292,7 +292,7 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDirectoryContents(path: string, includeFiles?: boolean, includeDirectories?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FileSystemEntryInfo>>> {
+        async getDirectoryContents(path: string, includeFiles?: boolean, includeDirectories?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FileSystemEntryInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getDirectoryContents(path, includeFiles, includeDirectories, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -302,7 +302,7 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDrives(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FileSystemEntryInfo>>> {
+        async getDrives(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FileSystemEntryInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getDrives(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -313,7 +313,7 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        async getNetworkShares(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FileSystemEntryInfo>>> {
+        async getNetworkShares(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FileSystemEntryInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getNetworkShares(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -324,7 +324,7 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getParentPath(path: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async getParentPath(path: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getParentPath(path, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -335,7 +335,7 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validatePath(validatePathDto: ValidatePathDto, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async validatePath(validatePathDto: ValidatePathDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validatePath(validatePathDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -482,7 +482,7 @@ export class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    public getDefaultDirectoryBrowser(options?: any) {
+    public getDefaultDirectoryBrowser(options?: AxiosRequestConfig) {
         return EnvironmentApiFp(this.configuration).getDefaultDirectoryBrowser(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -494,7 +494,7 @@ export class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    public getDirectoryContents(requestParameters: EnvironmentApiGetDirectoryContentsRequest, options?: any) {
+    public getDirectoryContents(requestParameters: EnvironmentApiGetDirectoryContentsRequest, options?: AxiosRequestConfig) {
         return EnvironmentApiFp(this.configuration).getDirectoryContents(requestParameters.path, requestParameters.includeFiles, requestParameters.includeDirectories, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -505,7 +505,7 @@ export class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    public getDrives(options?: any) {
+    public getDrives(options?: AxiosRequestConfig) {
         return EnvironmentApiFp(this.configuration).getDrives(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -517,7 +517,7 @@ export class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    public getNetworkShares(options?: any) {
+    public getNetworkShares(options?: AxiosRequestConfig) {
         return EnvironmentApiFp(this.configuration).getNetworkShares(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -529,7 +529,7 @@ export class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    public getParentPath(requestParameters: EnvironmentApiGetParentPathRequest, options?: any) {
+    public getParentPath(requestParameters: EnvironmentApiGetParentPathRequest, options?: AxiosRequestConfig) {
         return EnvironmentApiFp(this.configuration).getParentPath(requestParameters.path, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -541,7 +541,7 @@ export class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    public validatePath(requestParameters: EnvironmentApiValidatePathRequest, options?: any) {
+    public validatePath(requestParameters: EnvironmentApiValidatePathRequest, options?: AxiosRequestConfig) {
         return EnvironmentApiFp(this.configuration).validatePath(requestParameters.validatePathDto, options).then((request) => request(this.axios, this.basePath));
     }
 }

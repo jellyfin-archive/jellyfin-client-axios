@@ -27,25 +27,24 @@ export interface LibraryOptionsResultDto {
      * @type {Array<LibraryOptionInfoDto>}
      * @memberof LibraryOptionsResultDto
      */
-    MetadataSavers?: Array<LibraryOptionInfoDto> | null;
+    'MetadataSavers'?: Array<LibraryOptionInfoDto> | null;
     /**
      * Gets or sets the metadata readers.
      * @type {Array<LibraryOptionInfoDto>}
      * @memberof LibraryOptionsResultDto
      */
-    MetadataReaders?: Array<LibraryOptionInfoDto> | null;
+    'MetadataReaders'?: Array<LibraryOptionInfoDto> | null;
     /**
      * Gets or sets the subtitle fetchers.
      * @type {Array<LibraryOptionInfoDto>}
      * @memberof LibraryOptionsResultDto
      */
-    SubtitleFetchers?: Array<LibraryOptionInfoDto> | null;
+    'SubtitleFetchers'?: Array<LibraryOptionInfoDto> | null;
     /**
      * Gets or sets the type options.
      * @type {Array<LibraryTypeOptionsDto>}
      * @memberof LibraryOptionsResultDto
      */
-    TypeOptions?: Array<LibraryTypeOptionsDto> | null;
+    'TypeOptions'?: Array<LibraryTypeOptionsDto> | null;
 }
-
 

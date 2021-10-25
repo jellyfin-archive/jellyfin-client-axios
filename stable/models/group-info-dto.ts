@@ -26,31 +26,30 @@ export interface GroupInfoDto {
      * @type {string}
      * @memberof GroupInfoDto
      */
-    GroupId?: string;
+    'GroupId'?: string;
     /**
      * Gets the group name.
      * @type {string}
      * @memberof GroupInfoDto
      */
-    GroupName?: string | null;
+    'GroupName'?: string | null;
     /**
      * 
      * @type {GroupStateType}
      * @memberof GroupInfoDto
      */
-    State?: GroupStateType;
+    'State'?: GroupStateType;
     /**
      * Gets the participants.
      * @type {Array<string>}
      * @memberof GroupInfoDto
      */
-    Participants?: Array<string> | null;
+    'Participants'?: Array<string> | null;
     /**
      * Gets the date when this DTO has been created.
      * @type {string}
      * @memberof GroupInfoDto
      */
-    LastUpdatedAt?: string;
+    'LastUpdatedAt'?: string;
 }
-
 

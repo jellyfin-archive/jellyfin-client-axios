@@ -25,7 +25,6 @@ export interface PingRequestDto {
      * @type {number}
      * @memberof PingRequestDto
      */
-    Ping?: number;
+    'Ping'?: number;
 }
-
 

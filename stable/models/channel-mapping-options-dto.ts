@@ -28,25 +28,24 @@ export interface ChannelMappingOptionsDto {
      * @type {Array<TunerChannelMapping>}
      * @memberof ChannelMappingOptionsDto
      */
-    TunerChannels?: Array<TunerChannelMapping> | null;
+    'TunerChannels'?: Array<TunerChannelMapping> | null;
     /**
      * Gets or sets list of provider channels.
      * @type {Array<NameIdPair>}
      * @memberof ChannelMappingOptionsDto
      */
-    ProviderChannels?: Array<NameIdPair> | null;
+    'ProviderChannels'?: Array<NameIdPair> | null;
     /**
      * Gets or sets list of mappings.
      * @type {Array<NameValuePair>}
      * @memberof ChannelMappingOptionsDto
      */
-    Mappings?: Array<NameValuePair> | null;
+    'Mappings'?: Array<NameValuePair> | null;
     /**
      * Gets or sets provider name.
      * @type {string}
      * @memberof ChannelMappingOptionsDto
      */
-    ProviderName?: string | null;
+    'ProviderName'?: string | null;
 }
-
 

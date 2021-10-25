@@ -25,13 +25,12 @@ export interface CreateUserByName {
      * @type {string}
      * @memberof CreateUserByName
      */
-    Name?: string | null;
+    'Name'?: string | null;
     /**
      * Gets or sets the password.
      * @type {string}
      * @memberof CreateUserByName
      */
-    Password?: string | null;
+    'Password'?: string | null;
 }
-
 
