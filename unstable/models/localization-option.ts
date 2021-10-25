@@ -25,13 +25,12 @@ export interface LocalizationOption {
      * @type {string}
      * @memberof LocalizationOption
      */
-    Name?: string | null;
+    'Name'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof LocalizationOption
      */
-    Value?: string | null;
+    'Value'?: string | null;
 }
-
 

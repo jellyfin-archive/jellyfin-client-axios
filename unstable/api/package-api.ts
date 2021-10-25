@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -39,7 +39,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancelPackageInstallation: async (packageId: string, options: any = {}): Promise<RequestArgs> => {
+        cancelPackageInstallation: async (packageId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'packageId' is not null or undefined
             assertParamExists('cancelPackageInstallation', 'packageId', packageId)
             const localVarPath = `/Packages/Installing/{packageId}`
@@ -60,7 +60,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -77,7 +77,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPackageInfo: async (name: string, assemblyGuid?: string, options: any = {}): Promise<RequestArgs> => {
+        getPackageInfo: async (name: string, assemblyGuid?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getPackageInfo', 'name', name)
             const localVarPath = `/Packages/{name}`
@@ -102,7 +102,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -117,7 +117,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPackages: async (options: any = {}): Promise<RequestArgs> => {
+        getPackages: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Packages`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -135,7 +135,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -150,7 +150,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRepositories: async (options: any = {}): Promise<RequestArgs> => {
+        getRepositories: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Repositories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -168,7 +168,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -187,7 +187,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        installPackage: async (name: string, assemblyGuid?: string, version?: string, repositoryUrl?: string, options: any = {}): Promise<RequestArgs> => {
+        installPackage: async (name: string, assemblyGuid?: string, version?: string, repositoryUrl?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('installPackage', 'name', name)
             const localVarPath = `/Packages/Installed/{name}`
@@ -220,7 +220,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -236,7 +236,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setRepositories: async (repositoryInfo: Array<RepositoryInfo>, options: any = {}): Promise<RequestArgs> => {
+        setRepositories: async (repositoryInfo: Array<RepositoryInfo>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repositoryInfo' is not null or undefined
             assertParamExists('setRepositories', 'repositoryInfo', repositoryInfo)
             const localVarPath = `/Repositories`;
@@ -258,7 +258,7 @@ export const PackageApiAxiosParamCreator = function (configuration?: Configurati
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(repositoryInfo, localVarRequestOptions, configuration)
@@ -285,7 +285,7 @@ export const PackageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cancelPackageInstallation(packageId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async cancelPackageInstallation(packageId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.cancelPackageInstallation(packageId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -297,7 +297,7 @@ export const PackageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPackageInfo(name: string, assemblyGuid?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PackageInfo>> {
+        async getPackageInfo(name: string, assemblyGuid?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PackageInfo>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPackageInfo(name, assemblyGuid, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -307,7 +307,7 @@ export const PackageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPackages(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PackageInfo>>> {
+        async getPackages(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PackageInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPackages(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -317,7 +317,7 @@ export const PackageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRepositories(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RepositoryInfo>>> {
+        async getRepositories(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RepositoryInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRepositories(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -331,7 +331,7 @@ export const PackageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async installPackage(name: string, assemblyGuid?: string, version?: string, repositoryUrl?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async installPackage(name: string, assemblyGuid?: string, version?: string, repositoryUrl?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.installPackage(name, assemblyGuid, version, repositoryUrl, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -342,7 +342,7 @@ export const PackageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setRepositories(repositoryInfo: Array<RepositoryInfo>, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async setRepositories(repositoryInfo: Array<RepositoryInfo>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.setRepositories(repositoryInfo, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -520,7 +520,7 @@ export class PackageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PackageApi
      */
-    public cancelPackageInstallation(requestParameters: PackageApiCancelPackageInstallationRequest, options?: any) {
+    public cancelPackageInstallation(requestParameters: PackageApiCancelPackageInstallationRequest, options?: AxiosRequestConfig) {
         return PackageApiFp(this.configuration).cancelPackageInstallation(requestParameters.packageId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -532,7 +532,7 @@ export class PackageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PackageApi
      */
-    public getPackageInfo(requestParameters: PackageApiGetPackageInfoRequest, options?: any) {
+    public getPackageInfo(requestParameters: PackageApiGetPackageInfoRequest, options?: AxiosRequestConfig) {
         return PackageApiFp(this.configuration).getPackageInfo(requestParameters.name, requestParameters.assemblyGuid, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -543,7 +543,7 @@ export class PackageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PackageApi
      */
-    public getPackages(options?: any) {
+    public getPackages(options?: AxiosRequestConfig) {
         return PackageApiFp(this.configuration).getPackages(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -554,7 +554,7 @@ export class PackageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PackageApi
      */
-    public getRepositories(options?: any) {
+    public getRepositories(options?: AxiosRequestConfig) {
         return PackageApiFp(this.configuration).getRepositories(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -566,7 +566,7 @@ export class PackageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PackageApi
      */
-    public installPackage(requestParameters: PackageApiInstallPackageRequest, options?: any) {
+    public installPackage(requestParameters: PackageApiInstallPackageRequest, options?: AxiosRequestConfig) {
         return PackageApiFp(this.configuration).installPackage(requestParameters.name, requestParameters.assemblyGuid, requestParameters.version, requestParameters.repositoryUrl, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -578,7 +578,7 @@ export class PackageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PackageApi
      */
-    public setRepositories(requestParameters: PackageApiSetRepositoriesRequest, options?: any) {
+    public setRepositories(requestParameters: PackageApiSetRepositoriesRequest, options?: AxiosRequestConfig) {
         return PackageApiFp(this.configuration).setRepositories(requestParameters.repositoryInfo, options).then((request) => request(this.axios, this.basePath));
     }
 }

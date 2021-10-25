@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -46,7 +46,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserItemRating: async (userId: string, itemId: string, options: any = {}): Promise<RequestArgs> => {
+        deleteUserItemRating: async (userId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('deleteUserItemRating', 'userId', userId)
             // verify required parameter 'itemId' is not null or undefined
@@ -70,7 +70,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -87,7 +87,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getIntros: async (userId: string, itemId: string, options: any = {}): Promise<RequestArgs> => {
+        getIntros: async (userId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getIntros', 'userId', userId)
             // verify required parameter 'itemId' is not null or undefined
@@ -111,7 +111,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -128,7 +128,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItem: async (userId: string, itemId: string, options: any = {}): Promise<RequestArgs> => {
+        getItem: async (userId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getItem', 'userId', userId)
             // verify required parameter 'itemId' is not null or undefined
@@ -152,7 +152,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -178,7 +178,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLatestMedia: async (userId: string, parentId?: string, fields?: Array<ItemFields>, includeItemTypes?: Array<BaseItemKind>, isPlayed?: boolean, enableImages?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, limit?: number, groupItems?: boolean, options: any = {}): Promise<RequestArgs> => {
+        getLatestMedia: async (userId: string, parentId?: string, fields?: Array<ItemFields>, includeItemTypes?: Array<BaseItemKind>, isPlayed?: boolean, enableImages?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, limit?: number, groupItems?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getLatestMedia', 'userId', userId)
             const localVarPath = `/Users/{userId}/Items/Latest`
@@ -239,7 +239,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -256,7 +256,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLocalTrailers: async (userId: string, itemId: string, options: any = {}): Promise<RequestArgs> => {
+        getLocalTrailers: async (userId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getLocalTrailers', 'userId', userId)
             // verify required parameter 'itemId' is not null or undefined
@@ -280,7 +280,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -296,7 +296,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRootFolder: async (userId: string, options: any = {}): Promise<RequestArgs> => {
+        getRootFolder: async (userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getRootFolder', 'userId', userId)
             const localVarPath = `/Users/{userId}/Items/Root`
@@ -317,7 +317,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -334,7 +334,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSpecialFeatures: async (userId: string, itemId: string, options: any = {}): Promise<RequestArgs> => {
+        getSpecialFeatures: async (userId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getSpecialFeatures', 'userId', userId)
             // verify required parameter 'itemId' is not null or undefined
@@ -358,7 +358,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -375,7 +375,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        markFavoriteItem: async (userId: string, itemId: string, options: any = {}): Promise<RequestArgs> => {
+        markFavoriteItem: async (userId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('markFavoriteItem', 'userId', userId)
             // verify required parameter 'itemId' is not null or undefined
@@ -399,7 +399,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -416,7 +416,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unmarkFavoriteItem: async (userId: string, itemId: string, options: any = {}): Promise<RequestArgs> => {
+        unmarkFavoriteItem: async (userId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('unmarkFavoriteItem', 'userId', userId)
             // verify required parameter 'itemId' is not null or undefined
@@ -440,7 +440,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -458,7 +458,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUserItemRating: async (userId: string, itemId: string, likes?: boolean, options: any = {}): Promise<RequestArgs> => {
+        updateUserItemRating: async (userId: string, itemId: string, likes?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('updateUserItemRating', 'userId', userId)
             // verify required parameter 'itemId' is not null or undefined
@@ -486,7 +486,7 @@ export const UserLibraryApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -513,7 +513,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUserItemRating(userId: string, itemId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserItemDataDto>> {
+        async deleteUserItemRating(userId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserItemDataDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserItemRating(userId, itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -525,7 +525,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getIntros(userId: string, itemId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
+        async getIntros(userId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getIntros(userId, itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -537,7 +537,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItem(userId: string, itemId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDto>> {
+        async getItem(userId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItem(userId, itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -558,7 +558,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestMedia(userId: string, parentId?: string, fields?: Array<ItemFields>, includeItemTypes?: Array<BaseItemKind>, isPlayed?: boolean, enableImages?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, limit?: number, groupItems?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseItemDto>>> {
+        async getLatestMedia(userId: string, parentId?: string, fields?: Array<ItemFields>, includeItemTypes?: Array<BaseItemKind>, isPlayed?: boolean, enableImages?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, enableUserData?: boolean, limit?: number, groupItems?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseItemDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getLatestMedia(userId, parentId, fields, includeItemTypes, isPlayed, enableImages, imageTypeLimit, enableImageTypes, enableUserData, limit, groupItems, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -570,7 +570,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLocalTrailers(userId: string, itemId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseItemDto>>> {
+        async getLocalTrailers(userId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseItemDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getLocalTrailers(userId, itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -581,7 +581,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRootFolder(userId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDto>> {
+        async getRootFolder(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRootFolder(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -593,7 +593,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSpecialFeatures(userId: string, itemId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseItemDto>>> {
+        async getSpecialFeatures(userId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BaseItemDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSpecialFeatures(userId, itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -605,7 +605,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async markFavoriteItem(userId: string, itemId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserItemDataDto>> {
+        async markFavoriteItem(userId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserItemDataDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.markFavoriteItem(userId, itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -617,7 +617,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async unmarkFavoriteItem(userId: string, itemId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserItemDataDto>> {
+        async unmarkFavoriteItem(userId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserItemDataDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.unmarkFavoriteItem(userId, itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -630,7 +630,7 @@ export const UserLibraryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUserItemRating(userId: string, itemId: string, likes?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserItemDataDto>> {
+        async updateUserItemRating(userId: string, itemId: string, likes?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserItemDataDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserItemRating(userId, itemId, likes, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1054,7 +1054,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public deleteUserItemRating(requestParameters: UserLibraryApiDeleteUserItemRatingRequest, options?: any) {
+    public deleteUserItemRating(requestParameters: UserLibraryApiDeleteUserItemRatingRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).deleteUserItemRating(requestParameters.userId, requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1066,7 +1066,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public getIntros(requestParameters: UserLibraryApiGetIntrosRequest, options?: any) {
+    public getIntros(requestParameters: UserLibraryApiGetIntrosRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).getIntros(requestParameters.userId, requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1078,7 +1078,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public getItem(requestParameters: UserLibraryApiGetItemRequest, options?: any) {
+    public getItem(requestParameters: UserLibraryApiGetItemRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).getItem(requestParameters.userId, requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1090,7 +1090,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public getLatestMedia(requestParameters: UserLibraryApiGetLatestMediaRequest, options?: any) {
+    public getLatestMedia(requestParameters: UserLibraryApiGetLatestMediaRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).getLatestMedia(requestParameters.userId, requestParameters.parentId, requestParameters.fields, requestParameters.includeItemTypes, requestParameters.isPlayed, requestParameters.enableImages, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.enableUserData, requestParameters.limit, requestParameters.groupItems, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1102,7 +1102,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public getLocalTrailers(requestParameters: UserLibraryApiGetLocalTrailersRequest, options?: any) {
+    public getLocalTrailers(requestParameters: UserLibraryApiGetLocalTrailersRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).getLocalTrailers(requestParameters.userId, requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1114,7 +1114,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public getRootFolder(requestParameters: UserLibraryApiGetRootFolderRequest, options?: any) {
+    public getRootFolder(requestParameters: UserLibraryApiGetRootFolderRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).getRootFolder(requestParameters.userId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1126,7 +1126,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public getSpecialFeatures(requestParameters: UserLibraryApiGetSpecialFeaturesRequest, options?: any) {
+    public getSpecialFeatures(requestParameters: UserLibraryApiGetSpecialFeaturesRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).getSpecialFeatures(requestParameters.userId, requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1138,7 +1138,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public markFavoriteItem(requestParameters: UserLibraryApiMarkFavoriteItemRequest, options?: any) {
+    public markFavoriteItem(requestParameters: UserLibraryApiMarkFavoriteItemRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).markFavoriteItem(requestParameters.userId, requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1150,7 +1150,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public unmarkFavoriteItem(requestParameters: UserLibraryApiUnmarkFavoriteItemRequest, options?: any) {
+    public unmarkFavoriteItem(requestParameters: UserLibraryApiUnmarkFavoriteItemRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).unmarkFavoriteItem(requestParameters.userId, requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1162,7 +1162,7 @@ export class UserLibraryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserLibraryApi
      */
-    public updateUserItemRating(requestParameters: UserLibraryApiUpdateUserItemRatingRequest, options?: any) {
+    public updateUserItemRating(requestParameters: UserLibraryApiUpdateUserItemRatingRequest, options?: AxiosRequestConfig) {
         return UserLibraryApiFp(this.configuration).updateUserItemRating(requestParameters.userId, requestParameters.itemId, requestParameters.likes, options).then((request) => request(this.axios, this.basePath));
     }
 }

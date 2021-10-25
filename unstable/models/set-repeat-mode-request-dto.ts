@@ -26,7 +26,6 @@ export interface SetRepeatModeRequestDto {
      * @type {GroupRepeatMode}
      * @memberof SetRepeatModeRequestDto
      */
-    Mode?: GroupRepeatMode;
+    'Mode'?: GroupRepeatMode;
 }
-
 

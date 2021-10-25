@@ -25,7 +25,6 @@ export interface PlaylistCreationResult {
      * @type {string}
      * @memberof PlaylistCreationResult
      */
-    Id?: string;
+    'Id'?: string;
 }
-
 

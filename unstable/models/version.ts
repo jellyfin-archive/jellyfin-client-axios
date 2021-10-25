@@ -25,37 +25,36 @@ export interface Version {
      * @type {number}
      * @memberof Version
      */
-    Major?: number;
+    'Major'?: number;
     /**
      * 
      * @type {number}
      * @memberof Version
      */
-    Minor?: number;
+    'Minor'?: number;
     /**
      * 
      * @type {number}
      * @memberof Version
      */
-    Build?: number;
+    'Build'?: number;
     /**
      * 
      * @type {number}
      * @memberof Version
      */
-    Revision?: number;
+    'Revision'?: number;
     /**
      * 
      * @type {number}
      * @memberof Version
      */
-    MajorRevision?: number;
+    'MajorRevision'?: number;
     /**
      * 
      * @type {number}
      * @memberof Version
      */
-    MinorRevision?: number;
+    'MinorRevision'?: number;
 }
-
 

@@ -25,13 +25,12 @@ export interface PluginSecurityInfo {
      * @type {string}
      * @memberof PluginSecurityInfo
      */
-    SupporterKey?: string | null;
+    'SupporterKey'?: string | null;
     /**
      * Gets or sets a value indicating whether is mb supporter.
      * @type {boolean}
      * @memberof PluginSecurityInfo
      */
-    IsMbSupporter?: boolean;
+    'IsMbSupporter'?: boolean;
 }
-
 

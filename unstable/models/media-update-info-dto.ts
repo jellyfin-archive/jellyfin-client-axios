@@ -26,7 +26,6 @@ export interface MediaUpdateInfoDto {
      * @type {Array<MediaUpdateInfoPathDto>}
      * @memberof MediaUpdateInfoDto
      */
-    Updates?: Array<MediaUpdateInfoPathDto>;
+    'Updates'?: Array<MediaUpdateInfoPathDto>;
 }
-
 

@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -40,7 +40,7 @@ export const LocalizationApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCountries: async (options: any = {}): Promise<RequestArgs> => {
+        getCountries: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Localization/Countries`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -58,7 +58,7 @@ export const LocalizationApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -73,7 +73,7 @@ export const LocalizationApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCultures: async (options: any = {}): Promise<RequestArgs> => {
+        getCultures: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Localization/Cultures`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -91,7 +91,7 @@ export const LocalizationApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -106,7 +106,7 @@ export const LocalizationApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLocalizationOptions: async (options: any = {}): Promise<RequestArgs> => {
+        getLocalizationOptions: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Localization/Options`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -124,7 +124,7 @@ export const LocalizationApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -139,7 +139,7 @@ export const LocalizationApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getParentalRatings: async (options: any = {}): Promise<RequestArgs> => {
+        getParentalRatings: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/Localization/ParentalRatings`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -157,7 +157,7 @@ export const LocalizationApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -182,7 +182,7 @@ export const LocalizationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCountries(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CountryInfo>>> {
+        async getCountries(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CountryInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCountries(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -192,7 +192,7 @@ export const LocalizationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCultures(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CultureDto>>> {
+        async getCultures(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CultureDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCultures(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -202,7 +202,7 @@ export const LocalizationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLocalizationOptions(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LocalizationOption>>> {
+        async getLocalizationOptions(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LocalizationOption>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getLocalizationOptions(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -212,7 +212,7 @@ export const LocalizationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getParentalRatings(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ParentalRating>>> {
+        async getParentalRatings(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ParentalRating>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getParentalRatings(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -279,7 +279,7 @@ export class LocalizationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof LocalizationApi
      */
-    public getCountries(options?: any) {
+    public getCountries(options?: AxiosRequestConfig) {
         return LocalizationApiFp(this.configuration).getCountries(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -290,7 +290,7 @@ export class LocalizationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof LocalizationApi
      */
-    public getCultures(options?: any) {
+    public getCultures(options?: AxiosRequestConfig) {
         return LocalizationApiFp(this.configuration).getCultures(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -301,7 +301,7 @@ export class LocalizationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof LocalizationApi
      */
-    public getLocalizationOptions(options?: any) {
+    public getLocalizationOptions(options?: AxiosRequestConfig) {
         return LocalizationApiFp(this.configuration).getLocalizationOptions(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -312,7 +312,7 @@ export class LocalizationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof LocalizationApi
      */
-    public getParentalRatings(options?: any) {
+    public getParentalRatings(options?: AxiosRequestConfig) {
         return LocalizationApiFp(this.configuration).getParentalRatings(options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -26,19 +26,18 @@ export interface ImageOption {
      * @type {ImageType}
      * @memberof ImageOption
      */
-    Type?: ImageType;
+    'Type'?: ImageType;
     /**
      * Gets or sets the limit.
      * @type {number}
      * @memberof ImageOption
      */
-    Limit?: number;
+    'Limit'?: number;
     /**
      * Gets or sets the minimum width.
      * @type {number}
      * @memberof ImageOption
      */
-    MinWidth?: number;
+    'MinWidth'?: number;
 }
-
 

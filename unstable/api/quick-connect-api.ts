@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -37,7 +37,7 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorize: async (code: string, options: any = {}): Promise<RequestArgs> => {
+        authorize: async (code: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'code' is not null or undefined
             assertParamExists('authorize', 'code', code)
             const localVarPath = `/QuickConnect/Authorize`;
@@ -61,7 +61,7 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -77,7 +77,7 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        connect: async (secret: string, options: any = {}): Promise<RequestArgs> => {
+        connect: async (secret: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'secret' is not null or undefined
             assertParamExists('connect', 'secret', secret)
             const localVarPath = `/QuickConnect/Connect`;
@@ -98,7 +98,7 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -113,7 +113,7 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEnabled: async (options: any = {}): Promise<RequestArgs> => {
+        getEnabled: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/QuickConnect/Enabled`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -128,7 +128,7 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -143,7 +143,7 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        initiate: async (options: any = {}): Promise<RequestArgs> => {
+        initiate: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/QuickConnect/Initiate`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -158,7 +158,7 @@ export const QuickConnectApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -184,7 +184,7 @@ export const QuickConnectApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authorize(code: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+        async authorize(code: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authorize(code, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -195,7 +195,7 @@ export const QuickConnectApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async connect(secret: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuickConnectResult>> {
+        async connect(secret: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuickConnectResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.connect(secret, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -205,7 +205,7 @@ export const QuickConnectApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getEnabled(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+        async getEnabled(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getEnabled(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -215,7 +215,7 @@ export const QuickConnectApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async initiate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuickConnectResult>> {
+        async initiate(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuickConnectResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.initiate(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -313,7 +313,7 @@ export class QuickConnectApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof QuickConnectApi
      */
-    public authorize(requestParameters: QuickConnectApiAuthorizeRequest, options?: any) {
+    public authorize(requestParameters: QuickConnectApiAuthorizeRequest, options?: AxiosRequestConfig) {
         return QuickConnectApiFp(this.configuration).authorize(requestParameters.code, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -325,7 +325,7 @@ export class QuickConnectApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof QuickConnectApi
      */
-    public connect(requestParameters: QuickConnectApiConnectRequest, options?: any) {
+    public connect(requestParameters: QuickConnectApiConnectRequest, options?: AxiosRequestConfig) {
         return QuickConnectApiFp(this.configuration).connect(requestParameters.secret, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -336,7 +336,7 @@ export class QuickConnectApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof QuickConnectApi
      */
-    public getEnabled(options?: any) {
+    public getEnabled(options?: AxiosRequestConfig) {
         return QuickConnectApiFp(this.configuration).getEnabled(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -347,7 +347,7 @@ export class QuickConnectApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof QuickConnectApi
      */
-    public initiate(options?: any) {
+    public initiate(options?: AxiosRequestConfig) {
         return QuickConnectApiFp(this.configuration).initiate(options).then((request) => request(this.axios, this.basePath));
     }
 }

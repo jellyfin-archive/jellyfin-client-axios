@@ -26,55 +26,54 @@ export interface DeviceIdentification {
      * @type {string}
      * @memberof DeviceIdentification
      */
-    FriendlyName?: string | null;
+    'FriendlyName'?: string | null;
     /**
      * Gets or sets the model number.
      * @type {string}
      * @memberof DeviceIdentification
      */
-    ModelNumber?: string | null;
+    'ModelNumber'?: string | null;
     /**
      * Gets or sets the serial number.
      * @type {string}
      * @memberof DeviceIdentification
      */
-    SerialNumber?: string | null;
+    'SerialNumber'?: string | null;
     /**
      * Gets or sets the name of the model.
      * @type {string}
      * @memberof DeviceIdentification
      */
-    ModelName?: string | null;
+    'ModelName'?: string | null;
     /**
      * Gets or sets the model description.
      * @type {string}
      * @memberof DeviceIdentification
      */
-    ModelDescription?: string | null;
+    'ModelDescription'?: string | null;
     /**
      * Gets or sets the model URL.
      * @type {string}
      * @memberof DeviceIdentification
      */
-    ModelUrl?: string | null;
+    'ModelUrl'?: string | null;
     /**
      * Gets or sets the manufacturer.
      * @type {string}
      * @memberof DeviceIdentification
      */
-    Manufacturer?: string | null;
+    'Manufacturer'?: string | null;
     /**
      * Gets or sets the manufacturer URL.
      * @type {string}
      * @memberof DeviceIdentification
      */
-    ManufacturerUrl?: string | null;
+    'ManufacturerUrl'?: string | null;
     /**
      * Gets or sets the headers.
      * @type {Array<HttpHeaderInfo>}
      * @memberof DeviceIdentification
      */
-    Headers?: Array<HttpHeaderInfo> | null;
+    'Headers'?: Array<HttpHeaderInfo> | null;
 }
-
 

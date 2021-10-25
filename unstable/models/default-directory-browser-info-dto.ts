@@ -25,7 +25,6 @@ export interface DefaultDirectoryBrowserInfoDto {
      * @type {string}
      * @memberof DefaultDirectoryBrowserInfoDto
      */
-    Path?: string | null;
+    'Path'?: string | null;
 }
-
 

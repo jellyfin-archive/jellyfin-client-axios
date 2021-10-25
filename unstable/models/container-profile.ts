@@ -27,19 +27,18 @@ export interface ContainerProfile {
      * @type {DlnaProfileType}
      * @memberof ContainerProfile
      */
-    Type?: DlnaProfileType;
+    'Type'?: DlnaProfileType;
     /**
      * 
      * @type {Array<ProfileCondition>}
      * @memberof ContainerProfile
      */
-    Conditions?: Array<ProfileCondition> | null;
+    'Conditions'?: Array<ProfileCondition> | null;
     /**
      * 
      * @type {string}
      * @memberof ContainerProfile
      */
-    Container?: string;
+    'Container'?: string;
 }
-
 

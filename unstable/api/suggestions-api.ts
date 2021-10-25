@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -40,7 +40,7 @@ export const SuggestionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSuggestions: async (userId: string, mediaType?: Array<string>, type?: Array<string>, startIndex?: number, limit?: number, enableTotalRecordCount?: boolean, options: any = {}): Promise<RequestArgs> => {
+        getSuggestions: async (userId: string, mediaType?: Array<string>, type?: Array<string>, startIndex?: number, limit?: number, enableTotalRecordCount?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getSuggestions', 'userId', userId)
             const localVarPath = `/Users/{userId}/Suggestions`
@@ -81,7 +81,7 @@ export const SuggestionsApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -112,7 +112,7 @@ export const SuggestionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSuggestions(userId: string, mediaType?: Array<string>, type?: Array<string>, startIndex?: number, limit?: number, enableTotalRecordCount?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
+        async getSuggestions(userId: string, mediaType?: Array<string>, type?: Array<string>, startIndex?: number, limit?: number, enableTotalRecordCount?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSuggestions(userId, mediaType, type, startIndex, limit, enableTotalRecordCount, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -208,7 +208,7 @@ export class SuggestionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SuggestionsApi
      */
-    public getSuggestions(requestParameters: SuggestionsApiGetSuggestionsRequest, options?: any) {
+    public getSuggestions(requestParameters: SuggestionsApiGetSuggestionsRequest, options?: AxiosRequestConfig) {
         return SuggestionsApiFp(this.configuration).getSuggestions(requestParameters.userId, requestParameters.mediaType, requestParameters.type, requestParameters.startIndex, requestParameters.limit, requestParameters.enableTotalRecordCount, options).then((request) => request(this.axios, this.basePath));
     }
 }

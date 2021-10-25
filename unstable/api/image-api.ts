@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -43,7 +43,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteItemImage: async (itemId: string, imageType: ImageType, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        deleteItemImage: async (itemId: string, imageType: ImageType, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('deleteItemImage', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -71,7 +71,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -89,7 +89,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteItemImageByIndex: async (itemId: string, imageType: ImageType, imageIndex: number, options: any = {}): Promise<RequestArgs> => {
+        deleteItemImageByIndex: async (itemId: string, imageType: ImageType, imageIndex: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('deleteItemImageByIndex', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -116,7 +116,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -134,7 +134,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserImage: async (userId: string, imageType: ImageType, index?: number, options: any = {}): Promise<RequestArgs> => {
+        deleteUserImage: async (userId: string, imageType: ImageType, index?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('deleteUserImage', 'userId', userId)
             // verify required parameter 'imageType' is not null or undefined
@@ -162,7 +162,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -180,7 +180,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserImageByIndex: async (userId: string, imageType: ImageType, index: number, options: any = {}): Promise<RequestArgs> => {
+        deleteUserImageByIndex: async (userId: string, imageType: ImageType, index: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('deleteUserImageByIndex', 'userId', userId)
             // verify required parameter 'imageType' is not null or undefined
@@ -207,7 +207,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -241,7 +241,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getArtistImage: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        getArtistImage: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getArtistImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -329,7 +329,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -363,7 +363,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGenreImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        getGenreImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getGenreImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -452,7 +452,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -486,7 +486,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGenreImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        getGenreImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getGenreImageByIndex', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -574,7 +574,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -608,7 +608,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItemImage: async (itemId: string, imageType: ImageType, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        getItemImage: async (itemId: string, imageType: ImageType, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getItemImage', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -697,7 +697,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -731,7 +731,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItemImage2: async (itemId: string, imageType: ImageType, maxWidth: number, maxHeight: number, tag: string, format: ImageFormat, percentPlayed: number, unplayedCount: number, imageIndex: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        getItemImage2: async (itemId: string, imageType: ImageType, maxWidth: number, maxHeight: number, tag: string, format: ImageFormat, percentPlayed: number, unplayedCount: number, imageIndex: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getItemImage2', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -813,7 +813,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -847,7 +847,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItemImageByIndex: async (itemId: string, imageType: ImageType, imageIndex: number, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        getItemImageByIndex: async (itemId: string, imageType: ImageType, imageIndex: number, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getItemImageByIndex', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -935,7 +935,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -951,7 +951,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItemImageInfos: async (itemId: string, options: any = {}): Promise<RequestArgs> => {
+        getItemImageInfos: async (itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('getItemImageInfos', 'itemId', itemId)
             const localVarPath = `/Items/{itemId}/Images`
@@ -972,7 +972,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -1006,7 +1006,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMusicGenreImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        getMusicGenreImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getMusicGenreImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -1095,7 +1095,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -1129,7 +1129,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMusicGenreImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        getMusicGenreImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getMusicGenreImageByIndex', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -1217,7 +1217,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -1251,7 +1251,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPersonImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        getPersonImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getPersonImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -1340,7 +1340,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -1374,7 +1374,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPersonImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        getPersonImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getPersonImageByIndex', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -1462,7 +1462,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -1496,7 +1496,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStudioImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        getStudioImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getStudioImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -1585,7 +1585,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -1619,7 +1619,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStudioImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        getStudioImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getStudioImageByIndex', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -1707,7 +1707,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -1741,7 +1741,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserImage: async (userId: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        getUserImage: async (userId: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getUserImage', 'userId', userId)
             // verify required parameter 'imageType' is not null or undefined
@@ -1830,7 +1830,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -1864,7 +1864,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserImageByIndex: async (userId: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        getUserImageByIndex: async (userId: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getUserImageByIndex', 'userId', userId)
             // verify required parameter 'imageType' is not null or undefined
@@ -1952,7 +1952,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -1986,7 +1986,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headArtistImage: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        headArtistImage: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('headArtistImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -2074,7 +2074,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -2108,7 +2108,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headGenreImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        headGenreImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('headGenreImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -2197,7 +2197,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -2231,7 +2231,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headGenreImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        headGenreImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('headGenreImageByIndex', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -2319,7 +2319,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -2353,7 +2353,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headItemImage: async (itemId: string, imageType: ImageType, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        headItemImage: async (itemId: string, imageType: ImageType, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('headItemImage', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -2442,7 +2442,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -2476,7 +2476,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headItemImage2: async (itemId: string, imageType: ImageType, maxWidth: number, maxHeight: number, tag: string, format: ImageFormat, percentPlayed: number, unplayedCount: number, imageIndex: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        headItemImage2: async (itemId: string, imageType: ImageType, maxWidth: number, maxHeight: number, tag: string, format: ImageFormat, percentPlayed: number, unplayedCount: number, imageIndex: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('headItemImage2', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -2558,7 +2558,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -2592,7 +2592,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headItemImageByIndex: async (itemId: string, imageType: ImageType, imageIndex: number, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        headItemImageByIndex: async (itemId: string, imageType: ImageType, imageIndex: number, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('headItemImageByIndex', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -2680,7 +2680,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -2714,7 +2714,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headMusicGenreImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        headMusicGenreImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('headMusicGenreImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -2803,7 +2803,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -2837,7 +2837,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headMusicGenreImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        headMusicGenreImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('headMusicGenreImageByIndex', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -2925,7 +2925,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -2959,7 +2959,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headPersonImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        headPersonImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('headPersonImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -3048,7 +3048,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -3082,7 +3082,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headPersonImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        headPersonImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('headPersonImageByIndex', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -3170,7 +3170,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -3204,7 +3204,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headStudioImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        headStudioImage: async (name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('headStudioImage', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -3293,7 +3293,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -3327,7 +3327,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headStudioImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        headStudioImageByIndex: async (name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('headStudioImageByIndex', 'name', name)
             // verify required parameter 'imageType' is not null or undefined
@@ -3415,7 +3415,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -3449,7 +3449,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headUserImage: async (userId: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: any = {}): Promise<RequestArgs> => {
+        headUserImage: async (userId: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('headUserImage', 'userId', userId)
             // verify required parameter 'imageType' is not null or undefined
@@ -3538,7 +3538,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -3572,7 +3572,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        headUserImageByIndex: async (userId: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: any = {}): Promise<RequestArgs> => {
+        headUserImageByIndex: async (userId: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('headUserImageByIndex', 'userId', userId)
             // verify required parameter 'imageType' is not null or undefined
@@ -3660,7 +3660,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -3679,7 +3679,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postUserImage: async (userId: string, imageType: ImageType, index?: number, body?: any, options: any = {}): Promise<RequestArgs> => {
+        postUserImage: async (userId: string, imageType: ImageType, index?: number, body?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('postUserImage', 'userId', userId)
             // verify required parameter 'imageType' is not null or undefined
@@ -3709,7 +3709,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'image/_*';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -3729,7 +3729,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postUserImageByIndex: async (userId: string, imageType: ImageType, index: number, body?: any, options: any = {}): Promise<RequestArgs> => {
+        postUserImageByIndex: async (userId: string, imageType: ImageType, index: number, body?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('postUserImageByIndex', 'userId', userId)
             // verify required parameter 'imageType' is not null or undefined
@@ -3758,7 +3758,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'image/_*';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -3777,7 +3777,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setItemImage: async (itemId: string, imageType: ImageType, body?: any, options: any = {}): Promise<RequestArgs> => {
+        setItemImage: async (itemId: string, imageType: ImageType, body?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('setItemImage', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -3803,7 +3803,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'image/_*';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -3823,7 +3823,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setItemImageByIndex: async (itemId: string, imageType: ImageType, imageIndex: number, body?: any, options: any = {}): Promise<RequestArgs> => {
+        setItemImageByIndex: async (itemId: string, imageType: ImageType, imageIndex: number, body?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('setItemImageByIndex', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -3852,7 +3852,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'image/_*';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -3872,7 +3872,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItemImageIndex: async (itemId: string, imageType: ImageType, imageIndex: number, newIndex: number, options: any = {}): Promise<RequestArgs> => {
+        updateItemImageIndex: async (itemId: string, imageType: ImageType, imageIndex: number, newIndex: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('updateItemImageIndex', 'itemId', itemId)
             // verify required parameter 'imageType' is not null or undefined
@@ -3905,7 +3905,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -3933,7 +3933,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteItemImage(itemId: string, imageType: ImageType, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteItemImage(itemId: string, imageType: ImageType, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteItemImage(itemId, imageType, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3946,7 +3946,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteItemImageByIndex(itemId: string, imageType: ImageType, imageIndex: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteItemImageByIndex(itemId: string, imageType: ImageType, imageIndex: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteItemImageByIndex(itemId, imageType, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3959,7 +3959,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUserImage(userId: string, imageType: ImageType, index?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteUserImage(userId: string, imageType: ImageType, index?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserImage(userId, imageType, index, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3972,7 +3972,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUserImageByIndex(userId: string, imageType: ImageType, index: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteUserImageByIndex(userId: string, imageType: ImageType, index: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUserImageByIndex(userId, imageType, index, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4001,7 +4001,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getArtistImage(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getArtistImage(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getArtistImage(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4030,7 +4030,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGenreImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getGenreImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGenreImage(name, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4059,7 +4059,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGenreImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getGenreImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGenreImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4088,7 +4088,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItemImage(itemId: string, imageType: ImageType, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getItemImage(itemId: string, imageType: ImageType, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItemImage(itemId, imageType, maxWidth, maxHeight, width, height, quality, fillWidth, fillHeight, tag, cropWhitespace, format, addPlayedIndicator, percentPlayed, unplayedCount, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4117,7 +4117,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItemImage2(itemId: string, imageType: ImageType, maxWidth: number, maxHeight: number, tag: string, format: ImageFormat, percentPlayed: number, unplayedCount: number, imageIndex: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getItemImage2(itemId: string, imageType: ImageType, maxWidth: number, maxHeight: number, tag: string, format: ImageFormat, percentPlayed: number, unplayedCount: number, imageIndex: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItemImage2(itemId, imageType, maxWidth, maxHeight, tag, format, percentPlayed, unplayedCount, imageIndex, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4146,7 +4146,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItemImageByIndex(itemId: string, imageType: ImageType, imageIndex: number, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getItemImageByIndex(itemId: string, imageType: ImageType, imageIndex: number, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItemImageByIndex(itemId, imageType, imageIndex, maxWidth, maxHeight, width, height, quality, fillWidth, fillHeight, tag, cropWhitespace, format, addPlayedIndicator, percentPlayed, unplayedCount, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4157,7 +4157,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItemImageInfos(itemId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ImageInfo>>> {
+        async getItemImageInfos(itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ImageInfo>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getItemImageInfos(itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4186,7 +4186,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMusicGenreImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getMusicGenreImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMusicGenreImage(name, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4215,7 +4215,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMusicGenreImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getMusicGenreImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMusicGenreImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4244,7 +4244,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPersonImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getPersonImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPersonImage(name, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4273,7 +4273,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPersonImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getPersonImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPersonImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4302,7 +4302,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStudioImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getStudioImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getStudioImage(name, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4331,7 +4331,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStudioImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getStudioImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getStudioImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4360,7 +4360,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserImage(userId: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getUserImage(userId: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserImage(userId, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4389,7 +4389,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserImageByIndex(userId: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getUserImageByIndex(userId: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserImageByIndex(userId, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4418,7 +4418,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headArtistImage(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headArtistImage(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headArtistImage(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4447,7 +4447,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headGenreImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headGenreImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headGenreImage(name, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4476,7 +4476,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headGenreImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headGenreImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headGenreImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4505,7 +4505,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headItemImage(itemId: string, imageType: ImageType, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headItemImage(itemId: string, imageType: ImageType, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headItemImage(itemId, imageType, maxWidth, maxHeight, width, height, quality, fillWidth, fillHeight, tag, cropWhitespace, format, addPlayedIndicator, percentPlayed, unplayedCount, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4534,7 +4534,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headItemImage2(itemId: string, imageType: ImageType, maxWidth: number, maxHeight: number, tag: string, format: ImageFormat, percentPlayed: number, unplayedCount: number, imageIndex: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headItemImage2(itemId: string, imageType: ImageType, maxWidth: number, maxHeight: number, tag: string, format: ImageFormat, percentPlayed: number, unplayedCount: number, imageIndex: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headItemImage2(itemId, imageType, maxWidth, maxHeight, tag, format, percentPlayed, unplayedCount, imageIndex, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4563,7 +4563,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headItemImageByIndex(itemId: string, imageType: ImageType, imageIndex: number, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headItemImageByIndex(itemId: string, imageType: ImageType, imageIndex: number, maxWidth?: number, maxHeight?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, tag?: string, cropWhitespace?: boolean, format?: ImageFormat, addPlayedIndicator?: boolean, percentPlayed?: number, unplayedCount?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headItemImageByIndex(itemId, imageType, imageIndex, maxWidth, maxHeight, width, height, quality, fillWidth, fillHeight, tag, cropWhitespace, format, addPlayedIndicator, percentPlayed, unplayedCount, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4592,7 +4592,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headMusicGenreImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headMusicGenreImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headMusicGenreImage(name, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4621,7 +4621,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headMusicGenreImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headMusicGenreImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headMusicGenreImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4650,7 +4650,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headPersonImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headPersonImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headPersonImage(name, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4679,7 +4679,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headPersonImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headPersonImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headPersonImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4708,7 +4708,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headStudioImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headStudioImage(name: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headStudioImage(name, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4737,7 +4737,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headStudioImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headStudioImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headStudioImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4766,7 +4766,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headUserImage(userId: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headUserImage(userId: string, imageType: ImageType, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, imageIndex?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headUserImage(userId, imageType, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, imageIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4795,7 +4795,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async headUserImageByIndex(userId: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async headUserImageByIndex(userId: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.headUserImageByIndex(userId, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4809,7 +4809,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postUserImage(userId: string, imageType: ImageType, index?: number, body?: any, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async postUserImage(userId: string, imageType: ImageType, index?: number, body?: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.postUserImage(userId, imageType, index, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4823,7 +4823,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postUserImageByIndex(userId: string, imageType: ImageType, index: number, body?: any, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async postUserImageByIndex(userId: string, imageType: ImageType, index: number, body?: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.postUserImageByIndex(userId, imageType, index, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4836,7 +4836,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setItemImage(itemId: string, imageType: ImageType, body?: any, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async setItemImage(itemId: string, imageType: ImageType, body?: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.setItemImage(itemId, imageType, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4850,7 +4850,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setItemImageByIndex(itemId: string, imageType: ImageType, imageIndex: number, body?: any, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async setItemImageByIndex(itemId: string, imageType: ImageType, imageIndex: number, body?: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.setItemImageByIndex(itemId, imageType, imageIndex, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4864,7 +4864,7 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateItemImageIndex(itemId: string, imageType: ImageType, imageIndex: number, newIndex: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateItemImageIndex(itemId: string, imageType: ImageType, imageIndex: number, newIndex: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateItemImageIndex(itemId, imageType, imageIndex, newIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -10016,7 +10016,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public deleteItemImage(requestParameters: ImageApiDeleteItemImageRequest, options?: any) {
+    public deleteItemImage(requestParameters: ImageApiDeleteItemImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).deleteItemImage(requestParameters.itemId, requestParameters.imageType, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10028,7 +10028,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public deleteItemImageByIndex(requestParameters: ImageApiDeleteItemImageByIndexRequest, options?: any) {
+    public deleteItemImageByIndex(requestParameters: ImageApiDeleteItemImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).deleteItemImageByIndex(requestParameters.itemId, requestParameters.imageType, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10040,7 +10040,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public deleteUserImage(requestParameters: ImageApiDeleteUserImageRequest, options?: any) {
+    public deleteUserImage(requestParameters: ImageApiDeleteUserImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).deleteUserImage(requestParameters.userId, requestParameters.imageType, requestParameters.index, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10052,7 +10052,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public deleteUserImageByIndex(requestParameters: ImageApiDeleteUserImageByIndexRequest, options?: any) {
+    public deleteUserImageByIndex(requestParameters: ImageApiDeleteUserImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).deleteUserImageByIndex(requestParameters.userId, requestParameters.imageType, requestParameters.index, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10064,7 +10064,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getArtistImage(requestParameters: ImageApiGetArtistImageRequest, options?: any) {
+    public getArtistImage(requestParameters: ImageApiGetArtistImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getArtistImage(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10076,7 +10076,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getGenreImage(requestParameters: ImageApiGetGenreImageRequest, options?: any) {
+    public getGenreImage(requestParameters: ImageApiGetGenreImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getGenreImage(requestParameters.name, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10088,7 +10088,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getGenreImageByIndex(requestParameters: ImageApiGetGenreImageByIndexRequest, options?: any) {
+    public getGenreImageByIndex(requestParameters: ImageApiGetGenreImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getGenreImageByIndex(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10100,7 +10100,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getItemImage(requestParameters: ImageApiGetItemImageRequest, options?: any) {
+    public getItemImage(requestParameters: ImageApiGetItemImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getItemImage(requestParameters.itemId, requestParameters.imageType, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.tag, requestParameters.cropWhitespace, requestParameters.format, requestParameters.addPlayedIndicator, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10112,7 +10112,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getItemImage2(requestParameters: ImageApiGetItemImage2Request, options?: any) {
+    public getItemImage2(requestParameters: ImageApiGetItemImage2Request, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getItemImage2(requestParameters.itemId, requestParameters.imageType, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.tag, requestParameters.format, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.imageIndex, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10124,7 +10124,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getItemImageByIndex(requestParameters: ImageApiGetItemImageByIndexRequest, options?: any) {
+    public getItemImageByIndex(requestParameters: ImageApiGetItemImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getItemImageByIndex(requestParameters.itemId, requestParameters.imageType, requestParameters.imageIndex, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.tag, requestParameters.cropWhitespace, requestParameters.format, requestParameters.addPlayedIndicator, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10136,7 +10136,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getItemImageInfos(requestParameters: ImageApiGetItemImageInfosRequest, options?: any) {
+    public getItemImageInfos(requestParameters: ImageApiGetItemImageInfosRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getItemImageInfos(requestParameters.itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10148,7 +10148,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getMusicGenreImage(requestParameters: ImageApiGetMusicGenreImageRequest, options?: any) {
+    public getMusicGenreImage(requestParameters: ImageApiGetMusicGenreImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getMusicGenreImage(requestParameters.name, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10160,7 +10160,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getMusicGenreImageByIndex(requestParameters: ImageApiGetMusicGenreImageByIndexRequest, options?: any) {
+    public getMusicGenreImageByIndex(requestParameters: ImageApiGetMusicGenreImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getMusicGenreImageByIndex(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10172,7 +10172,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getPersonImage(requestParameters: ImageApiGetPersonImageRequest, options?: any) {
+    public getPersonImage(requestParameters: ImageApiGetPersonImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getPersonImage(requestParameters.name, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10184,7 +10184,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getPersonImageByIndex(requestParameters: ImageApiGetPersonImageByIndexRequest, options?: any) {
+    public getPersonImageByIndex(requestParameters: ImageApiGetPersonImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getPersonImageByIndex(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10196,7 +10196,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getStudioImage(requestParameters: ImageApiGetStudioImageRequest, options?: any) {
+    public getStudioImage(requestParameters: ImageApiGetStudioImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getStudioImage(requestParameters.name, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10208,7 +10208,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getStudioImageByIndex(requestParameters: ImageApiGetStudioImageByIndexRequest, options?: any) {
+    public getStudioImageByIndex(requestParameters: ImageApiGetStudioImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getStudioImageByIndex(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10220,7 +10220,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getUserImage(requestParameters: ImageApiGetUserImageRequest, options?: any) {
+    public getUserImage(requestParameters: ImageApiGetUserImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getUserImage(requestParameters.userId, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10232,7 +10232,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getUserImageByIndex(requestParameters: ImageApiGetUserImageByIndexRequest, options?: any) {
+    public getUserImageByIndex(requestParameters: ImageApiGetUserImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getUserImageByIndex(requestParameters.userId, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10244,7 +10244,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headArtistImage(requestParameters: ImageApiHeadArtistImageRequest, options?: any) {
+    public headArtistImage(requestParameters: ImageApiHeadArtistImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headArtistImage(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10256,7 +10256,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headGenreImage(requestParameters: ImageApiHeadGenreImageRequest, options?: any) {
+    public headGenreImage(requestParameters: ImageApiHeadGenreImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headGenreImage(requestParameters.name, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10268,7 +10268,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headGenreImageByIndex(requestParameters: ImageApiHeadGenreImageByIndexRequest, options?: any) {
+    public headGenreImageByIndex(requestParameters: ImageApiHeadGenreImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headGenreImageByIndex(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10280,7 +10280,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headItemImage(requestParameters: ImageApiHeadItemImageRequest, options?: any) {
+    public headItemImage(requestParameters: ImageApiHeadItemImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headItemImage(requestParameters.itemId, requestParameters.imageType, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.tag, requestParameters.cropWhitespace, requestParameters.format, requestParameters.addPlayedIndicator, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10292,7 +10292,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headItemImage2(requestParameters: ImageApiHeadItemImage2Request, options?: any) {
+    public headItemImage2(requestParameters: ImageApiHeadItemImage2Request, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headItemImage2(requestParameters.itemId, requestParameters.imageType, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.tag, requestParameters.format, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.imageIndex, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10304,7 +10304,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headItemImageByIndex(requestParameters: ImageApiHeadItemImageByIndexRequest, options?: any) {
+    public headItemImageByIndex(requestParameters: ImageApiHeadItemImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headItemImageByIndex(requestParameters.itemId, requestParameters.imageType, requestParameters.imageIndex, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.tag, requestParameters.cropWhitespace, requestParameters.format, requestParameters.addPlayedIndicator, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10316,7 +10316,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headMusicGenreImage(requestParameters: ImageApiHeadMusicGenreImageRequest, options?: any) {
+    public headMusicGenreImage(requestParameters: ImageApiHeadMusicGenreImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headMusicGenreImage(requestParameters.name, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10328,7 +10328,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headMusicGenreImageByIndex(requestParameters: ImageApiHeadMusicGenreImageByIndexRequest, options?: any) {
+    public headMusicGenreImageByIndex(requestParameters: ImageApiHeadMusicGenreImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headMusicGenreImageByIndex(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10340,7 +10340,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headPersonImage(requestParameters: ImageApiHeadPersonImageRequest, options?: any) {
+    public headPersonImage(requestParameters: ImageApiHeadPersonImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headPersonImage(requestParameters.name, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10352,7 +10352,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headPersonImageByIndex(requestParameters: ImageApiHeadPersonImageByIndexRequest, options?: any) {
+    public headPersonImageByIndex(requestParameters: ImageApiHeadPersonImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headPersonImageByIndex(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10364,7 +10364,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headStudioImage(requestParameters: ImageApiHeadStudioImageRequest, options?: any) {
+    public headStudioImage(requestParameters: ImageApiHeadStudioImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headStudioImage(requestParameters.name, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10376,7 +10376,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headStudioImageByIndex(requestParameters: ImageApiHeadStudioImageByIndexRequest, options?: any) {
+    public headStudioImageByIndex(requestParameters: ImageApiHeadStudioImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headStudioImageByIndex(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10388,7 +10388,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headUserImage(requestParameters: ImageApiHeadUserImageRequest, options?: any) {
+    public headUserImage(requestParameters: ImageApiHeadUserImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headUserImage(requestParameters.userId, requestParameters.imageType, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.imageIndex, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10400,7 +10400,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public headUserImageByIndex(requestParameters: ImageApiHeadUserImageByIndexRequest, options?: any) {
+    public headUserImageByIndex(requestParameters: ImageApiHeadUserImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).headUserImageByIndex(requestParameters.userId, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10412,7 +10412,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public postUserImage(requestParameters: ImageApiPostUserImageRequest, options?: any) {
+    public postUserImage(requestParameters: ImageApiPostUserImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).postUserImage(requestParameters.userId, requestParameters.imageType, requestParameters.index, requestParameters.body, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10424,7 +10424,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public postUserImageByIndex(requestParameters: ImageApiPostUserImageByIndexRequest, options?: any) {
+    public postUserImageByIndex(requestParameters: ImageApiPostUserImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).postUserImageByIndex(requestParameters.userId, requestParameters.imageType, requestParameters.index, requestParameters.body, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10436,7 +10436,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public setItemImage(requestParameters: ImageApiSetItemImageRequest, options?: any) {
+    public setItemImage(requestParameters: ImageApiSetItemImageRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).setItemImage(requestParameters.itemId, requestParameters.imageType, requestParameters.body, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10448,7 +10448,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public setItemImageByIndex(requestParameters: ImageApiSetItemImageByIndexRequest, options?: any) {
+    public setItemImageByIndex(requestParameters: ImageApiSetItemImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).setItemImageByIndex(requestParameters.itemId, requestParameters.imageType, requestParameters.imageIndex, requestParameters.body, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -10460,7 +10460,7 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public updateItemImageIndex(requestParameters: ImageApiUpdateItemImageIndexRequest, options?: any) {
+    public updateItemImageIndex(requestParameters: ImageApiUpdateItemImageIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).updateItemImageIndex(requestParameters.itemId, requestParameters.imageType, requestParameters.imageIndex, requestParameters.newIndex, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -25,7 +25,6 @@ export interface JoinGroupRequestDto {
      * @type {string}
      * @memberof JoinGroupRequestDto
      */
-    GroupId?: string;
+    'GroupId'?: string;
 }
-
 
