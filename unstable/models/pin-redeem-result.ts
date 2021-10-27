@@ -31,6 +31,6 @@ export interface PinRedeemResult {
      * @type {Array<string>}
      * @memberof PinRedeemResult
      */
-    'UsersReset'?: Array<string> | null;
+    'UsersReset'?: Array<string>;
 }
 

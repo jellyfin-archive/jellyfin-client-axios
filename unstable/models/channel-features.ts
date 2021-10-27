@@ -28,13 +28,13 @@ export interface ChannelFeatures {
      * @type {string}
      * @memberof ChannelFeatures
      */
-    'Name'?: string | null;
+    'Name'?: string;
     /**
      * Gets or sets the identifier.
      * @type {string}
      * @memberof ChannelFeatures
      */
-    'Id'?: string | null;
+    'Id'?: string;
     /**
      * Gets or sets a value indicating whether this instance can search.
      * @type {boolean}
@@ -46,13 +46,13 @@ export interface ChannelFeatures {
      * @type {Array<ChannelMediaType>}
      * @memberof ChannelFeatures
      */
-    'MediaTypes'?: Array<ChannelMediaType> | null;
+    'MediaTypes'?: Array<ChannelMediaType>;
     /**
      * Gets or sets the content types.
      * @type {Array<ChannelMediaContentType>}
      * @memberof ChannelFeatures
      */
-    'ContentTypes'?: Array<ChannelMediaContentType> | null;
+    'ContentTypes'?: Array<ChannelMediaContentType>;
     /**
      * Gets or sets the maximum number of records the channel allows retrieving at a time.
      * @type {number}
@@ -70,7 +70,7 @@ export interface ChannelFeatures {
      * @type {Array<ChannelItemSortField>}
      * @memberof ChannelFeatures
      */
-    'DefaultSortFields'?: Array<ChannelItemSortField> | null;
+    'DefaultSortFields'?: Array<ChannelItemSortField>;
     /**
      * Gets or sets a value indicating whether a sort ascending/descending toggle is supported.
      * @type {boolean}
