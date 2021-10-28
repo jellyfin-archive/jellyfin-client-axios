@@ -44,6 +44,6 @@ export interface ExternalIdInfo {
      * @type {string}
      * @memberof ExternalIdInfo
      */
-    'UrlFormatString'?: string;
+    'UrlFormatString'?: string | null;
 }
 
