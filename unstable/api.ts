@@ -20,6 +20,7 @@ export * from './api/artists-api';
 export * from './api/audio-api';
 export * from './api/branding-api';
 export * from './api/channels-api';
+export * from './api/client-log-api';
 export * from './api/collection-api';
 export * from './api/configuration-api';
 export * from './api/dashboard-api';

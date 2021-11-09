@@ -524,5 +524,11 @@ export interface ServerConfiguration {
      * @memberof ServerConfiguration
      */
     'RemoveOldPlugins'?: boolean;
+    /**
+     * Gets or sets a value indicating whether clients should be allowed to upload logs.
+     * @type {boolean}
+     * @memberof ServerConfiguration
+     */
+    'AllowClientLogUpload'?: boolean;
 }
 

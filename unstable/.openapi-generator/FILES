@@ -5,6 +5,7 @@ api/artists-api.ts
 api/audio-api.ts
 api/branding-api.ts
 api/channels-api.ts
+api/client-log-api.ts
 api/collection-api.ts
 api/configuration-api.ts
 api/dashboard-api.ts
@@ -100,6 +101,8 @@ models/channel-type.ts
 models/chapter-info.ts
 models/client-capabilities-dto.ts
 models/client-capabilities.ts
+models/client-log-document-response-dto.ts
+models/client-log-event-dto.ts
 models/codec-profile.ts
 models/codec-type.ts
 models/collection-creation-result.ts

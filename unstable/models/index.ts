@@ -35,6 +35,8 @@ export * from './channel-type';
 export * from './chapter-info';
 export * from './client-capabilities';
 export * from './client-capabilities-dto';
+export * from './client-log-document-response-dto';
+export * from './client-log-event-dto';
 export * from './codec-profile';
 export * from './codec-type';
 export * from './collection-creation-result';
