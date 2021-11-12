@@ -65,11 +65,11 @@ export interface DisplayPreferencesDto {
      */
     'PrimaryImageWidth'?: number;
     /**
-     * Gets or sets the custom prefs.
+     * Gets the custom prefs.
      * @type {{ [key: string]: string; }}
      * @memberof DisplayPreferencesDto
      */
-    'CustomPrefs'?: { [key: string]: string; } | null;
+    'CustomPrefs'?: { [key: string]: string; };
     /**
      * 
      * @type {ScrollDirection}
