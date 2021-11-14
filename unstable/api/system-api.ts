@@ -239,6 +239,7 @@ export const SystemApiAxiosParamCreator = function (configuration?: Configuratio
          * 
          * @summary Gets wake on lan information.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getWakeOnLanInfo: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -439,6 +440,7 @@ export const SystemApiFp = function(configuration?: Configuration) {
          * 
          * @summary Gets wake on lan information.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async getWakeOnLanInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WakeOnLanInfo>>> {
@@ -544,6 +546,7 @@ export const SystemApiFactory = function (configuration?: Configuration, basePat
          * 
          * @summary Gets wake on lan information.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         getWakeOnLanInfo(options?: any): AxiosPromise<Array<WakeOnLanInfo>> {
@@ -671,6 +674,7 @@ export class SystemApi extends BaseAPI {
      * 
      * @summary Gets wake on lan information.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof SystemApi
      */
