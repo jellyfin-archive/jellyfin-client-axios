@@ -65,7 +65,7 @@ export interface DisplayPreferencesDto {
      */
     'PrimaryImageWidth'?: number;
     /**
-     * Gets the custom prefs.
+     * Gets or sets the custom prefs.
      * @type {{ [key: string]: string; }}
      * @memberof DisplayPreferencesDto
      */
