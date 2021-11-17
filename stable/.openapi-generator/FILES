@@ -81,7 +81,6 @@ models/authentication-result.ts
 models/base-item-dto-image-blur-hashes.ts
 models/base-item-dto-query-result.ts
 models/base-item-dto.ts
-models/base-item-kind.ts
 models/base-item-person-image-blur-hashes.ts
 models/base-item-person.ts
 models/base-item.ts
@@ -105,6 +104,7 @@ models/codec-type.ts
 models/collection-creation-result.ts
 models/collection-type-options.ts
 models/configuration-page-info.ts
+models/configuration-page-type.ts
 models/container-profile.ts
 models/control-response.ts
 models/country-info.ts
@@ -117,7 +117,6 @@ models/default-directory-browser-info-dto.ts
 models/device-identification.ts
 models/device-info-query-result.ts
 models/device-info.ts
-models/device-options-dto.ts
 models/device-options.ts
 models/device-profile-info.ts
 models/device-profile-type.ts
@@ -149,7 +148,6 @@ models/group-shuffle-mode.ts
 models/group-state-type.ts
 models/group-update-type.ts
 models/guide-info.ts
-models/hardware-encoding-type.ts
 models/header-match-type.ts
 models/http-header-info.ts
 models/ignore-wait-request-dto.ts
@@ -256,6 +254,7 @@ models/queue-item.ts
 models/queue-request-dto.ts
 models/quick-connect-dto.ts
 models/quick-connect-result.ts
+models/quick-connect-state.ts
 models/rating-type.ts
 models/ready-request-dto.ts
 models/recommendation-dto.ts
