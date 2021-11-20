@@ -168,6 +168,12 @@ export interface LibraryOptions {
     'SaveSubtitlesWithMedia'?: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof LibraryOptions
+     */
+    'AutomaticallyAddToCollection'?: boolean;
+    /**
+     * 
      * @type {Array<TypeOptions>}
      * @memberof LibraryOptions
      */
