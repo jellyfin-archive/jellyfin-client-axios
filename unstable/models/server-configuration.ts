@@ -441,12 +441,6 @@ export interface ServerConfiguration {
      */
     'RequireHttps'?: boolean;
     /**
-     * 
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'EnableNewOmdbSupport'?: boolean;
-    /**
      * Gets or sets the filter for remote IP connectivity. Used in conjuntion with <seealso cref=\"P:MediaBrowser.Model.Configuration.ServerConfiguration.IsRemoteIPFilterBlacklist\" />.
      * @type {Array<string>}
      * @memberof ServerConfiguration
