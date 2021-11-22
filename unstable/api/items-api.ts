@@ -942,10 +942,11 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
          * @param {boolean} [enableTotalRecordCount] Optional. Enable the total record count.
          * @param {boolean} [enableImages] Optional. Include image information in output.
+         * @param {boolean} [excludeActiveSessions] Optional. Whether to exclude the currently active sessions.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getResumeItems: async (userId: string, startIndex?: number, limit?: number, searchTerm?: string, parentId?: string, fields?: Array<ItemFields>, mediaTypes?: Array<string>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, enableTotalRecordCount?: boolean, enableImages?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getResumeItems: async (userId: string, startIndex?: number, limit?: number, searchTerm?: string, parentId?: string, fields?: Array<ItemFields>, mediaTypes?: Array<string>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, enableTotalRecordCount?: boolean, enableImages?: boolean, excludeActiveSessions?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getResumeItems', 'userId', userId)
             const localVarPath = `/Users/{userId}/Items/Resume`
@@ -1014,6 +1015,10 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
 
             if (enableImages !== undefined) {
                 localVarQueryParameter['enableImages'] = enableImages;
+            }
+
+            if (excludeActiveSessions !== undefined) {
+                localVarQueryParameter['excludeActiveSessions'] = excludeActiveSessions;
             }
 
 
@@ -1234,11 +1239,12 @@ export const ItemsApiFp = function(configuration?: Configuration) {
          * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
          * @param {boolean} [enableTotalRecordCount] Optional. Enable the total record count.
          * @param {boolean} [enableImages] Optional. Include image information in output.
+         * @param {boolean} [excludeActiveSessions] Optional. Whether to exclude the currently active sessions.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getResumeItems(userId: string, startIndex?: number, limit?: number, searchTerm?: string, parentId?: string, fields?: Array<ItemFields>, mediaTypes?: Array<string>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, enableTotalRecordCount?: boolean, enableImages?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getResumeItems(userId, startIndex, limit, searchTerm, parentId, fields, mediaTypes, enableUserData, imageTypeLimit, enableImageTypes, excludeItemTypes, includeItemTypes, enableTotalRecordCount, enableImages, options);
+        async getResumeItems(userId: string, startIndex?: number, limit?: number, searchTerm?: string, parentId?: string, fields?: Array<ItemFields>, mediaTypes?: Array<string>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, enableTotalRecordCount?: boolean, enableImages?: boolean, excludeActiveSessions?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BaseItemDtoQueryResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getResumeItems(userId, startIndex, limit, searchTerm, parentId, fields, mediaTypes, enableUserData, imageTypeLimit, enableImageTypes, excludeItemTypes, includeItemTypes, enableTotalRecordCount, enableImages, excludeActiveSessions, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1446,11 +1452,12 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
          * @param {Array<BaseItemKind>} [includeItemTypes] Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
          * @param {boolean} [enableTotalRecordCount] Optional. Enable the total record count.
          * @param {boolean} [enableImages] Optional. Include image information in output.
+         * @param {boolean} [excludeActiveSessions] Optional. Whether to exclude the currently active sessions.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getResumeItems(userId: string, startIndex?: number, limit?: number, searchTerm?: string, parentId?: string, fields?: Array<ItemFields>, mediaTypes?: Array<string>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, enableTotalRecordCount?: boolean, enableImages?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult> {
-            return localVarFp.getResumeItems(userId, startIndex, limit, searchTerm, parentId, fields, mediaTypes, enableUserData, imageTypeLimit, enableImageTypes, excludeItemTypes, includeItemTypes, enableTotalRecordCount, enableImages, options).then((request) => request(axios, basePath));
+        getResumeItems(userId: string, startIndex?: number, limit?: number, searchTerm?: string, parentId?: string, fields?: Array<ItemFields>, mediaTypes?: Array<string>, enableUserData?: boolean, imageTypeLimit?: number, enableImageTypes?: Array<ImageType>, excludeItemTypes?: Array<BaseItemKind>, includeItemTypes?: Array<BaseItemKind>, enableTotalRecordCount?: boolean, enableImages?: boolean, excludeActiveSessions?: boolean, options?: any): AxiosPromise<BaseItemDtoQueryResult> {
+            return localVarFp.getResumeItems(userId, startIndex, limit, searchTerm, parentId, fields, mediaTypes, enableUserData, imageTypeLimit, enableImageTypes, excludeItemTypes, includeItemTypes, enableTotalRecordCount, enableImages, excludeActiveSessions, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2692,6 +2699,13 @@ export interface ItemsApiGetResumeItemsRequest {
      * @memberof ItemsApiGetResumeItems
      */
     readonly enableImages?: boolean
+
+    /**
+     * Optional. Whether to exclude the currently active sessions.
+     * @type {boolean}
+     * @memberof ItemsApiGetResumeItems
+     */
+    readonly excludeActiveSessions?: boolean
 }
 
 /**
@@ -2734,6 +2748,6 @@ export class ItemsApi extends BaseAPI {
      * @memberof ItemsApi
      */
     public getResumeItems(requestParameters: ItemsApiGetResumeItemsRequest, options?: AxiosRequestConfig) {
-        return ItemsApiFp(this.configuration).getResumeItems(requestParameters.userId, requestParameters.startIndex, requestParameters.limit, requestParameters.searchTerm, requestParameters.parentId, requestParameters.fields, requestParameters.mediaTypes, requestParameters.enableUserData, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.excludeItemTypes, requestParameters.includeItemTypes, requestParameters.enableTotalRecordCount, requestParameters.enableImages, options).then((request) => request(this.axios, this.basePath));
+        return ItemsApiFp(this.configuration).getResumeItems(requestParameters.userId, requestParameters.startIndex, requestParameters.limit, requestParameters.searchTerm, requestParameters.parentId, requestParameters.fields, requestParameters.mediaTypes, requestParameters.enableUserData, requestParameters.imageTypeLimit, requestParameters.enableImageTypes, requestParameters.excludeItemTypes, requestParameters.includeItemTypes, requestParameters.enableTotalRecordCount, requestParameters.enableImages, requestParameters.excludeActiveSessions, options).then((request) => request(this.axios, this.basePath));
     }
 }

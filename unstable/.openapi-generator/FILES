@@ -102,7 +102,6 @@ models/chapter-info.ts
 models/client-capabilities-dto.ts
 models/client-capabilities.ts
 models/client-log-document-response-dto.ts
-models/client-log-event-dto.ts
 models/codec-profile.ts
 models/codec-type.ts
 models/collection-creation-result.ts

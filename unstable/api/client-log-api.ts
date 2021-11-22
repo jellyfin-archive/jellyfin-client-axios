@@ -23,8 +23,6 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { ClientLogDocumentResponseDto } from '../models';
 // @ts-ignore
-import { ClientLogEventDto } from '../models';
-// @ts-ignore
 import { ProblemDetails } from '../models';
 /**
  * ClientLogApi - axios parameter creator
@@ -32,80 +30,6 @@ import { ProblemDetails } from '../models';
  */
 export const ClientLogApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
-        /**
-         * 
-         * @summary Post event from client.
-         * @param {ClientLogEventDto} [clientLogEventDto] The client log dto.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logEvent: async (clientLogEventDto?: ClientLogEventDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/ClientLog`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(clientLogEventDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Bulk post events from client.
-         * @param {Array<ClientLogEventDto>} [clientLogEventDto] The list of client log dtos.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logEvents: async (clientLogEventDto?: Array<ClientLogEventDto>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/ClientLog/Bulk`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(clientLogEventDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
         /**
          * 
          * @summary Upload a document.
@@ -155,28 +79,6 @@ export const ClientLogApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Post event from client.
-         * @param {ClientLogEventDto} [clientLogEventDto] The client log dto.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async logEvent(clientLogEventDto?: ClientLogEventDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.logEvent(clientLogEventDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Bulk post events from client.
-         * @param {Array<ClientLogEventDto>} [clientLogEventDto] The list of client log dtos.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async logEvents(clientLogEventDto?: Array<ClientLogEventDto>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.logEvents(clientLogEventDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @summary Upload a document.
          * @param {any} [body] 
          * @param {*} [options] Override http request option.
@@ -198,26 +100,6 @@ export const ClientLogApiFactory = function (configuration?: Configuration, base
     return {
         /**
          * 
-         * @summary Post event from client.
-         * @param {ClientLogEventDto} [clientLogEventDto] The client log dto.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logEvent(clientLogEventDto?: ClientLogEventDto, options?: any): AxiosPromise<void> {
-            return localVarFp.logEvent(clientLogEventDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Bulk post events from client.
-         * @param {Array<ClientLogEventDto>} [clientLogEventDto] The list of client log dtos.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        logEvents(clientLogEventDto?: Array<ClientLogEventDto>, options?: any): AxiosPromise<void> {
-            return localVarFp.logEvents(clientLogEventDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Upload a document.
          * @param {any} [body] 
          * @param {*} [options] Override http request option.
@@ -228,34 +110,6 @@ export const ClientLogApiFactory = function (configuration?: Configuration, base
         },
     };
 };
-
-/**
- * Request parameters for logEvent operation in ClientLogApi.
- * @export
- * @interface ClientLogApiLogEventRequest
- */
-export interface ClientLogApiLogEventRequest {
-    /**
-     * The client log dto.
-     * @type {ClientLogEventDto}
-     * @memberof ClientLogApiLogEvent
-     */
-    readonly clientLogEventDto?: ClientLogEventDto
-}
-
-/**
- * Request parameters for logEvents operation in ClientLogApi.
- * @export
- * @interface ClientLogApiLogEventsRequest
- */
-export interface ClientLogApiLogEventsRequest {
-    /**
-     * The list of client log dtos.
-     * @type {Array<ClientLogEventDto>}
-     * @memberof ClientLogApiLogEvents
-     */
-    readonly clientLogEventDto?: Array<ClientLogEventDto>
-}
 
 /**
  * Request parameters for logFile operation in ClientLogApi.
@@ -278,30 +132,6 @@ export interface ClientLogApiLogFileRequest {
  * @extends {BaseAPI}
  */
 export class ClientLogApi extends BaseAPI {
-    /**
-     * 
-     * @summary Post event from client.
-     * @param {ClientLogApiLogEventRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClientLogApi
-     */
-    public logEvent(requestParameters: ClientLogApiLogEventRequest = {}, options?: AxiosRequestConfig) {
-        return ClientLogApiFp(this.configuration).logEvent(requestParameters.clientLogEventDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Bulk post events from client.
-     * @param {ClientLogApiLogEventsRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClientLogApi
-     */
-    public logEvents(requestParameters: ClientLogApiLogEventsRequest = {}, options?: AxiosRequestConfig) {
-        return ClientLogApiFp(this.configuration).logEvents(requestParameters.clientLogEventDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
     /**
      * 
      * @summary Upload a document.
