@@ -40,6 +40,7 @@ export * from './codec-profile';
 export * from './codec-type';
 export * from './collection-creation-result';
 export * from './collection-type-options';
+export * from './config-image-types';
 export * from './configuration-page-info';
 export * from './container-profile';
 export * from './control-response';

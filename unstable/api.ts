@@ -65,6 +65,7 @@ export * from './api/suggestions-api';
 export * from './api/sync-play-api';
 export * from './api/system-api';
 export * from './api/time-sync-api';
+export * from './api/tmdb-api';
 export * from './api/trailers-api';
 export * from './api/tv-shows-api';
 export * from './api/universal-audio-api';

@@ -50,6 +50,7 @@ api/suggestions-api.ts
 api/sync-play-api.ts
 api/system-api.ts
 api/time-sync-api.ts
+api/tmdb-api.ts
 api/trailers-api.ts
 api/tv-shows-api.ts
 api/universal-audio-api.ts
@@ -106,6 +107,7 @@ models/codec-profile.ts
 models/codec-type.ts
 models/collection-creation-result.ts
 models/collection-type-options.ts
+models/config-image-types.ts
 models/configuration-page-info.ts
 models/container-profile.ts
 models/control-response.ts
