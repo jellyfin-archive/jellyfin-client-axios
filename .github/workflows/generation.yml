@@ -74,7 +74,7 @@ jobs:
 
       - name: Setup node environment
         if: ${{ steps.diff.outputs.count > 0 }}
-        uses: actions/setup-node@v2.4.0
+        uses: actions/setup-node@v2.5.0
         with:
           node-version: 14
           cache: "npm"
