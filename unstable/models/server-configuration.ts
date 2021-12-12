@@ -57,167 +57,17 @@ export interface ServerConfiguration {
      */
     'PreviousVersionStr'?: string | null;
     /**
-     * Gets or sets a value indicating whether to enable automatic port forwarding.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'EnableUPnP'?: boolean;
-    /**
      * Gets or sets a value indicating whether to enable prometheus metrics exporting.
      * @type {boolean}
      * @memberof ServerConfiguration
      */
     'EnableMetrics'?: boolean;
     /**
-     * Gets or sets the public mapped port.
-     * @type {number}
-     * @memberof ServerConfiguration
-     */
-    'PublicPort'?: number;
-    /**
-     * Gets or sets a value indicating whether the http port should be mapped as part of UPnP automatic port forwarding.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'UPnPCreateHttpPortMap'?: boolean;
-    /**
-     * Gets or sets client udp port range.
-     * @type {string}
-     * @memberof ServerConfiguration
-     */
-    'UDPPortRange'?: string;
-    /**
-     * Gets or sets a value indicating whether IPV6 capability is enabled.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'EnableIPV6'?: boolean;
-    /**
-     * Gets or sets a value indicating whether IPV4 capability is enabled.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'EnableIPV4'?: boolean;
-    /**
-     * Gets or sets a value indicating whether detailed ssdp logs are sent to the console/log.  \"Emby.Dlna\": \"Debug\" must be set in logging.default.json for this property to work.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'EnableSSDPTracing'?: boolean;
-    /**
-     * Gets or sets a value indicating whether an IP address is to be used to filter the detailed ssdp logs that are being sent to the console/log.  If the setting \"Emby.Dlna\": \"Debug\" msut be set in logging.default.json for this property to work.
-     * @type {string}
-     * @memberof ServerConfiguration
-     */
-    'SSDPTracingFilter'?: string;
-    /**
-     * Gets or sets the number of times SSDP UDP messages are sent.
-     * @type {number}
-     * @memberof ServerConfiguration
-     */
-    'UDPSendCount'?: number;
-    /**
-     * Gets or sets the delay between each groups of SSDP messages (in ms).
-     * @type {number}
-     * @memberof ServerConfiguration
-     */
-    'UDPSendDelay'?: number;
-    /**
-     * Gets or sets a value indicating whether address names that match MediaBrowser.Model.Configuration.ServerConfiguration.VirtualInterfaceNames should be Ignore for the purposes of binding.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'IgnoreVirtualInterfaces'?: boolean;
-    /**
-     * Gets or sets a value indicating the interfaces that should be ignored. The list can be comma separated. <seealso cref=\"P:MediaBrowser.Model.Configuration.ServerConfiguration.IgnoreVirtualInterfaces\" />.
-     * @type {string}
-     * @memberof ServerConfiguration
-     */
-    'VirtualInterfaceNames'?: string;
-    /**
-     * Gets or sets the time (in seconds) between the pings of SSDP gateway monitor.
-     * @type {number}
-     * @memberof ServerConfiguration
-     */
-    'GatewayMonitorPeriod'?: number;
-    /**
-     * Gets a value indicating whether multi-socket binding is available.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'EnableMultiSocketBinding'?: boolean;
-    /**
-     * Gets or sets a value indicating whether all IPv6 interfaces should be treated as on the internal network.  Depending on the address range implemented ULA ranges might not be used.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'TrustAllIP6Interfaces'?: boolean;
-    /**
-     * Gets or sets the ports that HDHomerun uses.
-     * @type {string}
-     * @memberof ServerConfiguration
-     */
-    'HDHomerunPortRange'?: string;
-    /**
-     * Gets or sets PublishedServerUri to advertise for specific subnets.
-     * @type {Array<string>}
-     * @memberof ServerConfiguration
-     */
-    'PublishedServerUriBySubnet'?: Array<string>;
-    /**
-     * Gets or sets a value indicating whether Autodiscovery tracing is enabled.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'AutoDiscoveryTracing'?: boolean;
-    /**
-     * Gets or sets a value indicating whether Autodiscovery is enabled.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'AutoDiscovery'?: boolean;
-    /**
-     * Gets or sets the public HTTPS port.
-     * @type {number}
-     * @memberof ServerConfiguration
-     */
-    'PublicHttpsPort'?: number;
-    /**
-     * Gets or sets the HTTP server port number.
-     * @type {number}
-     * @memberof ServerConfiguration
-     */
-    'HttpServerPortNumber'?: number;
-    /**
-     * Gets or sets the HTTPS server port number.
-     * @type {number}
-     * @memberof ServerConfiguration
-     */
-    'HttpsPortNumber'?: number;
-    /**
-     * Gets or sets a value indicating whether to use HTTPS.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'EnableHttps'?: boolean;
-    /**
      * 
      * @type {boolean}
      * @memberof ServerConfiguration
      */
     'EnableNormalizedItemByNameIds'?: boolean;
-    /**
-     * Gets or sets the filesystem path of an X.509 certificate to use for SSL.
-     * @type {string}
-     * @memberof ServerConfiguration
-     */
-    'CertificatePath'?: string;
-    /**
-     * Gets or sets the password required to access the X.509 certificate data in the file specified by MediaBrowser.Model.Configuration.ServerConfiguration.CertificatePath.
-     * @type {string}
-     * @memberof ServerConfiguration
-     */
-    'CertificatePassword'?: string;
     /**
      * Gets or sets a value indicating whether this instance is port authorized.
      * @type {boolean}
@@ -230,12 +80,6 @@ export interface ServerConfiguration {
      * @memberof ServerConfiguration
      */
     'QuickConnectAvailable'?: boolean;
-    /**
-     * Gets or sets a value indicating whether access outside of the LAN is permitted.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'EnableRemoteAccess'?: boolean;
     /**
      * Gets or sets a value indicating whether [enable case sensitive item ids].
      * @type {boolean}
@@ -327,12 +171,6 @@ export interface ServerConfiguration {
      */
     'LibraryMonitorDelay'?: number;
     /**
-     * Gets or sets a value indicating whether [enable dashboard response caching].  Allows potential contributors without visual studio to modify production dashboard code and test changes.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'EnableDashboardResponseCaching'?: boolean;
-    /**
      * 
      * @type {ImageSavingConvention}
      * @memberof ServerConfiguration
@@ -356,12 +194,6 @@ export interface ServerConfiguration {
      * @memberof ServerConfiguration
      */
     'ServerName'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ServerConfiguration
-     */
-    'BaseUrl'?: string;
     /**
      * 
      * @type {string}
@@ -405,18 +237,6 @@ export interface ServerConfiguration {
      */
     'DisplaySpecialsWithinSeasons'?: boolean;
     /**
-     * Gets or sets the subnets that are deemed to make up the LAN.
-     * @type {Array<string>}
-     * @memberof ServerConfiguration
-     */
-    'LocalNetworkSubnets'?: Array<string>;
-    /**
-     * Gets or sets the interface addresses which Jellyfin will bind to. If empty, all interfaces will be used.
-     * @type {Array<string>}
-     * @memberof ServerConfiguration
-     */
-    'LocalNetworkAddresses'?: Array<string>;
-    /**
      * 
      * @type {Array<string>}
      * @memberof ServerConfiguration
@@ -435,24 +255,6 @@ export interface ServerConfiguration {
      */
     'EnableExternalContentInSuggestions'?: boolean;
     /**
-     * Gets or sets a value indicating whether the server should force connections over HTTPS.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'RequireHttps'?: boolean;
-    /**
-     * Gets or sets the filter for remote IP connectivity. Used in conjuntion with <seealso cref=\"P:MediaBrowser.Model.Configuration.ServerConfiguration.IsRemoteIPFilterBlacklist\" />.
-     * @type {Array<string>}
-     * @memberof ServerConfiguration
-     */
-    'RemoteIPFilter'?: Array<string>;
-    /**
-     * Gets or sets a value indicating whether <seealso cref=\"P:MediaBrowser.Model.Configuration.ServerConfiguration.RemoteIPFilter\" /> contains a blacklist or a whitelist. Default is a whitelist.
-     * @type {boolean}
-     * @memberof ServerConfiguration
-     */
-    'IsRemoteIPFilterBlacklist'?: boolean;
-    /**
      * 
      * @type {number}
      * @memberof ServerConfiguration
@@ -464,12 +266,6 @@ export interface ServerConfiguration {
      * @memberof ServerConfiguration
      */
     'PathSubstitutions'?: Array<PathSubstitution>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof ServerConfiguration
-     */
-    'UninstalledPlugins'?: Array<string>;
     /**
      * Gets or sets a value indicating whether slow server responses should be logged as a warning.
      * @type {boolean}
@@ -488,12 +284,6 @@ export interface ServerConfiguration {
      * @memberof ServerConfiguration
      */
     'CorsHosts'?: Array<string>;
-    /**
-     * Gets or sets the known proxies.
-     * @type {Array<string>}
-     * @memberof ServerConfiguration
-     */
-    'KnownProxies'?: Array<string>;
     /**
      * Gets or sets the number of days we should retain activity logs.
      * @type {number}
