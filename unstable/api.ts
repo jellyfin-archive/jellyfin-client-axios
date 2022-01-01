@@ -73,7 +73,6 @@ export * from './api/user-api';
 export * from './api/user-library-api';
 export * from './api/user-views-api';
 export * from './api/video-attachments-api';
-export * from './api/video-hls-api';
 export * from './api/videos-api';
 export * from './api/years-api';
 

@@ -61,7 +61,8 @@ export enum GeneralCommandType {
     PlayState = 'PlayState',
     PlayNext = 'PlayNext',
     ToggleOsdMenu = 'ToggleOsdMenu',
-    Play = 'Play'
+    Play = 'Play',
+    SetMaxStreamingBitrate = 'SetMaxStreamingBitrate'
 }
 
 

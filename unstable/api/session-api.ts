@@ -21,6 +21,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { BaseItemKind } from '../models';
+// @ts-ignore
 import { ClientCapabilitiesDto } from '../models';
 // @ts-ignore
 import { GeneralCommand } from '../models';
@@ -87,13 +89,13 @@ export const SessionApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Instructs a session to browse to an item or view.
          * @param {string} sessionId The session Id.
-         * @param {string} itemType The type of item to browse to.
+         * @param {BaseItemKind} itemType The type of item to browse to.
          * @param {string} itemId The Id of the item.
          * @param {string} itemName The name of the item.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        displayContent: async (sessionId: string, itemType: string, itemId: string, itemName: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        displayContent: async (sessionId: string, itemType: BaseItemKind, itemId: string, itemName: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'sessionId' is not null or undefined
             assertParamExists('displayContent', 'sessionId', sessionId)
             // verify required parameter 'itemType' is not null or undefined
@@ -802,13 +804,13 @@ export const SessionApiFp = function(configuration?: Configuration) {
          * 
          * @summary Instructs a session to browse to an item or view.
          * @param {string} sessionId The session Id.
-         * @param {string} itemType The type of item to browse to.
+         * @param {BaseItemKind} itemType The type of item to browse to.
          * @param {string} itemId The Id of the item.
          * @param {string} itemName The name of the item.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async displayContent(sessionId: string, itemType: string, itemId: string, itemName: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async displayContent(sessionId: string, itemType: BaseItemKind, itemId: string, itemName: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.displayContent(sessionId, itemType, itemId, itemName, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1012,13 +1014,13 @@ export const SessionApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Instructs a session to browse to an item or view.
          * @param {string} sessionId The session Id.
-         * @param {string} itemType The type of item to browse to.
+         * @param {BaseItemKind} itemType The type of item to browse to.
          * @param {string} itemId The Id of the item.
          * @param {string} itemName The name of the item.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        displayContent(sessionId: string, itemType: string, itemId: string, itemName: string, options?: any): AxiosPromise<void> {
+        displayContent(sessionId: string, itemType: BaseItemKind, itemId: string, itemName: string, options?: any): AxiosPromise<void> {
             return localVarFp.displayContent(sessionId, itemType, itemId, itemName, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1221,10 +1223,10 @@ export interface SessionApiDisplayContentRequest {
 
     /**
      * The type of item to browse to.
-     * @type {string}
+     * @type {BaseItemKind}
      * @memberof SessionApiDisplayContent
      */
-    readonly itemType: string
+    readonly itemType: BaseItemKind
 
     /**
      * The Id of the item.

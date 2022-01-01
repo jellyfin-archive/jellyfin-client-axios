@@ -43,7 +43,8 @@ export enum TranscodeReason {
     VideoProfileNotSupported = 'VideoProfileNotSupported',
     AudioBitDepthNotSupported = 'AudioBitDepthNotSupported',
     SubtitleCodecNotSupported = 'SubtitleCodecNotSupported',
-    DirectPlayError = 'DirectPlayError'
+    DirectPlayError = 'DirectPlayError',
+    AudioIsExternal = 'AudioIsExternal'
 }
 
 

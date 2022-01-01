@@ -62,6 +62,7 @@ export interface LibraryOptions {
      * 
      * @type {boolean}
      * @memberof LibraryOptions
+     * @deprecated
      */
     'EnableInternetProviders'?: boolean;
     /**

@@ -58,7 +58,6 @@ api/user-api.ts
 api/user-library-api.ts
 api/user-views-api.ts
 api/video-attachments-api.ts
-api/video-hls-api.ts
 api/videos-api.ts
 api/years-api.ts
 base.ts
