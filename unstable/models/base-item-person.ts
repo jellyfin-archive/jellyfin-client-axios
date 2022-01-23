@@ -32,7 +32,7 @@ export interface BaseItemPerson {
      * @type {string}
      * @memberof BaseItemPerson
      */
-    'Id'?: string | null;
+    'Id'?: string;
     /**
      * Gets or sets the role.
      * @type {string}
