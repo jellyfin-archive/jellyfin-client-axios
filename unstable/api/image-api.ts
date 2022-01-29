@@ -1473,6 +1473,96 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Generates or gets the splashscreen.
+         * @param {string} [tag] Supply the cache tag from the item object to receive strong caching headers.
+         * @param {ImageFormat} [format] Determines the output format of the image - original,gif,jpg,png.
+         * @param {number} [maxWidth] The maximum image width to return.
+         * @param {number} [maxHeight] The maximum image height to return.
+         * @param {number} [width] The fixed image width to return.
+         * @param {number} [height] The fixed image height to return.
+         * @param {number} [fillWidth] Width of box to fill.
+         * @param {number} [fillHeight] Height of box to fill.
+         * @param {number} [blur] Blur image.
+         * @param {string} [backgroundColor] Apply a background color for transparent images.
+         * @param {string} [foregroundLayer] Apply a foreground layer on top of the image.
+         * @param {number} [quality] Quality setting, from 0-100.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSplashscreen: async (tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, width?: number, height?: number, fillWidth?: number, fillHeight?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, quality?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/Branding/Splashscreen`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (tag !== undefined) {
+                localVarQueryParameter['tag'] = tag;
+            }
+
+            if (format !== undefined) {
+                localVarQueryParameter['format'] = format;
+            }
+
+            if (maxWidth !== undefined) {
+                localVarQueryParameter['maxWidth'] = maxWidth;
+            }
+
+            if (maxHeight !== undefined) {
+                localVarQueryParameter['maxHeight'] = maxHeight;
+            }
+
+            if (width !== undefined) {
+                localVarQueryParameter['width'] = width;
+            }
+
+            if (height !== undefined) {
+                localVarQueryParameter['height'] = height;
+            }
+
+            if (fillWidth !== undefined) {
+                localVarQueryParameter['fillWidth'] = fillWidth;
+            }
+
+            if (fillHeight !== undefined) {
+                localVarQueryParameter['fillHeight'] = fillHeight;
+            }
+
+            if (blur !== undefined) {
+                localVarQueryParameter['blur'] = blur;
+            }
+
+            if (backgroundColor !== undefined) {
+                localVarQueryParameter['backgroundColor'] = backgroundColor;
+            }
+
+            if (foregroundLayer !== undefined) {
+                localVarQueryParameter['foregroundLayer'] = foregroundLayer;
+            }
+
+            if (quality !== undefined) {
+                localVarQueryParameter['quality'] = quality;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get studio image by name.
          * @param {string} name Studio name.
          * @param {ImageType} imageType Image type.
@@ -3914,6 +4004,43 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Uploads a custom splashscreen.
+         * @param {any} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadCustomSplashscreen: async (body?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/Branding/Splashscreen`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication CustomAuthentication required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'image/_*';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -4275,6 +4402,28 @@ export const ImageApiFp = function(configuration?: Configuration) {
          */
         async getPersonImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPersonImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Generates or gets the splashscreen.
+         * @param {string} [tag] Supply the cache tag from the item object to receive strong caching headers.
+         * @param {ImageFormat} [format] Determines the output format of the image - original,gif,jpg,png.
+         * @param {number} [maxWidth] The maximum image width to return.
+         * @param {number} [maxHeight] The maximum image height to return.
+         * @param {number} [width] The fixed image width to return.
+         * @param {number} [height] The fixed image height to return.
+         * @param {number} [fillWidth] Width of box to fill.
+         * @param {number} [fillHeight] Height of box to fill.
+         * @param {number} [blur] Blur image.
+         * @param {string} [backgroundColor] Apply a background color for transparent images.
+         * @param {string} [foregroundLayer] Apply a foreground layer on top of the image.
+         * @param {number} [quality] Quality setting, from 0-100.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSplashscreen(tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, width?: number, height?: number, fillWidth?: number, fillHeight?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, quality?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSplashscreen(tag, format, maxWidth, maxHeight, width, height, fillWidth, fillHeight, blur, backgroundColor, foregroundLayer, quality, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -4868,6 +5017,17 @@ export const ImageApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateItemImageIndex(itemId, imageType, imageIndex, newIndex, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 
+         * @summary Uploads a custom splashscreen.
+         * @param {any} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async uploadCustomSplashscreen(body?: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadCustomSplashscreen(body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -5215,6 +5375,27 @@ export const ImageApiFactory = function (configuration?: Configuration, basePath
          */
         getPersonImageByIndex(name: string, imageType: ImageType, imageIndex: number, tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, percentPlayed?: number, unplayedCount?: number, width?: number, height?: number, quality?: number, fillWidth?: number, fillHeight?: number, cropWhitespace?: boolean, addPlayedIndicator?: boolean, blur?: number, backgroundColor?: string, foregroundLayer?: string, options?: any): AxiosPromise<any> {
             return localVarFp.getPersonImageByIndex(name, imageType, imageIndex, tag, format, maxWidth, maxHeight, percentPlayed, unplayedCount, width, height, quality, fillWidth, fillHeight, cropWhitespace, addPlayedIndicator, blur, backgroundColor, foregroundLayer, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Generates or gets the splashscreen.
+         * @param {string} [tag] Supply the cache tag from the item object to receive strong caching headers.
+         * @param {ImageFormat} [format] Determines the output format of the image - original,gif,jpg,png.
+         * @param {number} [maxWidth] The maximum image width to return.
+         * @param {number} [maxHeight] The maximum image height to return.
+         * @param {number} [width] The fixed image width to return.
+         * @param {number} [height] The fixed image height to return.
+         * @param {number} [fillWidth] Width of box to fill.
+         * @param {number} [fillHeight] Height of box to fill.
+         * @param {number} [blur] Blur image.
+         * @param {string} [backgroundColor] Apply a background color for transparent images.
+         * @param {string} [foregroundLayer] Apply a foreground layer on top of the image.
+         * @param {number} [quality] Quality setting, from 0-100.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSplashscreen(tag?: string, format?: ImageFormat, maxWidth?: number, maxHeight?: number, width?: number, height?: number, fillWidth?: number, fillHeight?: number, blur?: number, backgroundColor?: string, foregroundLayer?: string, quality?: number, options?: any): AxiosPromise<any> {
+            return localVarFp.getSplashscreen(tag, format, maxWidth, maxHeight, width, height, fillWidth, fillHeight, blur, backgroundColor, foregroundLayer, quality, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -5783,6 +5964,16 @@ export const ImageApiFactory = function (configuration?: Configuration, basePath
          */
         updateItemImageIndex(itemId: string, imageType: ImageType, imageIndex: number, newIndex: number, options?: any): AxiosPromise<void> {
             return localVarFp.updateItemImageIndex(itemId, imageType, imageIndex, newIndex, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Uploads a custom splashscreen.
+         * @param {any} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadCustomSplashscreen(body?: any, options?: any): AxiosPromise<void> {
+            return localVarFp.uploadCustomSplashscreen(body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -7311,6 +7502,97 @@ export interface ImageApiGetPersonImageByIndexRequest {
      * @memberof ImageApiGetPersonImageByIndex
      */
     readonly foregroundLayer?: string
+}
+
+/**
+ * Request parameters for getSplashscreen operation in ImageApi.
+ * @export
+ * @interface ImageApiGetSplashscreenRequest
+ */
+export interface ImageApiGetSplashscreenRequest {
+    /**
+     * Supply the cache tag from the item object to receive strong caching headers.
+     * @type {string}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly tag?: string
+
+    /**
+     * Determines the output format of the image - original,gif,jpg,png.
+     * @type {ImageFormat}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly format?: ImageFormat
+
+    /**
+     * The maximum image width to return.
+     * @type {number}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly maxWidth?: number
+
+    /**
+     * The maximum image height to return.
+     * @type {number}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly maxHeight?: number
+
+    /**
+     * The fixed image width to return.
+     * @type {number}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly width?: number
+
+    /**
+     * The fixed image height to return.
+     * @type {number}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly height?: number
+
+    /**
+     * Width of box to fill.
+     * @type {number}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly fillWidth?: number
+
+    /**
+     * Height of box to fill.
+     * @type {number}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly fillHeight?: number
+
+    /**
+     * Blur image.
+     * @type {number}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly blur?: number
+
+    /**
+     * Apply a background color for transparent images.
+     * @type {string}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly backgroundColor?: string
+
+    /**
+     * Apply a foreground layer on top of the image.
+     * @type {string}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly foregroundLayer?: string
+
+    /**
+     * Quality setting, from 0-100.
+     * @type {number}
+     * @memberof ImageApiGetSplashscreen
+     */
+    readonly quality?: number
 }
 
 /**
@@ -10002,6 +10284,20 @@ export interface ImageApiUpdateItemImageIndexRequest {
 }
 
 /**
+ * Request parameters for uploadCustomSplashscreen operation in ImageApi.
+ * @export
+ * @interface ImageApiUploadCustomSplashscreenRequest
+ */
+export interface ImageApiUploadCustomSplashscreenRequest {
+    /**
+     * 
+     * @type {any}
+     * @memberof ImageApiUploadCustomSplashscreen
+     */
+    readonly body?: any
+}
+
+/**
  * ImageApi - object-oriented interface
  * @export
  * @class ImageApi
@@ -10186,6 +10482,18 @@ export class ImageApi extends BaseAPI {
      */
     public getPersonImageByIndex(requestParameters: ImageApiGetPersonImageByIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).getPersonImageByIndex(requestParameters.name, requestParameters.imageType, requestParameters.imageIndex, requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.percentPlayed, requestParameters.unplayedCount, requestParameters.width, requestParameters.height, requestParameters.quality, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.cropWhitespace, requestParameters.addPlayedIndicator, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Generates or gets the splashscreen.
+     * @param {ImageApiGetSplashscreenRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ImageApi
+     */
+    public getSplashscreen(requestParameters: ImageApiGetSplashscreenRequest = {}, options?: AxiosRequestConfig) {
+        return ImageApiFp(this.configuration).getSplashscreen(requestParameters.tag, requestParameters.format, requestParameters.maxWidth, requestParameters.maxHeight, requestParameters.width, requestParameters.height, requestParameters.fillWidth, requestParameters.fillHeight, requestParameters.blur, requestParameters.backgroundColor, requestParameters.foregroundLayer, requestParameters.quality, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10462,5 +10770,17 @@ export class ImageApi extends BaseAPI {
      */
     public updateItemImageIndex(requestParameters: ImageApiUpdateItemImageIndexRequest, options?: AxiosRequestConfig) {
         return ImageApiFp(this.configuration).updateItemImageIndex(requestParameters.itemId, requestParameters.imageType, requestParameters.imageIndex, requestParameters.newIndex, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Uploads a custom splashscreen.
+     * @param {ImageApiUploadCustomSplashscreenRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ImageApi
+     */
+    public uploadCustomSplashscreen(requestParameters: ImageApiUploadCustomSplashscreenRequest = {}, options?: AxiosRequestConfig) {
+        return ImageApiFp(this.configuration).uploadCustomSplashscreen(requestParameters.body, options).then((request) => request(this.axios, this.basePath));
     }
 }

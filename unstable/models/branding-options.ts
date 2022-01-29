@@ -15,7 +15,7 @@
 
 
 /**
- * 
+ * The branding options.
  * @export
  * @interface BrandingOptions
  */
