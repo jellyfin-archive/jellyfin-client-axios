@@ -20,11 +20,14 @@
  * @enum {string}
  */
 
-export enum MediaStreamType {
-    Audio = 'Audio',
-    Video = 'Video',
-    Subtitle = 'Subtitle',
-    EmbeddedImage = 'EmbeddedImage'
-}
+export const MediaStreamType = {
+    Audio: 'Audio',
+    Video: 'Video',
+    Subtitle: 'Subtitle',
+    EmbeddedImage: 'EmbeddedImage'
+} as const;
+
+export type MediaStreamType = typeof MediaStreamType[keyof typeof MediaStreamType];
+
 
 

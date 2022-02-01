@@ -20,9 +20,12 @@
  * @enum {string}
  */
 
-export enum IsoType {
-    Dvd = 'Dvd',
-    BluRay = 'BluRay'
-}
+export const IsoType = {
+    Dvd: 'Dvd',
+    BluRay: 'BluRay'
+} as const;
+
+export type IsoType = typeof IsoType[keyof typeof IsoType];
+
 
 
