@@ -20,10 +20,13 @@
  * @enum {string}
  */
 
-export enum TransportStreamTimestamp {
-    None = 'None',
-    Zero = 'Zero',
-    Valid = 'Valid'
-}
+export const TransportStreamTimestamp = {
+    None: 'None',
+    Zero: 'Zero',
+    Valid: 'Valid'
+} as const;
+
+export type TransportStreamTimestamp = typeof TransportStreamTimestamp[keyof typeof TransportStreamTimestamp];
+
 
 

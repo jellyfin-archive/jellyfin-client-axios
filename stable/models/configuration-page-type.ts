@@ -20,9 +20,12 @@
  * @enum {string}
  */
 
-export enum ConfigurationPageType {
-    PluginConfiguration = 'PluginConfiguration',
-    None = 'None'
-}
+export const ConfigurationPageType = {
+    PluginConfiguration: 'PluginConfiguration',
+    None: 'None'
+} as const;
+
+export type ConfigurationPageType = typeof ConfigurationPageType[keyof typeof ConfigurationPageType];
+
 
 

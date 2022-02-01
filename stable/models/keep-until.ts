@@ -20,11 +20,14 @@
  * @enum {string}
  */
 
-export enum KeepUntil {
-    UntilDeleted = 'UntilDeleted',
-    UntilSpaceNeeded = 'UntilSpaceNeeded',
-    UntilWatched = 'UntilWatched',
-    UntilDate = 'UntilDate'
-}
+export const KeepUntil = {
+    UntilDeleted: 'UntilDeleted',
+    UntilSpaceNeeded: 'UntilSpaceNeeded',
+    UntilWatched: 'UntilWatched',
+    UntilDate: 'UntilDate'
+} as const;
+
+export type KeepUntil = typeof KeepUntil[keyof typeof KeepUntil];
+
 
 

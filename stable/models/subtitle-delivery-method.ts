@@ -20,11 +20,14 @@
  * @enum {string}
  */
 
-export enum SubtitleDeliveryMethod {
-    Encode = 'Encode',
-    Embed = 'Embed',
-    External = 'External',
-    Hls = 'Hls'
-}
+export const SubtitleDeliveryMethod = {
+    Encode: 'Encode',
+    Embed: 'Embed',
+    External: 'External',
+    Hls: 'Hls'
+} as const;
+
+export type SubtitleDeliveryMethod = typeof SubtitleDeliveryMethod[keyof typeof SubtitleDeliveryMethod];
+
 
 

@@ -20,10 +20,13 @@
  * @enum {string}
  */
 
-export enum QuickConnectState {
-    Unavailable = 'Unavailable',
-    Available = 'Available',
-    Active = 'Active'
-}
+export const QuickConnectState = {
+    Unavailable: 'Unavailable',
+    Available: 'Available',
+    Active: 'Active'
+} as const;
+
+export type QuickConnectState = typeof QuickConnectState[keyof typeof QuickConnectState];
+
 
 

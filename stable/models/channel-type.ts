@@ -20,9 +20,12 @@
  * @enum {string}
  */
 
-export enum ChannelType {
-    Tv = 'TV',
-    Radio = 'Radio'
-}
+export const ChannelType = {
+    Tv: 'TV',
+    Radio: 'Radio'
+} as const;
+
+export type ChannelType = typeof ChannelType[keyof typeof ChannelType];
+
 
 

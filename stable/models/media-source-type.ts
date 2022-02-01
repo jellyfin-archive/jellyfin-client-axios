@@ -20,10 +20,13 @@
  * @enum {string}
  */
 
-export enum MediaSourceType {
-    Default = 'Default',
-    Grouping = 'Grouping',
-    Placeholder = 'Placeholder'
-}
+export const MediaSourceType = {
+    Default: 'Default',
+    Grouping: 'Grouping',
+    Placeholder: 'Placeholder'
+} as const;
+
+export type MediaSourceType = typeof MediaSourceType[keyof typeof MediaSourceType];
+
 
 

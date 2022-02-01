@@ -20,11 +20,14 @@
  * @enum {string}
  */
 
-export enum VideoType {
-    VideoFile = 'VideoFile',
-    Iso = 'Iso',
-    Dvd = 'Dvd',
-    BluRay = 'BluRay'
-}
+export const VideoType = {
+    VideoFile: 'VideoFile',
+    Iso: 'Iso',
+    Dvd: 'Dvd',
+    BluRay: 'BluRay'
+} as const;
+
+export type VideoType = typeof VideoType[keyof typeof VideoType];
+
 
 
