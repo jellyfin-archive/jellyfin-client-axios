@@ -13,6 +13,7 @@
  */
 
 
+import { EmbeddedSubtitleOptions } from './embedded-subtitle-options';
 import { MediaPathInfo } from './media-path-info';
 import { TypeOptions } from './type-options';
 
@@ -173,6 +174,12 @@ export interface LibraryOptions {
      * @memberof LibraryOptions
      */
     'AutomaticallyAddToCollection'?: boolean;
+    /**
+     * 
+     * @type {EmbeddedSubtitleOptions}
+     * @memberof LibraryOptions
+     */
+    'AllowEmbeddedSubtitles'?: EmbeddedSubtitleOptions;
     /**
      * 
      * @type {Array<TypeOptions>}

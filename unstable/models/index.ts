@@ -63,6 +63,7 @@ export * from './direct-play-profile';
 export * from './display-preferences-dto';
 export * from './dlna-profile-type';
 export * from './dynamic-day-of-week';
+export * from './embedded-subtitle-options';
 export * from './encoding-context';
 export * from './end-point-info';
 export * from './external-id-info';

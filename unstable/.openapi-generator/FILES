@@ -129,6 +129,7 @@ models/direct-play-profile.ts
 models/display-preferences-dto.ts
 models/dlna-profile-type.ts
 models/dynamic-day-of-week.ts
+models/embedded-subtitle-options.ts
 models/encoding-context.ts
 models/end-point-info.ts
 models/external-id-info.ts
