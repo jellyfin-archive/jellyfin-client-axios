@@ -21,23 +21,23 @@
  */
 export interface CultureDto {
     /**
-     * Gets or sets the name.
+     * Gets the name.
      * @type {string}
      * @memberof CultureDto
      */
-    'Name'?: string | null;
+    'Name'?: string;
     /**
-     * Gets or sets the display name.
+     * Gets the display name.
      * @type {string}
      * @memberof CultureDto
      */
-    'DisplayName'?: string | null;
+    'DisplayName'?: string;
     /**
-     * Gets or sets the name of the two letter ISO language.
+     * Gets the name of the two letter ISO language.
      * @type {string}
      * @memberof CultureDto
      */
-    'TwoLetterISOLanguageName'?: string | null;
+    'TwoLetterISOLanguageName'?: string;
     /**
      * Gets the name of the three letter ISO language.
      * @type {string}
@@ -49,6 +49,6 @@ export interface CultureDto {
      * @type {Array<string>}
      * @memberof CultureDto
      */
-    'ThreeLetterISOLanguageNames'?: Array<string> | null;
+    'ThreeLetterISOLanguageNames'?: Array<string>;
 }
 

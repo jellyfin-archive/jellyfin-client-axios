@@ -30,25 +30,25 @@ export interface MetadataEditorInfo {
      * @type {Array<ParentalRating>}
      * @memberof MetadataEditorInfo
      */
-    'ParentalRatingOptions'?: Array<ParentalRating> | null;
+    'ParentalRatingOptions'?: Array<ParentalRating>;
     /**
      * 
      * @type {Array<CountryInfo>}
      * @memberof MetadataEditorInfo
      */
-    'Countries'?: Array<CountryInfo> | null;
+    'Countries'?: Array<CountryInfo>;
     /**
      * 
      * @type {Array<CultureDto>}
      * @memberof MetadataEditorInfo
      */
-    'Cultures'?: Array<CultureDto> | null;
+    'Cultures'?: Array<CultureDto>;
     /**
      * 
      * @type {Array<ExternalIdInfo>}
      * @memberof MetadataEditorInfo
      */
-    'ExternalIdInfos'?: Array<ExternalIdInfo> | null;
+    'ExternalIdInfos'?: Array<ExternalIdInfo>;
     /**
      * 
      * @type {string}
@@ -60,6 +60,6 @@ export interface MetadataEditorInfo {
      * @type {Array<NameValuePair>}
      * @memberof MetadataEditorInfo
      */
-    'ContentTypeOptions'?: Array<NameValuePair> | null;
+    'ContentTypeOptions'?: Array<NameValuePair>;
 }
 

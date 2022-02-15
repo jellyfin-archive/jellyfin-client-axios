@@ -22,13 +22,13 @@ import { SearchHint } from './search-hint';
  */
 export interface SearchHintResult {
     /**
-     * Gets or sets the search hints.
+     * Gets the search hints.
      * @type {Array<SearchHint>}
      * @memberof SearchHintResult
      */
-    'SearchHints'?: Array<SearchHint> | null;
+    'SearchHints'?: Array<SearchHint>;
     /**
-     * Gets or sets the total record count.
+     * Gets the total record count.
      * @type {number}
      * @memberof SearchHintResult
      */
