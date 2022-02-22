@@ -23,7 +23,8 @@
 export const DlnaProfileType = {
     Audio: 'Audio',
     Video: 'Video',
-    Photo: 'Photo'
+    Photo: 'Photo',
+    Subtitle: 'Subtitle'
 } as const;
 
 export type DlnaProfileType = typeof DlnaProfileType[keyof typeof DlnaProfileType];
