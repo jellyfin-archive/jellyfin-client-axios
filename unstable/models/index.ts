@@ -178,7 +178,6 @@ export * from './playlist-creation-result';
 export * from './playstate-command';
 export * from './playstate-request';
 export * from './plugin-info';
-export * from './plugin-security-info';
 export * from './plugin-status';
 export * from './previous-item-request-dto';
 export * from './problem-details';

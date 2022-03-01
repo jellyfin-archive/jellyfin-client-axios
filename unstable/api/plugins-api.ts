@@ -23,8 +23,6 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { PluginInfo } from '../models';
 // @ts-ignore
-import { PluginSecurityInfo } from '../models';
-// @ts-ignore
 import { ProblemDetails } from '../models';
 // @ts-ignore
 import { Version } from '../models';
@@ -380,46 +378,6 @@ export const PluginsApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 
-         * @summary Updates plugin security info.
-         * @param {PluginSecurityInfo} pluginSecurityInfo Plugin security info.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        updatePluginSecurityInfo: async (pluginSecurityInfo: PluginSecurityInfo, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'pluginSecurityInfo' is not null or undefined
-            assertParamExists('updatePluginSecurityInfo', 'pluginSecurityInfo', pluginSecurityInfo)
-            const localVarPath = `/Plugins/SecurityInfo`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication CustomAuthentication required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(pluginSecurityInfo, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -533,18 +491,6 @@ export const PluginsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updatePluginConfiguration(pluginId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
-        /**
-         * 
-         * @summary Updates plugin security info.
-         * @param {PluginSecurityInfo} pluginSecurityInfo Plugin security info.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async updatePluginSecurityInfo(pluginSecurityInfo: PluginSecurityInfo, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updatePluginSecurityInfo(pluginSecurityInfo, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
     }
 };
 
@@ -648,17 +594,6 @@ export const PluginsApiFactory = function (configuration?: Configuration, basePa
          */
         updatePluginConfiguration(pluginId: string, options?: any): AxiosPromise<void> {
             return localVarFp.updatePluginConfiguration(pluginId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Updates plugin security info.
-         * @param {PluginSecurityInfo} pluginSecurityInfo Plugin security info.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        updatePluginSecurityInfo(pluginSecurityInfo: PluginSecurityInfo, options?: any): AxiosPromise<void> {
-            return localVarFp.updatePluginSecurityInfo(pluginSecurityInfo, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -804,20 +739,6 @@ export interface PluginsApiUpdatePluginConfigurationRequest {
 }
 
 /**
- * Request parameters for updatePluginSecurityInfo operation in PluginsApi.
- * @export
- * @interface PluginsApiUpdatePluginSecurityInfoRequest
- */
-export interface PluginsApiUpdatePluginSecurityInfoRequest {
-    /**
-     * Plugin security info.
-     * @type {PluginSecurityInfo}
-     * @memberof PluginsApiUpdatePluginSecurityInfo
-     */
-    readonly pluginSecurityInfo: PluginSecurityInfo
-}
-
-/**
  * PluginsApi - object-oriented interface
  * @export
  * @class PluginsApi
@@ -930,18 +851,5 @@ export class PluginsApi extends BaseAPI {
      */
     public updatePluginConfiguration(requestParameters: PluginsApiUpdatePluginConfigurationRequest, options?: AxiosRequestConfig) {
         return PluginsApiFp(this.configuration).updatePluginConfiguration(requestParameters.pluginId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Updates plugin security info.
-     * @param {PluginsApiUpdatePluginSecurityInfoRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     * @memberof PluginsApi
-     */
-    public updatePluginSecurityInfo(requestParameters: PluginsApiUpdatePluginSecurityInfoRequest, options?: AxiosRequestConfig) {
-        return PluginsApiFp(this.configuration).updatePluginSecurityInfo(requestParameters.pluginSecurityInfo, options).then((request) => request(this.axios, this.basePath));
     }
 }

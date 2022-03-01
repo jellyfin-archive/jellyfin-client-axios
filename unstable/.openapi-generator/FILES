@@ -245,7 +245,6 @@ models/playlist-creation-result.ts
 models/playstate-command.ts
 models/playstate-request.ts
 models/plugin-info.ts
-models/plugin-security-info.ts
 models/plugin-status.ts
 models/previous-item-request-dto.ts
 models/problem-details.ts
