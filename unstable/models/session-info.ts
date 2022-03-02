@@ -168,6 +168,12 @@ export interface SessionInfo {
     'NowPlayingQueue'?: Array<QueueItem> | null;
     /**
      * 
+     * @type {Array<BaseItemDto>}
+     * @memberof SessionInfo
+     */
+    'NowPlayingQueueFullItems'?: Array<BaseItemDto> | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof SessionInfo
      */
