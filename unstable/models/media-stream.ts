@@ -117,6 +117,12 @@ export interface MediaStream {
      * @type {string}
      * @memberof MediaStream
      */
+    'LocalizedExternal'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaStream
+     */
     'DisplayTitle'?: string | null;
     /**
      * 
