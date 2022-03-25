@@ -50,6 +50,9 @@ export const DashboardApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication CustomAuthentication required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
             if (enableInMainMenu !== undefined) {
                 localVarQueryParameter['enableInMainMenu'] = enableInMainMenu;
             }
