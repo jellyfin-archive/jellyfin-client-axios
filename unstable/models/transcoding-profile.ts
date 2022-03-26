@@ -15,6 +15,7 @@
 
 import { DlnaProfileType } from './dlna-profile-type';
 import { EncodingContext } from './encoding-context';
+import { ProfileCondition } from './profile-condition';
 import { TranscodeSeekInfo } from './transcode-seek-info';
 
 /**
@@ -113,5 +114,11 @@ export interface TranscodingProfile {
      * @memberof TranscodingProfile
      */
     'BreakOnNonKeyFrames'?: boolean;
+    /**
+     * 
+     * @type {Array<ProfileCondition>}
+     * @memberof TranscodingProfile
+     */
+    'Conditions'?: Array<ProfileCondition>;
 }
 
