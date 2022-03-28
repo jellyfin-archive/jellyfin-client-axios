@@ -98,10 +98,10 @@ export interface TranscodingInfo {
      * @type {string}
      * @memberof TranscodingInfo
      */
-    'TranscodeReason'?: TranscodingInfoTranscodeReasonEnum;
+    'TranscodeReasons'?: TranscodingInfoTranscodeReasonsEnum;
 }
 
-export const TranscodingInfoTranscodeReasonEnum = {
+export const TranscodingInfoTranscodeReasonsEnum = {
     ContainerNotSupported: 'ContainerNotSupported',
     VideoCodecNotSupported: 'VideoCodecNotSupported',
     AudioCodecNotSupported: 'AudioCodecNotSupported',
@@ -128,6 +128,6 @@ export const TranscodingInfoTranscodeReasonEnum = {
     DirectPlayError: 'DirectPlayError'
 } as const;
 
-export type TranscodingInfoTranscodeReasonEnum = typeof TranscodingInfoTranscodeReasonEnum[keyof typeof TranscodingInfoTranscodeReasonEnum];
+export type TranscodingInfoTranscodeReasonsEnum = typeof TranscodingInfoTranscodeReasonsEnum[keyof typeof TranscodingInfoTranscodeReasonsEnum];
 
 
