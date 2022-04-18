@@ -217,12 +217,15 @@ export const ConfigurationApiAxiosParamCreator = function (configuration?: Confi
          * 
          * @summary Updates named configuration.
          * @param {string} key Configuration key.
+         * @param {any} body Configuration.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateNamedConfiguration: async (key: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateNamedConfiguration: async (key: string, body: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'key' is not null or undefined
             assertParamExists('updateNamedConfiguration', 'key', key)
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('updateNamedConfiguration', 'body', body)
             const localVarPath = `/System/Configuration/{key}`
                 .replace(`{${"key"}}`, encodeURIComponent(String(key)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -241,9 +244,12 @@ export const ConfigurationApiAxiosParamCreator = function (configuration?: Confi
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -317,11 +323,12 @@ export const ConfigurationApiFp = function(configuration?: Configuration) {
          * 
          * @summary Updates named configuration.
          * @param {string} key Configuration key.
+         * @param {any} body Configuration.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateNamedConfiguration(key: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateNamedConfiguration(key, options);
+        async updateNamedConfiguration(key: string, body: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateNamedConfiguration(key, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -386,11 +393,12 @@ export const ConfigurationApiFactory = function (configuration?: Configuration, 
          * 
          * @summary Updates named configuration.
          * @param {string} key Configuration key.
+         * @param {any} body Configuration.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateNamedConfiguration(key: string, options?: any): AxiosPromise<void> {
-            return localVarFp.updateNamedConfiguration(key, options).then((request) => request(axios, basePath));
+        updateNamedConfiguration(key: string, body: any, options?: any): AxiosPromise<void> {
+            return localVarFp.updateNamedConfiguration(key, body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -449,6 +457,13 @@ export interface ConfigurationApiUpdateNamedConfigurationRequest {
      * @memberof ConfigurationApiUpdateNamedConfiguration
      */
     readonly key: string
+
+    /**
+     * Configuration.
+     * @type {any}
+     * @memberof ConfigurationApiUpdateNamedConfiguration
+     */
+    readonly body: any
 }
 
 /**
@@ -525,6 +540,6 @@ export class ConfigurationApi extends BaseAPI {
      * @memberof ConfigurationApi
      */
     public updateNamedConfiguration(requestParameters: ConfigurationApiUpdateNamedConfigurationRequest, options?: AxiosRequestConfig) {
-        return ConfigurationApiFp(this.configuration).updateNamedConfiguration(requestParameters.key, options).then((request) => request(this.axios, this.basePath));
+        return ConfigurationApiFp(this.configuration).updateNamedConfiguration(requestParameters.key, requestParameters.body, options).then((request) => request(this.axios, this.basePath));
     }
 }

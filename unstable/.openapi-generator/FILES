@@ -127,10 +127,12 @@ models/device-profile-type.ts
 models/device-profile.ts
 models/direct-play-profile.ts
 models/display-preferences-dto.ts
+models/dlna-options.ts
 models/dlna-profile-type.ts
 models/dynamic-day-of-week.ts
 models/embedded-subtitle-options.ts
 models/encoding-context.ts
+models/encoding-options.ts
 models/end-point-info.ts
 models/external-id-info.ts
 models/external-id-media-type.ts
@@ -182,6 +184,7 @@ models/library-update-info.ts
 models/listings-provider-info.ts
 models/live-stream-response.ts
 models/live-tv-info.ts
+models/live-tv-options.ts
 models/live-tv-service-info.ts
 models/live-tv-service-status.ts
 models/localization-option.ts
@@ -201,10 +204,12 @@ models/media-update-info-dto.ts
 models/media-update-info-path-dto.ts
 models/media-url.ts
 models/message-command.ts
+models/metadata-configuration.ts
 models/metadata-editor-info.ts
 models/metadata-field.ts
 models/metadata-options.ts
 models/metadata-refresh-mode.ts
+models/migration-options.ts
 models/move-playlist-item-request-dto.ts
 models/movie-info-remote-search-query.ts
 models/movie-info.ts
@@ -213,10 +218,13 @@ models/music-video-info.ts
 models/name-guid-pair.ts
 models/name-id-pair.ts
 models/name-value-pair.ts
+models/network-configuration.ts
 models/new-group-request-dto.ts
 models/next-item-request-dto.ts
 models/notification-dto.ts
 models/notification-level.ts
+models/notification-option.ts
+models/notification-options.ts
 models/notification-result-dto.ts
 models/notification-type-info.ts
 models/notifications-summary-dto.ts
@@ -278,6 +286,7 @@ models/search-hint.ts
 models/seek-request-dto.ts
 models/send-command-type.ts
 models/send-command.ts
+models/send-to-user-type.ts
 models/series-info-remote-search-query.ts
 models/series-info.ts
 models/series-status.ts
@@ -299,6 +308,7 @@ models/startup-configuration-dto.ts
 models/startup-remote-access-dto.ts
 models/startup-user-dto.ts
 models/subtitle-delivery-method.ts
+models/subtitle-options.ts
 models/subtitle-playback-mode.ts
 models/subtitle-profile.ts
 models/sync-play-user-access-type.ts
@@ -339,4 +349,5 @@ models/video-type.ts
 models/video3-dformat.ts
 models/virtual-folder-info.ts
 models/wake-on-lan-info.ts
+models/xbmc-metadata-options.ts
 models/xml-attribute.ts
