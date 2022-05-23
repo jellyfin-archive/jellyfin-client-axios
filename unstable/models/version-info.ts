@@ -13,7 +13,6 @@
  */
 
 
-import { Version } from './version';
 
 /**
  * Defines the MediaBrowser.Model.Updates.VersionInfo class.
@@ -28,11 +27,11 @@ export interface VersionInfo {
      */
     'version'?: string;
     /**
-     * 
-     * @type {Version}
+     * Gets the version as a System.Version.
+     * @type {string}
      * @memberof VersionInfo
      */
-    'VersionNumber'?: Version;
+    'VersionNumber'?: string;
     /**
      * Gets or sets the changelog for this version.
      * @type {string}

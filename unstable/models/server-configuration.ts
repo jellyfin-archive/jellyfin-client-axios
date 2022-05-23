@@ -18,7 +18,6 @@ import { MetadataOptions } from './metadata-options';
 import { NameValuePair } from './name-value-pair';
 import { PathSubstitution } from './path-substitution';
 import { RepositoryInfo } from './repository-info';
-import { Version } from './version';
 
 /**
  * Represents the server configuration.
@@ -45,11 +44,11 @@ export interface ServerConfiguration {
      */
     'CachePath'?: string | null;
     /**
-     * 
-     * @type {Version}
+     * Gets or sets the last known version that was ran using the configuration.
+     * @type {string}
      * @memberof ServerConfiguration
      */
-    'PreviousVersion'?: Version;
+    'PreviousVersion'?: string | null;
     /**
      * Gets or sets the stringified PreviousVersion to be stored/loaded,  because System.Version itself isn\'t xml-serializable.
      * @type {string}

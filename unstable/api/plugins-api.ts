@@ -24,8 +24,6 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 import { PluginInfo } from '../models';
 // @ts-ignore
 import { ProblemDetails } from '../models';
-// @ts-ignore
-import { Version } from '../models';
 /**
  * PluginsApi - axios parameter creator
  * @export
@@ -36,11 +34,11 @@ export const PluginsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Disable a plugin.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        disablePlugin: async (pluginId: string, version: Version, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        disablePlugin: async (pluginId: string, version: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'pluginId' is not null or undefined
             assertParamExists('disablePlugin', 'pluginId', pluginId)
             // verify required parameter 'version' is not null or undefined
@@ -77,11 +75,11 @@ export const PluginsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Enables a disabled plugin.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        enablePlugin: async (pluginId: string, version: Version, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        enablePlugin: async (pluginId: string, version: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'pluginId' is not null or undefined
             assertParamExists('enablePlugin', 'pluginId', pluginId)
             // verify required parameter 'version' is not null or undefined
@@ -155,11 +153,11 @@ export const PluginsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Gets a plugin\'s image.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPluginImage: async (pluginId: string, version: Version, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getPluginImage: async (pluginId: string, version: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'pluginId' is not null or undefined
             assertParamExists('getPluginImage', 'pluginId', pluginId)
             // verify required parameter 'version' is not null or undefined
@@ -304,11 +302,11 @@ export const PluginsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Uninstalls a plugin by version.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uninstallPluginByVersion: async (pluginId: string, version: Version, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        uninstallPluginByVersion: async (pluginId: string, version: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'pluginId' is not null or undefined
             assertParamExists('uninstallPluginByVersion', 'pluginId', pluginId)
             // verify required parameter 'version' is not null or undefined
@@ -392,11 +390,11 @@ export const PluginsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Disable a plugin.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async disablePlugin(pluginId: string, version: Version, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async disablePlugin(pluginId: string, version: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.disablePlugin(pluginId, version, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -404,11 +402,11 @@ export const PluginsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Enables a disabled plugin.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async enablePlugin(pluginId: string, version: Version, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async enablePlugin(pluginId: string, version: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.enablePlugin(pluginId, version, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -427,11 +425,11 @@ export const PluginsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Gets a plugin\'s image.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPluginImage(pluginId: string, version: Version, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getPluginImage(pluginId: string, version: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPluginImage(pluginId, version, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -472,11 +470,11 @@ export const PluginsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Uninstalls a plugin by version.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uninstallPluginByVersion(pluginId: string, version: Version, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async uninstallPluginByVersion(pluginId: string, version: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uninstallPluginByVersion(pluginId, version, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -505,22 +503,22 @@ export const PluginsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Disable a plugin.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        disablePlugin(pluginId: string, version: Version, options?: any): AxiosPromise<void> {
+        disablePlugin(pluginId: string, version: string, options?: any): AxiosPromise<void> {
             return localVarFp.disablePlugin(pluginId, version, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Enables a disabled plugin.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        enablePlugin(pluginId: string, version: Version, options?: any): AxiosPromise<void> {
+        enablePlugin(pluginId: string, version: string, options?: any): AxiosPromise<void> {
             return localVarFp.enablePlugin(pluginId, version, options).then((request) => request(axios, basePath));
         },
         /**
@@ -537,11 +535,11 @@ export const PluginsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Gets a plugin\'s image.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPluginImage(pluginId: string, version: Version, options?: any): AxiosPromise<any> {
+        getPluginImage(pluginId: string, version: string, options?: any): AxiosPromise<any> {
             return localVarFp.getPluginImage(pluginId, version, options).then((request) => request(axios, basePath));
         },
         /**
@@ -578,11 +576,11 @@ export const PluginsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Uninstalls a plugin by version.
          * @param {string} pluginId Plugin id.
-         * @param {Version} version Plugin version.
+         * @param {string} version Plugin version.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uninstallPluginByVersion(pluginId: string, version: Version, options?: any): AxiosPromise<void> {
+        uninstallPluginByVersion(pluginId: string, version: string, options?: any): AxiosPromise<void> {
             return localVarFp.uninstallPluginByVersion(pluginId, version, options).then((request) => request(axios, basePath));
         },
         /**
@@ -613,10 +611,10 @@ export interface PluginsApiDisablePluginRequest {
 
     /**
      * Plugin version.
-     * @type {Version}
+     * @type {string}
      * @memberof PluginsApiDisablePlugin
      */
-    readonly version: Version
+    readonly version: string
 }
 
 /**
@@ -634,10 +632,10 @@ export interface PluginsApiEnablePluginRequest {
 
     /**
      * Plugin version.
-     * @type {Version}
+     * @type {string}
      * @memberof PluginsApiEnablePlugin
      */
-    readonly version: Version
+    readonly version: string
 }
 
 /**
@@ -669,10 +667,10 @@ export interface PluginsApiGetPluginImageRequest {
 
     /**
      * Plugin version.
-     * @type {Version}
+     * @type {string}
      * @memberof PluginsApiGetPluginImage
      */
-    readonly version: Version
+    readonly version: string
 }
 
 /**
@@ -718,10 +716,10 @@ export interface PluginsApiUninstallPluginByVersionRequest {
 
     /**
      * Plugin version.
-     * @type {Version}
+     * @type {string}
      * @memberof PluginsApiUninstallPluginByVersion
      */
-    readonly version: Version
+    readonly version: string
 }
 
 /**

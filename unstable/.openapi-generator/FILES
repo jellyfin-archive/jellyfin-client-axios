@@ -344,7 +344,6 @@ models/user-policy.ts
 models/utc-time-response.ts
 models/validate-path-dto.ts
 models/version-info.ts
-models/version.ts
 models/video-type.ts
 models/video3-dformat.ts
 models/virtual-folder-info.ts

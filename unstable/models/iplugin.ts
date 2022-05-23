@@ -13,7 +13,6 @@
  */
 
 
-import { Version } from './version';
 
 /**
  * Defines the MediaBrowser.Common.Plugins.IPlugin.
@@ -40,11 +39,11 @@ export interface IPlugin {
      */
     'Id'?: string;
     /**
-     * 
-     * @type {Version}
+     * Gets the plugin version.
+     * @type {string}
      * @memberof IPlugin
      */
-    'Version'?: Version;
+    'Version'?: string | null;
     /**
      * Gets the path to the assembly file.
      * @type {string}

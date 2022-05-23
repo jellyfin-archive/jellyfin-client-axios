@@ -14,7 +14,6 @@
 
 
 import { PackageInfo } from './package-info';
-import { Version } from './version';
 
 /**
  * Class InstallationInfo.
@@ -35,11 +34,11 @@ export interface InstallationInfo {
      */
     'Name'?: string | null;
     /**
-     * 
-     * @type {Version}
+     * Gets or sets the version.
+     * @type {string}
      * @memberof InstallationInfo
      */
-    'Version'?: Version;
+    'Version'?: string | null;
     /**
      * Gets or sets the changelog for this version.
      * @type {string}

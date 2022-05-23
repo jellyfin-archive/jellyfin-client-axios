@@ -276,7 +276,6 @@ export * from './user-item-data-dto';
 export * from './user-policy';
 export * from './utc-time-response';
 export * from './validate-path-dto';
-export * from './version';
 export * from './version-info';
 export * from './video3-dformat';
 export * from './video-type';

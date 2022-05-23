@@ -14,7 +14,6 @@
 
 
 import { PluginStatus } from './plugin-status';
-import { Version } from './version';
 
 /**
  * This is a serializable stub class that is used by the api to provide information about installed plugins.
@@ -29,11 +28,11 @@ export interface PluginInfo {
      */
     'Name'?: string;
     /**
-     * 
-     * @type {Version}
+     * Gets or sets the version.
+     * @type {string}
      * @memberof PluginInfo
      */
-    'Version'?: Version;
+    'Version'?: string;
     /**
      * Gets or sets the name of the configuration file.
      * @type {string}
