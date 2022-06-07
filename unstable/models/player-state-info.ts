@@ -82,5 +82,11 @@ export interface PlayerStateInfo {
      * @memberof PlayerStateInfo
      */
     'RepeatMode'?: RepeatMode;
+    /**
+     * Gets or sets the now playing live stream identifier.
+     * @type {string}
+     * @memberof PlayerStateInfo
+     */
+    'LiveStreamId'?: string | null;
 }
 
