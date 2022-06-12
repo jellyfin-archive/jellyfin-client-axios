@@ -142,7 +142,6 @@ export * from './metadata-editor-info';
 export * from './metadata-field';
 export * from './metadata-options';
 export * from './metadata-refresh-mode';
-export * from './migration-options';
 export * from './move-playlist-item-request-dto';
 export * from './movie-info';
 export * from './movie-info-remote-search-query';

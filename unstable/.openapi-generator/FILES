@@ -209,7 +209,6 @@ models/metadata-editor-info.ts
 models/metadata-field.ts
 models/metadata-options.ts
 models/metadata-refresh-mode.ts
-models/migration-options.ts
 models/move-playlist-item-request-dto.ts
 models/movie-info-remote-search-query.ts
 models/movie-info.ts
