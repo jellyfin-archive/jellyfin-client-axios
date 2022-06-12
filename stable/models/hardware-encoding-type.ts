@@ -20,15 +20,16 @@
  * @enum {string}
  */
 
-export enum HardwareEncodingType {
-    Amf = 'AMF',
-    Qsv = 'QSV',
-    Nvenc = 'NVENC',
-    Omx = 'OMX',
-    V4L2M2M = 'V4L2M2M',
-    MediaCodec = 'MediaCodec',
-    Vaapi = 'VAAPI',
-    VideoToolBox = 'VideoToolBox'
-}
+export const HardwareEncodingType = {
+    Amf: 'AMF',
+    Qsv: 'QSV',
+    Nvenc: 'NVENC',
+    V4L2M2M: 'V4L2M2M',
+    Vaapi: 'VAAPI',
+    VideoToolBox: 'VideoToolBox'
+} as const;
+
+export type HardwareEncodingType = typeof HardwareEncodingType[keyof typeof HardwareEncodingType];
+
 
 
