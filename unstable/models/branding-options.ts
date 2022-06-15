@@ -32,5 +32,11 @@ export interface BrandingOptions {
      * @memberof BrandingOptions
      */
     'CustomCss'?: string | null;
+    /**
+     * Gets or sets a value indicating whether to enable the splashscreen.
+     * @type {boolean}
+     * @memberof BrandingOptions
+     */
+    'SplashscreenEnabled'?: boolean;
 }
 
