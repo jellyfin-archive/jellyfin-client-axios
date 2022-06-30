@@ -43,7 +43,8 @@ export const ProfileConditionValue = {
     IsAvc: 'IsAvc',
     IsInterlaced: 'IsInterlaced',
     AudioSampleRate: 'AudioSampleRate',
-    AudioBitDepth: 'AudioBitDepth'
+    AudioBitDepth: 'AudioBitDepth',
+    VideoRangeType: 'VideoRangeType'
 } as const;
 
 export type ProfileConditionValue = typeof ProfileConditionValue[keyof typeof ProfileConditionValue];

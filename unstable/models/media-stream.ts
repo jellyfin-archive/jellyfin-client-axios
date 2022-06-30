@@ -65,6 +65,54 @@ export interface MediaStream {
      */
     'ColorPrimaries'?: string | null;
     /**
+     * Gets or sets the Dolby Vision version major.
+     * @type {number}
+     * @memberof MediaStream
+     */
+    'DvVersionMajor'?: number | null;
+    /**
+     * Gets or sets the Dolby Vision version minor.
+     * @type {number}
+     * @memberof MediaStream
+     */
+    'DvVersionMinor'?: number | null;
+    /**
+     * Gets or sets the Dolby Vision profile.
+     * @type {number}
+     * @memberof MediaStream
+     */
+    'DvProfile'?: number | null;
+    /**
+     * Gets or sets the Dolby Vision level.
+     * @type {number}
+     * @memberof MediaStream
+     */
+    'DvLevel'?: number | null;
+    /**
+     * Gets or sets the Dolby Vision rpu present flag.
+     * @type {number}
+     * @memberof MediaStream
+     */
+    'RpuPresentFlag'?: number | null;
+    /**
+     * Gets or sets the Dolby Vision el present flag.
+     * @type {number}
+     * @memberof MediaStream
+     */
+    'ElPresentFlag'?: number | null;
+    /**
+     * Gets or sets the Dolby Vision bl present flag.
+     * @type {number}
+     * @memberof MediaStream
+     */
+    'BlPresentFlag'?: number | null;
+    /**
+     * Gets or sets the Dolby Vision bl signal compatibility id.
+     * @type {number}
+     * @memberof MediaStream
+     */
+    'DvBlSignalCompatibilityId'?: number | null;
+    /**
      * Gets or sets the comment.
      * @type {string}
      * @memberof MediaStream
@@ -94,6 +142,18 @@ export interface MediaStream {
      * @memberof MediaStream
      */
     'VideoRange'?: string | null;
+    /**
+     * Gets the video range type.
+     * @type {string}
+     * @memberof MediaStream
+     */
+    'VideoRangeType'?: string | null;
+    /**
+     * Gets the video dovi title.
+     * @type {string}
+     * @memberof MediaStream
+     */
+    'VideoDoViTitle'?: string | null;
     /**
      * 
      * @type {string}

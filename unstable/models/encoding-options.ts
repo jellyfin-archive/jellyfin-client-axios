@@ -145,6 +145,18 @@ export interface EncodingOptions {
      * @type {number}
      * @memberof EncodingOptions
      */
+    'VppTonemappingBrightness'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EncodingOptions
+     */
+    'VppTonemappingContrast'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EncodingOptions
+     */
     'H264Crf'?: number;
     /**
      * 

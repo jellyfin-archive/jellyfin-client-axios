@@ -125,7 +125,8 @@ export const TranscodingInfoTranscodeReasonsEnum = {
     AudioBitrateNotSupported: 'AudioBitrateNotSupported',
     UnknownVideoStreamInfo: 'UnknownVideoStreamInfo',
     UnknownAudioStreamInfo: 'UnknownAudioStreamInfo',
-    DirectPlayError: 'DirectPlayError'
+    DirectPlayError: 'DirectPlayError',
+    VideoRangeTypeNotSupported: 'VideoRangeTypeNotSupported'
 } as const;
 
 export type TranscodingInfoTranscodeReasonsEnum = typeof TranscodingInfoTranscodeReasonsEnum[keyof typeof TranscodingInfoTranscodeReasonsEnum];
